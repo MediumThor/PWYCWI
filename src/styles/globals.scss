@@ -1,0 +1,46 @@
+  body,
+  html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+    @media only screen and (max-width: 768px) {
+      background-size: 1400px;
+
+    }
+
+    @media only screen and (max-width: 1036px) and (min-width: 769px) {
+      background-size: 1800px;
+
+
+    }
+
+
+  }
+
+
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
+
+    body {
+      color: white;
+      background: black;
+    }
+  }

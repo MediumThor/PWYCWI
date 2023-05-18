@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+
+  },
+  "include": [ "src", "types", "playwright",
+    "**/*.ts",
+     "**/*.tsx",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.png",
+    "**/*.woff2",
+    "**/*.svg",
+    "**/*.tsx",    "./frontend/src/*/"
+
+, "src/Bonsai/MintOPEN.tsx","src/pages/home.jsx", "components/WalletConnect/helpers/api.js", "components/MemberSection/StakeSection.jsx", "components/MemberSection/StakeSection.jsx", "components/WalletConnectsrc/pages/styles/global/GlobalStyles.jsxalStyles.jsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

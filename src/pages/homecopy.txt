@@ -1,0 +1,94 @@
+
+
+import React from 'react'
+import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli, Avalanche} from '@usedapp/core'
+
+import { getDefaultProvider } from 'ethers'
+
+
+import Header from '../components/Header/Header'
+import HeaderLinks from '../components/Header/HeaderLinks'
+
+
+
+
+
+ 
+
+import "src/styles/Home.module.scss";
+
+
+
+import { Redirect, Route, Switch } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
+import { Page } from '../components/Base/base'
+import { GlobalStyle } from '../styles/global/GlobalStyles.jsx'
+import  Home2  from './home2'
+
+import { NotificationsList } from '../components/Transactions/History'
+import  Home  from './home'
+
+
+
+
+export default function App() {
+
+  const config: Config = {
+    readOnlyChainId: Avalanche.chainId,
+    
+    
+    readOnlyUrls: {
+  
+    [Avalanche.chainId]: 'https://api.avax.network/ext/bc/C/rpc',
+  
+  // [AvalancheTestnet.chainId]: 'https://api.avax-test.network/ext/bc/C/rpc'
+  
+  
+  },
+    multicallVersion: 1 as const,
+  }
+
+ 
+
+  return (
+    <DAppProvider config={config}>
+   
+<Page>
+      <GlobalStyle />
+      <BrowserRouter>
+      <Header
+        brand="PWYC"
+        leftLinks
+        rightLinks={<HeaderLinks />}
+        fixed
+        color="transparent"
+        changeColorOnScroll={{
+          height: 20,
+          color: "dark",
+          
+        }}
+       
+      />
+      
+
+
+        <Switch>
+          <Home/>
+         
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/" component={Home2} />
+  
+          <Redirect exact from="/" to="/Home" />
+        </Switch>
+      </BrowserRouter>
+      <NotificationsList />
+    </Page>
+        
+      </DAppProvider>
+
+
+
+
+  )
+}
+
