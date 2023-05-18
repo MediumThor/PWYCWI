@@ -15,6 +15,7 @@ const CalendarTitle = styled.h2`
   transform: translate(-50%, -50%);
   font-size: 2em;
   font-weight: bold;
+  padding: 5px;
   color: white;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
