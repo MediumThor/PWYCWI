@@ -10,9 +10,7 @@ const Section1Styled = styled.div`
   padding-top: 150px;
     margin-bottom: -100px;
 
-  .active {
-    border-bottom: 10px solid white;
-  }
+ 
 `;
 
 const Wrapper = styled.div`
@@ -27,6 +25,7 @@ const Wrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    width:100vw;
   }
 `;
 
@@ -59,13 +58,24 @@ const ImageWrapper = styled.div`
   height: 300px;
   width: 400px;
   margin-bottom: 10px;
+
+  @media (max-width: 600px) {
+    width: 90%; // Here too
+    max-width: 90vw; // 90% of the viewport width
+    margin-bottom: -100px;
+  }
 `;
 
 const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
+
+  @media (max-width: 600px) {
+    width: 100%; // Apply 90% width to the image in mobile view
+  }
 `;
+
 
 const TextWrapper = styled.div`
   display: flex;
@@ -117,7 +127,7 @@ export default function Section1() {
             <Text clamped={isClamped1}>
               <p>Enjoy cruising trips to other ports with yacht club members.
                 Participate in fishing tournaments including the Lloyd Purnell Annual Fishing Tournament with awards given for the most successful fishermen.</p>          </Text>
-            <Button onClick={() => setClamped1(!isClamped1)}>{isClamped1 ? '' : 'Show less'}</Button>
+            <Button onClick={() => setClamped1(!isClamped1)}>{isClamped1 ? 'Show more +' : 'Show less'}</Button>
           </Column>
           <Column>
             <ImageWrapper>

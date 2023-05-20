@@ -21,8 +21,9 @@ const CalendarWrapper = styled.div`
   }
 
   .mobile-view {
+    margin-top: -100px;
     width: 90%;
-    height: 70%;
+    height: 120%;
   }
 `;
 

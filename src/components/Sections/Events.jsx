@@ -55,4 +55,7 @@ const CalendarTitle = styled.h2`
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   @media (max-width: 600px) {
     top: 30%  }
+  @media (max-width: 400px) {
+    font-size: 1.5em;
+    top: 30%  }
 `;

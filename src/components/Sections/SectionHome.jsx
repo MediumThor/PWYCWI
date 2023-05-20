@@ -38,6 +38,11 @@ const Title = styled.h1`
     height: 200px;  // 50% of the original height
     top: 5%;
   }
+  @media (max-width: 400px) {
+    height: 100px;  // 50% of the original height
+    top: 5%;
+    font-size: 1.0em;
+  }
 `;
 
 const Logo = styled.img`
@@ -50,6 +55,11 @@ const Logo = styled.img`
   @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
+  }
+   @media (max-width: 400px) {
+    height: 150px;  // 50% of the original height
+    top: 30%;
+    left: 40%;  
   }
 `;
 
@@ -76,12 +86,12 @@ const FlexContainer = styled.div`
 
 const ButtonContainer = styled.div`
   position: absolute;
-  top: 80%;  // Adjust as needed to set the vertical position of the buttons
+  top: 80%;  
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: row; // make buttons display in a row
-  justify-content: center; // center buttons horizontally
+  flex-direction: row; 
+  justify-content: center; 
   gap: .5em;
 
   @media (max-width: 600px) {
@@ -89,9 +99,25 @@ const ButtonContainer = styled.div`
     justify-content: center;
     top: 80%;
   }
+
+    @media (max-width: 500px) {
+    gap: .1em;
+
+    
+  }
+  @media (max-width: 400px) {
+    flex-direction: column;  // make buttons display in a column
+    align-items: center;  // center buttons vertically
+    grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
+    display: grid; // switch to grid display
+    gap: .1em;
+    top: 70%; 
+    
+  }
 `;
 
 const StyledButton = styled.button`
+    // add this line to set a fixed height
   box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
   z-index: 2;
   font-size: 1.4rem;
@@ -111,9 +137,16 @@ const StyledButton = styled.button`
   @media (max-width: 600px) {
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
-    margin: 0 .5em;
+    margin: 0.5em;
+  }
+   @media (max-width: 400px) {
+    font-size: 1rem; // decrease font size
+    padding: 15px 25px; // decrease padding
+    height: 70px;
+    width: 140px;
   }
 `;
+
 
 
 
@@ -167,7 +200,7 @@ export default function SectionHome() {
             strength={400}
             bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1108559911656357990/IMG_3286.jpg"
             bgImageAlt="Background"
-            bgImageStyle={{ height: '100%', width: '100%' }}
+            bgImageStyle={{ backgroundSize: 'cover' }}
           >
 
             <Title>Port Washington<br />Yacht Club</Title>
