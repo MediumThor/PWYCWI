@@ -8,7 +8,6 @@ import { Link } from 'react-scroll';
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 import Slide from "@material-ui/core/Slide";
 import style from 'src/styles/Home.module.scss'
