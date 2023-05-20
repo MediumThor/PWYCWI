@@ -22,7 +22,7 @@ const headerStyle = {
     marginBottom: "20px",
     color: "#555",
     width: "100%",
-    backgroundColor: "#fff",
+    backgroundColor: "#000000",
     boxShadow:
       "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
     transition: "all 150ms ease 0s",
@@ -129,6 +129,30 @@ const headerStyle = {
     boxShadow:
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)",
   },
+  drawerPaperDark: {
+    backgroundColor: "#000", // black
+    color: "white",
+    border: "0",
+    bottom: "0",
+    transitionProperty: "top, bottom, width",
+    transitionDuration: ".2s, .2s, .35s",
+    transitionTimingFunction: "linear, linear, ease",
+    width: drawerWidth,
+    ...boxShadow,
+    position: "fixed",
+    display: "block",
+    top: "0",
+    height: "70vh",
+    right: "0",
+    left: "auto",
+    visibility: "visible",
+    overflowY: "visible",
+    borderTop: "none",
+    textAlign: "left",
+    paddingRight: "0px",
+    paddingLeft: "0",
+    ...transition,
+  },
   white: {
     border: "0",
     padding: "0.625rem 0",
@@ -160,6 +184,7 @@ const headerStyle = {
     paddingLeft: "0",
     ...transition,
   },
+
 };
 
 export default headerStyle;

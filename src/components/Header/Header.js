@@ -103,7 +103,7 @@ export default function Header(props) {
           anchor={"right"}
           open={mobileOpen}
           classes={{
-            paper: classes.drawerPaper,
+            paper: classes.drawerPaperDark,  // use the new class here
           }}
           onClose={handleDrawerToggle}
         >

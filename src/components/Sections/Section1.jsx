@@ -8,6 +8,7 @@ const Section1Styled = styled.div`
 
   background-color: black;
   padding-top: 150px;
+    margin-bottom: -100px;
 
   .active {
     border-bottom: 10px solid white;
@@ -43,7 +44,7 @@ const Column = styled.div`
   }
 
   p {
-    max-width: 200px;
+    max-width: 400px;
   }
 
   @media (min-width: 769px) {
@@ -77,8 +78,11 @@ const Text = styled.p`
   -webkit-line-clamp: ${props => props.clamped ? '7' : 'none'};
   -webkit-box-orient: vertical;  
   overflow: hidden;
-  width: 65%; // Reduce this value to make the text column narrower.
+  width: 75%; // Reduce this value to make the text column narrower.
   margin: auto; // Center the text column.
+ @media (max-width: 600px) {
+    width: 95%;
+  }
 `;
 
 
@@ -113,7 +117,7 @@ export default function Section1() {
             <Text clamped={isClamped1}>
               <p>Enjoy cruising trips to other ports with yacht club members.
                 Participate in fishing tournaments including the Lloyd Purnell Annual Fishing Tournament with awards given for the most successful fishermen.</p>          </Text>
-            <Button onClick={() => setClamped1(!isClamped1)}>{isClamped1 ? 'Show more +' : 'Show less'}</Button>
+            <Button onClick={() => setClamped1(!isClamped1)}>{isClamped1 ? '' : 'Show less'}</Button>
           </Column>
           <Column>
             <ImageWrapper>
@@ -126,7 +130,7 @@ export default function Section1() {
                 In addition, the Club participates in the city's Fish Day celebration and is involved in other community activities. Such activities include contributing funds to school scholarships and making the club available for charitable fund raising events.
                 The clubhouse bar is open each Friday evening during the summer months for use by its members and visiting boaters from other yacht clubs.</p>
             </Text>
-            <Button onClick={() => setClamped2(!isClamped2)}>{isClamped2 ? 'Show more' : 'Show less'}</Button>
+            <Button onClick={() => setClamped2(!isClamped2)}>{isClamped2 ? 'Show more +' : 'Show less'}</Button>
           </Column>
           <Column>
             <ImageWrapper>
@@ -141,7 +145,7 @@ export default function Section1() {
                 ygan and the other to and from Milwaukee are fun races for which individual awards are given.
                 The Port Washington Yacht Club sponsors the across the lake Clipper Cup race and hosts the west shore and across the lake 'Double Handed' race. Both races finish at Port Washington Harbor with award parties held at the yacht club.</p>
             </Text>
-            <Button onClick={() => setClamped3(!isClamped3)}>{isClamped3 ? 'Show more' : 'Show less'}</Button>
+            <Button onClick={() => setClamped3(!isClamped3)}>{isClamped3 ? 'Show more +' : 'Show less'}</Button>
           </Column>
         </Wrapper>
       </main>

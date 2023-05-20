@@ -132,6 +132,8 @@ export default function HeaderLinks(props) {
         />
       </ListItem>
 
+
+
       <ListItem className={classes.listItem}>
         <SmallButton size="sm"
           color="transparent">
@@ -147,6 +149,28 @@ export default function HeaderLinks(props) {
           color="transparent">
           <Link activeClass="active" to="section2" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
             Events
+          </Link>
+        </SmallButton>
+
+      </ListItem>
+
+
+
+
+      <ListItem className={classes.listItem}>
+        <SmallButton size="sm"
+          color="transparent">
+          <Link activeClass="active" to="section4" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
+            Porthole
+          </Link>
+        </SmallButton>
+
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <SmallButton size="sm"
+          color="transparent">
+          <Link activeClass="active" to="section5" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
+            Weather
           </Link>
         </SmallButton>
 
@@ -171,102 +195,15 @@ export default function HeaderLinks(props) {
         </SmallButton>
 
       </ListItem>
-      <ListItem className={classes.listItem}>
-        <SmallButton size="sm"
-          color="transparent">
-          <Link activeClass="active" to="section4" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
-            Porthole
-          </Link>
-        </SmallButton>
 
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <SmallButton size="sm"
-          color="transparent">
-          <Link activeClass="active" to="section5" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
-            Weather
-          </Link>
-        </SmallButton>
-
-      </ListItem>
-
-      <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
+      {/*<ListItem className={classes.listItem}>
+        <Tooltip title="Delete">
           <IconButton aria-label="Delete">
             <DeleteIcon />
           </IconButton>
-        </Tooltip>*/}
+        </Tooltip>
 
-      </ListItem>
-
-      <ListItem className={classes.listItem}>
-
-        {/**      <WalletButton />*/}
-      </ListItem>
-
-      <ListItem className={classes.listItem}>
-        <GridItem sm={12}>
-
-          <Dialog
-            classes={{
-              root: classes.center,
-              paper: classes.modal,
-            }}
-            open={classicModal}
-            TransitionComponent={Transition}
-            keepMounted
-            onClose={() => setClassicModal(false)}
-            aria-labelledby="classic-modal-slide-title"
-            aria-describedby="classic-modal-slide-description"
-          >
-            <DialogTitle
-              id="classic-modal-slide-title"
-              disableTypography
-              className={classes.modalHeader}
-            >
-              <IconButton
-                className={classes.modalCloseButton}
-                key="close"
-                aria-label="Close"
-                color="inherit"
-                onClick={() => setClassicModal(false)}
-              >
-                <Close className={classes.modalClose} />
-              </IconButton>
-              <h4 className={classes.modalTitle}>
-
-
-
-              </h4>
-            </DialogTitle>
-            <DialogContent
-              id="classic-modal-slide-description"
-              className={classes.modalBody}
-            >
-
-              <LoginPage />
-
-
-
-            </DialogContent>
-            <DialogActions className={classes.modalFooter}>
-
-              <Button
-                onClick={() => setClassicModal(false)}
-                color="danger"
-                simple
-              >
-                Close
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </GridItem>
-
-
-      </ListItem>
-
-
-
+      </ListItem>*/}
 
     </List>
 

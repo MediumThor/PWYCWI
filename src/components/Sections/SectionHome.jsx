@@ -9,6 +9,8 @@ import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } fro
 import { Link } from 'react-scroll';
 import SmallButton from "src/components/CustomButtons/SmallButton.js";
 import { Events } from '../Events';
+import Modal from 'react-modal'; // import the react-modal package
+
 
 const Section1Styled = styled.div`
   width:100%;
@@ -32,25 +34,34 @@ const Title = styled.h1`
   font-weight: bold;
   color: white;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-`;
-
-const SubTitle = styled.h1`
-  position: absolute;
-  top: 67%;
-  left: 24%;
-  font-size: .4em;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+   @media (max-width: 600px) {
+    height: 200px;  // 50% of the original height
+    top: 5%;
+  }
 `;
 
 const Logo = styled.img`
   position: absolute;
-  top: 35%;  // Adjust this value as needed to position the logo correctly under the title
-  left: 10%;  // Adjust this value to align the logo with the title
-  height: 400px;  // Adjust this value as needed to size the logo correctly
+  top: 15%;  
+  left: 60%;  
+  height: 320px; 
   width: auto;
+
+  @media (max-width: 600px) {
+    height: 200px;  // 50% of the original height
+    top: 45%;
+  }
 `;
+
+const ModalTitle = styled.h2`
+
+margin-top: -40px;
+ @media (max-width: 600px) {
+    margin-top: -20px;
+  }
+`;
+
+
 
 const FlexContainer = styled.div`
  position: absolute;
@@ -62,12 +73,90 @@ const FlexContainer = styled.div`
 `;
 
 
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  top: 80%;  // Adjust as needed to set the vertical position of the buttons
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row; // make buttons display in a row
+  justify-content: center; // center buttons horizontally
+  gap: .5em;
+
+  @media (max-width: 600px) {
+    flex-direction: row;
+    justify-content: center;
+    top: 80%;
+  }
+`;
+
+const StyledButton = styled.button`
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+  z-index: 2;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: #000000;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    color: #996515;
+    border-color: #87CEFA;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 1rem; // decrease font size
+    padding: 8px 16px; // decrease padding
+    margin: 0 .5em;
+  }
+`;
+
+
+
 export default function SectionHome() {
-  const { account, activateBrowserWallet, deactivate, chainId } = useEthers()
-  const userBalance = useEtherBalance(account)
-  const [address, setAddress] = useState('')
-  const [disabled, setDisabled] = useState(false)
-  const [totalSupply, setTotalSupply] = useState(false)
+
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
+  const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
+  const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
+  const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
+
+  const handleNewsOpen = () => {
+    setIsNewsModalOpen(true);
+  };
+
+  const handleNewsClose = () => {
+    setIsNewsModalOpen(false);
+  };
+
+  const handleEventsOpen = () => {
+    setIsEventsModalOpen(true);
+  };
+
+  const handleEventsClose = () => {
+    setIsEventsModalOpen(false);
+  };
+
+  const handleMemberOpen = () => {
+    setIsMemberModalOpen(true);
+  };
+
+  const handleMemberClose = () => {
+    setIsMemberModalOpen(false);
+  };
+
+  const handleHistoryOpen = () => {
+    setIsHistoryModalOpen(true);
+  };
+
+  const handleHistoryClose = () => {
+    setIsHistoryModalOpen(false);
+  };
+
+
 
   return (
     <Section1Styled id="sectionHome">
@@ -82,14 +171,135 @@ export default function SectionHome() {
           >
 
             <Title>Port Washington<br />Yacht Club</Title>
-
-            <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108610068833902663/PWYC_FLAG.png" alt="Logo" />
-            <FlexContainer>
-
-
-            </FlexContainer><div style={{ height: '100vh' }} />
+            <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+            <ButtonContainer>
+              <StyledButton onClick={handleNewsOpen}>Club News</StyledButton>
+              <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
+              <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
+            </ButtonContainer>
+            <Modal
+              isOpen={isNewsModalOpen}
+              onRequestClose={handleNewsClose}
+              contentLabel="News Modal"
+              style={{
+                overlay: {
+                  backgroundColor: 'transparent'
+                },
+                content: {
+                  width: '80%',
+                  height: '60%',
+                  margin: 'auto',
+                  overflowX: 'hidden',
+                  padding: '5%',
+                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  '@media (max-width: 600px)': {
+                    width: '90%',
+                  }
+                }
+              }}
+            >
+              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Club News</ModalTitle>
+              {/* Insert Club News content here */}
+              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
+                <button onClick={handleNewsClose}>Close</button>
+              </div>
+            </Modal>
+            <Modal
+              isOpen={isEventsModalOpen}
+              onRequestClose={handleEventsClose}
+              contentLabel="Events Modal"
+              style={{
+                overlay: {
+                  backgroundColor: 'transparent'
+                },
+                content: {
+                  width: '80%',
+                  height: '60%',
+                  margin: 'auto',
+                  overflowX: 'hidden',
+                  padding: '5%',
+                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  '@media (max-width: 600px)': {
+                    width: '90%',
+                  }
+                }
+              }}
+            >
+              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Upcoming Events</ModalTitle>
+              {/* Insert Upcoming Events content here */}
+              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
+                <button onClick={handleEventsClose}>Close</button>
+              </div>
+            </Modal>
+            <Modal
+              isOpen={isMemberModalOpen}
+              onRequestClose={handleMemberClose}
+              contentLabel="Member Modal"
+              style={{
+                overlay: {
+                  backgroundColor: 'transparent'
+                },
+                content: {
+                  width: '80%',
+                  height: '60%',
+                  margin: 'auto',
+                  overflowX: 'hidden',
+                  padding: '5%',
+                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  '@media (max-width: 600px)': {
+                    width: '90%',
+                  }
+                }
+              }}
+            >
+              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Become A Member</ModalTitle>
+              {/* Insert Membership Details content here */}
+              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
+                <button onClick={handleMemberClose}>Close</button>
+              </div>
+            </Modal>
+            <Modal
+              isOpen={isHistoryModalOpen}
+              onRequestClose={handleHistoryClose}
+              contentLabel="Club History Modal"
+              style={{
+                overlay: {
+                  backgroundColor: 'transparent'
+                },
+                content: {
+                  width: '80%',
+                  height: '60%',
+                  margin: 'auto',
+                  overflowX: 'hidden',
+                  padding: '5%',
+                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  '@media (max-width: 600px)': {
+                    width: '90%',
+                  }
+                }
+              }}
+            >
+              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Club History</ModalTitle>
+              {/* Insert Club History content here */}
+              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
+                <button onClick={handleHistoryClose}>Close</button>
+              </div>
+            </Modal>
+            <div style={{ height: '100vh' }} />
           </Parallax>
-
         </BackgroundBox>
         {/**<div className={styles.grid3}>
 

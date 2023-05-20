@@ -13,11 +13,22 @@ const Footer = styled.footer`
   align-items: center;
   background-color: #333;
   color: white;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const FooterText = styled.p`
+  padding: 10px ; // Added padding
 `;
 
 const FooterLink = styled.a`
   color: white;
   text-decoration: none;
+    padding: 10px ; // Added padding
+
 
   &:hover {
     color: lightgray;
@@ -28,6 +39,8 @@ const FacebookLink = styled(FooterLink)`
   display: flex;
   align-items: center;
   font-size: 1.2em;
+    padding: 10px ; // Added padding
+
 `;
 
 const MapImage = styled.img`
@@ -42,16 +55,16 @@ export default function Section3() {
         {/* Your Section Content */}
       </SectionContentBlock>
       <Footer>
-        <MapImage src="https://cdn.discordapp.com/attachments/1090123749300379740/1108616374680567938/image.png" alt="Map" />
         <FooterLink href="https://www.google.com/maps/place/Port+Washington+Yacht+Club/@43.3918745,-87.8681159,17z/data=!3m1!4b1!4m6!3m5!1s0x8804ea1cbd453539:0x7d30452aaee626c4!8m2!3d43.3918706!4d-87.865541!16s%2Fg%2F1tfpq7zy">
-          Visit us! (Click for Map)
+          <MapImage src="https://cdn.discordapp.com/attachments/1090123749300379740/1108616374680567938/image.png" alt="Map" />
         </FooterLink>
         <FooterLink href="mailto:your-email@example.com">Contact Us</FooterLink>
         <FacebookLink href="https://www.facebook.com/PWYCWI">
           <FaFacebook style={{ marginRight: '10px' }} /> Facebook
         </FacebookLink>
-        <p>430 N Lake St Port, Port Washington, WI 53074</p>
+        <FooterText>430 N Lake St Port, Port Washington, WI 53074</FooterText>
       </Footer>
-    </Section3Styled>
+    </Section3Styled >
   );
 }
+

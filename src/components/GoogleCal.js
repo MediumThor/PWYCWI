@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const CalendarWrapper = styled.div`
@@ -8,26 +8,57 @@ const CalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   iframe {
     position: absolute;
-    width: 80%;
     top: 170px;
-    height: 55%;
     border: 0;
+  }
+  
+  .desktop-view {
+    width: 80%;
+    height: 55%;
+  }
+
+  .mobile-view {
+    width: 90%;
+    height: 70%;
   }
 `;
 
 function GoogleCalendar() {
-    return (
-        <CalendarWrapper>
-            <iframe
-                src="https://calendar.google.com/calendar/embed?src=c_bd0e45eb9b14f51c50b76b7c5b558babd421df0d95e908270c88c6f891f1e5e4%40group.calendar.google.com&ctz=America%2FChicago"
-                frameborder="0"
-                scrolling="no"
-                title="Google Calendar"
-            />
-        </CalendarWrapper>
-    );
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+
+  return (
+    <CalendarWrapper>
+      {windowWidth <= 600 ? (
+        <iframe
+          className="mobile-view"
+          src="https://calendar.google.com/calendar/embed?src=c_bd0e45eb9b14f51c50b76b7c5b558babd421df0d95e908270c88c6f891f1e5e4%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA"
+          frameborder="0"
+          scrolling="no"
+          title="Google Calendar mobile"
+        />
+      ) : (
+        <iframe
+          className="desktop-view"
+          src="https://calendar.google.com/calendar/embed?src=c_bd0e45eb9b14f51c50b76b7c5b558babd421df0d95e908270c88c6f891f1e5e4%40group.calendar.google.com&ctz=America%2FChicago"
+          frameborder="0"
+          scrolling="no"
+          title="Google Calendar desktop"
+        />
+      )}
+    </CalendarWrapper>
+  );
 }
 
 export default GoogleCalendar;

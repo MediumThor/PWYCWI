@@ -16,7 +16,7 @@ const snackbarContentStyle = {
     lineHeight: "20px",
     marginBottom: "20px",
     fontSize: "14px",
-    backgroundColor: "Black",
+    backgroundColor: "#000000",
     color: "#555555",
     borderRadius: "0px",
     maxWidth: "100%",
