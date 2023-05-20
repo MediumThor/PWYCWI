@@ -23,7 +23,6 @@ export default function Home() {
 
 
     <div >
-
       <Header
         brand="Port Washington Yacht Club"
         rightLinks={<HeaderLinks />}
@@ -32,9 +31,7 @@ export default function Home() {
         changeColorOnScroll={{
           height: 20,
           color: "dark",
-        }}
-      />
-
+        }} />
       <div>
         <SectionHome />
         <Section1 />
@@ -55,12 +52,9 @@ export default function Home() {
           </span>
         </a>
         <div>
-
-
           <div style={{ marginTop: "15vh" }} />
           <ScrollToTop smooth top='600' />
         </div>
-
       </footer>
     </div>
 

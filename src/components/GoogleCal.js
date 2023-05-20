@@ -27,13 +27,15 @@ const CalendarWrapper = styled.div`
 `;
 
 function GoogleCalendar() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  const handleWindowResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
+  const [windowWidth, setWindowWidth] = useState(undefined);
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
     window.addEventListener("resize", handleWindowResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);

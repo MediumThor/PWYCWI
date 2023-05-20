@@ -15,18 +15,7 @@ import style from 'src/styles/Home.module.scss'
 // @material-ui/icons
 import { Apps, CloudDownload } from "@material-ui/icons";
 import AirIcon from '@mui/icons-material/Air';
-import DeleteIcon from "@material-ui/icons/Delete";
-import CardMembershipIcon from '@mui/icons-material/CardMembership';
-import SailingIcon from '@mui/icons-material/Sailing';
 
-import IconButton from "@material-ui/core/IconButton";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
-import LibraryBooks from "@material-ui/icons/LibraryBooks";
-import Close from "@material-ui/icons/Close";
-import GridItem from "src/components/Grid/GridItem";
 
 // core components
 import CustomDropdown from "src/components/CustomDropdown/CustomDropdown";
@@ -35,7 +24,6 @@ import SmallButton from "src/components/CustomButtons/SmallButton.js"
 
 import styles from "src/styles/jss/nextjs-material-kit/components/headerLinksStyle";
 
-import LoginPage from "src/components/Login.js"
 
 
 import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core'
@@ -196,11 +184,7 @@ export default function HeaderLinks(props) {
       </ListItem>
 
       {/*<ListItem className={classes.listItem}>
-        <Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+    
 
       </ListItem>*/}
 
