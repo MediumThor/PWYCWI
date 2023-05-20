@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Header from "src/components/Header/Header";
 import HeaderLinks from 'src/components/Header/HeaderLinks';
-import Section1 from "src/components/Sections/Section1"
-import Section2 from "src/components/Sections/Section2"
-import Footer from "src/components/Sections/Section3"
-import Section4 from "src/components/Sections/Section4"
-import Weather from '../components/Sections/Section5'
+import Services from "src/components/Sections/Services"
+import Events from "src/components/Sections/Events"
+import Footer from "src/components/Sections/Footer"
+import Porthole from "src/components/Sections/Porthole"
+import Weather from '../components/Sections/Weather'
 import SectionHome from "src/components/Sections/SectionHome"
 import styles from 'src/styles/Home.module.scss'
 import ScrollToTop from "react-scroll-to-top";
@@ -34,9 +34,9 @@ export default function Home() {
         }} />
       <div>
         <SectionHome />
-        <Section1 />
-        <Section2 />
-        <Section4 />
+        <Services />
+        <Events />
+        <Porthole />
         <Weather />
         <Footer />
       </div>

@@ -44,9 +44,7 @@ export default function Section5() {
                                     height="450"
                               />
 
-                              <div id="cont_3274e04d0de5cc52126b6266c50babe3">
-                                    <script type="text/javascript" async src="https://www.theweather.com/wid_loader/3274e04d0de5cc52126b6266c50babe3"></script>
-                              </div>
+
                         </Wrapper>
                   </main>
             </Section2Styled>
