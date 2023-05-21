@@ -130,7 +130,7 @@ const headerStyle = {
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)",
   },
   drawerPaperDark: {
-    backgroundColor: "#000", // black
+    backgroundColor: "rgba(0, 0, 0, 0.54)", // black
     color: "white",
     border: "0",
     bottom: "0",
@@ -145,6 +145,7 @@ const headerStyle = {
     height: "70vh",
     right: "0",
     left: "auto",
+    width: "40%",
     visibility: "visible",
     overflowY: "visible",
     borderTop: "none",

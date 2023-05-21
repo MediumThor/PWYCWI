@@ -100,7 +100,7 @@ export default function ButtonBases() {
   return (
     <Link to="sectionHome" onClick={handleClick}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar alt="Start icon" src={images[0].url} sx={{ marginLeft: -12, width: 66, height: 66 }} />
+        <Avatar alt="Start icon" src={images[0].url} sx={{ marginLeft: -3, width: 66, height: 66 }} />
         <Typography variant="h6" component="div" sx={{ marginLeft: 2 }}>
           Port Washington Yacht Club
         </Typography>
@@ -111,3 +111,4 @@ export default function ButtonBases() {
     </Link>
   );
 }
+

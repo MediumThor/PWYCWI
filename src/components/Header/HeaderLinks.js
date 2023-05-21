@@ -86,39 +86,16 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
+
       <ListItem className={classes.listItem}>
-        <CustomDropdown
-          noLiPadding
-          navDropdown
-          buttonText="Products"
-          buttonProps={{
-            className: classes.navLink,
-            color: "transparent",
-          }}
-          buttonIcon={AirIcon}
-          dropdownList={[
+        <SmallButton size="sm"
+          color="transparent">
+          <Link activeClass="active" to="sectionHome" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
+            Home
+          </Link>
+        </SmallButton>
 
-            <a
-              href="https://thebulletin.org/"
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              Forecast
-            </a>,
-
-
-            <a
-              href=" BRoKeN LInK rEPLaCE"
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              Placeholder
-            </a>,
-
-          ]}
-        />
       </ListItem>
-
 
 
       <ListItem className={classes.listItem}>
@@ -173,15 +150,7 @@ export default function HeaderLinks(props) {
 
       </ListItem>
 
-      <ListItem className={classes.listItem}>
-        <SmallButton size="sm"
-          color="transparent">
-          <Link activeClass="active" to="sectionHome" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
-            Home
-          </Link>
-        </SmallButton>
 
-      </ListItem>
 
       {/*<ListItem className={classes.listItem}>
     

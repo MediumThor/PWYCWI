@@ -45,7 +45,7 @@ const Wrapper = styled.div`
 
 const CalendarTitle = styled.h2`
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2em;
@@ -54,8 +54,8 @@ const CalendarTitle = styled.h2`
   color: white;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   @media (max-width: 600px) {
-    top: 30%  }
+    top: 20%  }
   @media (max-width: 400px) {
     font-size: 1.5em;
-    top: 30%  }
+    top: 35%  }
 `;

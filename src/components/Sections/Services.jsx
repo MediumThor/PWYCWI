@@ -6,7 +6,7 @@ import styles from 'src/styles/Home.module.scss'
 
 const Section1Styled = styled.div`
 
-  background-color: black;
+  background-color: white;
   padding-top: 150px;
     margin-bottom: -100px;
 
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   padding: 20px;
   color: gray;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1169px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
@@ -45,6 +45,7 @@ const Column = styled.div`
   p {
     max-width: 400px;
   }
+  
 
   @media (min-width: 769px) {
     p {
@@ -59,10 +60,22 @@ const ImageWrapper = styled.div`
   width: 400px;
   margin-bottom: 10px;
 
+  @media (max-width: 1200px) {
+    max-width: 90vw; // 90% of the viewport width
+  }
+
   @media (max-width: 600px) {
+    max-width: 90vw; // 90% of the viewport width
+  }
+   @media (max-width: 500px) {
     width: 90%; // Here too
     max-width: 90vw; // 90% of the viewport width
-    margin-bottom: -100px;
+    margin-bottom: -50px;
+  }
+    @media (max-width: 400px) {
+          width: 120%; // Here too
+    max-width: 120vw; // 90% of the viewport width
+    margin-bottom: -20px;
   }
 `;
 
@@ -72,8 +85,9 @@ const Image = styled.img`
   object-fit: cover;
 
   @media (max-width: 600px) {
-    width: 100%; // Apply 90% width to the image in mobile view
+    width: 100%; 
   }
+  
 `;
 
 

@@ -5,7 +5,7 @@ import styles from 'src/styles/Home.module.scss'
 import "src/styles/styles.module.scss";
 
 const Section2Styled = styled.div`
-background-color: #000000;
+background-color: #ffffff;
 `;
 
 
@@ -22,7 +22,7 @@ export default function Section5() {
                                     frameBorder="0"
                                     scrolling="NO"
                                     allowTransparency="true"
-                                    style={{ width: '1200px', height: '345px' }}
+                                    style={{ width: '1200px', height: '355px' }}
                                     sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
                               />
 
@@ -54,8 +54,8 @@ export default function Section5() {
 }
 
 const ForecastWrapper = styled.div`
-  padding-top: 110px;
-  margin-bottom: -230px;
+  padding-top: 90px;
+  margin-bottom: -240px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -66,6 +66,11 @@ const ForecastWrapper = styled.div`
   @media (max-width: 600px) {
     display:none;
   }
+   @media (max-width: 1200px) {
+    
+      padding-top: 80px;
+  margin-bottom: -213px;
+  }
 `;
 
 
@@ -74,10 +79,13 @@ const StyledIframe = styled.iframe`
   frameborder: 0;
   scrolling: no;
   allowtransparency: no;
-  max-width: 100%;
-  height: 340px;
+  max-width: 90%;
+  height: 320px;
 
   @media (max-width: 600px) {
+    width: 90%;
+  }
+   @media (max-width: 1200px) {
     width: 90%;
   }
 `;

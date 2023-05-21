@@ -10,7 +10,7 @@
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
     @media only screen and (max-width: 768px) {
-      background-size: 1400px;
+      background-size: 100%;
 
     }
 
@@ -19,7 +19,6 @@
 
 
     }
-
 
   }
 
@@ -41,6 +40,6 @@
 
     body {
       color: black;
-      background: black;
+      background: rgb(255, 255, 255);
     }
   }

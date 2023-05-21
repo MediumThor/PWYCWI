@@ -27,9 +27,9 @@ export default function Home() {
         brand="Port Washington Yacht Club"
         rightLinks={<HeaderLinks />}
         fixed
-        color="transparent"
+        color="dark"
         changeColorOnScroll={{
-          height: 20,
+          height: 200,
           color: "dark",
         }} />
       <div>

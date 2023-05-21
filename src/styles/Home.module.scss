@@ -1,7 +1,7 @@
 $color-primary: #79fd6d;
 $color-secondary: #6dd4fd;
-$color-3: #622A0F;
-$color-4: #997950;
+$color-3: #996515;
+$color-4: #87CEFA;
 $color-5: #ecfd6d;
 
 
@@ -892,6 +892,7 @@ $color-5: #ecfd6d;
 }
 
 .headerLink3 {
+  background-color: #111;
   margin: 0rem;
   padding: 0.5rem;
   text-align: center;
@@ -900,6 +901,7 @@ $color-5: #ecfd6d;
   border: 1px solid #eaeaea;
   border-radius: 5px;
   transition: color 0.15s ease, border-color 0.55s ease;
+
 
 
   h2 {
@@ -964,6 +966,7 @@ $color-5: #ecfd6d;
 .headerLink3:active {
   color: $color-4;
   border-color: $color-3;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .headerLink4:hover,
