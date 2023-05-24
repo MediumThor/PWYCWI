@@ -4,23 +4,16 @@ import styled from 'styled-components';
 import Wrapper from 'src/components/Sections/Wrapper';
 import styles from 'src/styles/Home.module.scss'
 import Head from 'next/head'
-import Image from 'next/image'
-import { Parallax, Background } from "react-parallax";
 
-import ParallaxBG2 from "src/components/SmoothScroll/ParallaxBG2.jsx"
 
 import { useState, useEffect } from 'react'
 import { ethers, BigNumber } from "ethers"
 import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core'
 import Vault from '../../abi/Vault.json';
-import Shiva from "src/abi/Shiva.json";
 import { SHIVA_ADDRESS, VAULT_ADDRESS } from '../addresses/addresses';
 
-import Trails2 from "src/components/Spring/trails2.tsx"
 import { SectionContentBlock } from '../base2/base';
-import StakeSection from "src/Bonsai/StakeSection.tsx"
 import { Link } from 'react-scroll';
-import Button from "src/components/CustomButtons/Button";
 import SmallButton from "src/components/CustomButtons/SmallButton.js";
 import TokenCardWeekly from 'src/components/tokenCards/tokenCardWeekly.js';
 import TokenCardMonthly from "src/components/tokenCards/tokenCardMonthly.js"

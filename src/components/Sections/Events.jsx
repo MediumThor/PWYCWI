@@ -6,7 +6,8 @@ import "src/styles/styles.module.scss";
 import GoogleCalendar from '../GoogleCal.js';
 
 
-const Section2Styled = styled.div`background-color: #000000;`;
+const Section2Styled = styled.div`background-color: #000000;
+`;
 
 const StyledGoogleCalendar = styled(GoogleCalendar)`
   width: 100%;
@@ -57,5 +58,5 @@ const CalendarTitle = styled.h2`
     top: 20%  }
   @media (max-width: 400px) {
     font-size: 1.5em;
-    top: 35%  }
+    top: 30%  }
 `;

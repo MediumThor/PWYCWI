@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Wrapper from 'components/MemberSection/Wrapper';
-import OnScreenScrolling from 'components/MemberSection/on-screen-scrolling';
 
-
-import { Link } from 'react-scroll';
-import { Button } from '@mui/material';
 
 const NavbarStyled = styled.div`
   font-size: 24px;
@@ -22,12 +17,10 @@ const NavbarStyled = styled.div`
 
 
 export default function Navbar() {
-    return (
-      <NavbarStyled>
-   
-          <Wrapper>
-              <OnScreenScrolling/>
-          </Wrapper>
-      </NavbarStyled>
-    );
-  }
+  return (
+    <NavbarStyled>
+
+      <OnScreenScrolling />
+    </NavbarStyled>
+  );
+}

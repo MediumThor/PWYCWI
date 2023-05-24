@@ -5,7 +5,7 @@ import styles from 'src/styles/Home.module.scss'
 import "src/styles/styles.module.scss";
 
 const Section2Styled = styled.div`
-background-color: #ffffff;
+background-color: #000000;
 `;
 
 
@@ -64,7 +64,9 @@ const ForecastWrapper = styled.div`
   text-align: center;
 
   @media (max-width: 600px) {
+      margin-bottom: 0px;
     display:none;
+    
   }
    @media (max-width: 1200px) {
     
@@ -84,6 +86,9 @@ const StyledIframe = styled.iframe`
 
   @media (max-width: 600px) {
     width: 90%;
+      height: 240px;
+       padding-top: 20px;
+
   }
    @media (max-width: 1200px) {
     width: 90%;

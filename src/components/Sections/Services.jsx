@@ -6,9 +6,10 @@ import styles from 'src/styles/Home.module.scss'
 
 const Section1Styled = styled.div`
 
-  background-color: white;
+  background-color: #000000;
   padding-top: 150px;
     margin-bottom: -100px;
+    margin-top: -150px
 
  
 `;

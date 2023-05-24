@@ -1,29 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import styles from 'src/styles/Home.module.scss'
-
-import "src/styles/styles.module.scss";
-
-const Section2Styled = styled.div`background-color: #000000;`;
+import Slideshow from 'src/components/Slideshow.jsx';
 
 
-
-export default function Section4() {
-
-
-      return (
-            <Section2Styled id="section4">
-                  <main className={styles.main3}>
-                        <Wrapper>
-
-
-
-
-                        </Wrapper>
-                  </main>
-            </Section2Styled >
-      );
-}
+const Section4Styled = styled.div`
+  background-color: #000000;
+  margin-top: -350px;
+`;
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -34,5 +17,20 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+const Section4 = () => {
 
 
+
+
+      return (
+            <Section4Styled id="section4">
+                  <main>
+                        <Wrapper>
+                              <Slideshow />
+                        </Wrapper>
+                  </main>
+            </Section4Styled>
+      );
+};
+
+export default Section4;

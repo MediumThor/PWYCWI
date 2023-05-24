@@ -3,7 +3,10 @@ import React, { useRef } from "react";
 import { SectionContentBlock } from '../base2/base';
 import { FaFacebook } from "react-icons/fa";
 
-const Section3Styled = styled.div`background-color: black;`;
+const Section3Styled = styled.div`
+background-color: black;
+margin-top: -150px;
+margin-bottom: -100px;`;
 
 const Footer = styled.footer`
   width: 100%;
