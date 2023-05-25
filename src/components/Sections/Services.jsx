@@ -8,7 +8,8 @@ const Section1Styled = styled.div`
 
   background-color: #000000;
   padding-top: 150px;
-    margin-bottom: -100px;
+    padding-bottom: 50px;
+    margin-bottom: -70px;
     margin-top: -150px
 
  
@@ -37,6 +38,8 @@ const Column = styled.div`
   align-items: center;
   text-align: center;
   margin: 20px;
+  flex-basis: 0; // Add this line
+  flex-grow: 1; // And this line
 
   img {
     max-width: 100%;
@@ -57,6 +60,7 @@ const Column = styled.div`
 
 
 const ImageWrapper = styled.div`
+position: relative;
   height: 300px;
   width: 400px;
   margin-bottom: 10px;
@@ -78,6 +82,16 @@ const ImageWrapper = styled.div`
     max-width: 120vw; // 90% of the viewport width
     margin-bottom: -20px;
   }
+`;
+
+const StyledImageTitle = styled.h3`
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  text-align: center;
+  color: white;
 `;
 
 const Image = styled.img`
@@ -103,7 +117,7 @@ const Text = styled.p`
   -webkit-line-clamp: ${props => props.clamped ? '7' : 'none'};
   -webkit-box-orient: vertical;  
   overflow: hidden;
-  width: 75%; // Reduce this value to make the text column narrower.
+  width: 85%; // Reduce this value to make the text column narrower.
   margin: auto; // Center the text column.
  @media (max-width: 600px) {
     width: 95%;
@@ -135,45 +149,50 @@ export default function Section1() {
         <Wrapper>
           <Column>
             <ImageWrapper>
-
+              <StyledImageTitle>Cruising & Fishing</StyledImageTitle>
               <Image src='https://media.discordapp.net/attachments/1090123749300379740/1108561597561057310/Harbor.jpg?width=1382&height=1036' alt='Image 1' />
             </ImageWrapper>
 
             <Text clamped={isClamped1}>
-              <p>Enjoy cruising trips to other ports with yacht club members.
-                Participate in fishing tournaments including the Lloyd Purnell Annual Fishing Tournament with awards given for the most successful fishermen.</p>          </Text>
+              <p>Embark on delightful cruising trips to various ports alongside fellow members of the yacht club. These trips offer the opportunity to explore new destinations and enjoy the camaraderie of like-minded boating enthusiasts.</p>
+
+              <p> Engage in thrilling fishing tournaments, including the highly anticipated Lloyd Purnell Annual Fishing Tournament. This tournament celebrates the art of fishing, and awards are presented to the most accomplished anglers who demonstrate exceptional skill and success in their endeavors. It's an exciting opportunity to showcase your fishing prowess and compete among fellow members of the yacht club.</p>
+            </Text>
             <Button onClick={() => setClamped1(!isClamped1)}>{isClamped1 ? 'Show more +' : 'Show less'}</Button>
           </Column>
           <Column>
             <ImageWrapper>
-
+              <StyledImageTitle>Social Functions</StyledImageTitle>
               <Image src='https://cdn.discordapp.com/attachments/1090123749300379740/1108617807920386109/IMG_3937.jpg' alt='Image 2' />
             </ImageWrapper>
 
             <Text clamped={isClamped2}>
-              <p>Club activities include a year round social calendar that not only consists of a full schedule of fun parties, but also informal group trips anytime during the year.
-                In addition, the Club participates in the city's Fish Day celebration and is involved in other community activities. Such activities include contributing funds to school scholarships and making the club available for charitable fund raising events.
-                The clubhouse bar is open each Friday evening during the summer months for use by its members and visiting boaters from other yacht clubs.</p>
+              <p>The Club offers a diverse range of activities throughout the year, ensuring an engaging social calendar. Members can look forward to an abundance of enjoyable parties and informal group trips that take place at any time of the year.</p>
+
+              <p>Furthermore, the Club actively participates in the city's Fish Day celebration and takes part in various other community events. This involvement includes contributing funds towards school scholarships and making the Club's facilities available for charitable fundraising events.</p>
+
+              <p>During the summer months, the clubhouse bar is open every Friday evening. This welcoming space serves not only Club members but also visiting boaters from other yacht clubs, providing a vibrant atmosphere for all to enjoy.</p>
             </Text>
             <Button onClick={() => setClamped2(!isClamped2)}>{isClamped2 ? 'Show more +' : 'Show less'}</Button>
           </Column>
           <Column>
             <ImageWrapper>
-
+              <StyledImageTitle>Sail Racing</StyledImageTitle>
               <Image src='https://media.discordapp.net/attachments/1090123749300379740/1108561598282481664/Karisma.jpg?width=1382&height=1036' alt='Image 3' />
             </ImageWrapper>
 
             <Text clamped={isClamped3}>
-              <p>Saturday Buoy racing series for both racing class and cruising class boats, are held on most weekends, June through September.
-                Two long distant weekend races, one to and from Shebo
+              <p>The Port Washington Yacht Club organizes an exciting Saturday Buoy racing series that caters to both racing class and cruising class boats. These thrilling races take place on most weekends from June through September.</p>
 
-                ygan and the other to and from Milwaukee are fun races for which individual awards are given.
-                The Port Washington Yacht Club sponsors the across the lake Clipper Cup race and hosts the west shore and across the lake 'Double Handed' race. Both races finish at Port Washington Harbor with award parties held at the yacht club.</p>
+              <p> In addition to the regular buoy races, there are two notable long-distance weekend races. One race involves sailing to and from Sheboygan, while the other race takes participants to and from Milwaukee. These races add an element of fun, and individual awards are presented to deserving participants.</p>
+
+              <p> Furthermore, the Port Washington Yacht Club proudly sponsors the renowned Clipper Cup race, which spans across the lake. Additionally, the club hosts the exhilarating 'Double Handed' race, which takes place along the west shore and across the lake. Both of these races culminate at the Port Washington Harbor,
+                where exciting award parties are held at the yacht club, creating a memorable and celebratory atmosphere.</p>
             </Text>
             <Button onClick={() => setClamped3(!isClamped3)}>{isClamped3 ? 'Show more +' : 'Show less'}</Button>
           </Column>
         </Wrapper>
       </main>
-    </Section1Styled>
+    </Section1Styled >
   );
 }

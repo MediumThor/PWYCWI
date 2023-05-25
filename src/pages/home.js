@@ -3,7 +3,7 @@ import Header from "src/components/Header/Header";
 import HeaderLinks from 'src/components/Header/HeaderLinks';
 import Services from "src/components/Sections/Services"
 import Events from "src/components/Sections/Events"
-import Footer from "src/components/Sections/Footer"
+import Contact from "src/components/Sections/Contact"
 import Porthole from "src/components/Sections/Porthole"
 import Weather from '../components/Sections/Weather'
 import SectionHome from "src/components/Sections/SectionHome"
@@ -38,7 +38,7 @@ export default function Home() {
         <Events />
         <Porthole />
         <Weather />
-        <Footer />
+        <Contact />
       </div>
       <footer className={styles.footer}>
         <a

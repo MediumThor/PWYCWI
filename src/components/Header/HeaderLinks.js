@@ -54,38 +54,8 @@ export default function HeaderLinks(props) {
 
     <List className={classes.list}>
 
-      <ListItem className={classes.listItem}>
 
 
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <CustomDropdown
-          noLiPadding
-          navDropdown
-          buttonText="Links"
-          buttonProps={{
-            className: classes.navLink,
-            color: "transparent",
-          }}
-          buttonIcon={Apps}
-          dropdownList={[
-
-            <Links href="https://testnet.snowtrace.io/token/0x892511db1be112d7aad0acc1460442d8ac4c495e">
-              <a className={classes.dropdownLink}>TestLink</a>
-            </Links>,
-
-            <a
-              href="    "
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              TokenA
-            </a>
-
-
-          ]}
-        />
-      </ListItem>
 
       <ListItem className={classes.listItem}>
         <SmallButton size="sm"
@@ -152,10 +122,37 @@ export default function HeaderLinks(props) {
 
 
 
-      {/*<ListItem className={classes.listItem}>
-    
-
-      </ListItem>*/}
+      {/*
+      
+       <ListItem className={classes.listItem}>
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          buttonText="Links"
+          buttonProps={{
+            className: classes.navLink,
+            color: "transparent",
+          }}
+          buttonIcon={Apps}
+          dropdownList={[
+            <Links href="https://testnet.snowtrace.io/token/0x892511db1be112d7aad0acc1460442d8ac4c495e">
+              <a className={classes.dropdownLink}>TestLink</a>
+            </Links>,
+            <a
+              href="    "
+              target="_blank"
+              className={classes.dropdownLink}
+            >
+              TokenA
+            </a>
+          ]}
+        />
+      </ListItem>
+      
+      
+      
+      
+      */}
 
     </List>
 

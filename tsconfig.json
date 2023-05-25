@@ -19,19 +19,27 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-
   },
-  "include": [ "src", "types", "playwright",
+  "include": [
+    "src",
+    "types",
+    "playwright",
     "**/*.ts",
-     "**/*.tsx",
+    "**/*.tsx",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.png",
     "**/*.woff2",
     "**/*.svg",
-    "**/*.tsx",    "./frontend/src/*/"
-
-, "src/Bonsai/MintOPEN.tsx","src/pages/home.jsx", "components/WalletConnect/helpers/api.js", "components/MemberSection/StakeSection.jsx", "components/MemberSection/StakeSection.jsx", "components/WalletConnectsrc/pages/styles/global/GlobalStyles.jsxalStyles.jsx"  ],
+    "**/*.tsx",
+    "./frontend/src/*/",
+    "src/Bonsai/MintOPEN.tsx",
+    "src/pages/home.jsx",
+    "components/WalletConnect/helpers/api.js",
+    "components/MemberSection/StakeSection.jsx",
+    "components/MemberSection/StakeSection.jsx",
+    "components/WalletConnectsrc/pages/styles/global/GlobalStyles.jsxalStyles.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]

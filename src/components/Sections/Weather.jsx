@@ -6,6 +6,7 @@ import "src/styles/styles.module.scss";
 
 const Section2Styled = styled.div`
 background-color: #000000;
+padding-top: 40px;
 `;
 
 

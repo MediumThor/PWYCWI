@@ -10,7 +10,10 @@ import { Link } from 'react-scroll';
 import SmallButton from "src/components/CustomButtons/SmallButton.js";
 import { Events } from '../Events';
 import Modal from 'react-modal'; // import the react-modal package
-
+import HistoryModal from '../Modals/HistoryModal';
+import MembershipModal from '../Modals/MembershipModal';
+import EventsModal from '../Modals/EventsModal';
+import NewsModal from '../Modals/NewsModal';
 
 const Section1Styled = styled.div`
   width:100%;
@@ -21,7 +24,7 @@ const Section1Styled = styled.div`
 const BackgroundBox = styled.div`
 margin-top: 20px;
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   font-size: 40px;
   color: #22C984;
@@ -109,7 +112,7 @@ const FlexContainer = styled.div`
 
 const ButtonContainer = styled.div`
   position: absolute;
-  top: 80%;  
+  top: 85%;  
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -144,12 +147,14 @@ const StyledButton = styled.button`
   box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
   z-index: 2;
   font-size: 1.4rem;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 2px solid white;
   background-color: #000000;
   color: white;
   padding: 10px 20px;
   cursor: pointer;
+  height: 80px;
+    width: 170px;
 
   &:hover {
     color: #996515;
@@ -239,9 +244,9 @@ export default function SectionHome() {
       <main className={styles.main}>
         <BackgroundBox>
           <Parallax
-            blur={{ min: -20, max: 20 }}
+            blur={{ min: -17, max: 20 }}
             strength={400}
-            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1108559911656357990/IMG_3286.jpg"
+            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1111079940650172496/image.png"
             bgImageAlt="Background"
             bgImageStyle={{ backgroundSize: 'cover' }}
           >
@@ -254,127 +259,13 @@ export default function SectionHome() {
               <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
               <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
               <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryOpen}>Useful Links</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryOpen}>Race Info</StyledButton> {/* New Button */}
             </ButtonContainer>
-            <Modal
-              isOpen={isNewsModalOpen}
-              onRequestClose={handleNewsClose}
-              contentLabel="News Modal"
-              style={{
-                overlay: {
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)'
-                },
-                content: {
-                  width: '80%',
-                  height: '60%',
-                  margin: 'auto',
-                  overflowX: 'hidden',
-                  padding: '5%',
-                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  '@media (max-width: 600px)': {
-                    width: '90%',
-                  }
-                }
-              }}
-            >
-              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Club News</ModalTitle>
-              {/* Insert Club News content here */}
-              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
-                <StyledButton onClick={handleNewsClose}>Close</StyledButton>
-              </div>
-            </Modal>
-            <Modal
-              isOpen={isEventsModalOpen}
-              onRequestClose={handleEventsClose}
-              contentLabel="Events Modal"
-              style={{
-                overlay: {
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)'
-                },
-                content: {
-                  width: '80%',
-                  height: '60%',
-                  margin: 'auto',
-                  overflowX: 'hidden',
-                  padding: '5%',
-                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  '@media (max-width: 600px)': {
-                    width: '90%',
-                  }
-                }
-              }}
-            >
-              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Upcoming Events</ModalTitle>
-              {/* Insert Upcoming Events content here */}
-              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
-                <StyledButton onClick={handleEventsClose}>Close</StyledButton>
-              </div>
-            </Modal>
-            <Modal
-              isOpen={isMemberModalOpen}
-              onRequestClose={handleMemberClose}
-              contentLabel="Member Modal"
-              style={{
-                overlay: {
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)'
-                },
-                content: {
-                  width: '80%',
-                  height: '60%',
-                  margin: 'auto',
-                  overflowX: 'hidden',
-                  padding: '5%',
-                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  '@media (max-width: 600px)': {
-                    width: '90%',
-                  }
-                }
-              }}
-            >
-              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Become A Member</ModalTitle>
-              {/* Insert Membership Details content here */}
-              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
-                <StyledButton onClick={handleMemberClose}>Close</StyledButton>
-              </div>
-            </Modal>
-            <Modal
-              isOpen={isHistoryModalOpen}
-              onRequestClose={handleHistoryClose}
-              contentLabel="Club History Modal"
-              style={{
-                overlay: {
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)'
-                },
-                content: {
-                  width: '80%',
-                  height: '60%',
-                  margin: 'auto',
-                  overflowX: 'hidden',
-                  padding: '5%',
-                  boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  '@media (max-width: 600px)': {
-                    width: '90%',
-                  }
-                }
-              }}
-            >
-              <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Club History</ModalTitle>
-              {/* Insert Club History content here */}
-              <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
-                <StyledButton onClick={handleHistoryClose}>Close</StyledButton>
-              </div>
-            </Modal>
+            <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
+            <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
+            <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
+            <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
             <div style={{ height: '100vh' }} />
           </Parallax>
         </BackgroundBox>
