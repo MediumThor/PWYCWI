@@ -14,6 +14,10 @@ const InfoGrid = styled.div`
   gap: 20px;
   justify-content: center;
   padding: 30px;
+   @media (max-width: 600px) {
+  grid-template-columns: repeat(1, 1fr);
+    text-align: center;
+  }
 `;
 
 const OfficersSection = styled.div`
@@ -89,6 +93,10 @@ const FacebookLink = styled(FooterLink)`
 const MapImage = styled.img`
   width: 130px;
   height: 130px;
+   @media (max-width: 600px) {
+    width: 230px;
+  height: 230px;
+  }
 `;
 
 const OfficersTitle = styled.h2`
