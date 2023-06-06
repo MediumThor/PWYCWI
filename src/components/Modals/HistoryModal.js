@@ -45,8 +45,11 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+   overflow-y: hidden; 
+  overflow-x: hidden; 
   @media (max-width: 600px) {
     flex-direction: column;
+    
   }
 `;
 

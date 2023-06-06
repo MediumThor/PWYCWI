@@ -10,7 +10,7 @@ const Section1Styled = styled.div`
   padding-top: 150px;
     padding-bottom: 50px;
     margin-bottom: -70px;
-    margin-top: -50px
+    margin-top: -150px
 
  
 `;

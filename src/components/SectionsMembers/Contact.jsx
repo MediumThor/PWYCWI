@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 
 const Section3Styled = styled.div`
 background-color: black;
-margin-top: -350px;
+margin-top: -150px;
 margin-bottom: -10px;`;
 
 const InfoGrid = styled.div`

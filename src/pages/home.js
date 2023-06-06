@@ -36,7 +36,7 @@ export default function Home() {
         <SectionHome />
         <Services />
         <Events />
-        <Porthole />
+        {/**<Porthole />**/}
         <Weather />
         <Contact />
       </div>

@@ -2924,7 +2924,7 @@ class-is@^1.1.0:
   resolved "https://registry.yarnpkg.com/class-is/-/class-is-1.1.0.tgz#9d3c0fba0440d211d843cec3dedfa48055005825"
   integrity sha512-rhjH9AG1fvabIDoGRVH587413LPjTZgmDF9fOFCbFJQV4yuocX1mHxxvXI4g3cGwbVY9wAYIoKlg1N79frJKQw==
 
-classnames@^2.3.1:
+classnames@^2.2.5, classnames@^2.3.1:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
@@ -6711,6 +6711,11 @@ pdfjs-dist@^3.6.172:
   optionalDependencies:
     canvas "^2.11.2"
 
+performance-now@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
+  integrity sha512-YHk5ez1hmMR5LOkb9iJkLKqoBlL7WD5M8ljC75ZfzXriuBIVNuecaXuU7e+hOwyqf24Wxhh7Vxgt7Hnw9288Tg==
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
@@ -6830,7 +6835,7 @@ promise-to-callback@^1.0.0:
     is-fn "^1.0.0"
     set-immediate-shim "^1.0.1"
 
-prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -6940,7 +6945,7 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-raf@^3.4.0:
+raf@^3.1.0, raf@^3.4.0:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
   integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
@@ -7022,6 +7027,13 @@ react-dropzone@^12.0.0:
     file-selector "^0.5.0"
     prop-types "^15.8.1"
 
+react-easy-swipe@^0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/react-easy-swipe/-/react-easy-swipe-0.0.21.tgz#ce9384d576f7a8529dc2ca377c1bf03920bac8eb"
+  integrity sha512-OeR2jAxdoqUMHIn/nS9fgreI5hSpgGoL5ezdal4+oO7YSSgJR8ga+PkYGJrSrJ9MKlPcQjMQXnketrD7WNmNsg==
+  dependencies:
+    prop-types "^15.5.8"
+
 react-google-calendar-api@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/react-google-calendar-api/-/react-google-calendar-api-2.2.2.tgz#c639ba356d653dbfd8352f3c68bfecd6fa5729f3"
@@ -7062,6 +7074,15 @@ react-modal@^3.16.1:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
+react-motion@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
+  integrity sha512-9q3YAvHoUiWlP3cK0v+w1N5Z23HXMj4IF4YuvjvWegWqNPfLXsOBE/V7UvQGpXxHFKRQQcNcVQE31g9SB/6qgQ==
+  dependencies:
+    performance-now "^0.2.0"
+    prop-types "^15.5.8"
+    raf "^3.1.0"
+
 react-parallax@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.5.1.tgz#73071679371b7738e21ffac8daa0bc3cb7e5174d"
@@ -7081,6 +7102,15 @@ react-pdf@^6.2.2:
     prop-types "^15.6.2"
     tiny-invariant "^1.0.0"
     tiny-warning "^1.0.0"
+
+react-responsive-carousel@^3.2.23:
+  version "3.2.23"
+  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.2.23.tgz#4c0016ff54603e604bb5c1f9e7ef2d1eda133f1d"
+  integrity sha512-pqJLsBaKHWJhw/ItODgbVoziR2z4lpcJg+YwmRlSk4rKH32VE633mAtZZ9kDXjy4wFO+pgUZmDKPsPe1fPmHCg==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.5.8"
+    react-easy-swipe "^0.0.21"
 
 react-router-dom@^5.2.0:
   version "5.3.4"
@@ -7109,6 +7139,13 @@ react-router@5.3.4:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
+
+react-scroll-horizontal@^1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/react-scroll-horizontal/-/react-scroll-horizontal-1.6.6.tgz#b887be6a4e3a116054783b496c0ae8b50bfaab32"
+  integrity sha512-aR5xE+5EOTQhhrljztHT5qqKEiYU+mKTePaQZJQqikREN0brNfpZst7QP2iEeQo8aip+r7ljTxQZOmfT3OwdSg==
+  dependencies:
+    react-motion "^0.5.2"
 
 react-scroll-parallax@^3.3.1:
   version "3.4.2"

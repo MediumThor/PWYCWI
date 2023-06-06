@@ -62,6 +62,7 @@ function HeaderLinks() {
     const username = event.target.elements.username.value;
     const password = event.target.elements.password.value;
     if (username === 'member' && password === 'password') {
+      alert('Successfully logged in');
       setOpen(false);
       router.push('/members');
     } else {
@@ -73,9 +74,6 @@ function HeaderLinks() {
     <div>
 
       <List className={classes.list}>
-
-
-
 
         <ListItem className={classes.listItem}>
           <SmallButton size="sm"
@@ -109,6 +107,17 @@ function HeaderLinks() {
         </ListItem>
 
 
+
+
+        <ListItem className={classes.listItem}>
+          <SmallButton size="sm"
+            color="transparent">
+            <Link activeClass="active" to="section4" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
+              Porthole
+            </Link>
+          </SmallButton>
+
+        </ListItem>
         <ListItem className={classes.listItem}>
           <SmallButton size="sm"
             color="transparent">
@@ -132,42 +141,14 @@ function HeaderLinks() {
         <ListItem className={classes.listItem}>
           <SmallButton size="sm"
             color="transparent">
-            <Link onClick={() => setOpen(true)} spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
-              Members
+            <Link spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
+              <Nextlink href="/App">
+                Back to main
+              </Nextlink>
             </Link>
           </SmallButton>
         </ListItem>
 
-        <Dialog open={open} onClose={() => setOpen(false)}>
-          <form onSubmit={handleSubmit}>
-            <DialogContent>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="username"
-                label="Username"
-                type="text"
-                fullWidth
-              />
-              <TextField
-                margin="dense"
-                id="password"
-                label="Password"
-                type="password"
-                fullWidth
-              />
-            </DialogContent>
-            <DialogActions>
-              <SmallButton size="sm"
-                color="transparent" onClick={() => setOpen(false)}>
-                Cancel
-              </SmallButton>
-              <SmallButton size="sm" type="submit" color="success">
-                Log in
-              </SmallButton>
-            </DialogActions>
-          </form>
-        </Dialog>
       </List>
     </div>
 

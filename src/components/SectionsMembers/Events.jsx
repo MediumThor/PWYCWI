@@ -6,9 +6,7 @@ import "src/styles/styles.module.scss";
 import GoogleCalendar from '../GoogleCal.js';
 
 
-const Section2Styled = styled.div`
-background-color: #000000;
-margin-bottom: -400px;
+const Section2Styled = styled.div`background-color: #000000;
 `;
 
 const StyledGoogleCalendar = styled(GoogleCalendar)`

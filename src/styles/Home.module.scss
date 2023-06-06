@@ -939,6 +939,31 @@ $color-5: #ecfd6d;
   }
 }
 
+.headerLinkMember {
+  background-color: #111;
+  margin: 0rem;
+  padding: 0.5rem;
+  background-color: White;
+  text-align: center;
+  color: Black;
+  text-decoration: none;
+  border: 1px solid $color-4;
+  border-radius: 5px;
+  transition: color 0.15s ease, border-color 0.55s ease;
+
+
+
+  h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+}
 
 .headerLink:hover,
 .headerLink:focus,
@@ -974,6 +999,15 @@ $color-5: #ecfd6d;
 .headerLink4:active {
   color: $color-5;
   border-color: $color-primary;
+}
+
+.headerLinkMember:hover,
+.headerLinkMember:focus,
+.headerLinkMember:active {
+  color: $color-4;
+  background-color: $color-3;
+  border-color: White;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 
