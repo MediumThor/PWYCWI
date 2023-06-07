@@ -122,18 +122,20 @@ const ButtonContainer = styled.div`
   grid-template-rows: repeat(2, 1fr);     // create 2 equal height rows
   justify-items: center;  // center items horizontally
   align-items: center;    // center items vertically
-  gap: 1.0em;
+  gap: 1.5em;
 
    @media (max-width: 1200px) {
-      grid-template-columns: repeat(3, 1fr);  // create 2 equal width columns
+  grid-template-rows: repeat(1, 3fr);     // create 2 equal height rows
+  grid-template-columns: repeat(3, 1fr);  // create 2 equal width columns
 
-    top: 80%;
-        left: 50%;
+    top: 45%;
+      left: 50%;
 
   }
 
   @media (max-width: 700px) {
     top: 60%;
+    
           left: 50%;
             grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
 

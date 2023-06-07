@@ -11,6 +11,9 @@ import ListItem from "@material-ui/core/ListItem";
 import Icon from "@material-ui/core/Icon";
 import Slide from "@material-ui/core/Slide";
 import style from 'src/styles/Home.module.scss'
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 
 // @material-ui/icons
 import { Apps, CloudDownload } from "@material-ui/icons";
@@ -52,7 +55,8 @@ Transition.displayName = "Transition";
 function HeaderLinks() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
 
   const router = useRouter();
@@ -78,8 +82,11 @@ function HeaderLinks() {
 
 
         <ListItem className={classes.listItem}>
-          <SmallButton size="sm"
-            color="transparent">
+          <SmallButton
+            size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
+            color="transparent"
+            className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
+          >
             <Link activeClass="active" to="sectionHome" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
               Home
             </Link>
@@ -89,8 +96,11 @@ function HeaderLinks() {
 
 
         <ListItem className={classes.listItem}>
-          <SmallButton size="sm"
-            color="transparent">
+          <SmallButton
+            size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
+            color="transparent"
+            className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
+          >
             <Link activeClass="active" to="section1" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
               Services
             </Link>
@@ -99,8 +109,11 @@ function HeaderLinks() {
 
 
         <ListItem className={classes.listItem}>
-          <SmallButton size="sm"
-            color="transparent">
+          <SmallButton
+            size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
+            color="transparent"
+            className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
+          >
             <Link activeClass="active" to="section2" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
               Events
             </Link>
@@ -110,8 +123,11 @@ function HeaderLinks() {
 
 
         <ListItem className={classes.listItem}>
-          <SmallButton size="sm"
-            color="transparent">
+          <SmallButton
+            size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
+            color="transparent"
+            className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
+          >
             <Link activeClass="active" to="section5" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
               Weather
             </Link>
@@ -120,8 +136,11 @@ function HeaderLinks() {
         </ListItem>
 
         <ListItem className={classes.listItem}>
-          <SmallButton size="sm"
-            color="transparent">
+          <SmallButton
+            size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
+            color="transparent"
+            className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
+          >
             <Link activeClass="active" to="section3" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
               Contact
             </Link>
@@ -130,8 +149,11 @@ function HeaderLinks() {
         </ListItem>
 
         <ListItem className={classes.listItem}>
-          <SmallButton size="sm"
-            color="transparent">
+          <SmallButton
+            size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
+            color="transparent"
+            className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
+          >
             <Link onClick={() => setOpen(true)} spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
               Members
             </Link>

@@ -19,7 +19,13 @@ import styles from "src/styles/jss/nextjs-material-kit/components/headerStyle.js
 import LogoButton from "src/components/LogoButton.js"
 
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles((theme) => ({
+  ...styles,
+  menuButton: {
+    color: '#E8E3D5', // change to your preferred color
+  },
+}));
+
 
 export default function Header(props) {
   const classes = useStyles();
@@ -89,11 +95,12 @@ export default function Header(props) {
         </Hidden>
         <Hidden mdUp>
           <IconButton
-            color="inherit"
+            color="inherit" // remove this line if you are going to use custom CSS for color
             aria-label="open drawer"
             onClick={handleDrawerToggle}
+            className={classes.menuButton} // add this line
           >
-            <Menu />
+            <Menu style={{ fontSize: '50px' }} />
           </IconButton>
         </Hidden>
       </Toolbar>

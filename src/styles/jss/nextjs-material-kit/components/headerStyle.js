@@ -17,15 +17,15 @@ const headerStyle = {
   appBar: {
     display: "flex",
     border: "0",
-    borderRadius: "3px",
+    borderRadius: "0px",
     padding: "0.625rem 0",
     marginBottom: "20px",
-    color: "#555",
+    color: "darkgray",
     width: "100%",
-    backgroundColor: "#000000",
+    backgroundColor: "RGB(0, 0, 0, 1.0)",
     boxShadow:
       "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
-    transition: "all 150ms ease 0s",
+    transition: "all 450ms ease 0s",
     alignItems: "center",
     flexFlow: "row nowrap",
     justifyContent: "flex-start",
@@ -56,7 +56,7 @@ const headerStyle = {
     ...defaultFont,
     lineHeight: "30px",
     fontSize: "18px",
-    borderRadius: "3px",
+    borderRadius: "0px",
     textTransform: "none",
     color: "inherit",
     padding: "8px 16px",
@@ -124,13 +124,13 @@ const headerStyle = {
     color: "#FFFFFF",
   },
   dark: {
-    color: "#FFFFFF",
-    backgroundColor: "#212121 !important",
+    color: "#E8E3D5",
+    backgroundColor: "RGB(0, 0, 0, 0.8)",
     boxShadow:
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)",
   },
   drawerPaperDark: {
-    backgroundColor: "rgba(0, 0, 0, 0.54)", // black
+    backgroundColor: "rgba(0, 0, 0, 0.64)", // black
     color: "white",
     border: "0",
     bottom: "0",
@@ -142,8 +142,8 @@ const headerStyle = {
     position: "fixed",
     display: "block",
     top: "0",
-    height: "70vh",
-    right: "0",
+    height: "50vh",
+    right: "00px",
     left: "auto",
     width: "40%",
     visibility: "visible",
