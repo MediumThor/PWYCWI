@@ -31,7 +31,7 @@ const HorizontalScrollContainer = styled.div`
 `;
 
 const PageDiv = styled.div`
-margin-top: -30px;
+margin-top: -60px;
 margin-bottom: 30px;
 
   flex: none;
