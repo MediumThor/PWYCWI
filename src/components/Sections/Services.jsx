@@ -7,10 +7,10 @@ import styles from 'src/styles/Home.module.scss'
 const Section1Styled = styled.div`
 
   background-color: #000000;
-  padding-top: 150px;
+  padding-top: 170px;
     padding-bottom: 50px;
     margin-bottom: -70px;
-    margin-top: -50px
+    margin-top: -0px
 
  
 `;
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 20px;
-  color: gray;
+  color: #FAF9F6;
 
   @media (min-width: 1169px) {
     flex-direction: row;
@@ -38,7 +38,7 @@ const Column = styled.div`
   align-items: center;
   text-align: center;
   margin: 20px;
-  flex-basis: 0; // Add this line
+  flex-basis: 1; // Add this line
   flex-grow: 1; // And this line
 
   img {
@@ -62,7 +62,7 @@ const Column = styled.div`
 const ImageWrapper = styled.div`
 position: relative;
   height: 300px;
-  width: 400px;
+  width: 350px;
   margin-bottom: 10px;
 
   @media (max-width: 1200px) {

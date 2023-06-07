@@ -33,12 +33,12 @@ const BackgroundBox = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 10%;
   font-size: 1.7em;
   font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 5%;
@@ -52,12 +52,12 @@ const Title = styled.h1`
 
 const Location = styled.h1`
   position: absolute;
-  top: 35%;
-  left: 15%;
+  top: 30%;
+  left: 20%;
   font-size: .7em;
   font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
@@ -72,8 +72,8 @@ const Location = styled.h1`
 
 const Logo = styled.img`
   position: absolute;
-  top: 15%;  
-  left: 60%;  
+  top: 10%;  
+  left: 65%;  
   height: 320px; 
   width: auto;
 
@@ -147,7 +147,7 @@ const StyledButton = styled.button`
   z-index: 2;
   font-size: 1.4rem;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid #FAF9F6;
   background-color: #000000;
   color: white;
   padding: 10px 20px;
@@ -158,7 +158,7 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   }
 
   @media (max-width: 600px) {

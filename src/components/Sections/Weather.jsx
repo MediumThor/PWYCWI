@@ -5,8 +5,8 @@ import styles from 'src/styles/Home.module.scss'
 import "src/styles/styles.module.scss";
 
 const Section2Styled = styled.div`
-background-color: #000000;
-padding-top: 40px;
+background-color: #5A5A5A;
+padding-top: 0px;
 `;
 
 
@@ -55,7 +55,7 @@ export default function Section5() {
 }
 
 const ForecastWrapper = styled.div`
-  padding-top: 90px;
+  padding-top: 110px;
   margin-bottom: -240px;
   display: flex;
   flex-direction: row;

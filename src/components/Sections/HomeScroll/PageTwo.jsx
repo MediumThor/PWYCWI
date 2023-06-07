@@ -33,12 +33,12 @@ const BackgroundBox = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 5%;
+  left: 20%;
   font-size: 1.7em;
   font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 5%;
@@ -52,12 +52,12 @@ const Title = styled.h1`
 
 const Location = styled.h1`
   position: absolute;
-  top: 45%;
+  top: 30%;
   left: 15%;
   font-size: .7em;
   font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
@@ -70,10 +70,33 @@ const Location = styled.h1`
   }
 `;
 
-const Logo = styled.img`
+const Caption = styled.h2`
   position: absolute;
-  top: 15%;  
-  left: 60%;  
+  max-width: 500px;
+  top: 30%;
+  left: 20%;
+  font-size: .5em;
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    line-height: 2; // This will apply double spacing
+
+   @media (max-width: 600px) {
+    height: 200px;  // Adjust as needed
+    top: 50%;  // Adjust as needed
+  }
+  @media (max-width: 400px) {
+    height: 80px;  // Adjust as needed
+    top: 50%;  // Adjust as needed
+    left: 10%;
+    font-size: .5em;  // Adjust as needed
+  }
+`;
+
+const Logo = styled.img`
+display:none;
+  position: absolute;
+  top: 10%;  
+  left: 65%;  
   height: 320px; 
   width: auto;
 
@@ -112,7 +135,7 @@ const FlexContainer = styled.div`
 const ButtonContainer = styled.div`
   position: absolute;
   top: 65%;  
-  left: 50%;
+  left: 35%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row; 
@@ -147,7 +170,7 @@ const StyledButton = styled.button`
   z-index: 2;
   font-size: 1.4rem;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid #FAF9F6;
   background-color: #000000;
   color: white;
   padding: 10px 20px;
@@ -199,73 +222,72 @@ const CloseButton = styled.button`
 
 export default function PageTwo() {
 
-    const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
-    const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
-    const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
-    const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
+  const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
+  const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
+  const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
 
-    const handleNewsOpen = () => {
-        setIsNewsModalOpen(true);
-    };
+  const handleNewsOpen = () => {
+    setIsNewsModalOpen(true);
+  };
 
-    const handleNewsClose = () => {
-        setIsNewsModalOpen(false);
-    };
+  const handleNewsClose = () => {
+    setIsNewsModalOpen(false);
+  };
 
-    const handleEventsOpen = () => {
-        setIsEventsModalOpen(true);
-    };
+  const handleEventsOpen = () => {
+    setIsEventsModalOpen(true);
+  };
 
-    const handleEventsClose = () => {
-        setIsEventsModalOpen(false);
-    };
+  const handleEventsClose = () => {
+    setIsEventsModalOpen(false);
+  };
 
-    const handleMemberOpen = () => {
-        setIsMemberModalOpen(true);
-    };
+  const handleMemberOpen = () => {
+    setIsMemberModalOpen(true);
+  };
 
-    const handleMemberClose = () => {
-        setIsMemberModalOpen(false);
-    };
+  const handleMemberClose = () => {
+    setIsMemberModalOpen(false);
+  };
 
-    const handleHistoryOpen = () => {
-        setIsHistoryModalOpen(true);
-    };
+  const handleHistoryOpen = () => {
+    setIsHistoryModalOpen(true);
+  };
 
-    const handleHistoryClose = () => {
-        setIsHistoryModalOpen(false);
-    };
+  const handleHistoryClose = () => {
+    setIsHistoryModalOpen(false);
+  };
 
 
 
-    return (
-        <Section1Styled id="sectionHome">
-            <main className={styles.main}>
-                <BackgroundBox>
-                    <Parallax
-                        blur={{ min: -15, max: 15 }}
-                        strength={100}
-                        bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115435438077915166/karisma3.jpeg"
-                        bgImageAlt="Background"
-                    >
-                        <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+  return (
+    <Section1Styled id="sectionHome">
+      <main className={styles.main}>
+        <BackgroundBox>
+          <Parallax
+            blur={{ min: -15, max: 15 }}
+            strength={100}
+            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115435438077915166/karisma3.jpeg"
+            bgImageAlt="Background"
+          >
+            <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+            <Title>Become A Member<br />of PWYC</Title>
+            <Caption>Embrace the thrill of sailing and boating while enjoying exclusive member benefits like access to special events, networking opportunities, and a community of like-minded enthusiasts.</Caption>
+            <ButtonContainer>
 
-                        <Title>PWYC<br /> Become A Member</Title>
-                        <Location>Port Washington,WI</Location>
-                        <ButtonContainer>
+              <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
 
-                            <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
-                            <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
-
-                        </ButtonContainer>
-                        <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
-                        <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
-                        <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
-                        <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
-                        <div style={{ height: '100vh' }} />
-                    </Parallax>
-                </BackgroundBox>
-                {/**<div className={styles.grid3}>
+            </ButtonContainer>
+            <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
+            <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
+            <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
+            <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
+            <div style={{ height: '100vh' }} />
+          </Parallax>
+        </BackgroundBox>
+        {/**<div className={styles.grid3}>
 
           <SmallButton color="transparent"
           >
@@ -303,7 +325,7 @@ export default function PageTwo() {
           </SmallButton>
         </div> */}
 
-            </main>
-        </Section1Styled >
-    );
+      </main>
+    </Section1Styled >
+  );
 }

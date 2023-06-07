@@ -36,12 +36,12 @@ const BackgroundBox = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 10%;
   font-size: 1.7em;
   font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 5%;
@@ -55,12 +55,12 @@ const Title = styled.h1`
 
 const Location = styled.h1`
   position: absolute;
-  top: 35%;
+  top: 30%;
   left: 15%;
   font-size: .7em;
   font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
@@ -75,8 +75,8 @@ const Location = styled.h1`
 
 const Logo = styled.img`
   position: absolute;
-  top: 15%;  
-  left: 60%;  
+  top: 10%;  
+  left: 65%;  
   height: 320px; 
   width: auto;
 
@@ -150,7 +150,7 @@ const StyledButton = styled.button`
   z-index: 2;
   font-size: 1.4rem;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid #FAF9F6;
   background-color: #000000;
   color: white;
   padding: 10px 20px;
@@ -202,76 +202,76 @@ const CloseButton = styled.button`
 
 export default function PageThree() {
 
-    const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
-    const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
-    const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
-    const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
+  const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
+  const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
+  const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
 
-    const handleNewsOpen = () => {
-        setIsNewsModalOpen(true);
-    };
+  const handleNewsOpen = () => {
+    setIsNewsModalOpen(true);
+  };
 
-    const handleNewsClose = () => {
-        setIsNewsModalOpen(false);
-    };
+  const handleNewsClose = () => {
+    setIsNewsModalOpen(false);
+  };
 
-    const handleEventsOpen = () => {
-        setIsEventsModalOpen(true);
-    };
+  const handleEventsOpen = () => {
+    setIsEventsModalOpen(true);
+  };
 
-    const handleEventsClose = () => {
-        setIsEventsModalOpen(false);
-    };
+  const handleEventsClose = () => {
+    setIsEventsModalOpen(false);
+  };
 
-    const handleMemberOpen = () => {
-        setIsMemberModalOpen(true);
-    };
+  const handleMemberOpen = () => {
+    setIsMemberModalOpen(true);
+  };
 
-    const handleMemberClose = () => {
-        setIsMemberModalOpen(false);
-    };
+  const handleMemberClose = () => {
+    setIsMemberModalOpen(false);
+  };
 
-    const handleHistoryOpen = () => {
-        setIsHistoryModalOpen(true);
-    };
+  const handleHistoryOpen = () => {
+    setIsHistoryModalOpen(true);
+  };
 
-    const handleHistoryClose = () => {
-        setIsHistoryModalOpen(false);
-    };
+  const handleHistoryClose = () => {
+    setIsHistoryModalOpen(false);
+  };
 
 
 
-    return (
-        <Section1Styled id="sectionHome">
-            <main className={styles.main}>
-                <BackgroundBox>
-                    <Parallax
-                        blur={{ min: -15, max: 15 }}
-                        strength={100}
-                        bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115461392833724506/GPTempDownload_4.JPG"
-                        bgImageAlt="Background"
-                        bgImageStyle={{ backgroundSize: 'cover' }}
-                    >
-                        <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+  return (
+    <Section1Styled id="sectionHome">
+      <main className={styles.main}>
+        <BackgroundBox>
+          <Parallax
+            blur={{ min: -15, max: 15 }}
+            strength={100}
+            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115461392833724506/GPTempDownload_4.JPG"
+            bgImageAlt="Background"
+            bgImageStyle={{ backgroundSize: 'cover' }}
+          >
+            <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
-                        <Title>Port Washington<br />Yacht Club</Title>
-                        <Location>Port Washington,WI</Location>
-                        <ButtonContainer>
-                            <StyledButton onClick={handleNewsOpen}>Club News</StyledButton>
-                            <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
-                            <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
-                            <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
-                            <StyledButton onClick={handleHistoryOpen}>Useful Links</StyledButton> {/* New Button */}
-                            <StyledButton onClick={handleHistoryOpen}>Race Info</StyledButton> {/* New Button */}
-                        </ButtonContainer>
-                        <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
-                        <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
-                        <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
-                        <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
-                        <div style={{ height: '100vh' }} />
-                    </Parallax>
-                </BackgroundBox>
-                {/**<div className={styles.grid3}>
+            <Title>Port Washington<br />Yacht Club</Title>
+            <Location>Port Washington,WI</Location>
+            <ButtonContainer>
+              <StyledButton onClick={handleNewsOpen}>Club News</StyledButton>
+              <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
+              <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryOpen}>Useful Links</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryOpen}>Race Info</StyledButton> {/* New Button */}
+            </ButtonContainer>
+            <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
+            <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
+            <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
+            <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
+            <div style={{ height: '100vh' }} />
+          </Parallax>
+        </BackgroundBox>
+        {/**<div className={styles.grid3}>
 
           <SmallButton color="transparent"
           >
@@ -309,7 +309,7 @@ export default function PageThree() {
           </SmallButton>
         </div> */}
 
-            </main>
-        </Section1Styled >
-    );
+      </main>
+    </Section1Styled >
+  );
 }

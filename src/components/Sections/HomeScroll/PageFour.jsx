@@ -34,12 +34,12 @@ const BackgroundBox = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 10%;
   font-size: 1.7em;
   font-weight: bold;
   color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 5%;
@@ -53,12 +53,12 @@ const Title = styled.h1`
 
 const Location = styled.h1`
   position: absolute;
-  top: 35%;
+  top: 30%;
   left: 15%;
   font-size: .7em;
   font-weight: bold;
   color: white;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
@@ -72,11 +72,13 @@ const Location = styled.h1`
 `;
 
 const Logo = styled.img`
+display: none;
   position: absolute;
-  top: 15%;  
-  left: 60%;  
+  top: 10%;  
+  left: 65%;  
   height: 320px; 
   width: auto;
+  
 
   @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
@@ -112,43 +114,38 @@ const FlexContainer = styled.div`
 
 const ButtonContainer = styled.div`
   position: absolute;
-  top: 65%;  
-  left: 50%;
+  top: 30%;  
+  left: 75%;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: row; 
-  justify-content: center; 
-  gap: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
+  grid-template-rows: repeat(2, 1fr);     // create 2 equal height rows
+  justify-items: center;  // center items horizontally
+  align-items: center;    // center items vertically
+  gap: 1.0em;
 
   @media (max-width: 600px) {
-    flex-direction: row;
-    justify-content: center;
     top: 80%;
   }
 
-    @media (max-width: 500px) {
+  @media (max-width: 500px) {
     gap: .1em;
-
-    
   }
+
   @media (max-width: 400px) {
-    flex-direction: column;  // make buttons display in a column
-    align-items: center;  // center buttons vertically
-    grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
-    display: grid; // switch to grid display
     gap: .2em;
     top: 65%; 
-    
   }
 `;
 
+
 const StyledButton = styled.button`
     // add this line to set a fixed height
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.8);
   z-index: 2;
   font-size: 1.4rem;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid #FAF9F6;
   background-color: #000000;
   color: white;
   padding: 10px 20px;
@@ -200,73 +197,72 @@ const CloseButton = styled.button`
 
 export default function PageFour() {
 
-    const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
-    const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
-    const [isRaceResultsModalOpen, setIsRaceResultsModalOpen] = useState(false);
-    const [isSailingModalOpen, setIsSailingModalOpen] = useState(false);
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
+  const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
+  const [isRaceResultsModalOpen, setIsRaceResultsModalOpen] = useState(false);
+  const [isSailingModalOpen, setIsSailingModalOpen] = useState(false);
 
-    const handleNewsOpen = () => {
-        setIsNewsModalOpen(true);
-    };
+  const handleNewsOpen = () => {
+    setIsNewsModalOpen(true);
+  };
 
-    const handleNewsClose = () => {
-        setIsNewsModalOpen(false);
-    };
+  const handleNewsClose = () => {
+    setIsNewsModalOpen(false);
+  };
 
-    const handleEventsOpen = () => {
-        setIsEventsModalOpen(true);
-    };
+  const handleEventsOpen = () => {
+    setIsEventsModalOpen(true);
+  };
 
-    const handleEventsClose = () => {
-        setIsEventsModalOpen(false);
-    };
+  const handleEventsClose = () => {
+    setIsEventsModalOpen(false);
+  };
 
-    const handleRaceResultsOpen = () => {
-        setIsRaceResultsModalOpen(true);
-    };
+  const handleRaceResultsOpen = () => {
+    setIsRaceResultsModalOpen(true);
+  };
 
-    const handleRaceResultsClose = () => {
-        setIsRaceResultsModalOpen(false);
-    };
+  const handleRaceResultsClose = () => {
+    setIsRaceResultsModalOpen(false);
+  };
 
-    const handleSailingOpen = () => {
-        setIsSailingModalOpen(true);
-    };
+  const handleSailingOpen = () => {
+    setIsSailingModalOpen(true);
+  };
 
-    const handleSailingClose = () => {
-        setIsSailingModalOpen(false);
-    };
+  const handleSailingClose = () => {
+    setIsSailingModalOpen(false);
+  };
 
 
 
-    return (
-        <Section1Styled id="sectionHome">
-            <main className={styles.main}>
-                <BackgroundBox>
-                    <Parallax
-                        blur={{ min: -15, max: 15 }}
-                        strength={200}
-                        bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1111079683149271110/image.png"
-                        bgImageAlt="Background"
-                        bgImageStyle={{ backgroundSize: 'cover' }}
-                    >
-                        <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+  return (
+    <Section1Styled id="sectionHome">
+      <main className={styles.main}>
+        <BackgroundBox>
+          <Parallax
+            blur={{ min: -15, max: 15 }}
+            strength={200}
+            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1111079683149271110/image.png"
+            bgImageAlt="Background"
+            bgImageStyle={{ backgroundSize: 'cover' }}
+          >
+            <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
-                        <Title>PWYC<br />Sailing Programs</Title>
-                        <Location>Port Washington,WI</Location>
-                        <ButtonContainer>
-                            <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
-                            <StyledButton onClick={handleSailingOpen}>Sailing Programs</StyledButton> {/* New Button */}
-                            <StyledButton onClick={handleRaceResultsOpen}>Race Results</StyledButton> {/* New Button */}
-                        </ButtonContainer>
-                        <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
-                        <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
-                        <RaceResultsModal isOpen={isRaceResultsModalOpen} onRequestClose={handleRaceResultsClose} />
-                        <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />
-                        <div style={{ height: '100vh' }} />
-                    </Parallax>
-                </BackgroundBox>
-                {/**<div className={styles.grid3}>
+            <Title>PWYC<br />Sailing Programs</Title>
+            <ButtonContainer>
+              <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
+              <StyledButton onClick={handleSailingOpen}>Sailing Programs</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleRaceResultsOpen}>Race Results</StyledButton> {/* New Button */}
+            </ButtonContainer>
+            <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
+            <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
+            <RaceResultsModal isOpen={isRaceResultsModalOpen} onRequestClose={handleRaceResultsClose} />
+            <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />
+            <div style={{ height: '100vh' }} />
+          </Parallax>
+        </BackgroundBox>
+        {/**<div className={styles.grid3}>
 
           <SmallButton color="transparent"
           >
@@ -304,7 +300,7 @@ export default function PageFour() {
           </SmallButton>
         </div> */}
 
-            </main>
-        </Section1Styled >
-    );
+      </main>
+    </Section1Styled >
+  );
 }
