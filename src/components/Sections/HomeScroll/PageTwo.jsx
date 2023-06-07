@@ -61,12 +61,13 @@ const Location = styled.h1`
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
+    font-size: .6em;
   }
   @media (max-width: 400px) {
     height: 80px;  // 50% of the original height
     top: 45%;
     left: 10%;
-    font-size: .7em;
+    font-size: .6em;
   }
 `;
 
@@ -79,16 +80,26 @@ const Caption = styled.h2`
   color: #FAF9F6;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
     line-height: 2; // This will apply double spacing
-
-   @media (max-width: 600px) {
+     @media (max-width: 900px) {
     height: 200px;  // Adjust as needed
-    top: 50%;  // Adjust as needed
+    top: 30%;  // Adjust as needed
+  }
+
+     @media (max-width: 740px) {
+    height: 200px;  // Adjust as needed
+    top: 40%;  // Adjust as needed
+  }
+   @media (max-width: 630px) {
+    height: 200px;  // Adjust as needed
+    top: 40%;  // Adjust as needed
+      left: 10%;
+
   }
   @media (max-width: 400px) {
     height: 80px;  // Adjust as needed
-    top: 50%;  // Adjust as needed
+    top: 35%;  // Adjust as needed
     left: 10%;
-    font-size: .5em;  // Adjust as needed
+    font-size: .3em;  // Adjust as needed
   }
 `;
 
@@ -142,10 +153,22 @@ const ButtonContainer = styled.div`
   justify-content: center; 
   gap: 1.5em;
 
-  @media (max-width: 600px) {
+
+   @media (max-width: 900px) {
     flex-direction: row;
     justify-content: center;
-    top: 80%;
+    top: 70%;
+      left: 50%;
+
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: row;
+    justify-content: center;
+    top: 70%;
+      left: 50%;
+      gap: .1em;
+
   }
 
     @media (max-width: 500px) {
@@ -160,6 +183,8 @@ const ButtonContainer = styled.div`
     display: grid; // switch to grid display
     gap: .2em;
     top: 65%; 
+      left: 50%;
+
     
   }
 `;
@@ -186,7 +211,7 @@ const StyledButton = styled.button`
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
     margin: 0.5em;

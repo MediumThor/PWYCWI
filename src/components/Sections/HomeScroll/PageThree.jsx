@@ -44,14 +44,14 @@ const Title = styled.h1`
   font-weight: bold;
   color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-   @media (max-width: 600px) {
+   @media (max-width: 640px) {
     height: 200px;  // 50% of the original height
     top: 5%;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     height: 100px;  // 50% of the original height
     top: 5%;
-    font-size: 1.0em;
+    font-size: 1.3em;
   }
 `;
 
@@ -67,10 +67,16 @@ const Location = styled.h1`
     height: 200px;  // 50% of the original height
     top: 45%;
   }
+  @media (max-width: 500px) {
+    height: 80px;  // 50% of the original height
+    top: 25%;
+    left: 15%;
+    font-size: .7em;
+  }
   @media (max-width: 400px) {
     height: 80px;  // 50% of the original height
-    top: 45%;
-    left: 10%;
+    top: 35%;
+    left: 15%;
     font-size: .7em;
   }
 `;
@@ -82,9 +88,16 @@ const Logo = styled.img`
   height: 320px; 
   width: auto;
 
+   @media (max-width: 900px) {
+    height: 200px;  // 50% of the original height
+    top: 45%;
+    display: none;
+  }
+
   @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
+    display: none;
   }
    @media (max-width: 400px) {
     height: 150px;  // 50% of the original height
@@ -124,10 +137,18 @@ const ButtonContainer = styled.div`
   justify-content: center; 
   gap: 1.5em;
 
-  @media (max-width: 600px) {
-    flex-direction: row;
+   @media (max-width: 700px) {
+    flex-direction: column;
     justify-content: center;
-    top: 80%;
+
+    left: 70%;
+    top: 50%;
+    gap: .1em;
+  }
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    top: 60%;
   }
 
     @media (max-width: 500px) {
@@ -141,7 +162,9 @@ const ButtonContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
     display: grid; // switch to grid display
     gap: .2em;
-    top: 65%; 
+    top: 60%; 
+    left: 50%;
+
     
   }
 `;
@@ -168,7 +191,7 @@ const StyledButton = styled.button`
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
     margin: 0.5em;

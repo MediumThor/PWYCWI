@@ -124,17 +124,33 @@ const ButtonContainer = styled.div`
   align-items: center;    // center items vertically
   gap: 1.0em;
 
-  @media (max-width: 600px) {
+   @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);  // create 2 equal width columns
+
     top: 80%;
+        left: 50%;
+
+  }
+
+  @media (max-width: 700px) {
+    top: 60%;
+          left: 50%;
+            grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
+
+
   }
 
   @media (max-width: 500px) {
+        top: 65%;
+
     gap: .1em;
   }
 
   @media (max-width: 400px) {
     gap: .2em;
     top: 65%; 
+      left: 50%;
+
   }
 `;
 
@@ -161,7 +177,7 @@ const StyledButton = styled.button`
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
     margin: 0.5em;

@@ -16,6 +16,7 @@ const Section1Styled = styled.div`
   height: 100vh;
   padding-top: 110px;
   background: linear-gradient( #2e2d2a, #171615);
+  
 `;
 
 const HorizontalScrollContainer = styled.div`
@@ -41,6 +42,11 @@ margin-bottom: 30px;
     border: 1px solid black;
               box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
 
+   @media (max-width: 640px) {
+                    box-shadow: none;
+                        border: none;}
+
+
   
 `;
 
@@ -56,7 +62,10 @@ const PageContainer = styled.div`
       border: 3px solid black;
 
    
-
+ @media (max-width: 640px) {
+      height: 75vh;
+      border-radius: none;
+      border: none;
 
 
 
@@ -82,7 +91,7 @@ const ScrollIndicator = styled.button`
 
 const IndicatorContainer = styled.div`
   position: absolute;
-  bottom: 0px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

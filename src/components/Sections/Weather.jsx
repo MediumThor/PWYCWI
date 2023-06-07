@@ -19,7 +19,7 @@ export default function Section5() {
                                     frameBorder="0"
                                     scrolling="NO"
                                     allowTransparency="true"
-                                    style={{ width: '1200px', height: '355px' }}
+                                    style={{ width: '1200px', height: '340px' }}
                                     sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
                               />
 
@@ -52,11 +52,17 @@ export default function Section5() {
 
 const Section2Styled = styled.div`
   background: linear-gradient(#2e2d2a, #171615);
-  padding-top: 100px;
+  padding-top: 90px;
   padding-bottom: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {
+        padding-bottom: 00px;
+
+   
+    
+  }
 
 `;
 
@@ -64,7 +70,7 @@ const ImageWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   border: 2px solid #E8E3D5;
   border-radius: 20px;
-  padding: 40px;
+  padding: 20px;
   overflow: hidden;
   width: 90%;
               box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
@@ -91,8 +97,8 @@ const ForecastWrapper = styled.div`
   }
    @media (max-width: 1200px) {
     
-      padding-top: 80px;
-  margin-bottom: -213px;
+      padding-top: 40px;
+  margin-bottom: 30px;
   }
 `;
 
@@ -105,7 +111,7 @@ const StyledIframe = styled.iframe`
   border: 2px solid black;
   border-radius: 20px; // Added border-radius
   max-width: 100%;
-  height: 350px;
+  height: 300px;
 
   @media (max-width: 600px) {
     width: 90%;

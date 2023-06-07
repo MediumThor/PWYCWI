@@ -61,7 +61,7 @@ const Footer = styled.footer`
   background-color: #333;
   color: white;
 
-  @media (max-width: 600px) {
+  @media (max-width: 740px) {
     flex-direction: column;
     text-align: center;
   }

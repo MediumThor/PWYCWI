@@ -77,15 +77,11 @@ const Logo = styled.img`
   height: 320px; 
   width: auto;
 
-  @media (max-width: 600px) {
-    height: 200px;  // 50% of the original height
-    top: 45%;
+   @media (max-width: 900px) {
+    display: none;
   }
-   @media (max-width: 400px) {
-    height: 150px;  // 50% of the original height
-    top: 27%;
-    left: 45%;  
-  }
+
+
 `;
 
 const ModalTitle = styled.h2`
@@ -119,10 +115,11 @@ const ButtonContainer = styled.div`
   justify-content: center; 
   gap: 1.5em;
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     flex-direction: row;
     justify-content: center;
-    top: 80%;
+    top: 70%;
+    gap: .1em;
   }
 
     @media (max-width: 500px) {
@@ -163,12 +160,12 @@ const StyledButton = styled.button`
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
     margin: 0.5em;
   }
-   @media (max-width: 400px) {
+   @media (max-width: 640px) {
     font-size: .7rem; // decrease font size
     padding: 5px 25px; // decrease padding
     height: 50px;

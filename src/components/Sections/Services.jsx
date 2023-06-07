@@ -4,11 +4,19 @@ import styled, { keyframes, css } from 'styled-components';
 
 const Section1Styled = styled.div`
   background: linear-gradient(45deg, #171615 50%, #2e2d2a 100%);
-  padding-top: 70px;
+  padding-top: 30px;
   padding-bottom: 70px;
   margin-bottom: 0px;
   margin-top: -0px
+@media (max-width: 768px) {
+
+  margin-bottom: -30px;
+  }
+     @media (max-width: 640px) {
+         padding-top: 60px    }
+  
 `;
+
 
 const MainWrapper = styled.div`
   display: flex;
@@ -16,17 +24,23 @@ const MainWrapper = styled.div`
   align-items: center;
   height: 100vh;
   padding: 20px;
+
+  @media (max-width: 768px) {
+  }
 `;
 
 const TabWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 600px;
+    max-width: 600px;
   margin-right: 40px;
-            box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.5);
-
+  box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.5);
+ @media (max-width: 1280px) {
+    margin-right: 0px;;
+  }
 
 `;
+
 
 const Tab = styled.button`
   display: flex;
@@ -35,7 +49,7 @@ const Tab = styled.button`
   align-items: ${props => props.expanded ? 'center' : 'center'};
   padding-top: ${props => props.expanded ? '20px' : '0px'};
   height: ${props => props.expanded ? '400px' : '100px'};
-  width: 600px;
+  width: 100%;  // Change the width to 100%
   background-color: ${props => props.expanded ? '#333' : '#444'};
   color: #E8E3D5;
   font-size: 20px;
@@ -48,7 +62,6 @@ const Tab = styled.button`
   &:hover {
     background-color: #345;
     border: 2px solid #ffffff;
-
   }
 `;
 
@@ -57,8 +70,12 @@ const Tab = styled.button`
 const ImageWrapper = styled.div`
   width: 800px;
   height: 600px;
-  border-radius: 10px; // Added border-radius
-  overflow: hidden; // This line ensures that the image conforms to the border-radius
+  border-radius: 10px;
+  overflow: hidden;
+
+   @media (max-width: 1280px) {
+    display: none;
+  }
   
 `;
 
@@ -110,6 +127,11 @@ const TabDescription = styled.div`
   ${props => props.expanded && css`
     animation: ${fadeIn} 1.0s ease-in-out forwards 0.9s;
   `}
+
+   @media (max-width: 768px) {
+      font-size: ${props => props.expanded ? '.8rem' : '.9rem'};
+
+  }
 `;
 
 

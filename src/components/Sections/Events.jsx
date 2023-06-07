@@ -27,8 +27,11 @@ export default function Section2() {
 
 const Section2Styled = styled.div`
   background: linear-gradient( #171615, #2e2d2a);
-padding-top: 130px;
+padding-top: 90px;
 padding-bottom: 40px;
+ @media (max-width: 600px) {
+  padding-top: 90px;
+     }
 `;
 
 const CalendarWrapper = styled.div`
