@@ -3,9 +3,13 @@ import React from 'react';
 import { FaFacebook } from "react-icons/fa";
 
 const Section3Styled = styled.div`
-background-color: black;
-margin-top: -350px;
-margin-bottom: -10px;`;
+  background: linear-gradient( #171615, #2e2d2a);
+  padding-top: 00px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`;
 
 const InfoGrid = styled.div`
   display: grid;
@@ -91,13 +95,22 @@ const FacebookLink = styled(FooterLink)`
 `;
 
 const MapImage = styled.img`
-  width: 130px;
-  height: 130px;
-   @media (max-width: 600px) {
+  width: 370px;
+  height: 300px;
+  border-radius: 10px; 
+  transition: all 1.0s ease-in-out;  // Add transition for smooth hover effect
+  @media (max-width: 600px) {
     width: 230px;
-  height: 230px;
+    height: 230px;
+  }
+  &:hover {
+    filter: brightness(1.0);  // Makes the image slightly darker on hover
+    border: 0px solid white;  // Adds a 1px white border on hover
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);  // Adds a white box-shadow on hover
+    cursor: pointer;  // Changes the cursor to a pointer on hover
   }
 `;
+
 
 const OfficersTitle = styled.h2`
   text-align: center;
@@ -113,98 +126,10 @@ const OfficersTitle = styled.h2`
 
 export default function Section3() {
 
-  const officerData = [
-    {
-      title: 'COMMODORE',
-      name: 'Terry White',
-      duties: 'Finances & Roster',
-      email: 'commodore@pwycwi.com',
-    },
-    {
-      title: 'VICE COMMODORE',
-      name: 'Troy Bretl',
-      duties: 'House/Maintenance & Fish Day',
-      email: 'vicecommodore@pwycwi.com',
-    },
-    {
-      title: 'REAR COMMODORE ',
-      name: 'Brian Kendzor',
-      duties: 'Private Parties & Club Social Parties',
-      email: 'rearcommodore@pwycwi.com',
-    },
-    {
-      title: 'SECRETARY',
-      name: 'Sara Janeshek',
-      duties: 'Correspondence & Archives',
-      email: 'secretary@pwycwi.com',
-    },
-    {
-      title: 'TREASURER',
-      name: 'Chuck Motl',
-      duties: 'Finances & Roster',
-      email: 'treasurer@pwycwi.com',
-    },
-    {
-      title: 'FLEET CAPTAIN',
-      name: 'Mark Lackovic',
-      duties: 'New Membership & Race Events',
-      email: 'fleetcaptain@pwycwi.com',
-    }
 
-    // add more items here...
-  ];
-
-  const boardData = [
-    {
-      name: 'Bill Schanen IV',
-    },
-    {
-      name: 'Greta Schanen',
-    },
-    {
-      name: 'Ken Paulson',
-    },
-    {
-      name: 'Bill Prince',
-    },
-    {
-      name: 'Rich Reichelsdorfer',
-    },
-    {
-      name: 'Lynn Brown',
-    },
-    {
-      name: 'Dennis Cherny',
-    },
-    {
-      name: 'Joe Eernisse',
-    },
-
-    // add more items here...
-  ];
   return (
     <Section3Styled id="section3">
-      <OfficersSection>
-        <OfficersTitle>Officers</OfficersTitle>
-        <InfoGrid>
-          {officerData.map((item, index) => (
-            <InfoItem key={index}>
-              <Title>{item.title}</Title>
-              <a>{item.name}</a>
-              <p>{item.duties}</p>
-              <a href={`mailto:${item.email}`}>{item.email}</a>
-            </InfoItem>
-          ))}
-        </InfoGrid>
-        <OfficersTitle>Board</OfficersTitle>
-        <BoardGrid>
-          {boardData.map((item, index) => (
-            <InfoItem key={index}>
-              <a>{item.name}</a>
-            </InfoItem>
-          ))}
-        </BoardGrid>
-      </OfficersSection>
+
       <Footer>
         <FooterLink href="https://www.google.com/maps/place/Port+Washington+Yacht+Club/@43.3918745,-87.8681159,17z/data=!3m1!4b1!4m6!3m5!1s0x8804ea1cbd453539:0x7d30452aaee626c4!8m2!3d43.3918706!4d-87.865541!16s%2Fg%2F1tfpq7zy">
           <MapImage src="https://cdn.discordapp.com/attachments/1090123749300379740/1108616374680567938/image.png" alt="Map" />

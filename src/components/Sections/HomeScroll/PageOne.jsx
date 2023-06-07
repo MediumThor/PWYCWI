@@ -37,7 +37,7 @@ const Title = styled.h1`
   left: 10%;
   font-size: 1.7em;
   font-weight: bold;
-  color: #FAF9F6;
+  color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
@@ -154,6 +154,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   height: 80px;
     width: 170px;
+      transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
+
 
   &:hover {
     color: #996515;
@@ -256,7 +258,6 @@ export default function PageOne() {
             <ButtonContainer>
 
               <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
               <StyledButton onClick={handleHistoryOpen}>Useful Links</StyledButton> {/* New Button */}
               <StyledButton onClick={handleHistoryOpen}>Race Info</StyledButton> {/* New Button */}
             </ButtonContainer>
@@ -267,43 +268,7 @@ export default function PageOne() {
             <div style={{ height: '100vh' }} />
           </Parallax>
         </BackgroundBox>
-        {/**<div className={styles.grid3}>
 
-          <SmallButton color="transparent"
-          >
-            <Link to="section1" className={styles.smallcard3} spy={false} smooth={true} duration={1000}>
-              <h2>Services </h2>
-
-            </Link>
-          </SmallButton>
-          <SmallButton color="transparent"
-          >
-            <Link to="section2" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Info </h2>
-              <p> </p>
-            </Link>
-          </SmallButton>
-
-          <SmallButton color="transparent"
-
-          >
-            <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Contact</h2>
-              <p>  </p>
-            </Link>
-          </SmallButton>
-
-          <SmallButton color="transparent"
-            target="_blank"
-          >
-            <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Stake</h2>
-              <p>
-
-              </p>
-            </Link>
-          </SmallButton>
-        </div> */}
 
       </main>
     </Section1Styled >

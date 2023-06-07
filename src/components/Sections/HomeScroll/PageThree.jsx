@@ -16,6 +16,8 @@ import HistoryModal from '../../Modals/HistoryModal';
 import NewsModal from '../../Modals/NewsModal';
 import EventsModal from '../../Modals/EventsModal';
 import MembershipModal from '../../Modals/MembershipModal';
+import OfficersModal from '../../Modals/OfficersModal';
+import BoardModal from '../../Modals/BoardModal';
 
 const Section1Styled = styled.div`
 
@@ -40,7 +42,7 @@ const Title = styled.h1`
   left: 10%;
   font-size: 1.7em;
   font-weight: bold;
-  color: #FAF9F6;
+  color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
@@ -114,7 +116,7 @@ const FlexContainer = styled.div`
 
 const ButtonContainer = styled.div`
   position: absolute;
-  top: 85%;  
+  top: 65%;  
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -157,6 +159,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   height: 80px;
     width: 170px;
+      transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
+
 
   &:hover {
     color: #996515;
@@ -202,25 +206,25 @@ const CloseButton = styled.button`
 
 export default function PageThree() {
 
-  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
-  const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
+  const [isBoardModalOpen, setIsBoardModalOpen] = useState(false);
+  const [isOfficersModalOpen, setIsOfficersModalOpen] = useState(false);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
 
-  const handleNewsOpen = () => {
-    setIsNewsModalOpen(true);
+  const handleBoardOpen = () => {
+    setIsBoardModalOpen(true);
   };
 
-  const handleNewsClose = () => {
-    setIsNewsModalOpen(false);
+  const handleBoardClose = () => {
+    setIsBoardModalOpen(false);
   };
 
-  const handleEventsOpen = () => {
-    setIsEventsModalOpen(true);
+  const handleOfficersOpen = () => {
+    setIsOfficersModalOpen(true);
   };
 
-  const handleEventsClose = () => {
-    setIsEventsModalOpen(false);
+  const handleOfficersClose = () => {
+    setIsOfficersModalOpen(false);
   };
 
   const handleMemberOpen = () => {
@@ -255,17 +259,15 @@ export default function PageThree() {
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
             <Title>Port Washington<br />Yacht Club</Title>
-            <Location>Port Washington,WI</Location>
+            <Location>Information</Location>
             <ButtonContainer>
-              <StyledButton onClick={handleNewsOpen}>Club News</StyledButton>
-              <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
-              <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleBoardOpen}>Board Members</StyledButton>
+              <StyledButton onClick={handleOfficersOpen}>Officers</StyledButton>
               <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleHistoryOpen}>Useful Links</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleHistoryOpen}>Race Info</StyledButton> {/* New Button */}
+
             </ButtonContainer>
-            <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
-            <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
+            <BoardModal isOpen={isBoardModalOpen} onRequestClose={handleBoardClose} />
+            <OfficersModal isOpen={isOfficersModalOpen} onRequestClose={handleOfficersClose} />
             <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
             <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
             <div style={{ height: '100vh' }} />

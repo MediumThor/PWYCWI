@@ -12,10 +12,10 @@ const Section1Styled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width:100%;
+  width: 100%;
   height: 100vh;
-  padding-top: 60px;
-  background-color: #000000;
+  padding-top: 110px;
+  background: linear-gradient( #2e2d2a, #171615);
 `;
 
 const HorizontalScrollContainer = styled.div`
@@ -30,11 +30,17 @@ const HorizontalScrollContainer = styled.div`
 `;
 
 const PageDiv = styled.div`
-margin-top: 30px;
+margin-top: -30px;
+margin-bottom: 30px;
+
   flex: none;
   width: 90vw;
-  height: 90vh;
+  height: 80vh;
   scroll-snap-align: start;
+   border-radius: 15px;
+    border: 1px solid black;
+              box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
+
   
 `;
 
@@ -47,27 +53,40 @@ const PageContainer = styled.div`
   overflow-x: hidden; 
 
   border-radius: 15px;
+      border: 3px solid black;
+
+   
+
+
 
 
 `;
 
 const ScrollIndicator = styled.button`
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  border: 0px solid white;
+  border: 1px solid black;
   background-color: ${props => props.active ? '#87CEFA' : 'lightgray'};
-  margin: 20px;
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.9);
+  margin: 25px;
   cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
+
+   &:hover {
+    background-color: #6edd64;
+        cursor: pointer;
+
+  }
 `;
 
 const IndicatorContainer = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  z-index: 1000;
+  z-index: 0;
 `;
 
 const SectionHome = () => {
@@ -112,11 +131,7 @@ const SectionHome = () => {
   return (
     <Section1Styled id="sectionHome">
       <PageDiv>
-        <IndicatorContainer>
-          {[0, 1, 2, 3].map(i =>
-            <ScrollIndicator active={activePage % 4 === i} onClick={() => scrollToPage(i)} key={i} />
-          )}
-        </IndicatorContainer>
+
         <HorizontalScrollContainer ref={scrollRef}>
           {Array(3).fill().map((_, i) =>
             pages.map((Page, j) => (
@@ -127,6 +142,11 @@ const SectionHome = () => {
           )}
         </HorizontalScrollContainer>
       </PageDiv>
+      <IndicatorContainer>
+        {[0, 1, 2, 3].map(i =>
+          <ScrollIndicator active={activePage % 4 === i} onClick={() => scrollToPage(i)} key={i} />
+        )}
+      </IndicatorContainer>
     </Section1Styled>
   );
 };

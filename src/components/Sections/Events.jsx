@@ -2,17 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import styles from 'src/styles/Home.module.scss'
 
-const Section2Styled = styled.div`
-background-color: #000000;
-padding-top: 100px;
-padding-bottom: 40px;
-`;
 
-const CalendarWrapper = styled.div`
-  width: 90vw;
-  max-width: 1400px;
-  margin: 0 auto;
-`;
 
 export default function Section2() {
   useEffect(() => {
@@ -34,6 +24,21 @@ export default function Section2() {
     </Section2Styled >
   );
 }
+
+const Section2Styled = styled.div`
+  background: linear-gradient( #171615, #2e2d2a);
+padding-top: 130px;
+padding-bottom: 40px;
+`;
+
+const CalendarWrapper = styled.div`
+  width: 90vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-radius: 20px; // Added border-radius
+  border: 0px solid white;
+
+`;
 
 const Wrapper = styled.div`
   min-height: 80vh;

@@ -4,17 +4,13 @@ import styles from 'src/styles/Home.module.scss'
 
 import "src/styles/styles.module.scss";
 
-const Section2Styled = styled.div`
-background-color: #5A5A5A;
-padding-top: 0px;
-`;
 
 
 
 export default function Section5() {
       return (
             <Section2Styled id="section5">
-                  <main className={styles.main3}>
+                  <ImageWrapper>
 
                         <ForecastWrapper>
 
@@ -48,21 +44,45 @@ export default function Section5() {
 
 
                         </Wrapper>
+                  </ImageWrapper>
 
-                  </main>
             </Section2Styled>
       );
 }
 
+const Section2Styled = styled.div`
+  background: linear-gradient(#2e2d2a, #171615);
+  padding-top: 100px;
+  padding-bottom: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`;
+
+const ImageWrapper = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid #E8E3D5;
+  border-radius: 20px;
+  padding: 40px;
+  overflow: hidden;
+  width: 90%;
+              box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
+
+`;
+
+
 const ForecastWrapper = styled.div`
-  padding-top: 110px;
-  margin-bottom: -240px;
+  padding-top: 10px;
+  margin-bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   position: relative;
   text-align: center;
+  border-radius: 20px; // Added border-radius
+
 
   @media (max-width: 600px) {
       margin-bottom: 0px;
@@ -82,8 +102,10 @@ const StyledIframe = styled.iframe`
   frameborder: 0;
   scrolling: no;
   allowtransparency: no;
-  max-width: 90%;
-  height: 320px;
+  border: 2px solid black;
+  border-radius: 20px; // Added border-radius
+  max-width: 100%;
+  height: 350px;
 
   @media (max-width: 600px) {
     width: 90%;
@@ -98,7 +120,7 @@ const StyledIframe = styled.iframe`
 
 const Wrapper = styled.div`
 
-  min-height: 100vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: row;
   justify-content: center;

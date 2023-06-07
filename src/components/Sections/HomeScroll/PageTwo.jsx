@@ -37,7 +37,7 @@ const Title = styled.h1`
   left: 20%;
   font-size: 1.7em;
   font-weight: bold;
-  color: #FAF9F6;
+  color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
@@ -177,6 +177,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   height: 80px;
     width: 170px;
+      transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
+
 
   &:hover {
     color: #996515;
