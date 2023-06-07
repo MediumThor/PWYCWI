@@ -4,13 +4,13 @@ import styles from 'src/styles/Home.module.scss'
 
 const Section2Styled = styled.div`
 background-color: #000000;
-padding-top: 110px;
+padding-top: 100px;
 padding-bottom: 40px;
 `;
 
 const CalendarWrapper = styled.div`
   width: 90vw;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
 `;
 
