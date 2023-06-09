@@ -14,7 +14,7 @@ import "../styles/Home.module.scss";
 import IconButton from '@material-ui/core/IconButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Cam from '../components/Sections/Cam';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +71,7 @@ export default function Home() {
         <Events />
         {/**<Porthole />**/}
         <Weather />
+        <Cam />
         <Contact />
       </div>
       <footer className={styles.footer}>

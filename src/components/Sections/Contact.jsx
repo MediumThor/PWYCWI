@@ -4,11 +4,17 @@ import { FaFacebook } from "react-icons/fa";
 
 const Section3Styled = styled.div`
   background: linear-gradient( #171615, #2e2d2a);
-  margin-top: -200px;
+  margin-top: -260px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+    @media (max-width: 640px) {
+        margin-top: 70px;
+
+    ;
+  }
 `;
 
 const HistorySection = styled.div`
