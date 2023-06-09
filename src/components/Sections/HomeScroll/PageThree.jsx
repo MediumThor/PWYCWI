@@ -38,20 +38,25 @@ const BackgroundBox = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 5%;
+  top: 0%;
   left: 10%;
   font-size: 1.7em;
   font-weight: bold;
   color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-   @media (max-width: 640px) {
-    height: 200px;  // 50% of the original height
-    top: 5%;
-  }
-  @media (max-width: 500px) {
-    height: 100px;  // 50% of the original height
-    top: 5%;
+
+ @media (max-width: 500px) {
+    height: 150px;  // 50% of the original height
     font-size: 1.3em;
+  }
+   @media (max-width: 600px) {
+    height: 200px;  // 50% of the original height
+      left: 5%;
+
+  }
+  @media (max-width: 400px) {
+    height: 100px;  // 50% of the original height
+    font-size: 1.0em;
   }
 `;
 
@@ -69,7 +74,7 @@ const Location = styled.h1`
   }
   @media (max-width: 500px) {
     height: 80px;  // 50% of the original height
-    top: 25%;
+    top: 35%;
     left: 15%;
     font-size: .7em;
   }
@@ -88,7 +93,7 @@ const Logo = styled.img`
   height: 320px; 
   width: auto;
 
-   @media (max-width: 900px) {
+   @media (max-width: 1000px) {
     height: 200px;  // 50% of the original height
     top: 45%;
     display: none;
@@ -137,6 +142,14 @@ const ButtonContainer = styled.div`
   justify-content: center; 
   gap: 1.5em;
 
+    @media (max-width: 940px) {
+    flex-direction: row;
+    justify-content: center;
+    top: 55%;
+      left: 50%;
+
+  }
+
    @media (max-width: 700px) {
     flex-direction: column;
     justify-content: center;
@@ -148,7 +161,7 @@ const ButtonContainer = styled.div`
 
   @media (max-width: 600px) {
     justify-content: center;
-    top: 60%;
+    top: 50%;
   }
 
     @media (max-width: 500px) {
@@ -162,7 +175,7 @@ const ButtonContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
     display: grid; // switch to grid display
     gap: .2em;
-    top: 60%; 
+    top: 55%; 
     left: 50%;
 
     
@@ -176,7 +189,7 @@ const StyledButton = styled.button`
   font-size: 1.4rem;
   border-radius: 10px;
   border: 2px solid #FAF9F6;
-  background-color: #000000;
+  background-color: rgb(0,0,0,0.7);
   color: white;
   padding: 10px 20px;
   cursor: pointer;
@@ -188,7 +201,7 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   }
 
   @media (max-width: 700px) {
@@ -196,32 +209,12 @@ const StyledButton = styled.button`
     padding: 8px 16px; // decrease padding
     margin: 0.5em;
   }
-   @media (max-width: 400px) {
+   @media (max-width: 640px) {
     font-size: .7rem; // decrease font size
     padding: 5px 25px; // decrease padding
     height: 50px;
     width: 100px;
   }
-`;
-
-const CloseButton = styled.button`
-    // add this line to set a fixed height
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
-  z-index: 2;
-  font-size: 1.4rem;
-  border-radius: 5px;
-  border: 2px solid white;
-  background-color: #000000;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-
-  &:hover {
-    color: #996515;
-    border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  }
-
 `;
 
 

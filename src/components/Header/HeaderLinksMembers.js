@@ -143,7 +143,7 @@ function HeaderLinks() {
             color="transparent">
             <Link spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
               <Nextlink href="/App">
-                Back to main
+                Log Out
               </Nextlink>
             </Link>
           </SmallButton>

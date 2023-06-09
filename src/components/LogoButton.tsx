@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { Button, Avatar } from '@mui/material';
+import { Link } from 'react-scroll';
 
 
 const images = [
@@ -17,7 +18,7 @@ const images = [
 ];
 
 
-export function Link({ to, onClick, children }) {
+export function LogoLink({ to, onClick, children }) {
   // implement link functionality
 
   return (
@@ -26,70 +27,7 @@ export function Link({ to, onClick, children }) {
     </a>
   );
 }
-const ImageButton = styled(ButtonBase)(({ theme }) => ({
-  position: 'relative',
-  height: 40,
-  [theme.breakpoints.down('md')]: {
-    width: '100% !important', // Overrides inline-style
-    height: 60,
-  },
-  '&:hover ': {
-    zIndex: 1,
-    '& .MuiImageBackdrop-root': {
-      opacity: 0.15,
-    },
-    '& .MuiImageMarked-root': {
-      opacity: 10,
-    },
-    '& .MuiTypography-root': {
-      border: '0px solid currentColor',
-    },
-  },
-}));
 
-const ImageSrc = styled('span')({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center 50%',
-});
-
-const Image = styled('span')(({ theme }) => ({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: theme.palette.common.white,
-}));
-
-const ImageBackdrop = styled('span')(({ theme }) => ({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  backgroundColor: theme.palette.common.black,
-  opacity: 0,
-  transition: theme.transitions.create('opacity'),
-
-}));
-
-const ImageMarked = styled('span')(({ theme }) => ({
-  height: 0,
-  width: 0,
-  backgroundColor: theme.palette.common.white,
-  position: 'absolute',
-  bottom: -2,
-  left: 'calc(50% - 9px)',
-  transition: theme.transitions.create('opacity'),
-}));
 
 export default function ButtonBases() {
   const handleClick = (event) => {
@@ -98,17 +36,21 @@ export default function ButtonBases() {
   };
 
   return (
-    <Link to="sectionHome" onClick={handleClick}>
+    <Link activeClass="active" to="sectionHome" spy={false} smooth={true} duration={1000} onClick={handleClick}
+      style={{
+        textDecoration: 'none',
+        cursor: 'pointer',
+        transition: 'color 0.3s ease-in-out',
+      }}
+      onMouseEnter={(e) => (e.target.style.color = '#eee')}
+      onMouseLeave={(e) => (e.target.style.color = '#E8E3D5')}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Avatar alt="Start icon" src={images[0].url} sx={{ marginLeft: -3, width: 66, height: 66 }} />
-        <Typography variant="h6" component="div" sx={{ marginLeft: 2 }}>
+        <Typography variant="h6" component="div" sx={{ marginLeft: 2, textDecoration: 'none' }}>
           Port Washington Yacht Club
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 60, width: '100%' }}>
-        {/* any other components or text */}
-      </Box>
+
     </Link>
   );
 }
-

@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // nodejs library to set properties for components
@@ -17,6 +16,7 @@ import Menu from "@material-ui/icons/Menu";
 // core components
 import styles from "src/styles/jss/nextjs-material-kit/components/headerStyle.js";
 import LogoButton from "src/components/LogoButton.js"
+import { Link } from 'react-scroll';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +72,7 @@ export default function Header(props) {
   const brandComponent = (
 
 
-    <Link href="/home" as="/home">
+    <Link to="/home">
       <LogoButton />
     </Link>
   );

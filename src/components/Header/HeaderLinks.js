@@ -1,6 +1,5 @@
 /*eslint-disable*/
 import React from "react";
-import Links from "next/link";
 import { Link } from 'react-scroll';
 
 
@@ -19,7 +18,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Apps, CloudDownload } from "@material-ui/icons";
 import AirIcon from '@mui/icons-material/Air';
 
-
 // core components
 import CustomDropdown from "src/components/CustomDropdown/CustomDropdown";
 import Button from "src/components/CustomButtons/Button";
@@ -36,8 +34,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 import { useRouter } from 'next/router';
-
-
 
 
 
@@ -77,10 +73,6 @@ function HeaderLinks() {
     <div>
 
       <List className={classes.list}>
-
-
-
-
         <ListItem className={classes.listItem}>
           <SmallButton
             size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
@@ -155,7 +147,7 @@ function HeaderLinks() {
             className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
           >
             <Link onClick={() => setOpen(true)} spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
-              Members
+              Log in
             </Link>
           </SmallButton>
         </ListItem>

@@ -16,6 +16,8 @@ const Section1Styled = styled.div`
   height: 100vh;
   padding-top: 110px;
   background: linear-gradient( #2e2d2a, #171615);
+
+ 
   
 `;
 
@@ -28,6 +30,8 @@ const HorizontalScrollContainer = styled.div`
   &::-webkit-scrollbar {
     width: 0px; /* For Chrome, Safari, and Opera */
   }
+
+  
 `;
 
 const PageDiv = styled.div`
@@ -41,12 +45,21 @@ margin-bottom: 30px;
    border-radius: 15px;
     border: 1px solid black;
               box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
+ 
+ 
+ @media (max-width: 940px) {
+  margin-top: -260px;
+                  height: 60vh;
+                margin-bottom: -30px;}
+  
 
-   @media (max-width: 640px) {
+ @media (max-width: 640px) {
                     box-shadow: none;
                         border: none;}
 
-
+ @media (max-width: 500px) {
+    margin-top: -190px;
+  }
   
 `;
 
@@ -61,11 +74,16 @@ const PageContainer = styled.div`
   border-radius: 15px;
       border: 3px solid black;
 
+      @media (max-width: 940px) {
+                  height: 70vh;}
    
  @media (max-width: 640px) {
-      height: 75vh;
       border-radius: none;
-      border: none;
+      border: none;}
+
+       @media (max-width: 640px) {
+      border-radius: none;
+      border: none;}
 
 
 
@@ -96,6 +114,13 @@ const IndicatorContainer = styled.div`
   transform: translateX(-50%);
   display: flex;
   z-index: 0;
+   @media (max-width: 940px) {
+                  bottom: 80px;
+                }
+
+  @media (max-width: 500px) {
+    bottom: 30px;
+  }
 `;
 
 const SectionHome = () => {

@@ -23,7 +23,6 @@ export default function SectionTabs() {
 
           <div>
             <LogoButton />
-
           </div>
           <GridContainer>
 

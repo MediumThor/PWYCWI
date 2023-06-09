@@ -18,7 +18,6 @@ export default function Section5() {
                                     src="https://www.meteoblue.com/en/weather/widget/three/port-washington_united-states_5267776?geoloc=fixed&nocurrent=0&noforecast=0&days=7&tempunit=FAHRENHEIT&windunit=KNOT&layout=light"
                                     frameBorder="0"
                                     scrolling="NO"
-                                    allowTransparency="true"
                                     style={{ width: '1200px', height: '340px' }}
                                     sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
                               />
@@ -79,7 +78,7 @@ const ImageWrapper = styled.div`
 
 
 const ForecastWrapper = styled.div`
-  padding-top: 10px;
+  padding-top: -10px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -107,7 +106,6 @@ const StyledIframe = styled.iframe`
   align: top;
   frameborder: 0;
   scrolling: no;
-  allowtransparency: no;
   border: 2px solid black;
   border-radius: 20px; // Added border-radius
   max-width: 100%;
