@@ -74,7 +74,7 @@ const Location = styled.h1`
   }
   @media (max-width: 400px) {
     height: 80px;  // 50% of the original height
-    top: 45%;
+    top: 35%;
     left: 10%;
     font-size: .6em;
   }
@@ -114,7 +114,7 @@ const Caption = styled.h2`
   }
   @media (max-width: 400px) {
     height: 80px;  // Adjust as needed
-    top: 35%;  // Adjust as needed
+    top: 45%;  // Adjust as needed
     left: 10%;
     font-size: .3em;  // Adjust as needed
   }
@@ -203,9 +203,10 @@ const ButtonContainer = styled.div`
     flex-direction: column;  // make buttons display in a column
     align-items: center;  // center buttons vertically
     grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
-    display: grid; // switch to grid display
+    display: column; // switch to grid display
+    top: 30%;
     gap: .2em;
-      left: 50%;
+      left: 78%;
 
   }
 `;

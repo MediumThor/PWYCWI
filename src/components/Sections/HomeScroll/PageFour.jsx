@@ -53,7 +53,8 @@ const Title = styled.h1`
   }
   @media (max-width: 400px) {
     height: 100px;  // 50% of the original height
-    font-size: 1.0em;
+    font-size: 0.9em;
+    left: 8%;
   }
 `;
 

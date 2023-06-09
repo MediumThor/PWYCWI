@@ -8,11 +8,44 @@ import Porthole from "../components/Sections/Porthole"
 import Weather from '../components/Sections/Weather'
 import SectionHome from "../components/Sections/SectionHome"
 import styles from '../styles/Home.module.scss'
-import ScrollToTop from "react-scroll-to-top";
 import styled from 'styled-components'
 import React from "react";
 import "../styles/Home.module.scss";
+import IconButton from '@material-ui/core/IconButton';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import { makeStyles } from '@material-ui/core/styles';
 
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    position: 'fixed',
+    bottom: '4%',
+    right: '4%',
+    backgroundColor: 'rgb(232,227,212, 0.4)',
+    borderRadius: '5px',
+
+    '&:hover': {
+      backgroundColor: 'rgb(232,227,212, 0.6)', // make button lighter when hovered over
+    },
+  },
+}));
+
+function ScrollToTop() {
+  const classes = useStyles();
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <IconButton
+      onClick={handleClick}
+      className={classes.root}
+    >
+      <ArrowUpwardIcon />
+    </IconButton>
+  );
+}
 
 export default function Home() {
 

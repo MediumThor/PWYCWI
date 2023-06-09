@@ -132,6 +132,11 @@ const TabDescription = styled.div`
       font-size: ${props => props.expanded ? '.8rem' : '.9rem'};
 
   }
+
+    @media (max-width: 468px) {
+      font-size: ${props => props.expanded ? '.7rem' : '.7rem'};
+
+  }
 `;
 
 

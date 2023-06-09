@@ -55,8 +55,9 @@ const Title = styled.h1`
 
   }
   @media (max-width: 400px) {
-    height: 100px;  // 50% of the original height
-    font-size: 1.0em;
+    font-size: .8em;
+    left: 8%;
+
   }
 `;
 
@@ -80,7 +81,7 @@ const Location = styled.h1`
   }
   @media (max-width: 400px) {
     height: 80px;  // 50% of the original height
-    top: 35%;
+    top: 25%;
     left: 15%;
     font-size: .7em;
   }

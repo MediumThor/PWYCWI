@@ -55,10 +55,14 @@ margin-bottom: 30px;
 
  @media (max-width: 640px) {
                     box-shadow: none;
-                        border: none;}
+                        border: none;
+                      margin-top: -120px;}
 
  @media (max-width: 500px) {
-    margin-top: -190px;
+    margin-top: -120px;
+  }
+   @media (max-width: 400px) {
+    margin-top: -120px;
   }
   
 `;
@@ -103,8 +107,11 @@ const ScrollIndicator = styled.button`
    &:hover {
     background-color: #6edd64;
         cursor: pointer;
-
   }
+
+   @media (max-width: 640px) {         
+  margin: 15px;
+}
 `;
 
 const IndicatorContainer = styled.div`
@@ -118,9 +125,8 @@ const IndicatorContainer = styled.div`
                   bottom: 80px;
                 }
 
-  @media (max-width: 500px) {
-    bottom: 30px;
-  }
+ @media (max-width: 640px) {         
+bottom: 20px;}
 `;
 
 const SectionHome = () => {
