@@ -29,7 +29,7 @@ export default function Home() {
         fixed
         color="dark"
         changeColorOnScroll={{
-          height: 50,
+          height: 20,
           color: "dark",
         }} />
       <div>
