@@ -49,7 +49,7 @@ margin-bottom: 30px;
  
  @media (max-width: 940px) {
   margin-top: -260px;
-                  height: 60vh;
+                  height: 70vh;
                 margin-bottom: -30px;}
   
 
