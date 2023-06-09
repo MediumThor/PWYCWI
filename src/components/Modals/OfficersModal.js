@@ -3,7 +3,8 @@ import Modal from 'react-modal'; // import the react-modal package
 import styled from 'styled-components';
 
 const ModalTitle = styled.h2`
-  margin-top: -40px;
+  margin-top: 1%;
+  color: Black;
   @media (max-width: 600px) {
     margin-top: -20px;
   }
@@ -30,14 +31,15 @@ const StyledButton = styled.button`
 
 const OfficersTitle = styled.h2`
   text-align: center;
-  color: white;
+  color: Black;
   padding-bottom: -20px; // Adjust this value as needed
   width: 80vw; // Sets the width of the title (and therefore the line)
   margin: 0 auto; // Centers the title horizontally
 `;
 
 const OfficersSection = styled.div`
- margin-top: -90px;
+ margin-top: -40px;
+
 `;
 
 const BoardGrid = styled.div`
@@ -50,35 +52,47 @@ const BoardGrid = styled.div`
 `;
 
 const InfoGrid = styled.div`
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   gap: 20px;
   justify-content: center;
   padding: 30px;
-   @media (max-width: 600px) {
+   @media (max-width: 1100px) {
+  grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+  }
+     @media (max-width: 740px) {
   grid-template-columns: repeat(1, 1fr);
     text-align: center;
   }
 `;
 
 const InfoItem = styled.div`
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: gray; // changes the text color to light gray
+  color: Black; 
 `;
 
 const Title = styled.p`
-color: White;
+  color: Black;
+    font-weight: bold;  // add this line
+
 `;
 
 const ContentWrapper = styled.div`
   position: relative;
-  overflow: auto;
+    overflow-x: none;
+
+  overflow-y: auto;
   flex: 1;
+    margin-bottom: 40px;
+
 `;
 
 export default function OfficersModal({ isOpen, onRequestClose }) {
@@ -154,7 +168,6 @@ export default function OfficersModal({ isOpen, onRequestClose }) {
 
             <ContentWrapper>
                 <OfficersSection>
-                    <OfficersTitle>Officers</OfficersTitle>
                     <InfoGrid>
                         {officerData.map((item, index) => (
                             <InfoItem key={index}>

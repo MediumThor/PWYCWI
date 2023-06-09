@@ -14,7 +14,7 @@ import HistoryModal from '../../Modals/HistoryModal';
 import NewsModal from '../../Modals/NewsModal';
 import EventsModal from '../../Modals/EventsModal';
 import MembershipModal from '../../Modals/MembershipModal';
-
+import SailingModal from '../../Modals/SailingModal';
 
 
 export default function PageOne() {
@@ -22,7 +22,7 @@ export default function PageOne() {
   const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
   const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
-  const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
+  const [isSailingModalOpen, setIsSailingModalOpen] = useState(false);
 
   const handleNewsOpen = () => {
     setIsNewsModalOpen(true);
@@ -48,12 +48,12 @@ export default function PageOne() {
     setIsMemberModalOpen(false);
   };
 
-  const handleHistoryOpen = () => {
-    setIsHistoryModalOpen(true);
+  const handleSailingOpen = () => {
+    setIsSailingModalOpen(true);
   };
 
-  const handleHistoryClose = () => {
-    setIsHistoryModalOpen(false);
+  const handleSailingClose = () => {
+    setIsSailingModalOpen(false);
   };
 
 
@@ -76,13 +76,13 @@ export default function PageOne() {
             <ButtonContainer>
 
               <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleHistoryOpen}>Useful Links</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleHistoryOpen}>Race Info</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleSailingOpen}>Useful Links</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleSailingOpen}>Race Info</StyledButton> {/* New Button */}
             </ButtonContainer>
             <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
-            <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
+            <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />
             <div style={{ height: '100vh' }} />
           </Parallax>
         </BackgroundBox>

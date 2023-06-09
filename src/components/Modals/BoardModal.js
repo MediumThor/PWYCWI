@@ -62,17 +62,19 @@ export default function BoardModal({ isOpen, onRequestClose }) {
         >
             <ModalTitle style={{ textAlign: 'center', borderBottom: '1px solid gray' }}>Board Members</ModalTitle>
 
+            <ContentWrapper>
+                <OfficersSection>
 
-            <OfficersSection>
-                <OfficersTitle>Board</OfficersTitle>
-                <BoardGrid>
-                    {boardData.map((item, index) => (
-                        <InfoItem key={index}>
-                            <a>{item.name}</a>
-                        </InfoItem>
-                    ))}
-                </BoardGrid>
-            </OfficersSection>
+                    <BoardGrid>
+                        {boardData.map((item, index) => (
+                            <InfoItem key={index}>
+                                <a>{item.name}</a>
+                            </InfoItem>
+                        ))}
+                    </BoardGrid>
+
+                </OfficersSection>
+            </ContentWrapper>
             <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
                 <StyledButton onClick={onRequestClose}>Close</StyledButton>
             </div>
@@ -82,7 +84,8 @@ export default function BoardModal({ isOpen, onRequestClose }) {
 
 
 const ModalTitle = styled.h2`
-  margin-top: -40px;
+  margin-top: -1%;
+  color: black;
   @media (max-width: 600px) {
     margin-top: -20px;
   }
@@ -109,18 +112,21 @@ const StyledButton = styled.button`
 
 const OfficersTitle = styled.h2`
   text-align: center;
-  color: white;
+  color: black;
   padding-bottom: -20px; // Adjust this value as needed
   width: 80vw; // Sets the width of the title (and therefore the line)
   margin: 0 auto; // Centers the title horizontally
 `;
 
 const OfficersSection = styled.div`
- margin-top: -50px;
+ margin-top: -0px;
+   color: black;
+
+   
+
 `;
 
 const BoardGrid = styled.div`
- margin-top: -400px;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -128,6 +134,12 @@ const BoardGrid = styled.div`
   gap: 70px;
   justify-content: center;
   padding: 70px;
+  
+
+   @media (max-width: 700px) {
+  grid-template-columns: repeat(2, 1fr);
+      display: column;;
+  }
 `;
 
 const InfoGrid = styled.div`
@@ -137,10 +149,14 @@ const InfoGrid = styled.div`
   gap: 20px;
   justify-content: center;
   padding: 30px;
+    color: black;
+
    @media (max-width: 600px) {
   grid-template-columns: repeat(1, 1fr);
     text-align: center;
   }
+
+  
 `;
 
 const InfoItem = styled.div`
@@ -149,15 +165,18 @@ const InfoItem = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: gray; // changes the text color to light gray
+    color: black;
+
 `;
 
 const Title = styled.p`
-color: White;
+  color: black;
 `;
 
 const ContentWrapper = styled.div`
   position: relative;
   overflow: auto;
   flex: 1;
+    color: black;
+
 `;
