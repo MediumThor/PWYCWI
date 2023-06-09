@@ -11,7 +11,7 @@ import SmallButton from "src/components/CustomButtons/SmallButton.js";
 import { Events } from '../Events';
 import Modal from 'react-modal'; // import the react-modal package
 import HistoryModal from '../../Modals/HistoryModal';
-import NewsModal from '../../Modals/NewsModal';
+import SubmitTimeModal from '../../Modals/SubmitTimeModal';
 import EventsModal from '../../Modals/EventsModal';
 import SailingModal from '../../Modals/SailingModal';
 import RaceResultsModal from '../../Modals/RaceResultsModal';
@@ -207,17 +207,17 @@ const StyledButton = styled.button`
 
 export default function PageFour() {
 
-  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
+  const [isSubmitTimeModalOpen, setIsSubmitTimeModalOpen] = useState(false);
   const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
   const [isRaceResultsModalOpen, setIsRaceResultsModalOpen] = useState(false);
   const [isSailingModalOpen, setIsSailingModalOpen] = useState(false);
 
-  const handleNewsOpen = () => {
-    setIsNewsModalOpen(true);
+  const handleSubmitTimeOpen = () => {
+    setIsSubmitTimeModalOpen(true);
   };
 
-  const handleNewsClose = () => {
-    setIsNewsModalOpen(false);
+  const handleSubmitTimeClose = () => {
+    setIsSubmitTimeModalOpen(false);
   };
 
   const handleEventsOpen = () => {
@@ -264,8 +264,10 @@ export default function PageFour() {
               <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
               <StyledButton onClick={handleSailingOpen}>Sailing Programs</StyledButton> {/* New Button */}
               <StyledButton onClick={handleRaceResultsOpen}>Race Results</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> {/* New Button */}
+
             </ButtonContainer>
-            <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
+            <SubmitTimeModal isOpen={isSubmitTimeModalOpen} onRequestClose={handleSubmitTimeClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <RaceResultsModal isOpen={isRaceResultsModalOpen} onRequestClose={handleRaceResultsClose} />
             <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />

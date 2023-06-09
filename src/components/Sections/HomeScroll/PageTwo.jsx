@@ -14,6 +14,7 @@ import HistoryModal from '../../Modals/HistoryModal';
 import NewsModal from '../../Modals/NewsModal';
 import EventsModal from '../../Modals/EventsModal';
 import MembershipModal from '../../Modals/MembershipModal';
+import SignupModal from '../../Modals/SignupModal';
 
 const Section1Styled = styled.div`
 
@@ -249,17 +250,17 @@ const StyledButton = styled.button`
 
 export default function PageTwo() {
 
-  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
 
-  const handleNewsOpen = () => {
-    setIsNewsModalOpen(true);
+  const handleSignupOpen = () => {
+    setIsSignupModalOpen(true);
   };
 
-  const handleNewsClose = () => {
-    setIsNewsModalOpen(false);
+  const handleSignupClose = () => {
+    setIsSignupModalOpen(false);
   };
 
   const handleEventsOpen = () => {
@@ -305,9 +306,10 @@ export default function PageTwo() {
 
               <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
               <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleSignupOpen}>Sign Up</StyledButton> {/* New Button */}
 
             </ButtonContainer>
-            <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
+            <SignupModal isOpen={isSignupModalOpen} onRequestClose={handleSignupClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
             <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />

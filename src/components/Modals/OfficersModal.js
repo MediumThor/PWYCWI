@@ -143,15 +143,16 @@ export default function OfficersModal({ isOpen, onRequestClose }) {
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
-            contentLabel="Officers"
+            contentLabel="Signup"
             style={{
                 overlay: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)'
                 },
                 content: {
                     width: '80%',
                     height: '60%',
                     margin: 'auto',
+                    borderRadius: '20px',
                     overflowX: 'hidden',
                     padding: '5%',
                     boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
