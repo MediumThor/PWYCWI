@@ -14,8 +14,10 @@ const Section1Styled = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  padding-top: 110px;
+  padding-top: 130px;
   background: linear-gradient( #2e2d2a, #171615);
+  //background: linear-gradient( 45deg, #87cefa, #000080);
+  //background: linear-gradient( #97b0bb, #97b0bb);
 
  
   

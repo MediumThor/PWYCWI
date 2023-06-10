@@ -7,14 +7,18 @@ const Section4Styled = styled.div`
   margin-top: -300px;
   margin-bottom: 70px;
   height: 900px;
+  width: 100vw;
+  color: white;
   text-align: center; // This will center the link
 `;
 
 const Wrapper = styled.div`
   position: relative;
-  width: 100%;
+  width: 50%;
+  height: 20px;
   left: 25%;
-  padding-top: 56.25%;
+  padding-top: 400px;
+  background-color: ;
   overflow: hidden;
 `;
 
@@ -22,8 +26,8 @@ const WebcamIframe = styled.iframe`
   position: absolute;
   top: 0;
   left: 0%;
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
 
   @media (max-width: 768px) {
     display: none;
@@ -32,7 +36,7 @@ const WebcamIframe = styled.iframe`
 
 const WebcamLink = styled.a`
   position: relative;
-  top: -350px; // Adjust this value as needed
+  top: 70px; // Adjust this value as needed
   color: #ffffff; // Change this to the color you want for the link
   text-decoration: none; // This removes the underline
   transition: 0.3s; // This makes the hover effect transition smoothly
