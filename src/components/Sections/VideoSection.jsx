@@ -57,7 +57,7 @@ const SectionStyled = styled.div`
 
 const VideoWrapper = styled.div`
 padding-top: 100px;
-padding-bottom: -120px;
+padding-bottom: -220px;
 
   width: 100%;
   max-width: 80%;
