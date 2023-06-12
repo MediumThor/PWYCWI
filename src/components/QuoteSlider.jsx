@@ -14,6 +14,7 @@ const settings = {
     autoplay: true,
     autoplaySpeed: 8000,
     arrows: false,
+    fade: true,
 };
 
 
