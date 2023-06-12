@@ -4,7 +4,6 @@ import QuoteSlider from '../QuoteSlider';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 export default function SectionWithVideo() {
     const videoRef = useRef(null);
     const [isIntersecting, setIntersecting] = useState(false);
@@ -40,7 +39,7 @@ export default function SectionWithVideo() {
         <SectionStyled id="sectionWithVideo">
             <VideoWrapper>
                 <video ref={videoRef} muted loop>
-                    <source src="/sailingVidTest2.mp4" type="video/mp4" />
+                    <source src="https://cdn.discordapp.com/attachments/1090123749300379740/1117675999186915358/Sailing1.mp4" type="video/mp4" />
                     Your browser does not support HTML5 video.
                 </video>
             </VideoWrapper>
@@ -61,7 +60,7 @@ padding-top: 100px;
 padding-bottom: -120px;
 
   width: 100%;
-  max-width: 70%;
+  max-width: 80%;
   margin: 0 auto;
   video {
     width: 100%;

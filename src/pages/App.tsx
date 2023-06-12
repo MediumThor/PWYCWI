@@ -17,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Cam from '../components/Sections/Cam';
 import SectionWithVideo from '../components/Sections/VideoSection';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
@@ -51,48 +52,49 @@ function ScrollToTop() {
 export default function Home() {
 
 
-
-
   return (
 
+    <div className={styles['fade-in']}>
 
-    <div >
-      <Header
-        brand="Port Washington Yacht Club"
-        rightLinks={<HeaderLinks />}
-        fixed
-        color="dark"
-        changeColorOnScroll={{
-          height: 20,
-          color: "dark",
-        }} />
-      <div>
-        <SectionHome />
-        <SectionWithVideo />
-        <Services />
-        <Events />
-        {/**<Porthole />**/}
-        <Weather />
-        <Cam />
-        <Contact />
-      </div>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+      <div >
+        <Header
+          brand="Port Washington Yacht Club"
+          rightLinks={<HeaderLinks />}
+          fixed
+          color="dark"
+          changeColorOnScroll={{
+            height: 20,
+            color: "dark",
+          }} />
         <div>
-          <div style={{ marginTop: "15vh" }} />
-          <ScrollToTop />
+          <SectionHome />
+          <SectionWithVideo />
+          <Services />
+          <Events />
+          {/**<Porthole />**/}
+          <Weather />
+          <Cam />
+          <Contact />
         </div>
-      </footer>
+        <footer className={styles.footer}>
+          <a
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Powered by{' '}
+            <span className={styles.logo}>
+              <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            </span>
+          </a>
+          <div>
+            <div style={{ marginTop: "15vh" }} />
+            <ScrollToTop />
+          </div>
+        </footer>
+      </div>
     </div>
+
 
   )
 }

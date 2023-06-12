@@ -30,9 +30,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
   React.useEffect(() => {
     if (props.changeColorOnScroll) {
       window.addEventListener("scroll", headerColorChange);
+      headerColorChange(); // manually call the function once when the component mounts
     }
     return function cleanup() {
       if (props.changeColorOnScroll) {
@@ -40,6 +42,7 @@ export default function Header(props) {
       }
     };
   });
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };

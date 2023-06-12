@@ -15,7 +15,14 @@ const settings = {
     autoplaySpeed: 5000,
 };
 
+
+
+
 const quotes = [
+    {
+        quote: "Sailing a boat calls for quick action, a blending of feeling with the wind and water as well as with the very heart and soul of the boat itself. Sailing teaches alertness and courage, and gives in return a joyousness and peace that but few sports afford.",
+        author: "George Matthew Adams",
+    },
     {
         quote: "When I'm not surfing or sailing, I am to be found at the harbour working on my boat.",
         author: "Laura Dekker",
@@ -24,7 +31,12 @@ const quotes = [
         quote: "The fact is, an America's Cup team is more than a sailing team. It's anywhere from sort of 80 to upward of 100 people; of designers, engineers, boat builders, an incredible group of people, and there are a lot of nationalities in New Zealand's team.",
         author: "James Spithill",
     },
-    // Add more quotes here...
+    {
+        quote: "If one does not know to which port one is sailing, no wind is favorable.",
+        author: "Lucius Annaeus Seneca",
+    },
+
+
 ];
 
 const QuoteSlider = () => (
