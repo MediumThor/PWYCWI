@@ -18,6 +18,10 @@ const Section1Styled = styled.div`
   background: linear-gradient( #2e2d2a, #171615);
   //background: linear-gradient( 45deg, #87cefa, #000080);
   //background: linear-gradient( #97b0bb, #97b0bb);
+  //background: linear-gradient( #BBAC83, #CDC2A4);
+    //background: linear-gradient( #CDC2A4, #BBAC83);
+
+
 
  
   

@@ -1,42 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import styles from 'src/styles/Home.module.scss'
 
-import "src/styles/styles.module.scss";
-import GoogleCalendar from '../GoogleCal.js';
 
-
-const Section2Styled = styled.div`background-color: #000000;
-`;
-
-const StyledGoogleCalendar = styled(GoogleCalendar)`
-  width: 100%;
-  height: 500px; // change this to your desired height
-
-  @media (max-width: 600px) {
-    width: 90%;
-    height: 600px; // adjust this to your desired mobile height
-  }
-`;
 
 export default function Section2() {
-  const [isHide, setHide] = useState(false);
-  const toggle = () => setHide(state => !state);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://public.tockify.com/browser/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, [])
 
   return (
     <Section2Styled id="section2">
       <main className={styles.main3}>
         <Wrapper>
-          <CalendarTitle>Club Events</CalendarTitle>
-          <StyledGoogleCalendar />
+          <CalendarWrapper>
+            <div data-tockify-component="calendar" data-tockify-calendar="pwycofficialevents"></div>
+          </CalendarWrapper>
         </Wrapper>
       </main>
     </Section2Styled >
   );
 }
 
+const Section2Styled = styled.div`
+  background: linear-gradient( #171615, #2e2d2a);
+padding-top: 90px;
+padding-bottom: 40px;
+ @media (max-width: 600px) {
+  padding-top: 90px;
+     }
+`;
+
+const CalendarWrapper = styled.div`
+  width: 90vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-radius: 20px; // Added border-radius
+  border: 0px solid white;
+
+`;
+
 const Wrapper = styled.div`
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

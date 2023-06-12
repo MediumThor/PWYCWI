@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Section4Styled = styled.div`
-  background-color: #000000;
+  background-color: #171615;
   padding-top: 100px;
   margin-top: -300px;
   margin-bottom: 70px;
@@ -10,6 +10,9 @@ const Section4Styled = styled.div`
   width: 100vw;
   color: white;
   text-align: center; // This will center the link
+   @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -45,27 +48,31 @@ const WebcamLink = styled.a`
     cursor: pointer; // This changes the cursor to a pointer on hover
     filter: brightness(80%); // This reduces the brightness of the link on hover
   }
+
+   @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 
 const Cam = () => {
-      return (
-            <Section4Styled id="section6">
-                  <main>
-                        <Wrapper>
-                              <WebcamIframe
-                                    src="https://api.wetmet.net/widgets/stream/frame.php?ruc=10-06-01&width=&height="
-                                    title="Webcam"
-                              />
+  return (
+    <Section4Styled id="section6">
+      <main>
+        <Wrapper>
+          <WebcamIframe
+            src="https://api.wetmet.net/widgets/stream/frame.php?ruc=10-06-01&width=&height="
+            title="Webcam"
+          />
 
 
-                        </Wrapper>
-                        <WebcamLink href="http://www.lakerart.com/links.htm" target="_blank" rel="noopener noreferrer">
-                              Other Great Lakes Webcams
-                        </WebcamLink>
-                  </main>
-            </Section4Styled>
-      );
+        </Wrapper>
+        <WebcamLink href="http://www.lakerart.com/links.htm" target="_blank" rel="noopener noreferrer">
+          Other Great Lakes Webcams
+        </WebcamLink>
+      </main>
+    </Section4Styled>
+  );
 };
 
 export default Cam;

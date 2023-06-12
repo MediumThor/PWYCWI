@@ -176,8 +176,8 @@ const StyledButton = styled.button`
   font-size: 1.4rem;
   border-radius: 10px;
   border: 2px solid #FAF9F6;
-  background-color: rgb(0,0,0,0.7);
-  color: white;
+  background-color: rgb(232,227,213, 0.7);
+  color: black;
   padding: 10px 20px;
   cursor: pointer;
   height: 80px;

@@ -125,7 +125,7 @@ const headerStyle = {
   },
   dark: {
     color: "#E8E3D5",
-    backgroundColor: "RGB(0, 0, 0, 0.8)",
+    backgroundColor: "RGB(59,71,107, 0.8)",
     boxShadow:
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)",
   },

@@ -15,6 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { makeStyles } from '@material-ui/core/styles';
 import Cam from '../components/Sections/Cam';
+import SectionWithVideo from '../components/Sections/VideoSection';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,6 +68,7 @@ export default function Home() {
         }} />
       <div>
         <SectionHome />
+        <SectionWithVideo />
         <Services />
         <Events />
         {/**<Porthole />**/}

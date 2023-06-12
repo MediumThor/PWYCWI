@@ -14,7 +14,7 @@ import image09 from '../Porthole/09.png';
 import image10 from '../Porthole/10.png';
 
 const Image = styled.img`
-  width: 60vw;
+  width: 80vw;
   height: auto;
   cursor: pointer;
 
@@ -62,6 +62,7 @@ const Button = styled.button`
 `;
 
 const Wrapper = styled.div`
+margin-top: 90px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -69,31 +70,31 @@ const Wrapper = styled.div`
 `;
 
 const Slideshow = () => {
-    const images = [image01, image02, image03, image04, image05, image06, image07, image08, image09, image10];
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isFullscreen, setIsFullscreen] = useState(false);
+  const images = [image01, image02, image03, image04, image05, image06, image07, image08, image09, image10];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
-    const handleNext = () => setCurrentImageIndex((currentImageIndex + 1) % images.length);
-    const handlePrev = () => setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length);
-    const handleFullscreen = () => {
-        if (window.innerWidth <= 700) setIsFullscreen(true);
-    }
+  const handleNext = () => setCurrentImageIndex((currentImageIndex + 1) % images.length);
+  const handlePrev = () => setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length);
+  const handleFullscreen = () => {
+    if (window.innerWidth <= 700) setIsFullscreen(true);
+  }
 
-    return (
-        <Wrapper>
-            <Button onClick={handlePrev}>&lt;</Button>
-            <Image src={images[currentImageIndex]} alt="Slideshow" onClick={handleFullscreen} />
-            <Button onClick={handleNext}>&gt;</Button>
-            {isFullscreen && (
-                <FullScreenWrapper>
-                    <CloseButton onClick={() => setIsFullscreen(false)}>X</CloseButton>
-                    <Button onClick={handlePrev} style={{ position: 'absolute', left: '10px', bottom: '10px' }}>&lt;</Button>
-                    <FullScreenImage src={images[currentImageIndex]} alt="Fullscreen view" />
-                    <Button onClick={handleNext} style={{ position: 'absolute', right: '10px', bottom: '10px' }}>&gt;</Button>
-                </FullScreenWrapper>
-            )}
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <Button onClick={handlePrev}>&lt;</Button>
+      <Image src={images[currentImageIndex]} alt="Slideshow" onClick={handleFullscreen} />
+      <Button onClick={handleNext}>&gt;</Button>
+      {isFullscreen && (
+        <FullScreenWrapper>
+          <CloseButton onClick={() => setIsFullscreen(false)}>X</CloseButton>
+          <Button onClick={handlePrev} style={{ position: 'absolute', left: '10px', bottom: '10px' }}>&lt;</Button>
+          <FullScreenImage src={images[currentImageIndex]} alt="Fullscreen view" />
+          <Button onClick={handleNext} style={{ position: 'absolute', right: '10px', bottom: '10px' }}>&gt;</Button>
+        </FullScreenWrapper>
+      )}
+    </Wrapper>
+  );
 };
 
 export default Slideshow;
