@@ -50,14 +50,15 @@ export default function SectionWithVideo() {
 }
 
 const SectionStyled = styled.div`
-  background: #000000;
+  background: linear-gradient( #171615, #2e2d2a);
+
   min-height: 600px;
   justify-content: center;
 `;
 
 const VideoWrapper = styled.div`
 padding-top: 100px;
-padding-bottom: -110px;
+padding-bottom: -120px;
 
   width: 100%;
   max-width: 70%;

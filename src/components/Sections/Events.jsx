@@ -113,7 +113,9 @@ function EventCard({ event }) {
 
 
 const Section2Styled = styled.div`
-  background: linear-gradient( #CDC2A4, #BBAC83);
+  background: linear-gradient( #171615, #2e2d2a);
+
+  background: linear-gradient( #CDC2A4, #171615);
   min-height: 800px; // Adjust this value as needed
   justify-content: center;
 `;

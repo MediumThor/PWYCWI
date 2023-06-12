@@ -61,7 +61,6 @@ margin-bottom: 30px;
 
  @media (max-width: 640px) {
                     box-shadow: none;
-                        border: none;
                       margin-top: -120px;}
 
  @media (max-width: 500px) {
