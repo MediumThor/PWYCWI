@@ -72,7 +72,7 @@ const Card = styled.div`
 `;
 
 const Title = styled.h3`
-  color: #242424;
+  color: #ffffff;
   font-family: 'Arial', sans-serif;
 `;
 
@@ -130,8 +130,8 @@ const InfoWrapper = styled.div`
 
 // Your events data
 const events = [
-  { title: 'Double-Handed Race', date: '2023-06-13', time: '10:00 AM', description: 'This is a description.', image: '/path/to/image1.jpg' },
-  { title: 'Event 2', date: '2023-06-14', time: '12:00 PM', description: 'This is another description.', image: '/path/to/image2.jpg' },
+  { title: 'Double-Handed Race', date: '2023-06-18', time: '10:00 AM', description: 'This is a description.', image: '/path/to/image1.jpg' },
+  { title: 'Queens Cup', date: '2023-06-30', time: '12:00 PM', description: 'https://www.ssyc.org/queen-s-cup-race.', image: '/path/to/image2.jpg' },
   { title: 'Event 3', date: '2023-06-15', time: '02:00 PM', description: 'Yet another description.', image: '/path/to/image3.jpg' },
   { title: 'Event 4', date: '2023-06-16', time: '04:00 PM', description: 'And one more description.', image: '/path/to/image4.jpg' },
 ];
