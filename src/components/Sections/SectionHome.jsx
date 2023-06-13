@@ -7,6 +7,8 @@ import PageOne from './HomeScroll/PageOne';
 import PageTwo from './HomeScroll/PageTwo';
 import PageThree from './HomeScroll/PageThree';
 import PageFour from './HomeScroll/PageFour';
+import { Alert, AlertTitle } from '@mui/material';
+
 
 const Section1Styled = styled.div`
   display: flex;
@@ -134,11 +136,15 @@ const IndicatorContainer = styled.div`
 bottom: 20px;}
 `;
 
+
+
 const SectionHome = () => {
   const scrollRef = useRef(null);
   const [activePage, setActivePage] = useState(0);
+  const [showAlert, setShowAlert] = useState(true);
 
   const pages = [<PageOne />, <PageTwo />, <PageThree />, <PageFour />];
+
 
   const scrollToPage = (pageIndex) => {
     const scrollContainer = scrollRef.current;
@@ -165,6 +171,8 @@ const SectionHome = () => {
     };
   }, []);
 
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActivePage((activePage + 1) % (pages.length * 3));
@@ -173,25 +181,42 @@ const SectionHome = () => {
     return () => clearInterval(interval);
   }, [activePage]);
 
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+
   return (
     <Section1Styled id="sectionHome">
+
       <PageDiv>
 
         <HorizontalScrollContainer ref={scrollRef}>
+
           {Array(3).fill().map((_, i) =>
             pages.map((Page, j) => (
               <PageContainer key={`${i}-${j}`}>
+
+                {showAlert && (
+                  <Alert onClose={handleCloseAlert} severity="info">
+                    <AlertTitle>Info</AlertTitle>
+                    This is an info alert- We can add notifications here if we want,  — <strong>Like THIS :) (although it messes up the formatting but ill get to that)</strong>
+                  </Alert>
+                )}
                 {Page}
               </PageContainer>
             ))
           )}
         </HorizontalScrollContainer>
       </PageDiv>
-      <IndicatorContainer>
-        {[0, 1, 2, 3].map(i =>
-          <ScrollIndicator active={activePage % 4 === i} onClick={() => scrollToPage(i)} key={i} />
-        )}
-      </IndicatorContainer>
+      {activePage > 0 && ( // Only show the IndicatorContainer if activePage is greater than 0
+        <IndicatorContainer>
+          {[0, 1, 2, 3].map(i =>
+            <ScrollIndicator active={activePage % 4 === i} onClick={() => scrollToPage(i)} key={i} />
+          )}
+        </IndicatorContainer>
+      )}
     </Section1Styled>
   );
 };

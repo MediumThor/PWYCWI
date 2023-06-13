@@ -9,7 +9,7 @@ import Weather from '../components/Sections/Weather'
 import SectionHome from "../components/Sections/SectionHome"
 import styles from '../styles/Home.module.scss'
 import styled from 'styled-components'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Home.module.scss";
 import IconButton from '@material-ui/core/IconButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
@@ -25,24 +25,48 @@ const useStyles = makeStyles((theme) => ({
     right: '4%',
     backgroundColor: 'rgb(232,227,212, 0.4)',
     borderRadius: '5px',
+    opacity: 0,
+    transition: 'opacity 0.5s',
 
     '&:hover': {
       backgroundColor: 'rgb(232,227,212, 0.6)', // make button lighter when hovered over
     },
   },
+  visible: {
+    opacity: 1,
+  },
 }));
 
+
+
+
 function ScrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
   const classes = useStyles();
 
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  // Event to listen to the scroll
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+
   return (
     <IconButton
       onClick={handleClick}
-      className={classes.root}
+      className={`${classes.root} ${isVisible ? classes.visible : ''}`}
     >
       <ArrowUpwardIcon />
     </IconButton>

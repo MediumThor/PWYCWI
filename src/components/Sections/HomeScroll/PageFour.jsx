@@ -260,12 +260,12 @@ export default function PageFour() {
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
-            <Title>PWYC<br />Sailing Programs</Title>
+            <Title>PWYC<br />Sailing Info</Title>
             <ButtonContainer>
               <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
-              <StyledButton onClick={handleSailingOpen}>Sailing Programs</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> {/* New Button */}
               <StyledButton onClick={handleRaceResultsOpen}>Race Results</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> {/* New Button */}
+              {/**  <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> */}
 
             </ButtonContainer>
             <SubmitTimeModal isOpen={isSubmitTimeModalOpen} onRequestClose={handleSubmitTimeClose} />

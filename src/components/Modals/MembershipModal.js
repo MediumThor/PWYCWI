@@ -70,7 +70,7 @@ export default function MembershipModal({ isOpen, onRequestClose }) {
         },
         content: {
           width: '80%',
-          height: '60%',
+          height: '70%',
           margin: 'auto',
           borderRadius: '20px',
           overflowX: 'hidden',
