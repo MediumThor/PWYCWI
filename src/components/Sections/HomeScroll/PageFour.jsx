@@ -131,7 +131,7 @@ const ButtonContainer = styled.div`
   grid-template-rows: repeat(2, 1fr);     // create 2 equal height rows
   justify-items: center;  // center items horizontally
   align-items: center;    // center items vertically
-  gap: 1.5em;
+  gap: 1.2em;
 
    @media (max-width: 1200px) {
   grid-template-rows: repeat(1, 3fr);     // create 2 equal height rows
@@ -284,8 +284,23 @@ export default function PageFour() {
     setIsSailingModalOpen(false);
   };
 
-  const notify = () => toast(<div>Queens Cup <a href="https://www.ssyc.org/queen-s-cup-race" target="_blank" rel="noopener noreferrer">Link</a></div>);
-
+  const notify = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Queens Cup <a href="https://www.ssyc.org/queen-s-cup-race" target="_blank" rel="noopener noreferrer">Link</a></div>, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  }); const notify2 = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Click <a href="https://www.ussailing.org/competition/rules-officiating/the-racing-rules-of-sailing-2021-2024/#the-rules" target="_blank" rel="noopener noreferrer">here </a>to get the rules App</div>, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 
   return (
     <Section1Styled id="sectionHome">
@@ -307,6 +322,8 @@ export default function PageFour() {
               {/**  <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>*/}
               <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> {/* New Button */}
               <StyledButton onClick={handleRaceResultsOpen}>Race Results</StyledButton> {/* New Button */}
+              <StyledButton onClick={notify2}>Rules</StyledButton>
+
 
 
               {/**  <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> */}

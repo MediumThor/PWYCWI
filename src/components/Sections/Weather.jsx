@@ -24,16 +24,16 @@ const ImageWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   border: 2px solid #E8E3D5;
   border-radius: 20px;
-  padding: 20px;
+  padding: 10px;
   overflow: hidden;
-  width: 90%;
+  width: 75%;
               box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
 
 `;
 
 
 const ForecastWrapper = styled.div`
-  padding-top: -10px;
+  padding-top: 0px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: row;
@@ -63,7 +63,7 @@ const StyledIframe = styled.iframe`
   scrolling: no;
   border: 2px solid black;
   border-radius: 20px; // Added border-radius
-  max-width: 100%;
+  max-width: 90%;
   height: 300px;
 
   @media (max-width: 600px) {
@@ -117,7 +117,7 @@ export default function Section5() {
                                     id="wind-map"
                                     src="https://embed.windy.com/embed2.html?lat=43.422&lon=-87.858&detailLat=44.503&detailLon=-87.981&width=650&height=450&zoom=10&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
                                     frameBorder="0"
-                                    width="600"
+                                    width="480"
                                     height="350"
                               />
                               <StyledIframe
@@ -125,7 +125,7 @@ export default function Section5() {
                                     id="wind-map"
                                     src="https://embed.windy.com/embed2.html?lat=43.683&lon=-87.744&detailLat=43.683&detailLon=-87.744&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
                                     frameBorder="0"
-                                    width="600"
+                                    width="480"
                                     height="350"
                               />
 

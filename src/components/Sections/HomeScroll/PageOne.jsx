@@ -121,7 +121,7 @@ export default function PageOne() {
             <ButtonContainer>
 
               <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleSailingOpen}>Useful Links</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleNewsOpen}>Useful Links</StyledButton> {/* New Button */}
               <StyledButton onClick={handleSailingOpen}>Race Info</StyledButton> {/* New Button */}
             </ButtonContainer>
             <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />

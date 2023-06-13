@@ -38,8 +38,8 @@ const BackgroundBox = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 0%;
-  left: 10%;
+  top: 15%;
+  left: 15%;
   font-size: 1.7em;
   font-weight: bold;
   color: #E8E3D5;
@@ -270,14 +270,14 @@ export default function PageThree() {
           <Parallax
             blur={{ min: -15, max: 15 }}
             strength={100}
-            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115461392833724506/GPTempDownload_4.JPG"
+            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1118059221922103327/spinn.jpeg"
             bgImageAlt="Background"
             bgImageStyle={{ backgroundSize: 'cover' }}
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
-            <Title>Port Washington<br />Yacht Club</Title>
-            <Location>Information</Location>
+            <Title>Club Information</Title>
+            <Location></Location>
             <ButtonContainer>
               <StyledButton onClick={handleBoardOpen}>Board Members</StyledButton>
               <StyledButton onClick={handleOfficersOpen}>Officers</StyledButton>
