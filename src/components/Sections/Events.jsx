@@ -5,9 +5,132 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 
+
+
+const Section2Styled = styled.div`
+  background: linear-gradient( #171615, #2e2d2a);
+
+  background: linear-gradient( #CDC2A4, #171615);
+    background: linear-gradient( #2e2d2a, #171615);
+
+  min-height: 800px; // Adjust this value as needed
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+padding-top: 120px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80vw;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+`;
+
+
+const FacebookFeedWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;  // Adjust this as needed
+  width: 100%;       // Add this line
+`;
+
+const Caption = styled.h2`
+  margin-top: 60px;
+
+  text-align: center;
+  color: #E8E3D5;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 120px;
+`;
+
+const Card = styled.div`
+  display: flex;
+  align-items: center;
+  background: #000000;
+  border-radius: 20px;
+  border: 2px solid #E8E3D5;
+  padding: 20px;
+  margin-right: 15px;
+  margin-left: 15px;
+
+  opacity: 0;
+  animation: slideFade 2s forwards;
+
+  @keyframes slideFade {
+    0% {
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+`;
+
+const Title = styled.h3`
+  color: #242424;
+  font-family: 'Arial', sans-serif;
+`;
+
+const DateTime = styled.p`
+  color: #898989;
+  font-family: 'Arial', sans-serif;
+`;
+
+const Description = styled.p`
+  color: #898989;
+  font-family: 'Arial', sans-serif;
+`;
+
+
+const LeftDiv = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 50%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const RightDiv = styled.div`
+  flex: 1;
+  padding: 20px;
+  width: 50%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+
+
+const ImageWrapper = styled.div`
+  flex: 1;
+  padding: 10px;
+`;
+
+const Image = styled.img`
+  max-width: 200px;
+  max-height: 200px;
+`;
+
+const InfoWrapper = styled.div`
+  flex: 2;
+  padding: 10px;
+`;
+
+
+
+
 // Your events data
 const events = [
-  { title: 'Event 1', date: '2023-06-13', time: '10:00 AM', description: 'This is a description.', image: '/path/to/image1.jpg' },
+  { title: 'Double-Handed Race', date: '2023-06-13', time: '10:00 AM', description: 'This is a description.', image: '/path/to/image1.jpg' },
   { title: 'Event 2', date: '2023-06-14', time: '12:00 PM', description: 'This is another description.', image: '/path/to/image2.jpg' },
   { title: 'Event 3', date: '2023-06-15', time: '02:00 PM', description: 'Yet another description.', image: '/path/to/image3.jpg' },
   { title: 'Event 4', date: '2023-06-16', time: '04:00 PM', description: 'And one more description.', image: '/path/to/image4.jpg' },
@@ -110,121 +233,5 @@ function EventCard({ event }) {
 }
 
 // Styled components
-
-
-const Section2Styled = styled.div`
-  background: linear-gradient( #171615, #2e2d2a);
-
-  background: linear-gradient( #CDC2A4, #171615);
-  min-height: 800px; // Adjust this value as needed
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-padding-top: 120px;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 80vw;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    width: 100%;
-  }
-`;
-
-
-const FacebookFeedWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;  // Adjust this as needed
-  width: 100%;       // Add this line
-`;
-
-const Caption = styled.h2`
-  margin-top: 60px;
-
-  text-align: center;
-  color: #242424;
-  font-family: 'Arial', sans-serif;
-  margin-bottom: 120px;
-`;
-
-const Card = styled.div`
-  display: flex;
-  align-items: center;
-  background: #000000;
-  border-radius: 20px;
-  padding: 20px;
-  margin-right: 15px;
-  margin-left: 15px;
-
-  opacity: 0;
-  animation: slideFade 2s forwards;
-
-  @keyframes slideFade {
-    0% {
-      transform: translateX(-50%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-`;
-
-const Title = styled.h3`
-  color: #242424;
-  font-family: 'Arial', sans-serif;
-`;
-
-const DateTime = styled.p`
-  color: #898989;
-  font-family: 'Arial', sans-serif;
-`;
-
-const Description = styled.p`
-  color: #898989;
-  font-family: 'Arial', sans-serif;
-`;
-
-
-const LeftDiv = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  width: 50%;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-const RightDiv = styled.div`
-  flex: 1;
-  padding: 20px;
-  width: 50%;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-
-
-const ImageWrapper = styled.div`
-  flex: 1;
-  padding: 10px;
-`;
-
-const Image = styled.img`
-  max-width: 200px;
-  max-height: 200px;
-`;
-
-const InfoWrapper = styled.div`
-  flex: 2;
-  padding: 10px;
-`;
 
 

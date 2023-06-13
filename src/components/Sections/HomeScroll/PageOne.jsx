@@ -15,6 +15,7 @@ import NewsModal from '../../Modals/NewsModal';
 import EventsModal from '../../Modals/EventsModal';
 import MembershipModal from '../../Modals/MembershipModal';
 import SailingModal from '../../Modals/SailingModal';
+import { Alert, AlertTitle } from '@mui/material';
 
 
 export default function PageOne() {
@@ -23,6 +24,24 @@ export default function PageOne() {
   const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
   const [isSailingModalOpen, setIsSailingModalOpen] = useState(false);
+  const [showAlert, setShowAlert] = useState(true);
+  const [showSecondAlert, setShowSecondAlert] = useState(true);
+  const [showThirdAlert, setShowThirdAlert] = useState(true);
+
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+  const handleCloseSecondAlert = () => {
+    setShowSecondAlert(false);
+  };
+
+  const handleCloseThirdAlert = () => {
+    setShowThirdAlert(false);
+  };
+
+
 
   const handleNewsOpen = () => {
     setIsNewsModalOpen(true);
@@ -62,6 +81,7 @@ export default function PageOne() {
     <Section1Styled id="sectionHome">
       <main className={styles.main}>
         <BackgroundBox>
+
           <Parallax
             blur={{ min: -15, max: 15 }}
             strength={200}
@@ -70,6 +90,31 @@ export default function PageOne() {
             bgImageStyle={{ backgroundSize: 'cover' }}
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+            {showAlert && (
+              <StyledAlert onClose={handleCloseAlert} severity="info">
+                <AlertTitle>Info</AlertTitle>
+                This is an info alert- We can add notifications here if we want,  — <strong>Like THIS :) (Please let me know what we would like here.('ll add as needed too)'))</strong>
+              </StyledAlert>
+            )}
+            {showSecondAlert && (
+              <StyledAlert onClose={handleCloseSecondAlert} severity="warning" style={{ top: '38%' }}>
+                <AlertTitle>Warning</AlertTitle>
+                <strong>Please dont use the sign-up form. It will send me abunch of garble.</strong>
+                This site is still in beta. Please send any major issues or requests to the support link under the contact tab.
+                (I know the Public Events tab is a mess) (if Anyone who has access has any ideas about how these 4 tabs on this page could be better organized, let me know.)
+              </StyledAlert>
+            )}
+
+            {showThirdAlert && (
+              <StyledAlert onClose={handleCloseThirdAlert} severity="success" style={{ top: '25%' }}>
+                <AlertTitle>UPDATE!</AlertTitle>
+                Alot has been added- Race Info has been updated. We have video. NOR, SI, Course and Registration added.
+              </StyledAlert>
+            )}
+
+
+
+
 
             <Title>Port Washington<br />Yacht Club</Title>
             <Location>Port Washington,WI</Location>
@@ -240,7 +285,7 @@ const StyledButton = styled.button`
   border-radius: 10px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
-  color: white;
+  color: #E8E3D5;
   padding: 10px 20px;
   cursor: pointer;
   height: 80px;
@@ -252,6 +297,7 @@ const StyledButton = styled.button`
     color: #996515;
     border-color: #87CEFA;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+      background-color: rgb(0,0,0,0.9);
   }
 
   @media (max-width: 700px) {
@@ -267,5 +313,12 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledAlert = styled(Alert)`
+  position: absolute;
+    width: 40% !important; /* Make it 60% of the frame */
+  left: 50%; /* Center it on the screen (remaining width divided by two) */
+  top: 10%; /* Move it down a bit */
+  height: auto; /* Make it adjust to the content */
+`;
 
 

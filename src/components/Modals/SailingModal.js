@@ -104,26 +104,30 @@ export default function SailingModal({ isOpen, onRequestClose }) {
       <TabBox>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange}>
-            <Tab label="Supplementary Sailing Instructions" />
             <Tab label="NOR" />
-            <Tab label="Item Three" />
+            <Tab label="SI" />
+            <Tab label="Course" />
+            <Tab label="Registration" />
+
           </Tabs>
         </Box>
       </TabBox>
 
       <ContentWrapper>
         <TabPanel value={value} index={0}>
-          <embed src="/assets/SailingInfo/PWYC_Supplamental_Sailing_Instructions_2020_.pdf" width="350%" height="100%" type="application/pdf" />
+          <embed src="/assets/SailingInfo/PWYC NOR 2023.pdf" width="350%" height="100%" type="application/pdf" />
         </TabPanel>
 
         <TabPanel value={value} index={1}>
-          <embed src="/assets/SailingInfo/PWYC NOR and SI 2023 draft.pdf" width="350%" height="100%" type="application/pdf" />
+          <embed src="/assets/SailingInfo/PWYC SI 2023.pdf" width="350%" height="100%" type="application/pdf" />
         </TabPanel>
 
         <TabPanel value={value} index={2}>
-          <StyledText>
-            <p>Tab 3</p>
-          </StyledText>
+          <embed src="/assets/SailingInfo/PWYC COURSE 2023.pdf" width="350%" height="100%" type="application/pdf" />
+        </TabPanel>
+
+        <TabPanel value={value} index={3}>
+          <embed src="/assets/SailingInfo/PWYC Registration 2023.pdf" width="350%" height="100%" type="application/pdf" />
         </TabPanel>
 
       </ContentWrapper>

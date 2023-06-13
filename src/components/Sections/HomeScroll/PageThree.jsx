@@ -191,7 +191,7 @@ const StyledButton = styled.button`
   border-radius: 10px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
-  color: white;
+  color: #E8E3D5;
   padding: 10px 20px;
   cursor: pointer;
   height: 80px;
@@ -203,6 +203,7 @@ const StyledButton = styled.button`
     color: #996515;
     border-color: #87CEFA;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+      background-color: rgb(0,0,0,0.9);
   }
 
   @media (max-width: 700px) {

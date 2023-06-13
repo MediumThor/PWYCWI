@@ -39,7 +39,7 @@ const HistoryText = styled.p`
 
 
 const Footer = styled.footer`
-  width: 90%;
+  width: 100%;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -132,6 +132,8 @@ export default function Section3() {
           <FooterLink href="mailto:your-email@example.com">Contact Us</FooterLink>
           <FooterLink href="/tos">Terms of Service</FooterLink>
           <FooterLink href="/privacy">Privacy Policy</FooterLink>
+          <FooterLink href="mailto:tech@pwycwi.com">Contact Support</FooterLink>
+
         </FooterSection>
         <FooterSection>
           <FacebookLink href="https://www.facebook.com/PWYCWI">

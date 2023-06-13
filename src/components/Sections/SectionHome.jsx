@@ -7,7 +7,6 @@ import PageOne from './HomeScroll/PageOne';
 import PageTwo from './HomeScroll/PageTwo';
 import PageThree from './HomeScroll/PageThree';
 import PageFour from './HomeScroll/PageFour';
-import { Alert, AlertTitle } from '@mui/material';
 
 
 const Section1Styled = styled.div`
@@ -141,7 +140,6 @@ bottom: 20px;}
 const SectionHome = () => {
   const scrollRef = useRef(null);
   const [activePage, setActivePage] = useState(0);
-  const [showAlert, setShowAlert] = useState(true);
 
   const pages = [<PageOne />, <PageTwo />, <PageThree />, <PageFour />];
 
@@ -182,9 +180,7 @@ const SectionHome = () => {
   }, [activePage]);
 
 
-  const handleCloseAlert = () => {
-    setShowAlert(false);
-  };
+
 
 
   return (
@@ -198,12 +194,7 @@ const SectionHome = () => {
             pages.map((Page, j) => (
               <PageContainer key={`${i}-${j}`}>
 
-                {showAlert && (
-                  <Alert onClose={handleCloseAlert} severity="info">
-                    <AlertTitle>Info</AlertTitle>
-                    This is an info alert- We can add notifications here if we want,  — <strong>Like THIS :) (although it messes up the formatting but ill get to that)</strong>
-                  </Alert>
-                )}
+
                 {Page}
               </PageContainer>
             ))

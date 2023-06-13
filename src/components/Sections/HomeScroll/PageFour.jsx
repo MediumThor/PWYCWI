@@ -4,17 +4,19 @@ import styled from 'styled-components';
 import styles from 'src/styles/Home.module.scss'
 import { Parallax, Background } from "react-parallax";
 import { useState, useEffect } from 'react'
-import { ethers, BigNumber } from "ethers"
-import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core'
-import { Link } from 'react-scroll';
-import SmallButton from "src/components/CustomButtons/SmallButton.js";
-import { Events } from '../Events';
-import Modal from 'react-modal'; // import the react-modal package
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { Alert, AlertTitle } from '@mui/material';
+
+
 import HistoryModal from '../../Modals/HistoryModal';
 import SubmitTimeModal from '../../Modals/SubmitTimeModal';
 import EventsModal from '../../Modals/EventsModal';
 import SailingModal from '../../Modals/SailingModal';
 import RaceResultsModal from '../../Modals/RaceResultsModal';
+
 
 const Section1Styled = styled.div`
 
@@ -169,6 +171,17 @@ gap: .1em;
 `;
 
 
+const NavContainer = styled.div`
+  position: relative;
+margin-top: -100px;  
+left: %;
+ 
+
+
+
+`;
+
+
 const StyledButton = styled.button`
     // add this line to set a fixed height
   box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
@@ -176,8 +189,8 @@ const StyledButton = styled.button`
   font-size: 1.4rem;
   border-radius: 10px;
   border: 2px solid #FAF9F6;
-  background-color: rgb(232,227,213, 0.7);
-  color: black;
+  background-color: rgb(0,0,0,0.7);
+  color: #E8E3D5;
   padding: 10px 20px;
   cursor: pointer;
   height: 80px;
@@ -189,6 +202,7 @@ const StyledButton = styled.button`
     color: #996515;
     border-color: #87CEFA;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+      background-color: rgb(0,0,0,0.9);
   }
 
   @media (max-width: 700px) {
@@ -204,6 +218,14 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledAlert = styled(Alert)`
+  position: absolute;
+    width: 40% !important; /* Make it 60% of the frame */
+  left: 10%; /* Center it on the screen (remaining width divided by two) */
+  top: 10%; /* Move it down a bit */
+  height: auto; /* Make it adjust to the content */
+`;
+
 
 
 export default function PageFour() {
@@ -212,6 +234,23 @@ export default function PageFour() {
   const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
   const [isRaceResultsModalOpen, setIsRaceResultsModalOpen] = useState(false);
   const [isSailingModalOpen, setIsSailingModalOpen] = useState(false);
+  const [showAlert, setShowAlert] = useState(true);
+  const [showSecondAlert, setShowSecondAlert] = useState(true);
+  const [showThirdAlert, setShowThirdAlert] = useState(true);
+
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+  const handleCloseSecondAlert = () => {
+    setShowSecondAlert(false);
+  };
+
+  const handleCloseThirdAlert = () => {
+    setShowThirdAlert(false);
+  };
+
 
   const handleSubmitTimeOpen = () => {
     setIsSubmitTimeModalOpen(true);
@@ -245,10 +284,12 @@ export default function PageFour() {
     setIsSailingModalOpen(false);
   };
 
+  const notify = () => toast(<div>Queens Cup <a href="https://www.ssyc.org/queen-s-cup-race" target="_blank" rel="noopener noreferrer">Link</a></div>);
 
 
   return (
     <Section1Styled id="sectionHome">
+
       <main className={styles.main}>
         <BackgroundBox>
           <Parallax
@@ -262,12 +303,25 @@ export default function PageFour() {
 
             <Title>PWYC<br />Sailing Info</Title>
             <ButtonContainer>
-              <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>
+              <StyledButton onClick={notify}>Upcoming Events</StyledButton>
+              {/**  <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>*/}
               <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> {/* New Button */}
               <StyledButton onClick={handleRaceResultsOpen}>Race Results</StyledButton> {/* New Button */}
+
+
               {/**  <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> */}
 
             </ButtonContainer>
+            <ToastContainer />
+
+            {showAlert && (
+              <StyledAlert onClose={handleCloseAlert} severity="info" style={{ top: '45%' }}>
+                <AlertTitle>Update!</AlertTitle>
+                Sections have been updated <strong>NOR and SI have been posted to Race Info</strong>
+              </StyledAlert>
+            )}
+
+
             <SubmitTimeModal isOpen={isSubmitTimeModalOpen} onRequestClose={handleSubmitTimeClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <RaceResultsModal isOpen={isRaceResultsModalOpen} onRequestClose={handleRaceResultsClose} />
@@ -275,43 +329,47 @@ export default function PageFour() {
             <div style={{ height: '100vh' }} />
           </Parallax>
         </BackgroundBox>
-        {/**<div className={styles.grid3}>
 
-          <SmallButton color="transparent"
-          >
-            <Link to="section1" className={styles.smallcard3} spy={false} smooth={true} duration={1000}>
-              <h2>Services </h2>
 
-            </Link>
-          </SmallButton>
-          <SmallButton color="transparent"
-          >
-            <Link to="section2" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Info </h2>
-              <p> </p>
-            </Link>
-          </SmallButton>
+        {/** 
+        <NavContainer>
+          <div className={styles.grid3}>
 
-          <SmallButton color="transparent"
+            <SmallButton color="transparent">
+              <Link to="section1" className={styles.smallcard3} spy={false} smooth={true} duration={1000}>
+                <h2>Services </h2>
 
-          >
-            <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Contact</h2>
-              <p>  </p>
-            </Link>
-          </SmallButton>
+              </Link>
+            </SmallButton>
+            <SmallButton color="transparent"
+            >
+              <Link to="section2" className={styles.smallcard3} smooth={true} duration={1000}>
+                <h2>Info </h2>
+                <p> </p>
+              </Link>
+            </SmallButton>
 
-          <SmallButton color="transparent"
-            target="_blank"
-          >
-            <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Stake</h2>
-              <p>
+            <SmallButton color="transparent"
 
-              </p>
-            </Link>
-          </SmallButton>
-        </div> */}
+            >
+              <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
+                <h2>Contact</h2>
+                <p>  </p>
+              </Link>
+            </SmallButton>
+
+            <SmallButton color="transparent"
+              target="_blank"
+            >
+              <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
+                <h2>Weather</h2>
+                <p>
+
+                </p>
+              </Link>
+            </SmallButton>
+          </div>
+        </NavContainer>*/}
 
       </main>
     </Section1Styled >
