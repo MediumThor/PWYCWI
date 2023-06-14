@@ -42,15 +42,15 @@ const HorizontalScrollContainer = styled.div`
 `;
 
 const PageDiv = styled.div`
-margin-top: -60px;
+margin-top: -70px;
 margin-bottom: 30px;
 
   flex: none;
   width: 90vw;
-  height: 80vh;
+  height: 75vh;
   scroll-snap-align: start;
-   border-radius: 15px;
-    border: 1px solid black;
+   border-radius: 5px;
+    border: 6px solid black;
               box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
  
  
@@ -76,13 +76,13 @@ margin-bottom: 30px;
 const PageContainer = styled.div`
   flex: none;
   width: 90vw;
-  height: 80vh;
+  height: 75vh;
   scroll-snap-align: start;
   overflow-y: hidden; 
   overflow-x: hidden; 
 
-  border-radius: 15px;
-      border: 3px solid black;
+  border-radius: 5px;
+      border: 1px solid black;
 
       @media (max-width: 940px) {
                   height: 70vh;}
@@ -140,6 +140,7 @@ bottom: 20px;}
 const SectionHome = () => {
   const scrollRef = useRef(null);
   const [activePage, setActivePage] = useState(0);
+  const [showAlert, setShowAlert] = useState(true);
 
   const pages = [<PageOne />, <PageTwo />, <PageThree />, <PageFour />];
 
@@ -201,13 +202,12 @@ const SectionHome = () => {
           )}
         </HorizontalScrollContainer>
       </PageDiv>
-      {activePage > 0 && ( // Only show the IndicatorContainer if activePage is greater than 0
-        <IndicatorContainer>
-          {[0, 1, 2, 3].map(i =>
-            <ScrollIndicator active={activePage % 4 === i} onClick={() => scrollToPage(i)} key={i} />
-          )}
-        </IndicatorContainer>
-      )}
+      <IndicatorContainer>
+        {[0, 1, 2, 3].map(i =>
+          <ScrollIndicator active={activePage % 4 === i} onClick={() => scrollToPage(i)} key={i} />
+        )}
+      </IndicatorContainer>
+
     </Section1Styled>
   );
 };

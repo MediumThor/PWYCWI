@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { StylesProvider, ServerStyleSheets } from '@material-ui/styles';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 class MyApp extends App {
   componentDidMount() {
@@ -22,12 +23,16 @@ class MyApp extends App {
         <Head>
           <title>PWYC</title>
         </Head>
+
         <StylesProvider injectFirst>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
+          <ParallaxProvider>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ParallaxProvider>
         </StylesProvider>
       </React.Fragment>
+
     );
   }
 }

@@ -16,7 +16,8 @@ import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { makeStyles } from '@material-ui/core/styles';
 import Cam from '../components/Sections/Cam';
 import SectionWithVideo from '../components/Sections/VideoSection';
-
+import ParallaxImage from '../components/ParallaxSection1';
+import ParallaxImage2 from '../components/ParallaxSection2';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,8 +93,10 @@ export default function Home() {
           }} />
         <div>
           <SectionHome />
+          <ParallaxImage />
           <SectionWithVideo />
           <Services />
+          <ParallaxImage2 />
           <Events />
           {/**<Porthole />**/}
           <Weather />

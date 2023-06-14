@@ -25,11 +25,9 @@ const Section1Styled = styled.div`
 const BackgroundBox = styled.div`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 670px;
   font-size: 40px;
   color: #22C984;
-
-  
 `;
 
 const Title = styled.h1`
@@ -297,7 +295,7 @@ export default function PageTwo() {
         <BackgroundBox>
           <Parallax
             blur={{ min: -15, max: 15 }}
-            strength={100}
+            strength={200}
             bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115435438077915166/karisma3.jpeg"
             bgImageAlt="Background"
           >

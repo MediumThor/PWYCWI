@@ -84,7 +84,7 @@ export default function PageOne() {
 
           <Parallax
             blur={{ min: -15, max: 15 }}
-            strength={200}
+            strength={300}
             bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115461216152850432/GPTempDownload_2.JPG"
             bgImageAlt="Background"
             bgImageStyle={{ backgroundSize: 'cover' }}
@@ -140,21 +140,23 @@ export default function PageOne() {
 
 
 const Section1Styled = styled.div`
-
+heigth: 670px;
   width:100%;
+  
   background-color: #ffffff;
 `;
 
 const BackgroundBox = styled.div`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 670px;
   font-size: 40px;
   color: #22C984;
 
-   
+ 
+    box-shadow: inset -100px -40px 20px rgba(0, 0, 0, 1),
+inset 100px 40px 0px rgba(0, 0, 0, 1);
   }
-  
 `;
 
 const Title = styled.h1`

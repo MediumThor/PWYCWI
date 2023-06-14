@@ -53,6 +53,9 @@ const SectionStyled = styled.div`
 
   min-height: 600px;
   justify-content: center;
+  
+ box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
+inset 20px 20px 240px rgba(0, 0, 0, 1);
 `;
 
 const VideoWrapper = styled.div`

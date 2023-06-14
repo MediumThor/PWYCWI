@@ -57,6 +57,10 @@ const quotes = [
         quote: "When you sail for the first time, you have one of two experiences. It becomes a one-time, bucket-list thing you check off your list, or it becomes a part of your soul forever.",
         author: "Michelle Segrest",
     },
+    {
+        quote: "The sooner we learn to be jointly responsible, the easier the sailing will be.",
+        author: "Ella Maillart",
+    },
 
 
 ];

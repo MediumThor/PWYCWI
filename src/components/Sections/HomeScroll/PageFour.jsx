@@ -24,16 +24,15 @@ const Section1Styled = styled.div`
   background-color: #ffffff;
 `;
 
+
 const BackgroundBox = styled.div`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 670px;
   font-size: 40px;
   color: #22C984;
 
-  
 `;
-
 const Title = styled.h1`
   position: absolute;
   top: 0%;

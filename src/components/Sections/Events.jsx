@@ -12,8 +12,10 @@ const Section2Styled = styled.div`
 
   background: linear-gradient( #CDC2A4, #171615);
     background: linear-gradient( #2e2d2a, #171615);
+     box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
+inset 20px 20px 240px rgba(0, 0, 0, 1);
 
-  min-height: 800px; // Adjust this value as needed
+  min-height: 850px; // Adjust this value as needed
   justify-content: center;
 `;
 
