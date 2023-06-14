@@ -7,10 +7,13 @@ import "src/styles/styles.module.scss";
 const Section2Styled = styled.div`
   background: linear-gradient(#2e2d2a, #171615);
   padding-top: 100px;
-  padding-bottom: 500px;
+  padding-bottom: 470px;
   display: flex;
   justify-content: center;
   align-items: center;
+     box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
+inset 20px 20px 240px rgba(0, 0, 0, 1);
+  
   @media (max-width: 600px) {
         padding-bottom: 00px;
 
@@ -27,6 +30,7 @@ const ImageWrapper = styled.div`
   padding: 10px;
   overflow: hidden;
   width: 75%;
+  
               box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
 
 `;
@@ -85,6 +89,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  
 
   @media (max-width: 600px) {
     flex-direction: column;

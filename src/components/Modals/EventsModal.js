@@ -36,21 +36,24 @@ export default function EventsModal({ isOpen, onRequestClose }) {
             contentLabel="Signup"
             style={{
                 overlay: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)'
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    zIndex: 1000 // Set a higher value for the overlay
+
                 },
                 content: {
                     width: '80%',
-                    height: '60%',
+                    height: '80%',
                     margin: 'auto',
                     borderRadius: '20px',
-                    overflowX: 'hidden',
+                    overflowX: 'none',
                     padding: '5%',
                     boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between',
+                    zIndex: 1001, // Set a higher value for the content
+
                     '@media (max-width: 600px)': {
-                        width: '90%',
+                        width: '90%'
                     }
                 }
             }}

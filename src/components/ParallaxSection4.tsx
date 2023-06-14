@@ -30,7 +30,7 @@ const ParallaxImage = () => {
 
     return (
         <Section1Styled>
-            <Parallax strength={500}>
+            <Parallax strength={400}>
                 <Background className="custom-bg">
                     <div
                         style={{
@@ -38,7 +38,7 @@ const ParallaxImage = () => {
                             width: 2000,
                             position: 'relative',
                             backgroundImage:
-                                "url('https://cdn.discordapp.com/attachments/1090123749300379740/1118414345269948446/litha-bacchi-highresscreenshot00041.jpg')",
+                                "url('https://cdn.discordapp.com/attachments/1090123749300379740/1118416355549515797/litha-bacchi-highresscreenshot00040.jpg')",
                         }}
                     >
                         <div
@@ -48,13 +48,12 @@ const ParallaxImage = () => {
                                 bottom: 0,
                                 left: 0,
                                 right: 0,
-                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
                             }}
                         />
                     </div>
                 </Background>
                 <div style={{ textAlign: 'center' }}>
-                    <br />
                     <br />
                     <br />
                     <FadeInDiv ref={fadeRef} isVisible={isVisible}>
@@ -67,20 +66,18 @@ const ParallaxImage = () => {
                                 opacity: isVisible ? 1 : 0,
                             }}
                         >
-                            “It is not the ship so much as the skillful sailing that assures the prosperous voyage.”
+                            “...So throw off the bowlines. Sail away from safe harbor.”
                         </h2>
                         <p style={{
                             transition: 'opacity 1s ease-in-out',
                             opacity: isVisible ? 1 : 0,
                         }}>
-                            George William Curtis
+                            Mark Twain
                         </p>
                     </FadeInDiv>
                     <br />
                     <br />
-                    <br />
-                    <br />
-                    <br />
+
                 </div>
             </Parallax>
         </Section1Styled>

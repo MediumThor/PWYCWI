@@ -16,13 +16,14 @@ const Section1Styled = styled.div`
   width: 100%;
   height: 100vh;
   padding-top: 130px;
+  //background-color: #CDC2A4;
   background: linear-gradient( #2e2d2a, #171615);
   //background: linear-gradient( 45deg, #87cefa, #000080);
   //background: linear-gradient( #97b0bb, #97b0bb);
   //background: linear-gradient( #BBAC83, #CDC2A4);
     //background: linear-gradient( #CDC2A4, #BBAC83);
 
-
+box-shadow: inset -60px -60px 40px rgba(0, 0, 0, .3),inset 60px 60px 40px rgba(0, 0, 0, .3);
 
  
   
@@ -51,7 +52,6 @@ margin-bottom: 30px;
   scroll-snap-align: start;
    border-radius: 5px;
     border: 6px solid black;
-              box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
  
  
  @media (max-width: 940px) {
@@ -76,7 +76,8 @@ margin-bottom: 30px;
 const PageContainer = styled.div`
   flex: none;
   width: 90vw;
-  height: 75vh;
+  height: 74vh;
+  margin-top: -2px;
   scroll-snap-align: start;
   overflow-y: hidden; 
   overflow-x: hidden; 

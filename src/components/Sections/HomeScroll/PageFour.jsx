@@ -32,7 +32,19 @@ const BackgroundBox = styled.div`
   font-size: 40px;
   color: #22C984;
 
+  ::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .8),
+inset 100px 40px 90px rgba(0, 0, 0, .8);
+  }
 `;
+
+
 const Title = styled.h1`
   position: absolute;
   top: 0%;
@@ -99,24 +111,7 @@ display: none;
   }
 `;
 
-const ModalTitle = styled.h2`
 
-margin-top: -40px;
- @media (max-width: 600px) {
-    margin-top: -20px;
-  }
-`;
-
-
-
-const FlexContainer = styled.div`
- position: absolute;
-  top: 20%;
-  left: 60%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-`;
 
 
 
@@ -131,6 +126,8 @@ const ButtonContainer = styled.div`
   justify-items: center;  // center items horizontally
   align-items: center;    // center items vertically
   gap: 1.2em;
+      z-index: +1;  // this line is added
+
 
    @media (max-width: 1200px) {
   grid-template-rows: repeat(1, 3fr);     // create 2 equal height rows
@@ -223,6 +220,8 @@ const StyledAlert = styled(Alert)`
   left: 10%; /* Center it on the screen (remaining width divided by two) */
   top: 10%; /* Move it down a bit */
   height: auto; /* Make it adjust to the content */
+        z-index: +1;  // this line is added
+
 `;
 
 

@@ -28,6 +28,17 @@ const BackgroundBox = styled.div`
   height: 670px;
   font-size: 40px;
   color: #22C984;
+
+  ::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .8),
+inset 100px 40px 90px rgba(0, 0, 0, .8);
+  }
 `;
 
 const Title = styled.h1`
@@ -167,6 +178,7 @@ const ButtonContainer = styled.div`
   flex-direction: row; 
   justify-content: center; 
   gap: 1.5em;
+      z-index: +1;  // this line is added
 
 
 

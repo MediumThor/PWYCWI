@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
-
+import { useEffect, useRef } from 'react';
 
 const Section1Styled = styled.div`
   background: linear-gradient(45deg, #171615 50%, #2e2d2a 100%);
-  padding-top: 30px;
+  padding-top: 0px;
   padding-bottom: 70px;
   margin-bottom: 0px;
   margin-top: -0px
@@ -16,6 +16,64 @@ const Section1Styled = styled.div`
          padding-top: 60px    }
   
 `;
+
+
+
+
+const scrollIn = keyframes`
+  0% {
+    transform: translateX(280%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideInFromLeft = keyframes`
+  0% {
+    transform: translateX(-250%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+`;
+
+const ServicesBackground = styled.div`
+  display: flex; // Center the child element
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 60px;
+  padding-top: 160px;
+  margin-top: -90px;
+  margin-bottom: -90px;
+  background-color: black;
+  box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.5);
+`;
+
+const ServicesTitle = styled.h1`
+  text-align: center;
+  font-size: 3em;
+  color: #E8E3D5;
+  overflow: hidden;
+  padding-top: 20px;
+  margin-top: -180px;
+  padding-bottom: 10px;
+  margin-bottom: -90px;
+  background-color: Black;
+    transform: translateX(-100%);  // Position the text off the screen initially
+
+
+  ${props => props.isIntersecting && css`
+    animation: ${slideInFromLeft} 1.2s ease-in-out forwards;
+  `}
+`;
+
 
 
 const MainWrapper = styled.div`
@@ -79,11 +137,12 @@ const ImageWrapper = styled.div`
   
 `;
 
-const imageFadeIn = keyframes`
-  0% {
+
+const fadeIn = keyframes`
+  from {
     opacity: 0;
   }
-  100% {
+  to {
     opacity: 1;
   }
 `;
@@ -94,7 +153,7 @@ const Image = styled.img`
   object-fit: cover;
   border-radius: 10px; // Added border-radius
   // Apply the fade-in animation
-  animation: ${imageFadeIn} 2.8s ease-in-out;
+  animation: ${fadeIn} 2.8s ease-in-out;
 `;
 
 const TabTitle = styled.div`
@@ -105,14 +164,7 @@ const TabTitle = styled.div`
   opacity: ${props => props.expanded ? '1' : '1'}; // Added opacity change on expand
 `;
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
+
 
 const TabDescription = styled.div`
   flex: ${props => props.expanded ? '20' : '0'};
@@ -143,15 +195,41 @@ const TabDescription = styled.div`
 
 export default function Section1() {
   const [activeTab, setActiveTab] = useState(0);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const titleRef = useRef(null);
+
+
   const images = [
     'https://media.discordapp.net/attachments/1090123749300379740/1108561597561057310/Harbor.jpg?width=1382&height=1036',
     'https://cdn.discordapp.com/attachments/1090123749300379740/1108617807920386109/IMG_3937.jpg',
     'https://media.discordapp.net/attachments/1090123749300379740/1108561598282481664/Karisma.jpg?width=1382&height=1036'
   ];
 
+  useEffect(() => {
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsIntersecting(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.unobserve(titleRef.current);
+  }, []); // empty dependency array to run effect once
+
+
   return (
     <Section1Styled id="section1">
+      <ServicesBackground>
+        <ServicesTitle isIntersecting={isIntersecting} ref={titleRef}>Services</ServicesTitle>
+      </ServicesBackground>
+
+
+
       <MainWrapper>
+
         <TabWrapper>
           <Tab expanded={activeTab === 0} onClick={() => setActiveTab(0)}>
             <TabTitle expanded={activeTab === 0}>Cruising & Fishing</TabTitle>

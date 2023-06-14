@@ -18,6 +18,8 @@ import Cam from '../components/Sections/Cam';
 import SectionWithVideo from '../components/Sections/VideoSection';
 import ParallaxImage from '../components/ParallaxSection1';
 import ParallaxImage2 from '../components/ParallaxSection2';
+import ParallaxImage3 from '../components/ParallaxSection3';
+import ParallaxImage4 from '../components/ParallaxSection4';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,10 +97,12 @@ export default function Home() {
           <SectionHome />
           <ParallaxImage />
           <SectionWithVideo />
+          <ParallaxImage3 />
           <Services />
           <ParallaxImage2 />
           <Events />
           {/**<Porthole />**/}
+          <ParallaxImage4 />
           <Weather />
           <Cam />
           <Contact />

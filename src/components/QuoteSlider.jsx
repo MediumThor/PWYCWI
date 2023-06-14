@@ -61,9 +61,18 @@ const quotes = [
         quote: "The sooner we learn to be jointly responsible, the easier the sailing will be.",
         author: "Ella Maillart",
     },
+    {
+        quote: "It isn't that life ashore is distasteful to me. But life at sea is better.",
+        author: "Francis Drake",
+    },
+    {
+        quote: "A sailor is an artist whose medium is the wind.",
+        author: "Webb Chiles",
+    },
+
+]
 
 
-];
 
 const QuoteSlider = () => (
     <SliderWrapper>

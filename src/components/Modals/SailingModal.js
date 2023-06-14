@@ -82,7 +82,9 @@ export default function SailingModal({ isOpen, onRequestClose }) {
       contentLabel="Signup"
       style={{
         overlay: {
-          backgroundColor: 'rgba(0, 0, 0, 0.7)'
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          zIndex: 1000 // Set a higher value for the overlay
+
         },
         content: {
           width: '80%',
@@ -94,6 +96,8 @@ export default function SailingModal({ isOpen, onRequestClose }) {
           boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.9)',
           display: 'flex',
           flexDirection: 'column',
+          zIndex: 1001, // Set a higher value for the content
+
           '@media (max-width: 600px)': {
             width: '90%'
           }

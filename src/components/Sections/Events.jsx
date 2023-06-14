@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+import styled, { keyframes, css } from 'styled-components';
+import { useRef, useState } from 'react';
 
 
 
@@ -32,6 +32,52 @@ padding-top: 120px;
 `;
 
 
+
+const slideInFromLeft = keyframes`
+ 100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+ 
+`;
+
+
+const ServicesBackground = styled.div`
+  display: flex; // Center the child element
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 60px;
+  padding-top: 160px;
+  margin-top: -90px;
+  margin-bottom: -90px;
+  background-color: black;
+  box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.5);
+`;
+
+const ServicesTitle = styled.h1`
+
+  text-align: center;
+  font-size: 3em;
+  color: #E8E3D5;
+  overflow: hidden;
+  padding-top: 20px;
+  margin-top: -180px;
+  padding-bottom: 10px;
+  margin-bottom: -90px;
+  background-color: Black;
+  transform: translateY(100%);
+
+
+  ${props => props.isIntersecting && css`
+    animation: ${slideInFromLeft} 1.2s ease-in-out forwards;
+  `}
+`;
 const FacebookFeedWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -139,6 +185,25 @@ const events = [
 ];
 
 export default function Section2() {
+
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsIntersecting(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.unobserve(titleRef.current);
+  }, []); // empty dependency array to run effect once
+
+
   var settings = {
     dots: true,
     infinite: true,
@@ -179,6 +244,9 @@ export default function Section2() {
   return (
     <Section2Styled id="section2">
       <main>
+        <ServicesBackground>
+          <ServicesTitle isIntersecting={isIntersecting} ref={titleRef}>Events</ServicesTitle>
+        </ServicesBackground>
         <Wrapper>
           <LeftDiv>
           </LeftDiv>

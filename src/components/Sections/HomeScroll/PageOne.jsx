@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "src/styles/Home.module.scss";
 import styled from 'styled-components';
 import styles from 'src/styles/Home.module.scss';
 import { Parallax, Background } from "react-parallax";
-import { useState, useEffect } from 'react'
 import { ethers, BigNumber } from "ethers"
 import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core'
 import { Link } from 'react-scroll';
@@ -18,6 +17,206 @@ import SailingModal from '../../Modals/SailingModal';
 import { Alert, AlertTitle } from '@mui/material';
 
 
+
+
+const Section1Styled = styled.div`
+heigth: 670px;
+  width:100%;
+  
+  background-color: #ffffff;
+`;
+
+const BackgroundBox = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 670px;
+  font-size: 40px;
+  color: #22C984;
+
+  ::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .8),
+inset 100px 40px 90px rgba(0, 0, 0, .8);
+  }
+`;
+
+const Title = styled.h1`
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  font-size: 1.7em;
+  font-weight: bold;
+  color: #E8E3D5;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    transition: opacity 2s ease-in-out;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+
+
+   @media (max-width: 500px) {
+    height: 150px;  // 50% of the original height
+    font-size: 1.3em;
+  }
+
+
+   @media (max-width: 600px) {
+    height: 200px;  // 50% of the original height
+      left: 5%;
+
+  }
+ @media (max-width: 400px) {
+    font-size: .8em;
+    left: 8%;
+
+  }
+`;
+
+const Location = styled.h1`
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  font-size: .7em;
+  font-weight: bold;
+  color: #FAF9F6;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+
+
+   @media (max-width: 600px) {
+    height: 200px;  // 50% of the original height
+    top: 40%;
+  }
+  @media (max-width: 400px) {
+    height: 80px;  // 50% of the original height
+    top: 25%;
+    left: 10%;
+    font-size: .7em;
+  }
+`;
+
+const Logo = styled.img`
+  position: absolute;
+  top: 10%;  
+  left: 65%;  
+  height: 320px; 
+  width: auto;
+
+   @media (max-width: 1000px) {
+    display: none;
+  }
+
+
+`;
+
+const ModalTitle = styled.h2`
+
+margin-top: -40px;
+ @media (max-width: 600px) {
+    margin-top: -20px;
+  }
+`;
+
+
+
+const FlexContainer = styled.div`
+ position: absolute;
+  top: 20%;
+  left: 60%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+`;
+
+
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  top: 65%;  
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row; 
+  justify-content: center; 
+  gap: 1.5em;
+        z-index: +1;  // this line is added
+
+
+    @media (max-width: 940px) {
+    top: 55%; 
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: .1em;
+  }
+
+    @media (max-width: 500px) {
+    gap: .1em;
+
+    
+  }
+  @media (max-width: 400px) {
+    flex-direction: column;  // make buttons display in a column
+    align-items: center;  // center buttons vertically
+    grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
+    display: grid; // switch to grid display
+    gap: .2em;
+    top: 55%; 
+    
+  }
+`;
+
+const StyledButton = styled.button`
+    // add this line to set a fixed height
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+  z-index: 2;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  border: 2px solid #FAF9F6;
+  background-color: rgb(0,0,0,0.7);
+  color: #E8E3D5;
+  padding: 10px 20px;
+  cursor: pointer;
+  height: 80px;
+    width: 170px;
+      transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
+
+
+  &:hover {
+    color: #996515;
+    border-color: #87CEFA;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+      background-color: rgb(0,0,0,0.9);
+  }
+
+  @media (max-width: 700px) {
+    font-size: 1rem; // decrease font size
+    padding: 8px 16px; // decrease padding
+    margin: 0.5em;
+  }
+   @media (max-width: 640px) {
+    font-size: .7rem; // decrease font size
+    padding: 5px 25px; // decrease padding
+    height: 50px;
+    width: 100px;
+  }
+`;
+
+const StyledAlert = styled(Alert)`
+  position: absolute;
+    width: 40% !important; /* Make it 60% of the frame */
+  left: 50%; /* Center it on the screen (remaining width divided by two) */
+  top: 10%; /* Move it down a bit */
+  height: auto; /* Make it adjust to the content */
+        z-index: +1;  // this line is added
+
+`;
+
+
 export default function PageOne() {
 
   const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
@@ -28,7 +227,30 @@ export default function PageOne() {
   const [showSecondAlert, setShowSecondAlert] = useState(true);
   const [showThirdAlert, setShowThirdAlert] = useState(true);
 
+  const titleRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      });
+    });
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
   const handleCloseAlert = () => {
     setShowAlert(false);
   };
@@ -116,8 +338,9 @@ export default function PageOne() {
 
 
 
-            <Title>Port Washington<br />Yacht Club</Title>
-            <Location>Port Washington,WI</Location>
+            <Title ref={titleRef} isVisible={isVisible}>
+              Port Washington<br />Yacht Club
+            </Title>            <Location>Port Washington,WI</Location>
             <ButtonContainer>
 
               <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
@@ -138,189 +361,5 @@ export default function PageOne() {
   );
 }
 
-
-const Section1Styled = styled.div`
-heigth: 670px;
-  width:100%;
-  
-  background-color: #ffffff;
-`;
-
-const BackgroundBox = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 670px;
-  font-size: 40px;
-  color: #22C984;
-
- 
-    box-shadow: inset -100px -40px 20px rgba(0, 0, 0, 1),
-inset 100px 40px 0px rgba(0, 0, 0, 1);
-  }
-`;
-
-const Title = styled.h1`
-  position: absolute;
-  top: 0%;
-  left: 10%;
-  font-size: 1.7em;
-  font-weight: bold;
-  color: #E8E3D5;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-
-   @media (max-width: 500px) {
-    height: 150px;  // 50% of the original height
-    font-size: 1.3em;
-  }
-
-
-   @media (max-width: 600px) {
-    height: 200px;  // 50% of the original height
-      left: 5%;
-
-  }
- @media (max-width: 400px) {
-    font-size: .8em;
-    left: 8%;
-
-  }
-`;
-
-const Location = styled.h1`
-  position: absolute;
-  top: 30%;
-  left: 15%;
-  font-size: .7em;
-  font-weight: bold;
-  color: #FAF9F6;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-
-
-   @media (max-width: 600px) {
-    height: 200px;  // 50% of the original height
-    top: 40%;
-  }
-  @media (max-width: 400px) {
-    height: 80px;  // 50% of the original height
-    top: 25%;
-    left: 10%;
-    font-size: .7em;
-  }
-`;
-
-const Logo = styled.img`
-  position: absolute;
-  top: 10%;  
-  left: 65%;  
-  height: 320px; 
-  width: auto;
-
-   @media (max-width: 1000px) {
-    display: none;
-  }
-
-
-`;
-
-const ModalTitle = styled.h2`
-
-margin-top: -40px;
- @media (max-width: 600px) {
-    margin-top: -20px;
-  }
-`;
-
-
-
-const FlexContainer = styled.div`
- position: absolute;
-  top: 20%;
-  left: 60%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-`;
-
-
-
-const ButtonContainer = styled.div`
-  position: absolute;
-  top: 65%;  
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: row; 
-  justify-content: center; 
-  gap: 1.5em;
-
-    @media (max-width: 940px) {
-    top: 55%; 
-  }
-
-  @media (max-width: 700px) {
-    flex-direction: row;
-    justify-content: center;
-    gap: .1em;
-  }
-
-    @media (max-width: 500px) {
-    gap: .1em;
-
-    
-  }
-  @media (max-width: 400px) {
-    flex-direction: column;  // make buttons display in a column
-    align-items: center;  // center buttons vertically
-    grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
-    display: grid; // switch to grid display
-    gap: .2em;
-    top: 55%; 
-    
-  }
-`;
-
-const StyledButton = styled.button`
-    // add this line to set a fixed height
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
-  z-index: 2;
-  font-size: 1.4rem;
-  border-radius: 10px;
-  border: 2px solid #FAF9F6;
-  background-color: rgb(0,0,0,0.7);
-  color: #E8E3D5;
-  padding: 10px 20px;
-  cursor: pointer;
-  height: 80px;
-    width: 170px;
-      transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
-
-
-  &:hover {
-    color: #996515;
-    border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-      background-color: rgb(0,0,0,0.9);
-  }
-
-  @media (max-width: 700px) {
-    font-size: 1rem; // decrease font size
-    padding: 8px 16px; // decrease padding
-    margin: 0.5em;
-  }
-   @media (max-width: 640px) {
-    font-size: .7rem; // decrease font size
-    padding: 5px 25px; // decrease padding
-    height: 50px;
-    width: 100px;
-  }
-`;
-
-const StyledAlert = styled(Alert)`
-  position: absolute;
-    width: 40% !important; /* Make it 60% of the frame */
-  left: 50%; /* Center it on the screen (remaining width divided by two) */
-  top: 10%; /* Move it down a bit */
-  height: auto; /* Make it adjust to the content */
-`;
 
 

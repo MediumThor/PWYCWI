@@ -37,6 +37,7 @@ export default function SectionWithVideo() {
 
     return (
         <SectionStyled id="sectionWithVideo">
+
             <VideoWrapper>
                 <video ref={videoRef} muted loop>
                     <source src="https://cdn.discordapp.com/attachments/1090123749300379740/1117675999186915358/Sailing1.mp4" type="video/mp4" />
@@ -54,7 +55,7 @@ const SectionStyled = styled.div`
   min-height: 600px;
   justify-content: center;
   
- box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
+     box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
 inset 20px 20px 240px rgba(0, 0, 0, 1);
 `;
 
