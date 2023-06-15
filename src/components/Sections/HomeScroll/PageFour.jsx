@@ -290,7 +290,11 @@ export default function PageFour() {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-  }); const notify2 = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Click <a href="https://www.ussailing.org/competition/rules-officiating/the-racing-rules-of-sailing-2021-2024/#the-rules" target="_blank" rel="noopener noreferrer">here </a>to get the rules App</div>, {
+  });
+
+
+
+  const notify2 = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Click <a href="https://www.ussailing.org/competition/rules-officiating/the-racing-rules-of-sailing-2021-2024/#the-rules" target="_blank" rel="noopener noreferrer">here </a>to get the rules App</div>, {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -312,6 +316,7 @@ export default function PageFour() {
             bgImageAlt="Background"
             bgImageStyle={{ backgroundSize: 'cover' }}
           >
+
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
             <Title>PWYC<br />Sailing Info</Title>
@@ -327,7 +332,6 @@ export default function PageFour() {
               {/**  <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> */}
 
             </ButtonContainer>
-            <ToastContainer />
 
             {showAlert && (
               <StyledAlert onClose={handleCloseAlert} severity="info" style={{ top: '45%' }}>
