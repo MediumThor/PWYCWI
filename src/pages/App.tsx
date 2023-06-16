@@ -212,8 +212,7 @@ export default function Home() {
   const notifyWind = () => toast(
     <div>
       <iframe
-        src="https://widgets.sailflow.com/widgets/web/conditions?spot_id=12074&units_wind=mph&units_temp=F&width=300&height=400&color=0A2946&name=Port Washington&activity=Sail&app=sailflow"
-        width="300"
+        src="https://widgets.sailflow.com/widgets/web/conditions?spot_id=12074&units_wind=kts&units_temp=F&width=300&height=400&color=0A2946&name=Port Washington&activity=Sail&app=sailflow"
         height="400"
         scrolling="no"
         title="Sailflow Widget"
@@ -221,7 +220,7 @@ export default function Home() {
     </div>,
     {
       position: "top-right",
-      autoClose: 10000,
+      autoClose: 6000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -247,7 +246,7 @@ export default function Home() {
     </div>,
     {
       position: "bottom-left",
-      autoClose: 10000,
+      autoClose: 6000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
