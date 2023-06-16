@@ -5,8 +5,13 @@ import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { StylesProvider, ServerStyleSheets } from '@material-ui/styles';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { AuthProvider } from '../context/AuthContext';
+import { SessionProvider } from 'next-auth/react';
+import GoogleProvider from "next-auth/providers/google";
+
 
 class MyApp extends App {
+
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -28,11 +33,16 @@ class MyApp extends App {
           <ParallaxProvider>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <Component {...pageProps} />
+            <AuthProvider>
+
+              <SessionProvider session={pageProps.session}>
+                <Component {...pageProps} />
+              </SessionProvider>
+            </AuthProvider>
+
           </ParallaxProvider>
         </StylesProvider>
       </React.Fragment>
-
     );
   }
 }

@@ -264,6 +264,7 @@ export default function RaceResultsModal({ isOpen, onRequestClose }) {
           {list(anchor)}
         </SwipeableDrawer>
         <Results>
+
           <embed src={selectedFile} width="100%" height="600" type="application/pdf" />
         </Results>
 

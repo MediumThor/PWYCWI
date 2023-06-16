@@ -39,8 +39,8 @@ const BackgroundBox = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .8),
-inset 100px 40px 90px rgba(0, 0, 0, .8);
+    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .6),
+inset 100px 40px 90px rgba(0, 0, 0, .6);
   }
 `;
 
@@ -179,11 +179,10 @@ left: %;
 
 
 const StyledButton = styled.button`
-    // add this line to set a fixed height
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
   font-size: 1.4rem;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
   color: #E8E3D5;
@@ -197,10 +196,9 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
       background-color: rgb(0,0,0,0.9);
   }
-
   @media (max-width: 700px) {
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding

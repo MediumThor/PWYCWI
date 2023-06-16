@@ -29,6 +29,11 @@ const StyledTextBody = styled.p`
 
 `;
 
+const StyledLink = styled.a`
+  color: #0000EE;
+  text-decoration: underline;
+`;
+
 const StyledButton = styled.button`
   box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
   z-index: 2;
@@ -47,10 +52,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledLink = styled.a`
-  color: #0000EE;
-  text-decoration: underline;
-`;
+
 
 const ContentWrapper = styled.div`
   position: relative;

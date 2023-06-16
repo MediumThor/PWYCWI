@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "src/styles/Home.module.scss";
 import styled from 'styled-components';
 import styles from 'src/styles/Home.module.scss'
 import { Parallax, Background } from "react-parallax";
-import { useState, useEffect } from 'react'
-import { ethers, BigNumber } from "ethers"
-import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core'
 import { Link } from 'react-scroll';
 import SmallButton from "src/components/CustomButtons/SmallButton.js";
-import { Events } from '../Events';
 import Modal from 'react-modal'; // import the react-modal package
 import HistoryModal from '../../Modals/HistoryModal';
-import NewsModal from '../../Modals/NewsModal';
 import EventsModal from '../../Modals/EventsModal';
 import MembershipModal from '../../Modals/MembershipModal';
 import SignupModal from '../../Modals/SignupModal';
 
-const Section1Styled = styled.div`
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Button } from '@mui/material';
+import HistoryDialog from '../../Dialog/History';
+import MembershipDialog from '../../Dialog/Membership';
 
-  width:100%;
+const Section1Styled = styled.div`
+  width: 100%;
   background-color: #ffffff;
 `;
 
@@ -36,8 +38,8 @@ const BackgroundBox = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .8),
-inset 100px 40px 90px rgba(0, 0, 0, .8);
+    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .6),
+      inset 100px 40px 90px rgba(0, 0, 0, .6);
   }
 `;
 
@@ -222,11 +224,10 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-    // add this line to set a fixed height
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
   font-size: 1.4rem;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
   color: #E8E3D5;
@@ -240,7 +241,7 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
       background-color: rgb(0,0,0,0.9);
   }
 
@@ -257,15 +258,82 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledText = styled.p`
+  text-align: center;
+    color: black;
 
+`;
+const StyledLink = styled.a`
+  color: #0000EE;
+  text-decoration: underline;
+`;
 
+const StyledTextBody = styled.p`
+  text-align: center;
+    color: black;
+    margin-bottom: 20%;
 
-export default function PageTwo() {
+`;
 
+const PageTwo = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
+
+  const [membershipOpen, setMembershipOpen] = useState(false);
+
+  const [scroll, setScroll] = useState('paper');
+  const descriptionElementRef = useRef(null);
+  const [historyOpen, setHistoryOpen] = useState(false);
+
+
+  const handleHistoryDialogOpen = () => {
+    setHistoryOpen(true);
+  };
+
+  useEffect(() => {
+    if (historyOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [historyOpen]);
+
+  const handleHistoryClose = () => {
+    setHistoryOpen(false);
+  };
+
+
+
+
+  const handleMembershipDialogOpen = () => {
+    setMembershipOpen(true);
+  };
+
+  useEffect(() => {
+    if (membershipOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [membershipOpen]);
+
+  const handleMembershipClose = () => {
+    setMembershipOpen(false);
+  };
+
+
+
+
+  const handleClickOpen = (scrollType) => () => {
+    setOpen(true);
+    setScroll(scrollType);
+  };
+
+
 
   const handleSignupOpen = () => {
     setIsSignupModalOpen(true);
@@ -291,15 +359,6 @@ export default function PageTwo() {
     setIsMemberModalOpen(false);
   };
 
-  const handleHistoryOpen = () => {
-    setIsHistoryModalOpen(true);
-  };
-
-  const handleHistoryClose = () => {
-    setIsHistoryModalOpen(false);
-  };
-
-
 
   return (
     <Section1Styled id="sectionHome">
@@ -316,9 +375,19 @@ export default function PageTwo() {
             <Caption>Embrace the thrill of sailing and boating while enjoying exclusive member benefits like access to special events, networking opportunities, and a community of like-minded enthusiasts.</Caption>
             <ButtonContainer>
 
-              <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleSignupOpen}>Sign Up</StyledButton> {/* New Button */}
+
+
+
+              <StyledButton onClick={handleMembershipDialogOpen} style={{ color: '#87faa8' }}>Become a Member</StyledButton>
+              <MembershipDialog open={membershipOpen} onClose={handleMembershipClose} scroll="paper" />
+
+              <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
+              <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />
+
+
+              <StyledButton onClick={handleSignupOpen}>Sign Up</StyledButton>
+
+
 
             </ButtonContainer>
             <SignupModal isOpen={isSignupModalOpen} onRequestClose={handleSignupClose} />
@@ -328,45 +397,9 @@ export default function PageTwo() {
             <div style={{ height: '100vh' }} />
           </Parallax>
         </BackgroundBox>
-        {/**<div className={styles.grid3}>
-
-          <SmallButton color="transparent"
-          >
-            <Link to="section1" className={styles.smallcard3} spy={false} smooth={true} duration={1000}>
-              <h2>Services </h2>
-
-            </Link>
-          </SmallButton>
-          <SmallButton color="transparent"
-          >
-            <Link to="section2" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Info </h2>
-              <p> </p>
-            </Link>
-          </SmallButton>
-
-          <SmallButton color="transparent"
-
-          >
-            <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Contact</h2>
-              <p>  </p>
-            </Link>
-          </SmallButton>
-
-          <SmallButton color="transparent"
-            target="_blank"
-          >
-            <Link to="section3" className={styles.smallcard3} smooth={true} duration={1000}>
-              <h2>Stake</h2>
-              <p>
-
-              </p>
-            </Link>
-          </SmallButton>
-        </div> */}
-
       </main>
     </Section1Styled >
   );
-}
+};
+
+export default PageTwo;

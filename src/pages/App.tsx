@@ -149,7 +149,7 @@ export default function Home() {
       position: 'fixed',
       top: '20%', // Adjust as needed
       left: '0',
-      width: '50px', // Adjust as needed
+      width: '55px', // Adjust as needed
       height: '75px', // Adjust as needed
       backgroundImage: `url('/assets/carbon fibre.jpeg')`,
       backgroundSize: '180%', // Adjust as needed
@@ -193,7 +193,7 @@ export default function Home() {
       width: "170px",
       height: "600px",
       border: "0",
-      borderRadius: "0px",
+      borderRadius: "10px",
       padding: "0.625rem 0",
       marginBottom: "20px",
       color: "#d6d3c2",
@@ -277,9 +277,7 @@ export default function Home() {
     }
   );
 
-  const StyledMembershipModal = styled(MembershipModal)`
-  z-index: 999999; // adjust as needed
-`;
+
 
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState<DialogProps['scroll']>('paper');
@@ -473,6 +471,10 @@ const StyledText = styled.p`
     color: black;
 
 `;
+const StyledLink = styled.a`
+  color: #0000EE;
+  text-decoration: underline;
+`;
 
 const StyledTextBody = styled.p`
   text-align: center;
@@ -481,10 +483,7 @@ const StyledTextBody = styled.p`
 
 `;
 
-const StyledLink = styled.a`
-  color: #0000EE;
-  text-decoration: underline;
-`;
+
 
 
 const TitleWrapper = styled.div`

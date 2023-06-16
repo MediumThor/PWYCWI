@@ -200,8 +200,13 @@ export default function Section2() {
       observer.observe(titleRef.current);
     }
 
-    return () => observer.unobserve(titleRef.current);
+    return () => {
+      if (titleRef.current instanceof Element) {
+        observer.unobserve(titleRef.current);
+      }
+    };
   }, []); // empty dependency array to run effect once
+
 
 
   var settings = {

@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import { useRef } from 'react';
 import "src/styles/Home.module.scss";
 import styled from 'styled-components';
 import styles from 'src/styles/Home.module.scss'
@@ -18,6 +19,7 @@ import EventsModal from '../../Modals/EventsModal';
 import MembershipModal from '../../Modals/MembershipModal';
 import OfficersModal from '../../Modals/OfficersModal';
 import BoardModal from '../../Modals/BoardModal';
+import HistoryDialog from '../../Dialog/History';
 
 const Section1Styled = styled.div`
 
@@ -39,8 +41,8 @@ const BackgroundBox = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .8),
-inset 100px 40px 90px rgba(0, 0, 0, .8);
+    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .6),
+inset 100px 40px 90px rgba(0, 0, 0, .6);
   }
 `;
 
@@ -194,11 +196,10 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-    // add this line to set a fixed height
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
   font-size: 1.4rem;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
   color: #E8E3D5;
@@ -212,7 +213,7 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
       background-color: rgb(0,0,0,0.9);
   }
 
@@ -238,6 +239,29 @@ export default function PageThree() {
   const [isOfficersModalOpen, setIsOfficersModalOpen] = useState(false);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
+
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const descriptionElementRef = useRef(null);
+
+
+
+
+  const handleHistoryDialogOpen = () => {
+    setHistoryOpen(true);
+  };
+
+  useEffect(() => {
+    if (historyOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [historyOpen]);
+
+  const handleHistoryClose = () => {
+    setHistoryOpen(false);
+  };
 
   const handleBoardOpen = () => {
     setIsBoardModalOpen(true);
@@ -267,9 +291,6 @@ export default function PageThree() {
     setIsHistoryModalOpen(true);
   };
 
-  const handleHistoryClose = () => {
-    setIsHistoryModalOpen(false);
-  };
 
 
 
@@ -291,13 +312,16 @@ export default function PageThree() {
             <ButtonContainer>
               <StyledButton onClick={handleBoardOpen}>Board Members</StyledButton>
               <StyledButton onClick={handleOfficersOpen}>Officers</StyledButton>
-              <StyledButton onClick={handleHistoryOpen}>Club History</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
+              <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />
+
 
             </ButtonContainer>
             <BoardModal isOpen={isBoardModalOpen} onRequestClose={handleBoardClose} />
             <OfficersModal isOpen={isOfficersModalOpen} onRequestClose={handleOfficersClose} />
             <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
-            <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
+
+
             <div style={{ height: '100vh' }} />
           </Parallax>
         </BackgroundBox>

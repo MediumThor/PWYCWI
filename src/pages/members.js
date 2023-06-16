@@ -9,8 +9,10 @@ import Weather from '../components/Sections/Weather'
 import SectionHome from "src/components/SectionsMembers/MembersSectionHome"
 import styles from 'src/styles/Home.module.scss'
 import styled from 'styled-components'
-import { React, useRef } from "react";
+import { React, useRef, useContext, useEffect } from "react";
 import "src/styles/Home.module.scss";
+import { AuthContext } from '../context/AuthContext';
+import { useRouter } from 'next/router';
 
 
 import "../styles/Home.module.scss";
@@ -18,6 +20,8 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { makeStyles } from '@material-ui/core/styles';
 import Cam from '../components/Sections/Cam';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,9 +55,16 @@ function ScrollToTop() {
 }
 
 export default function Members() {
+  const { isAuthenticated } = useContext(AuthContext);
+  const router = useRouter();
 
 
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/');
+    }
+  }, [isAuthenticated, router]);
 
   return (
 

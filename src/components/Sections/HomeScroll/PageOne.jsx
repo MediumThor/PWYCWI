@@ -16,6 +16,14 @@ import MembershipModal from '../../Modals/MembershipModal';
 import SailingModal from '../../Modals/SailingModal';
 import { Alert, AlertTitle } from '@mui/material';
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Button } from '@mui/material';
+
+import MembershipDialog from '../../Dialog/Membership';
+import LinksDialog from '../../Dialog/Links';
 
 
 
@@ -40,8 +48,8 @@ const BackgroundBox = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .8),
-inset 100px 40px 90px rgba(0, 0, 0, .8);
+    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .6),
+inset 100px 40px 90px rgba(0, 0, 0, .6);
   }
 `;
 
@@ -171,11 +179,10 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-    // add this line to set a fixed height
-  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
   font-size: 1.4rem;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
   color: #E8E3D5;
@@ -189,7 +196,7 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
       background-color: rgb(0,0,0,0.9);
   }
 
@@ -216,6 +223,22 @@ const StyledAlert = styled(Alert)`
 
 `;
 
+const StyledText = styled.p`
+  text-align: center;
+    color: black;
+
+`;
+const StyledLink = styled.a`
+  color: #0000EE;
+  text-decoration: underline;
+`;
+
+const StyledTextBody = styled.p`
+  text-align: center;
+    color: black;
+    margin-bottom: 20%;
+
+`;
 
 export default function PageOne() {
 
@@ -229,6 +252,55 @@ export default function PageOne() {
 
   const titleRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState('paper');
+  const descriptionElementRef = useRef(null);
+  const [linkOpen, setLinkOpen] = useState(false);
+
+
+  const handleLinkDialogOpen = () => {
+    setLinkOpen(true);
+  };
+
+  useEffect(() => {
+    if (linkOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [linkOpen]);
+
+  const handleLinkClose = () => {
+    setLinkOpen(false);
+  };
+
+
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
+
+  const handleClickOpen = (scrollType) => () => {
+    setOpen(true);
+    setScroll(scrollType);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -251,6 +323,8 @@ export default function PageOne() {
       }
     };
   }, []);
+
+
   const handleCloseAlert = () => {
     setShowAlert(false);
   };
@@ -343,13 +417,24 @@ export default function PageOne() {
             </Title>            <Location>Port Washington,WI</Location>
             <ButtonContainer>
 
-              <StyledButton onClick={handleMemberOpen}>Become a Member</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleNewsOpen}>Useful Links</StyledButton> {/* New Button */}
+
+              <MembershipDialog open={open} onClose={handleClose} scroll="paper" />
+
+              <StyledButton onClick={handleOpen} style={{ color: '#87faa8' }}>Become a Member</StyledButton>
+
               <StyledButton onClick={handleSailingOpen}>Race Info</StyledButton> {/* New Button */}
+
+
+              <StyledButton onClick={handleLinkDialogOpen} >Useful Links</StyledButton>
+              <LinksDialog open={linkOpen} onClose={handleLinkClose} scroll="paper" />
+
+
+
+
+
             </ButtonContainer>
             <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
-            <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
             <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />
             <div style={{ height: '100vh' }} />
           </Parallax>

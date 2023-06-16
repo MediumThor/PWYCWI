@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from "react";
+import { useContext } from "react";
 import { Link } from 'react-scroll';
 
 
@@ -35,7 +36,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 import { useRouter } from 'next/router';
 
+import axios from 'axios';
 
+import { AuthContext } from "../../context/AuthContext";
+import { signIn } from 'next-auth/react';
+import SignUp from "../SignUp";
 
 
 const useStyles = makeStyles(styles);
@@ -55,18 +60,42 @@ function HeaderLinks() {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
-
   const router = useRouter();
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
     const username = event.target.elements.username.value;
     const password = event.target.elements.password.value;
-    if (username === 'member' && password === 'password') {
-      setOpen(false);
-      router.push('/members');
-    } else {
+
+    try {
+      const response = await axios.post('/api/auth', { username, password });
+
+      if (response.status === 200) {
+        setIsAuthenticated(true);
+        setOpen(false);
+        router.push('/members');
+      } else {
+        alert('Invalid username or password');
+      }
+    } catch (error) {
+      alert('Invalid username or password');
+    }
+  };
+
+  // New function for handling login with NextAuth
+  const handleSubmitNextAuth = async (event) => {
+    event.preventDefault();
+
+    const username = event.target.elements.username.value;
+    const password = event.target.elements.password.value;
+
+    // SignIn function from NextAuth
+    const response = await signIn('credentials', { username, password, callbackUrl: `${window.location.origin}/members` })
+
+    if (response.error) {
       alert('Invalid username or password');
     }
   };
@@ -174,12 +203,14 @@ function HeaderLinks() {
               />
             </DialogContent>
             <DialogActions>
-              <SmallButton size="sm"
-                color="transparent" onClick={() => setOpen(false)}>
+              <SmallButton size="sm" color="transparent" onClick={() => setOpen(false)}>
                 Cancel
               </SmallButton>
               <SmallButton size="sm" type="submit" color="success">
                 Log in
+              </SmallButton>
+              <SmallButton size="sm" type="button" color="success" onClick={handleSubmitNextAuth}>
+                NextAuth Login
               </SmallButton>
             </DialogActions>
           </form>
