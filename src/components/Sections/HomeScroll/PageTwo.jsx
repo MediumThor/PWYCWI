@@ -118,7 +118,7 @@ const Caption = styled.h2`
       max-width: 80%;
 
     height: 200px;  // Adjust as needed
-    top: 40%;  // Adjust as needed
+    top: 45%;  // Adjust as needed
       left: 10%;
       font-size: .4em;  
 
@@ -207,7 +207,7 @@ const ButtonContainer = styled.div`
       flex-direction: row;
     gap: .1em;
     top: 65%;
-      left: 50%;
+      left: 55%;
 
     
   }
@@ -372,7 +372,7 @@ const PageTwo = () => {
             bgImageAlt="Background"
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
-            <Title>Become A Member<br />of PWYC</Title>
+            <Title>Become a Member<br />of PWYC</Title>
             <Caption>Embrace the thrill of sailing and boating while enjoying exclusive member benefits like access to special events, networking opportunities, and a community of like-minded enthusiasts.</Caption>
             <ButtonContainer>
 

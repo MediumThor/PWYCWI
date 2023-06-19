@@ -25,7 +25,7 @@ padding-top: 120px;
   justify-content: space-between;
   margin: 0 auto;
   width: 80vw;
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
     flex-direction: column;
     width: 100%;
   }
@@ -87,6 +87,10 @@ const FacebookFeedWrapper = styled.div`
   justify-content: center;
   margin-top: 50px;  // Adjust this as needed
   width: 100%;       // Add this line
+
+   @media (max-width: 500px) {
+    display:none;
+  }
 `;
 
 const Caption = styled.h2`
