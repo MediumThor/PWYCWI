@@ -32,16 +32,7 @@ const BackgroundBox = styled.div`
   font-size: 40px;
   color: #22C984;
 
-  ::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .6),
-inset 100px 40px 90px rgba(0, 0, 0, .6);
-  }
+
 `;
 
 

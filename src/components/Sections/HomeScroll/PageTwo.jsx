@@ -31,16 +31,8 @@ const BackgroundBox = styled.div`
   font-size: 40px;
   color: #22C984;
 
-  ::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    box-shadow: inset -100px -90px 60px rgba(0, 0, 0, .6),
-      inset 100px 40px 90px rgba(0, 0, 0, .6);
-  }
+
+
 `;
 
 const Title = styled.h1`
@@ -125,7 +117,7 @@ const Caption = styled.h2`
   }
   @media (max-width: 400px) {
     height: 80px;  // Adjust as needed
-    top: 45%;  // Adjust as needed
+    top: 50%;  // Adjust as needed
     left: 10%;
     font-size: .3em;  // Adjust as needed
   }

@@ -58,6 +58,10 @@ const ServicesBackground = styled.div`
   margin-bottom: -90px;
   background-color: black;
   box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.5);
+
+      @media (max-width: 768px) {
+   display: none;
+  }
 `;
 
 const ServicesTitle = styled.h1`

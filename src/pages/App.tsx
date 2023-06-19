@@ -163,6 +163,9 @@ export default function Home() {
       '&:hover': {
         transform: 'scale(1.1)',
       },
+      [theme.breakpoints.down('sm')]: {
+        top: '35%',
+      },
     },
   }));
 
@@ -437,7 +440,7 @@ export default function Home() {
           >
             {drawer}
           </Drawer>
-          {/* rest of your code */}
+
         </ThemeProvider>
 
 

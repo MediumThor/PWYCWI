@@ -57,6 +57,13 @@ const SectionStyled = styled.div`
   
      box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
 inset 20px 20px 240px rgba(0, 0, 0, 1);
+
+
+      @media (max-width: 768px) {
+     min-height: 00px;
+
+
+  }
 `;
 
 const VideoWrapper = styled.div`
@@ -69,5 +76,11 @@ padding-bottom: -220px;
   video {
     width: 100%;
     height: auto;
+  }
+
+
+      @media (max-width: 768px) {
+   padding-bottom: 20px;
+
   }
 `;
