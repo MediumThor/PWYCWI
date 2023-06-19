@@ -67,7 +67,7 @@ const StyledList = styled(List)`
 
 
 export default function RaceResultsModal({ isOpen, onRequestClose }) {
-  const [selectedFile, setSelectedFile] = useState("/assets/RaceResults/2023/Sat/Saturday 6-10-23 corrected.pdf");
+  const [selectedFile, setSelectedFile] = useState("/assets/RaceResults/2023/Wed/Wednesday 6-14-23.pdf");
   const [anchor, setAnchor] = useState('Past Results');
   const [state, setState] = useState({
     bottom: false
@@ -122,7 +122,9 @@ export default function RaceResultsModal({ isOpen, onRequestClose }) {
 
 
 
-
+              <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-14-23.pdf")}>
+                <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
+              </ListItem>
               <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-7-23.pdf")}>
                 <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
               </ListItem>

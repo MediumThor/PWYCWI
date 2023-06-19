@@ -72,6 +72,10 @@ const ServicesTitle = styled.h1`
   ${props => props.isIntersecting && css`
     animation: ${slideInFromLeft} 1.2s ease-in-out forwards;
   `}
+
+      @media (max-width: 768px) {
+   display: none;
+  }
 `;
 
 

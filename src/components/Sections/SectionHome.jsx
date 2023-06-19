@@ -62,10 +62,13 @@ margin-bottom: 30px;
 
  @media (max-width: 640px) {
                     box-shadow: none;
-                      margin-top: -120px;}
+                      margin-top: -120px;
+                      width: 100vw;
+}
 
  @media (max-width: 500px) {
     margin-top: -120px;
+    
   }
    @media (max-width: 400px) {
     margin-top: -120px;
@@ -81,6 +84,7 @@ const PageContainer = styled.div`
   scroll-snap-align: start;
   overflow-y: hidden; 
   overflow-x: hidden; 
+  
 
   border-radius: 5px;
       border: 1px solid black;
@@ -94,7 +98,10 @@ const PageContainer = styled.div`
 
        @media (max-width: 640px) {
       border-radius: none;
-      border: none;}
+      border: none;
+  width: 100vw;
+
+    }
 
 
 

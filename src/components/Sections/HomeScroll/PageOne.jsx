@@ -37,7 +37,7 @@ heigth: 670px;
 const BackgroundBox = styled.div`
   position: relative;
   width: 100vw;
-  height: 670px;
+  height: 100%;
   font-size: 40px;
   color: #22C984;
 
@@ -204,12 +204,13 @@ const StyledButton = styled.button`
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
     margin: 0.5em;
+    height: 70px;
+    width: 120px;
   }
    @media (max-width: 640px) {
-    font-size: .7rem; // decrease font size
+    font-size: 1rem; // decrease font size
     padding: 5px 25px; // decrease padding
-    height: 50px;
-    width: 100px;
+    
   }
 `;
 
