@@ -92,6 +92,9 @@ export default QuoteSlider;
 const SliderWrapper = styled.div`
     width: 80%;
     margin: 0 auto;
+    @media (max-width: 640px) {
+                  display: none;
+                }
 `;
 
 const Quote = styled.div`

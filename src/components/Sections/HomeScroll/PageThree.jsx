@@ -179,7 +179,7 @@ const ButtonContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
     display: grid; // switch to grid display
     gap: .2em;
-    top: 55%; 
+    top: 50%; 
     left: 50%;
 
     
@@ -187,7 +187,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
   font-size: 1.4rem;
   border-radius: 5px;
@@ -204,7 +204,7 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
       background-color: rgb(0,0,0,0.9);
   }
 

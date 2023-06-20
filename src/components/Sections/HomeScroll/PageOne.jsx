@@ -89,7 +89,7 @@ const Location = styled.h1`
   }
   @media (max-width: 400px) {
     height: 80px;  // 50% of the original height
-    top: 25%;
+    top: 15%;
     left: 10%;
     font-size: .7em;
   }
@@ -163,13 +163,13 @@ const ButtonContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
     display: grid; // switch to grid display
     gap: .2em;
-    top: 55%; 
+    top: 50%; 
     
   }
 `;
 
 const StyledButton = styled.button`
-    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
   font-size: 1.4rem;
   border-radius: 5px;
@@ -186,7 +186,7 @@ const StyledButton = styled.button`
   &:hover {
     color: #996515;
     border-color: #87CEFA;
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
       background-color: rgb(0,0,0,0.9);
   }
 
@@ -211,6 +211,10 @@ const StyledAlert = styled(Alert)`
   top: 10%; /* Move it down a bit */
   height: auto; /* Make it adjust to the content */
         z-index: +1;  // this line is added
+
+         @media (max-width: 700px) {
+   display: none;
+  }
 
 `;
 
@@ -378,6 +382,7 @@ export default function PageOne() {
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
             {showAlert && (
+
               <StyledAlert onClose={handleCloseAlert} severity="info">
                 <AlertTitle>Info</AlertTitle>
                 This is an info alert- We can add notifications here if we want,  — <strong>Like THIS :) (Please let me know what we would like here.('ll add as needed too)'))</strong>
@@ -398,7 +403,6 @@ export default function PageOne() {
                 Alot has been added- Race Info has been updated. We have video. NOR, SI, Course and Registration added.
               </StyledAlert>
             )}
-
 
 
 

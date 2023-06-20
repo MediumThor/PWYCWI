@@ -107,6 +107,34 @@ function ScrollToTop() {
   );
 }
 
+const useIsSmallScreen = () => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 640);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  return isSmallScreen;
+};
+
+
+const RenderOnLargeScreen = ({ children }) => {
+  const isSmallScreen = useIsSmallScreen();
+
+  if (isSmallScreen) {
+    return null;
+  }
+
+  return children;
+};
+
 export default function Home() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState([false, false, false]);
@@ -164,7 +192,7 @@ export default function Home() {
         transform: 'scale(1.1)',
       },
       [theme.breakpoints.down('sm')]: {
-        top: '35%',
+        top: '42%',
       },
     },
   }));
@@ -411,14 +439,31 @@ export default function Home() {
           <ToastContainer />
 
           <SectionHome />
-          <ParallaxImage />
-          <SectionWithVideo />
-          <ParallaxImage3 />
+
+          <RenderOnLargeScreen>
+            <ParallaxImage />
+          </RenderOnLargeScreen>
+
+          <RenderOnLargeScreen>
+            <SectionWithVideo />
+          </RenderOnLargeScreen>
+
+          <RenderOnLargeScreen>
+            <ParallaxImage3 />
+          </RenderOnLargeScreen>
+
           <Services />
-          <ParallaxImage2 />
+
+          <RenderOnLargeScreen>
+            <ParallaxImage2 />
+          </RenderOnLargeScreen>
+
           <Events />
-          {/**<Porthole />**/}
-          <ParallaxImage4 />
+
+          <RenderOnLargeScreen>
+            <ParallaxImage4 />
+          </RenderOnLargeScreen>
+
           <Weather />
           <Cam />
           <Contact />
