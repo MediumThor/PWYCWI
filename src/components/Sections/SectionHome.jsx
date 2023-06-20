@@ -72,6 +72,8 @@ margin-bottom: 30px;
   }
    @media (max-width: 400px) {
     margin-top: -120px;
+  height: 65vh;
+
   }
   
 `;
@@ -100,7 +102,7 @@ const PageContainer = styled.div`
       border-radius: none;
       border: none;
   width: 100vw;
-  height: 67vh;
+  height: 65vh;
 
     }
 
@@ -125,9 +127,7 @@ const ScrollIndicator = styled.button`
         cursor: pointer;
   }
 
- @media (max-width: 640px) {         
-  bottom: 80px; /* You should adjust this value according to your needs */
-}
+
 `;
 
 const IndicatorContainer = styled.div`
@@ -142,7 +142,7 @@ const IndicatorContainer = styled.div`
                 }
 
  @media (max-width: 640px) {         
-bottom: 20px;}
+bottom: 0px;}
 `;
 
 
