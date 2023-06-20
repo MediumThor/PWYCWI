@@ -100,8 +100,10 @@ const PageContainer = styled.div`
       border-radius: none;
       border: none;
   width: 100vw;
+  height: 67vh;
 
     }
+
 
 
 
@@ -123,8 +125,8 @@ const ScrollIndicator = styled.button`
         cursor: pointer;
   }
 
-   @media (max-width: 640px) {         
-  margin: 15px;
+ @media (max-width: 640px) {         
+  bottom: 80px; /* You should adjust this value according to your needs */
 }
 `;
 
