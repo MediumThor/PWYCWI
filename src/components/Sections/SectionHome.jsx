@@ -136,7 +136,7 @@ const IndicatorContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  z-index: 9999;
+  z-index: 10;
    @media (max-width: 940px) {
                   bottom: 80px;
                 }

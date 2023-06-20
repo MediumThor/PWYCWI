@@ -3,7 +3,7 @@ import "src/styles/Home.module.scss";
 import styled from 'styled-components';
 import styles from 'src/styles/Home.module.scss'
 import { Parallax, Background } from "react-parallax";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,6 +16,7 @@ import SubmitTimeModal from '../../Modals/SubmitTimeModal';
 import EventsModal from '../../Modals/EventsModal';
 import SailingModal from '../../Modals/SailingModal';
 import RaceResultsModal from '../../Modals/RaceResultsModal';
+import RaceResultsDialog from '../../Dialog/RaceResults';
 
 
 const Section1Styled = styled.div`
@@ -228,6 +229,27 @@ export default function PageFour() {
   const [showAlert, setShowAlert] = useState(true);
   const [showSecondAlert, setShowSecondAlert] = useState(true);
   const [showThirdAlert, setShowThirdAlert] = useState(true);
+  const [raceOpen, setRaceOpen] = useState(false);
+
+  const descriptionElementRef = useRef(null);
+
+
+  const handleRaceDialogOpen = () => {
+    setRaceOpen(true);
+  };
+
+  useEffect(() => {
+    if (raceOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [raceOpen]);
+
+  const handleRaceClose = () => {
+    setRaceOpen(false);
+  };
 
 
   const handleCloseAlert = () => {
@@ -317,9 +339,11 @@ export default function PageFour() {
               <StyledButton onClick={notify}>Upcoming Events</StyledButton>
               {/**  <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>*/}
               <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> {/* New Button */}
-              <StyledButton onClick={handleRaceResultsOpen}>Race Results</StyledButton> {/* New Button */}
               <StyledButton onClick={notify2}>Rules</StyledButton>
 
+
+              <StyledButton onClick={handleRaceDialogOpen}>Race Results</StyledButton> {/* New Button */}
+              <RaceResultsDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
 
 
               {/**  <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> */}
@@ -337,6 +361,8 @@ export default function PageFour() {
             <SubmitTimeModal isOpen={isSubmitTimeModalOpen} onRequestClose={handleSubmitTimeClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <RaceResultsModal isOpen={isRaceResultsModalOpen} onRequestClose={handleRaceResultsClose} />
+
+
             <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />
             <div style={{ height: '100vh' }} />
           </Parallax>

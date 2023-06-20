@@ -24,8 +24,7 @@ import { Button } from '@mui/material';
 
 import MembershipDialog from '../../Dialog/Membership';
 import LinksDialog from '../../Dialog/Links';
-
-
+import RaceInfoDialog from '../../Dialog/RaceInfo';
 
 const Section1Styled = styled.div`
   width:100%;
@@ -251,6 +250,26 @@ export default function PageOne() {
   const [scroll, setScroll] = useState('paper');
   const descriptionElementRef = useRef(null);
   const [linkOpen, setLinkOpen] = useState(false);
+  const [raceOpen, setRaceOpen] = useState(false);
+
+
+  const handleRaceDialogOpen = () => {
+    setRaceOpen(true);
+  };
+
+  useEffect(() => {
+    if (raceOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [raceOpen]);
+
+  const handleRaceClose = () => {
+    setRaceOpen(false);
+  };
+
 
 
   const handleLinkDialogOpen = () => {
@@ -414,11 +433,10 @@ export default function PageOne() {
 
 
               <MembershipDialog open={open} onClose={handleClose} scroll="paper" />
-
               <StyledButton onClick={handleOpen} style={{ color: '#87faa8' }}>Become a Member</StyledButton>
 
-              <StyledButton onClick={handleSailingOpen}>Race Info</StyledButton> {/* New Button */}
-
+              <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton> {/* New Button */}
+              <RaceInfoDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
 
               <StyledButton onClick={handleLinkDialogOpen} >Useful Links</StyledButton>
               <LinksDialog open={linkOpen} onClose={handleLinkClose} scroll="paper" />
