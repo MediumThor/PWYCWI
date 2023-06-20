@@ -71,7 +71,7 @@ margin-bottom: 30px;
     
   }
    @media (max-width: 400px) {
-    margin-top: -120px;
+    margin-top: -200px;
   height: 65vh;
 
   }
