@@ -5,7 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
-import { Box, Tabs, Tab } from '@mui/material';
+import { Box, Tabs, Tab, useMediaQuery, MenuItem, useTheme, Select } from '@mui/material';
 import { useState } from 'react';
 
 
@@ -42,13 +42,21 @@ const TabBox = styled.div`
 const RaceInfoDialog = ({ open, onClose, scroll }) => {
     const [value, setValue] = useState(0);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
+    const handleChange = (event) => {
+        setValue(event.target.value);
     };
 
     function TabPanel({ children, value, index }) {
         return <div hidden={value !== index}>{value === index && children}</div>;
     }
+
+
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const tabs = ['NOR', 'SI', 'Course', 'Registration'];
+
+
 
 
     return (
@@ -68,13 +76,25 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                 style={{ minHeight: '70vh' }} // 70% of the viewport height
             >                <TabBox>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <Tabs value={value} onChange={handleChange}>
-                            <Tab label="NOR" />
-                            <Tab label="SI" />
-                            <Tab label="Course" />
-                            <Tab label="Registration" />
+                        <div>
+                            {isSmallScreen ? (
+                                <Select value={value} onChange={handleChange}>
+                                    {tabs.map((tab, index) => (
+                                        <MenuItem key={index} value={index}>
+                                            {tab}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            ) : (
+                                <Tabs value={value} onChange={(event, newValue) => handleChange({ target: { value: newValue } })} variant="scrollable" scrollButtons="auto">
+                                    {tabs.map((tab, index) => (
+                                        <Tab key={index} label={tab} />
+                                    ))}
+                                </Tabs>
+                            )}
+                        </div>
 
-                        </Tabs>
+
                     </Box>
                 </TabBox>
 
@@ -82,7 +102,7 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                     <embed
                         src="/assets/SailingInfo/PWYC NOR 2023.pdf"
                         width="100%"
-                        height="100%"
+                        height="80vh"
                         type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
@@ -92,7 +112,7 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                     <embed
                         src="/assets/SailingInfo/PWYC SI 2023.pdf"
                         width="100%"
-                        height="100%"
+                        height="80vh"
                         type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
@@ -102,7 +122,7 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                     <embed
                         src="/assets/SailingInfo/PWYC COURSE 2023.pdf"
                         width="100%"
-                        height="100%"
+                        height="80vh"
                         type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
@@ -112,7 +132,7 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                     <embed
                         src="/assets/SailingInfo/PWYC Registration 2023.pdf"
                         width="100%"
-                        height="100%"
+                        height="80vh"
                         type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
