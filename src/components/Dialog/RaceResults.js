@@ -76,124 +76,18 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
         setOpenResults(!openResults);
     };
 
-    const list = anchor => (
-        <StyledList>
-            <ListItem button onClick={handleClick2023}>
-                <ListItemText primary="2023" primaryTypographyProps={{ style: { fontSize: '24px' } }} />
-                {open2023 ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={open2023} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                    <ListItem button onClick={handleClickWednesday}>
-                        <ListItemText primary="Wednesday" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
-                        {openWednesday ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-                    <Collapse in={openWednesday} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
+
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
 
-
-
-                            <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-14-23.pdf")}>
-                                <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                            </ListItem>
-                            <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-7-23.pdf")}>
-                                <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                            </ListItem>
-
-
-
-
-
-                        </List>
-                    </Collapse>
-
-                    <ListItem button onClick={handleClickSaturday}>
-                        <ListItemText primary="Saturday" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
-                        {openSaturday ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-                    <Collapse in={openSaturday} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-
-
-
-
-
-
-
-                            <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 6-10-23 corrected.pdf")}>
-                                <ListItemText primary="6-10-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                            </ListItem>
-                            <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 6-3-23.pdf")}>
-                                <ListItemText primary="6-3-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                            </ListItem>
-
-
-
-
-
-
-
-
-                        </List>
-                    </Collapse>
-                </List>
-            </Collapse>
-
-            <ListItem button onClick={handleClick2022}>
-                <ListItemText primary="2022" primaryTypographyProps={{ style: { fontSize: '24px' } }} />
-                {open2022 ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={open2022} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-
-
-
-
-
-
-
-                    <ListItem button onClick={() => toggleDrawer(false)}>
-                        <ListItemText primary="File 3" />
-                    </ListItem>
-                    <ListItem button onClick={() => toggleDrawer(false)}>
-                        <ListItemText primary="File 4" />
-                    </ListItem>
-
-
-
-
-
-
-                </List>
-            </Collapse>
-
-            <ListItem button onClick={handleClickArchives}>
-                <ListItemText primary="Archives" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
-                {openArchives ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={openArchives} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-
-
-
-
-
-                    <ListItem button onClick={() => toggleDrawer(false)}>
-                        <ListItemText primary="File 5" />
-                    </ListItem>
-                    <ListItem button onClick={() => toggleDrawer(false)}>
-                        <ListItemText primary="File 6" />
-                    </ListItem>
-
-
-
-
-
-                </List>
-            </Collapse>
-        </StyledList>
-    );
 
 
 
@@ -212,56 +106,51 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
             <CenteredDialogTitle id="scroll-dialog-title">Race Results</CenteredDialogTitle>
             <DialogContent dividers={scroll === 'paper'}>
 
-                <StyledList>
-                    <ListItem button onClick={handleClick2023}>
-                        <ListItemText primary="2023" primaryTypographyProps={{ style: { fontSize: '24px' } }} />
-                        {open2023 ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-                    <Collapse in={open2023} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            <ListItem button onClick={handleClickWednesday}>
-                                <ListItemText primary="Wednesday" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
-                                {openWednesday ? <ExpandLess /> : <ExpandMore />}
-                            </ListItem>
-                            <Collapse in={openWednesday} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
+                <Button onClick={handleClick}>
+                    Past Results
+                </Button>
+                <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    <StyledList>
+                        <ListItem button onClick={handleClick2023}>
+                            <ListItemText primary="2023" primaryTypographyProps={{ style: { fontSize: '24px' } }} />
+                            {open2023 ? <ExpandLess /> : <ExpandMore />}
+                        </ListItem>
+                        <Collapse in={open2023} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
+                                <ListItem button onClick={handleClickWednesday}>
+                                    <ListItemText primary="Wednesday" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
+                                    {openWednesday ? <ExpandLess /> : <ExpandMore />}
+                                </ListItem>
+                                <Collapse in={openWednesday} timeout="auto" unmountOnExit>
+                                    <List component="div" disablePadding>
 
 
 
 
-                                    <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-14-23.pdf")}>
-                                        <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                                    </ListItem>
-                                    <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-7-23.pdf")}>
-                                        <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                                    </ListItem>
-
-
-
-
-
-                                </List>
-                            </Collapse>
-
-                            <ListItem button onClick={handleClickSaturday}>
-                                <ListItemText primary="Saturday" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
-                                {openSaturday ? <ExpandLess /> : <ExpandMore />}
-                            </ListItem>
-                            <Collapse in={openSaturday} timeout="auto" unmountOnExit>
-                                <List component="div" disablePadding>
+                                        <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-14-23.pdf")}>
+                                            <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
+                                        </ListItem>
+                                        <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Wed/Wednesday 6-7-23.pdf")}>
+                                            <ListItemText primary="6-7-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
+                                        </ListItem>
 
 
 
 
 
+                                    </List>
+                                </Collapse>
 
-
-                                    <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 6-10-23 corrected.pdf")}>
-                                        <ListItemText primary="6-10-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                                    </ListItem>
-                                    <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 6-3-23.pdf")}>
-                                        <ListItemText primary="6-3-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
-                                    </ListItem>
+                                <ListItem button onClick={handleClickSaturday}>
+                                    <ListItemText primary="Saturday" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
+                                    {openSaturday ? <ExpandLess /> : <ExpandMore />}
+                                </ListItem>
+                                <Collapse in={openSaturday} timeout="auto" unmountOnExit>
+                                    <List component="div" disablePadding>
 
 
 
@@ -269,18 +158,12 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
 
 
 
-
-                                </List>
-                            </Collapse>
-                        </List>
-                    </Collapse>
-
-                    <ListItem button onClick={handleClick2022}>
-                        <ListItemText primary="2022" primaryTypographyProps={{ style: { fontSize: '24px' } }} />
-                        {open2022 ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-                    <Collapse in={open2022} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
+                                        <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 6-10-23 corrected.pdf")}>
+                                            <ListItemText primary="6-10-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
+                                        </ListItem>
+                                        <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 6-3-23.pdf")}>
+                                            <ListItemText primary="6-3-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
+                                        </ListItem>
 
 
 
@@ -288,46 +171,66 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
 
 
 
-                            <ListItem button onClick={() => toggleDrawer(false)}>
-                                <ListItemText primary="File 3" />
-                            </ListItem>
-                            <ListItem button onClick={() => toggleDrawer(false)}>
-                                <ListItemText primary="File 4" />
-                            </ListItem>
+
+                                    </List>
+                                </Collapse>
+                            </List>
+                        </Collapse>
+
+                        <ListItem button onClick={handleClick2022}>
+                            <ListItemText primary="2022" primaryTypographyProps={{ style: { fontSize: '24px' } }} />
+                            {open2022 ? <ExpandLess /> : <ExpandMore />}
+                        </ListItem>
+                        <Collapse in={open2022} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
 
 
 
 
 
 
-                        </List>
-                    </Collapse>
 
-                    <ListItem button onClick={handleClickArchives}>
-                        <ListItemText primary="Archives" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
-                        {openArchives ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
-                    <Collapse in={openArchives} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
+                                <ListItem button onClick={() => toggleDrawer(false)}>
+                                    <ListItemText primary="File 3" />
+                                </ListItem>
+                                <ListItem button onClick={() => toggleDrawer(false)}>
+                                    <ListItemText primary="File 4" />
+                                </ListItem>
 
 
 
 
 
-                            <ListItem button onClick={() => toggleDrawer(false)}>
-                                <ListItemText primary="File 5" />
-                            </ListItem>
-                            <ListItem button onClick={() => toggleDrawer(false)}>
-                                <ListItemText primary="File 6" />
-                            </ListItem>
+
+                            </List>
+                        </Collapse>
+
+                        <ListItem button onClick={handleClickArchives}>
+                            <ListItemText primary="Archives" primaryTypographyProps={{ style: { fontSize: '20px' } }} />
+                            {openArchives ? <ExpandLess /> : <ExpandMore />}
+                        </ListItem>
+                        <Collapse in={openArchives} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
 
 
 
 
 
-                        </List>
-                    </Collapse>
-                </StyledList>
+                                <ListItem button onClick={() => toggleDrawer(false)}>
+                                    <ListItemText primary="File 5" />
+                                </ListItem>
+                                <ListItem button onClick={() => toggleDrawer(false)}>
+                                    <ListItemText primary="File 6" />
+                                </ListItem>
+
+
+
+
+
+                            </List>
+                        </Collapse>
+                    </StyledList>
+                </Menu>
                 <Results>
 
                     <embed src={selectedFile} width="100%" height="600" type="application/pdf" />
