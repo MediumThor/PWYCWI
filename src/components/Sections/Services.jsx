@@ -77,7 +77,7 @@ const ServicesTitle = styled.h1`
     animation: ${slideInFromLeft} 1.2s ease-in-out forwards;
   `}
 
-      @media (max-width: 768px) {
+      @media (max-width: 1268px) {
    display: none;
   }
 `;

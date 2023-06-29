@@ -94,25 +94,24 @@ const Caption = styled.h2`
     line-height: 2; // This will apply double spacing
 
     
-     @media (max-width: 940px) {
+     @media (max-width: 1040px) {
     height: 200px;  // Adjust as needed
-    top: 28%;  // Adjust as needed
+      max-width: 400px;
+
+    top: 18%;  // Adjust as needed
+  left: 45%;
   }
 
   
 
-     @media (max-width: 740px) {
+     @media (max-width: 940px) {
     height: 200px;  // Adjust as needed
-    top: 40%;  // Adjust as needed
+    top: 18%;  // Adjust as needed
+      font-size: .4em;  
 
   }
-   @media (max-width: 630px) {
-      max-width: 80%;
-
-    height: 200px;  // Adjust as needed
-    top: 45%;  // Adjust as needed
-      left: 10%;
-      font-size: .4em;  
+   @media (max-width: 840px) {
+     display: none;
 
   }
   @media (max-width: 400px) {
@@ -366,10 +365,9 @@ const PageTwo = () => {
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
             <Title>Become a Member<br />of PWYC</Title>
             <Caption>Embrace the thrill of sailing and boating while enjoying exclusive member benefits like access to special events, networking opportunities, and a community of like-minded enthusiasts.</Caption>
+
+            {/**
             <ButtonContainer>
-
-
-
 
               <StyledButton onClick={handleMembershipDialogOpen} style={{ color: '#87faa8' }}>Become a Member</StyledButton>
               <MembershipDialog open={membershipOpen} onClose={handleMembershipClose} scroll="paper" />
@@ -377,16 +375,15 @@ const PageTwo = () => {
               <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
               <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />
 
-
               <StyledButton onClick={handleSignupOpen}>Sign Up</StyledButton>
+            </ButtonContainer> */}
 
 
-
-            </ButtonContainer>
             <SignupModal isOpen={isSignupModalOpen} onRequestClose={handleSignupClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />
             <HistoryModal isOpen={isHistoryModalOpen} onRequestClose={handleHistoryClose} />
+
             <div style={{ height: '100vh' }} />
           </Parallax>
         </BackgroundBox>

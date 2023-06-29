@@ -46,6 +46,14 @@ const Title = styled.h1`
   color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 
+     @media (max-width: 760px) {
+    height: 200px;  // 50% of the original height
+      left: 5%;
+          font-size: 1.3em;
+
+
+  }
+
    @media (max-width: 500px) {
     height: 150px;  // 50% of the original height
     font-size: 1.3em;
@@ -334,15 +342,17 @@ export default function PageFour() {
 
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
-            <Title>PWYC<br />Sailing Info</Title>
+            <Title>PWYC<br />Sailing Information</Title>
             <ButtonContainer>
-              <StyledButton onClick={notify}>Upcoming Events</StyledButton>
               {/**  <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>*/}
-              <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> {/* New Button */}
+
               <StyledButton onClick={notify2}>Rules</StyledButton>
+              <StyledButton onClick={notify}>Upcoming Events</StyledButton>
 
 
-              <StyledButton onClick={handleRaceDialogOpen}>Race Results</StyledButton> {/* New Button */}
+              {/**    <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> */}
+
+              <StyledButton onClick={handleRaceDialogOpen}>Race Results</StyledButton>
               <RaceResultsDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
 
 

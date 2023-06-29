@@ -39,23 +39,28 @@ const BackgroundBox = styled.div`
 
 const Title = styled.h1`
   position: absolute;
-  top: 15%;
-  left: 15%;
+  top: 0%;
+  left: 10%;
   font-size: 1.7em;
   font-weight: bold;
   color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    transition: opacity 2s ease-in-out;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
 
- @media (max-width: 500px) {
+
+   @media (max-width: 500px) {
     height: 150px;  // 50% of the original height
     font-size: 1.3em;
   }
+
+
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
       left: 5%;
 
   }
-  @media (max-width: 400px) {
+ @media (max-width: 400px) {
     font-size: .8em;
     left: 8%;
 
@@ -82,7 +87,7 @@ const Location = styled.h1`
   }
   @media (max-width: 400px) {
     height: 80px;  // 50% of the original height
-    top: 25%;
+    top: 15%;
     left: 15%;
     font-size: .7em;
   }
@@ -234,6 +239,10 @@ export default function PageThree() {
 
   const [historyOpen, setHistoryOpen] = useState(false);
   const descriptionElementRef = useRef(null);
+  const titleRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState('paper');
 
 
 
@@ -283,6 +292,27 @@ export default function PageThree() {
     setIsHistoryModalOpen(true);
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      });
+    });
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
 
 
 
@@ -299,8 +329,10 @@ export default function PageThree() {
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
-            <Title>Club Information</Title>
-            <Location></Location>
+            <Title ref={titleRef} isVisible={isVisible}>
+              Port Washington<br />Yacht Club
+            </Title>            <Location>Port Washington,WI</Location>
+            {/** 
             <ButtonContainer>
               <StyledButton onClick={handleBoardOpen}>Board Members</StyledButton>
               <StyledButton onClick={handleOfficersOpen}>Officers</StyledButton>
@@ -309,6 +341,8 @@ export default function PageThree() {
 
 
             </ButtonContainer>
+
+            */}
             <BoardModal isOpen={isBoardModalOpen} onRequestClose={handleBoardClose} />
             <OfficersModal isOpen={isOfficersModalOpen} onRequestClose={handleOfficersClose} />
             <MembershipModal isOpen={isMemberModalOpen} onRequestClose={handleMemberClose} />

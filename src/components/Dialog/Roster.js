@@ -11,6 +11,16 @@ const StyledText = styled.p`
   color: black;
 `;
 
+const StyledLink = styled.a`
+  color: #0000EE;
+  text-decoration: underline;
+`;
+
+const StyledTextBody = styled.p`
+  text-align: center;
+  color: black;
+  margin-bottom: 20%;
+`;
 
 const StyledImage = styled.img`
   height: auto;
@@ -32,7 +42,7 @@ const CenteredDialogTitle = styled(DialogTitle)`
   text-align: center;
 `;
 
-const LinksDialog = ({ open, onClose, scroll }) => {
+const RosterDialog = ({ open, onClose, scroll }) => {
   return (
     <Dialog
       open={open}
@@ -41,13 +51,14 @@ const LinksDialog = ({ open, onClose, scroll }) => {
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
     >
-      <CenteredDialogTitle id="scroll-dialog-title">PWYC History</CenteredDialogTitle>
+      <CenteredDialogTitle id="scroll-dialog-title">Roster</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>
         <ImageWrapper>
-          <StyledImage src="" alt="Club History" />
         </ImageWrapper>
         <StyledText>
-          <p>Here is some space to put links.</p>
+
+
+
         </StyledText>
       </DialogContent>
       <DialogActions>
@@ -57,4 +68,4 @@ const LinksDialog = ({ open, onClose, scroll }) => {
   );
 };
 
-export default LinksDialog;
+export default RosterDialog;

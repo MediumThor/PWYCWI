@@ -49,6 +49,9 @@ const Results = styled.div`
     width: 100%;
   }
 `;
+const StyledList = styled(List)`
+  padding-top: 90px;
+`;
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -61,9 +64,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const StyledList = styled(List)`
-  padding-top: 90px;
-`;
+
 
 
 export default function RaceResultsModal({ isOpen, onRequestClose }) {

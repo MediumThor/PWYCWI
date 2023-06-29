@@ -84,7 +84,7 @@ const Location = styled.h1`
 
    @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
-    top: 40%;
+    top: 30%;
   }
   @media (max-width: 400px) {
     height: 80px;  // 50% of the original height
@@ -217,22 +217,6 @@ const StyledAlert = styled(Alert)`
 
 `;
 
-const StyledText = styled.p`
-  text-align: center;
-    color: black;
-
-`;
-const StyledLink = styled.a`
-  color: #0000EE;
-  text-decoration: underline;
-`;
-
-const StyledTextBody = styled.p`
-  text-align: center;
-    color: black;
-    margin-bottom: 20%;
-
-`;
 
 export default function PageOne() {
 
@@ -400,7 +384,9 @@ export default function PageOne() {
             bgImageStyle={{ backgroundSize: 'cover' }}
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
-            {showAlert && (
+
+
+            {/**  {showAlert && (
 
               <StyledAlert onClose={handleCloseAlert} severity="info">
                 <AlertTitle>Info</AlertTitle>
@@ -423,29 +409,30 @@ export default function PageOne() {
               </StyledAlert>
             )}
 
+             */}
 
 
 
             <Title ref={titleRef} isVisible={isVisible}>
               Port Washington<br />Yacht Club
             </Title>            <Location>Port Washington,WI</Location>
-            <ButtonContainer>
 
+
+            {/**      <ButtonContainer>
 
               <MembershipDialog open={open} onClose={handleClose} scroll="paper" />
               <StyledButton onClick={handleOpen} style={{ color: '#87faa8' }}>Become a Member</StyledButton>
 
-              <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton> {/* New Button */}
+              <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton> 
               <RaceInfoDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
 
               <StyledButton onClick={handleLinkDialogOpen} >Useful Links</StyledButton>
               <LinksDialog open={linkOpen} onClose={handleLinkClose} scroll="paper" />
 
-
-
-
-
             </ButtonContainer>
+            */}
+
+
             <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />
