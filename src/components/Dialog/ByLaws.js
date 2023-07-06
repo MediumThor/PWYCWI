@@ -50,6 +50,8 @@ const BylawsDialog = ({ open, onClose, scroll }) => {
       scroll={scroll}
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
+      fullWidth={true} // Makes the dialog responsive
+      maxWidth={"md"}
     >
       <CenteredDialogTitle id="scroll-dialog-title">By-Laws</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>

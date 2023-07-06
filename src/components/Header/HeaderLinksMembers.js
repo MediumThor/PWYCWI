@@ -39,6 +39,7 @@ import { useRouter } from 'next/router';
 
 
 
+
 const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -52,10 +53,12 @@ Transition.displayName = "Transition";
 function HeaderLinks() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const router = useRouter(); // Initialize hook
 
+  const handleLogout = () => {
+    router.push("/App");
+  }
 
-
-  const router = useRouter();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -139,12 +142,15 @@ function HeaderLinks() {
         </ListItem>
 
         <ListItem className={classes.listItem}>
-          <SmallButton size="sm"
-            color="transparent">
-            <Link spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
-              <Nextlink href="/App">
-                Log Out
-              </Nextlink>
+          <SmallButton size="sm" color="transparent">
+            <Link
+              spy={false}
+              smooth={true}
+              duration={1000}
+              className={style.headerLinkMember}
+              onClick={handleLogout} // Moved the onClick event to the Link component
+            >
+              Log Out
             </Link>
           </SmallButton>
         </ListItem>

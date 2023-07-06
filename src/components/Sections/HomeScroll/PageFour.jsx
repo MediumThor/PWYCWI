@@ -125,7 +125,7 @@ const ButtonContainer = styled.div`
   grid-template-rows: repeat(2, 1fr);     // create 2 equal height rows
   justify-items: center;  // center items horizontally
   align-items: center;    // center items vertically
-  gap: 1.2em;
+  gap: .4em;
       z-index: +1;  // this line is added
 
 
@@ -147,20 +147,19 @@ const ButtonContainer = styled.div`
   }
 
   @media (max-width: 700px) {
-    top: 50%;
+    top: 32%;
           left: 50%;
-            grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
+            grid-template-rows: repeat(2, 1fr);  // create 2 equal width columns
 gap: .1em;
 
   }
 
   @media (max-width: 500px) {
-        top: %;
     gap: .1em;
   }
 
   @media (max-width: 400px) {
-    gap: .2em;
+    gap: .1em;
       left: 50%;
 
   }
@@ -181,15 +180,15 @@ left: %;
 const StyledButton = styled.button`
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   border-radius: 5px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
   color: #E8E3D5;
   padding: 10px 20px;
   cursor: pointer;
-  height: 80px;
-    width: 170px;
+  height: 70px;
+    width: 140px;
       transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
 
 
@@ -203,11 +202,11 @@ const StyledButton = styled.button`
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
     margin: 0.5em;
-    height: 70px;
-    width: 120px;
+    height: 60px;
+    width: 100px;
   }
    @media (max-width: 640px) {
-    font-size: 1rem; // decrease font size
+    font-size: .9rem; // decrease font size
     padding: 5px 25px; // decrease padding
 
   }
@@ -352,8 +351,8 @@ export default function PageFour() {
 
               {/**    <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> */}
 
-              <StyledButton onClick={handleRaceDialogOpen}>Race Results</StyledButton>
-              <RaceResultsDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
+              {/**  <StyledButton onClick={handleRaceDialogOpen}>Race Results</StyledButton>
+              <RaceResultsDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />  */}
 
 
               {/**  <StyledButton onClick={handleSubmitTimeOpen}>Submit Time</StyledButton> */}

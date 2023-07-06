@@ -137,7 +137,7 @@ function HeaderLinks() {
             color="transparent"
             className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
           >
-            <Link activeClass="active" to="section2" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
+            <Link activeClass="active" to="section6" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
               Events
             </Link>
           </SmallButton>
@@ -209,9 +209,9 @@ function HeaderLinks() {
               <SmallButton size="sm" type="submit" color="success">
                 Log in
               </SmallButton>
-              <SmallButton size="sm" type="button" color="success" onClick={handleSubmitNextAuth}>
+              {/** <SmallButton size="sm" type="button" color="success" onClick={handleSubmitNextAuth}>
                 NextAuth Login
-              </SmallButton>
+              </SmallButton>   */}
             </DialogActions>
           </form>
         </Dialog>

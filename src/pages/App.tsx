@@ -7,6 +7,9 @@ import Contact from "../components/Sections/Contact"
 import Porthole from "../components/Sections/Porthole"
 import Weather from '../components/Sections/Weather'
 import SectionHome from "../components/Sections/SectionHome"
+import FeaturedEvent from '../components/Sections/FeaturedEvent';
+
+
 import styles from '../styles/Home.module.scss'
 import styled from 'styled-components'
 import React, { useEffect, useState } from "react";
@@ -458,6 +461,7 @@ export default function Home() {
             <ParallaxImage2 />
           </RenderOnLargeScreen>
 
+          <FeaturedEvent />
           <Events />
 
           <RenderOnLargeScreen>
@@ -487,11 +491,6 @@ export default function Home() {
           </Drawer>
 
         </ThemeProvider>
-
-
-
-
-
         <ScrollToTop />
 
       </div>

@@ -5,31 +5,22 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import { useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+// ...
 
 const StyledText = styled.p`
   text-align: center;
   color: black;
 `;
 
-const StyledLink = styled.a`
-  color: #0000EE;
-  text-decoration: underline;
-`;
 
-const StyledTextBody = styled.p`
-  text-align: center;
-  color: black;
-  margin-bottom: 20%;
-`;
-
-const StyledImage = styled.img`
-  height: auto;
-  width: 50%;
-  padding-left: 10px;
-  @media (max-width: 600px) {
-    width: 25%;
-  }
-`;
 
 const ImageWrapper = styled.div`
   display: flex;
@@ -42,7 +33,27 @@ const CenteredDialogTitle = styled(DialogTitle)`
   text-align: center;
 `;
 
+const Roster = styled.div`
+  width: 100 vw;
+  height:
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+`;
+
+
+
 const RosterDialog = ({ open, onClose, scroll }) => {
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
+  const pdfFile = "/assets/Other/PWYC Roster 2023 - SJ.6.29.pdf"; // PDF file path
+
+
   return (
     <Dialog
       open={open}
@@ -50,6 +61,8 @@ const RosterDialog = ({ open, onClose, scroll }) => {
       scroll={scroll}
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
+      fullWidth={true} // Makes the dialog responsive
+      maxWidth={"lg"} // Defines the maximum width the dialog can take
     >
       <CenteredDialogTitle id="scroll-dialog-title">Roster</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>
@@ -57,7 +70,14 @@ const RosterDialog = ({ open, onClose, scroll }) => {
         </ImageWrapper>
         <StyledText>
 
-
+          <Roster>
+            <embed src={pdfFile} // Path to the PDF file
+              width="100%"
+              height="100%"
+              type="application/pdf"
+              style={{ minHeight: '100vh' }}  // 60% of the viewport height
+            />
+          </Roster>
 
         </StyledText>
       </DialogContent>

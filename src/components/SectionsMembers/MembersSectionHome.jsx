@@ -57,12 +57,32 @@ const Title = styled.h1`
     top: 5%;
   }
   @media (max-width: 400px) {
+    display: none;
     height: 100px;  // 50% of the original height
     top: 5%;
     font-size: 1.0em;
   }
 `;
 
+const MobileTitle = styled.h1`
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 1.7em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+   @media (max-width: 600px) {
+    height: 200px;  // 50% of the original height
+    top: 5%;
+  }
+  @media (max-width: 400px) {
+    height: 100px;  // 50% of the original height
+    top: 5%;
+    font-size: 1.0em;
+  }
+`;
 const Location = styled.h1`
   position: absolute;
   top: 45%;
@@ -492,6 +512,7 @@ export default function SectionHome() {
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
             <Title>Port Washington<br />Yacht Club Members <br /> Section</Title>
+            <MobileTitle>Members Section</MobileTitle>
             <ButtonContainer>
               <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
               <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />

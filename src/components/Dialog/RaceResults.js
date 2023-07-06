@@ -16,7 +16,7 @@ const CenteredDialogTitle = styled(DialogTitle)`
 `;
 
 const Results = styled.div`
-  width: 80%;
+  width: 100%;
   @media (max-width: 600px) {
     width: 100%;
   }
@@ -225,15 +225,17 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
 
 
 
-
-
                             </List>
                         </Collapse>
                     </StyledList>
                 </Menu>
                 <Results>
-
-                    <embed src={selectedFile} width="100%" height="600" type="application/pdf" />
+                    <embed src={selectedFile}
+                        width="100%"
+                        height="100%"
+                        type="application/pdf"
+                        style={{ minHeight: '60vh' }}  // 60% of the viewport height
+                    />
                 </Results>
 
             </DialogContent>

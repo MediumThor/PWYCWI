@@ -18,6 +18,9 @@ import LinksDialog from '../Dialog/Links';
 import RaceInfoDialog from '../Dialog/RaceInfo';
 import OfficerDialog from '../Dialog/Officers';
 import BoardDialog from '../Dialog/Board';
+import RaceResultsDialog from '../Dialog/RaceResults';
+
+
 
 const Section1Styled = styled.div`
   display: flex;
@@ -165,7 +168,7 @@ const ButtonContainer = styled.div`
   grid-template-rows: repeat(3, 3fr);     // create 2 equal height rows
   justify-items: center;  // center items horizontally
   align-items: center;    // center items vertically
-  gap: 1.2em;
+  gap: 1.1em;
       z-index: +1;  
 
 
@@ -210,7 +213,7 @@ gap: .1em;
   }
 
   @media (max-width: 400px) {
-    gap: .2em;
+    gap: .01em;
       left: 50%;
 
   }
@@ -219,15 +222,15 @@ gap: .1em;
 const StyledButton = styled.button`
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   border-radius: 5px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
   color: #E8E3D5;
   padding: 10px 20px;
   cursor: pointer;
-  height: 80px;
-    width: 170px;
+  height: 70px;
+    width: 140px;
       transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
 
 
@@ -246,8 +249,10 @@ const StyledButton = styled.button`
     width: 120px;
   }
    @media (max-width: 640px) {
-    font-size: 1rem; // decrease font size
-    padding: 5px 25px; // decrease padding
+     height: 60px;
+    width: 100px;
+    font-size: .9rem; // decrease font size
+    padding: 2px 15px; // decrease padding
     
   }
 `;
@@ -283,7 +288,26 @@ const SectionHome = () => {
   const [officerOpen, setOfficerOpen] = useState(false);
 
   const [boardOpen, setBoardOpen] = useState(false);
+  const [raceResultsOpen, setRaceResultsOpen] = useState(false);
 
+
+
+  const handleRaceResultsDialogOpen = () => {
+    setRaceResultsOpen(true);
+  };
+
+  useEffect(() => {
+    if (raceResultsOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [raceResultsOpen]);
+
+  const handleRaceResultsClose = () => {
+    setRaceResultsOpen(false);
+  };
 
   const handleBoardDialogOpen = () => {
     setBoardOpen(true);
@@ -484,7 +508,7 @@ const SectionHome = () => {
     const interval = setInterval(() => {
       setActivePage((activePage + 1) % (pages.length * 3));
       scrollToPage((activePage + 1) % (pages.length * 3));
-    }, 30000);
+    }, 8000);
     return () => clearInterval(interval);
   }, [activePage]);
 
@@ -517,6 +541,9 @@ const SectionHome = () => {
           <StyledButton onClick={handleBoardDialogOpen}>Board</StyledButton> {/* New Button */}
           <BoardDialog open={boardOpen} onClose={handleBoardclose} scroll="paper" />
 
+          <StyledButton onClick={handleRaceResultsDialogOpen}>Race Results</StyledButton>
+          <RaceResultsDialog open={raceResultsOpen} onClose={handleRaceResultsClose} scroll="paper" />
+
         </ButtonContainer>
 
 
@@ -529,19 +556,9 @@ const SectionHome = () => {
 
                 {Page}
 
-
-
-
-
               </PageContainer>
             ))
           )}
-
-
-
-
-
-
 
 
         </HorizontalScrollContainer>
