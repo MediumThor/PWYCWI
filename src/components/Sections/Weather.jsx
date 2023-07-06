@@ -24,7 +24,6 @@ inset 20px 20px 240px rgba(0, 0, 0, 1);
 `;
 
 const ImageWrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.4);
   border: 2px solid #E8E3D5;
   border-radius: 20px;
   padding: 10px;
@@ -33,6 +32,11 @@ const ImageWrapper = styled.div`
   
               box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.7);
 
+                @media (max-width: 600px) {
+                  width: 90%;
+      border: 0px solid black;
+
+  }
 `;
 
 
@@ -72,6 +76,7 @@ const StyledIframe = styled.iframe`
 
   @media (max-width: 600px) {
     width: 90%;
+      border: 0px solid black;
       height: 240px;
        padding-top: 20px;
 

@@ -65,6 +65,7 @@ const Title = styled.h1`
 
   }
   @media (max-width: 400px) {
+    display: none;
     height: 100px;  // 50% of the original height
     font-size: 0.9em;
     left: 8%;
@@ -206,6 +207,7 @@ const StyledButton = styled.button`
     width: 100px;
   }
    @media (max-width: 640px) {
+    display: none;
     font-size: .9rem; // decrease font size
     padding: 5px 25px; // decrease padding
 
