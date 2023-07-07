@@ -129,7 +129,7 @@ export default function Section3() {
           </MapLink>
         </FooterSection>
         <FooterSection>
-          <FooterLink href="mailto:your-email@example.com">Contact Us</FooterLink>
+          <FooterLink href="mailto:contact@pwycwi.com">Contact Us</FooterLink>
           <FooterLink href="/tos">Terms of Service</FooterLink>
           <FooterLink href="/privacy">Privacy Policy</FooterLink>
           <FooterLink href="mailto:tech@pwycwi.com">Contact Support</FooterLink>

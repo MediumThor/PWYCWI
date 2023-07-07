@@ -3,7 +3,7 @@ import Header from "src/components/Header/HeaderMembers";
 import HeaderLinks from 'src/components/Header/HeaderLinksMembers';
 import Services from "src/components/Sections/Services"
 import Events from "src/components/SectionsMembers/Events"
-import Contact from "src/components/Sections/Contact"
+import Contact from "src/components/SectionsMembers/Contact"
 import Porthole from "src/components/SectionsMembers/Porthole"
 import Weather from '../components/Sections/Weather'
 import SectionHome from "src/components/SectionsMembers/MembersSectionHome"
@@ -88,22 +88,7 @@ export default function Members() {
         <Cam />
         <Contact />
       </div>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-        <div>
-          <div style={{ marginTop: "15vh" }} />
-          <ScrollToTop />
-        </div>
-      </footer>
+
     </div>
 
   )

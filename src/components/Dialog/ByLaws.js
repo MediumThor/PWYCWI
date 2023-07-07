@@ -5,6 +5,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import Grid from '@mui/material/Grid';
+
 
 const StyledText = styled.p`
   text-align: center;
@@ -13,7 +15,7 @@ const StyledText = styled.p`
 
 const StyledLink = styled.a`
   color: #0000EE;
-  text-decoration: underline;
+  text-decoration: none;
 `;
 
 const StyledTextBody = styled.p`
@@ -363,7 +365,16 @@ const BylawsDialog = ({ open, onClose, scroll }) => {
         </StyledText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Close</Button>
+        <Grid container justifyContent="space-between">
+          <Grid item>
+            <StyledLink href="/assets/Other/PWYC%20By-Laws%2010-14-2022.docx" download>
+              <Button variant="contained" color="primary">Download Bylaws</Button>
+            </StyledLink>
+          </Grid>
+          <Grid item>
+            <Button onClick={onClose}>Close</Button>
+          </Grid>
+        </Grid>
       </DialogActions>
     </Dialog>
   );
