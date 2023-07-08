@@ -49,6 +49,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+import { Analytics } from '@vercel/analytics/react';
+
 
 
 
@@ -494,6 +496,7 @@ export default function Home() {
         <ScrollToTop />
 
       </div>
+      <Analytics />
     </div>
 
 

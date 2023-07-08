@@ -20,6 +20,7 @@
     "@usedapp/core": "^1.1.5",
     "@userfront/core": "^0.4.4",
     "@userfront/react": "^0.3.1",
+    "@vercel/analytics": "^1.0.1",
     "@walletconnect/web3-provider": "^1.8.0",
     "@web3-react/walletconnect-connector": "^6.2.13",
     "bcrypt": "^5.1.0",
