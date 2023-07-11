@@ -27,7 +27,7 @@ const StyledList = styled(List)`
 
 const RaceResultsDialog = ({ open, onClose, scroll }) => {
 
-    const [selectedFile, setSelectedFile] = useState("/assets/RaceResults/2023/Wed/Wednesday 6-21-23.pdf");
+    const [selectedFile, setSelectedFile] = useState("/assets/RaceResults/2023/Sat/Saturday 7-8-23.pdf");
     const [anchor, setAnchor] = useState('Past Results');
     const [state, setState] = useState({
         bottom: false
@@ -153,7 +153,9 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
                                     <List component="div" disablePadding>
 
 
-
+                                        <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 7-8-23.pdf")}>
+                                            <ListItemText primary="7-8-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
+                                        </ListItem>
                                         <ListItem button onClick={() => setSelectedFile("/assets/RaceResults/2023/Sat/Saturday 6-24-23.pdf")}>
                                             <ListItemText primary="6-24-23" primaryTypographyProps={{ style: { fontSize: '16px' } }} />
                                         </ListItem>
