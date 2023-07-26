@@ -368,6 +368,9 @@ export default function Home() {
                     <ListItem>
                       <Button href="https://www.portwashingtonwi.gov/departments/marina/" target="_blank" rel="noopener noreferrer" style={{ color: '#5e9caf' }}>Marina</Button>
                     </ListItem>
+                    <ListItem>
+                      <Button href="https://lmya.net/" target="_blank" rel="noopener noreferrer" style={{ color: '#87CEFA' }}>Lake Michigan Yachting Association</Button>
+                    </ListItem>
                   </>
                 )}
               </List>
