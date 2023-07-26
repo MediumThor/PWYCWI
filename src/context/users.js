@@ -1,7 +1,7 @@
 export const users = [
     {
         username: 'YachtMember',
-        password: 'boating23',
+        password: 'Boating23',
     },
     // You can add more users here as needed
 ];
