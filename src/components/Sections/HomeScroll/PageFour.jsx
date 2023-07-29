@@ -243,6 +243,71 @@ export default function PageFour() {
   const descriptionElementRef = useRef(null);
 
 
+
+
+
+
+
+
+
+
+  const SheboyganURL = "/assets/SailingInfo/PWYC to Sheboygan SI's 2023.pdf";
+  const HarringtonURL = "/assets/SailingInfo/PWYC to Harrington - Niagara race SI 2023.pdf";
+
+  const notify = () => toast(
+    <div style={{ color: 'Black', fontSize: '30px' }}>
+      Sheboygan Race&nbsp;
+      <a href={SheboyganURL} download target="_blank" rel="noopener noreferrer">
+        Download NOR
+      </a>
+    </div>, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
+
+  const notify3 = () => toast(
+    <div style={{ color: 'Black', fontSize: '30px' }}>
+      Harrington Race&nbsp;
+      <a href={HarringtonURL} download target="_blank" rel="noopener noreferrer">
+        Download NOR
+      </a>
+    </div>, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
+
+
+  const notify2 = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Click <a href="https://www.ussailing.org/competition/rules-officiating/the-racing-rules-of-sailing-2021-2024/#the-rules" target="_blank" rel="noopener noreferrer">here </a>to get the rules App</div>, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
+
+
+
+
+
+
+
+
+
   const handleRaceDialogOpen = () => {
     setRaceOpen(true);
   };
@@ -306,27 +371,7 @@ export default function PageFour() {
     setIsSailingModalOpen(false);
   };
 
-  const notify = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Queens Cup <a href="https://www.ssyc.org/queen-s-cup-race" target="_blank" rel="noopener noreferrer">Link</a></div>, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
 
-
-
-  const notify2 = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Click <a href="https://www.ussailing.org/competition/rules-officiating/the-racing-rules-of-sailing-2021-2024/#the-rules" target="_blank" rel="noopener noreferrer">here </a>to get the rules App</div>, {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
 
   return (
     <Section1Styled id="sectionHome">
@@ -348,7 +393,9 @@ export default function PageFour() {
               {/**  <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>*/}
 
               <StyledButton onClick={notify2}>Rules</StyledButton>
-              <StyledButton onClick={notify}>Upcoming Events</StyledButton>
+              <StyledButton onClick={notify}>Sheboygan NOR</StyledButton>
+              <StyledButton onClick={notify3}>Harrington NOR</StyledButton>
+
 
 
               {/**    <StyledButton onClick={handleSailingOpen}>Sailing Info</StyledButton> */}
@@ -361,12 +408,7 @@ export default function PageFour() {
 
             </ButtonContainer>
 
-            {showAlert && (
-              <StyledAlert onClose={handleCloseAlert} severity="info" style={{ top: '45%' }}>
-                <AlertTitle>Update!</AlertTitle>
-                Sections have been updated <strong>NOR and SI have been posted to Race Info</strong>
-              </StyledAlert>
-            )}
+
 
 
             <SubmitTimeModal isOpen={isSubmitTimeModalOpen} onRequestClose={handleSubmitTimeClose} />

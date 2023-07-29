@@ -129,6 +129,18 @@ const Card = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const Description = styled.p`
+  color: #898989;
+  font-family: 'Arial', sans-serif;
+  overflow: auto;
+  max-height: 150px; // or whatever height you find appropriate
 `;
 
 const Title = styled.h3`
@@ -141,10 +153,6 @@ const DateTime = styled.p`
   font-family: 'Arial', sans-serif;
 `;
 
-const Description = styled.p`
-  color: #898989;
-  font-family: 'Arial', sans-serif;
-`;
 
 
 const LeftDiv = styled.div`
@@ -190,10 +198,10 @@ const InfoWrapper = styled.div`
 
 // Your events data
 const events = [
-  { title: 'Double-Handed Race', date: '2023-06-18', time: '10:00 AM', description: 'This is a description.', image: '/path/to/image1.jpg' },
-  { title: 'Queens Cup', date: '2023-06-30', time: '12:00 PM', description: 'https://www.ssyc.org/queen-s-cup-race.', image: '/path/to/image2.jpg' },
-  { title: 'Event 3', date: '2023-06-15', time: '02:00 PM', description: 'Yet another description.', image: '/path/to/image3.jpg' },
-  { title: 'Event 4', date: '2023-06-16', time: '04:00 PM', description: 'And one more description.', image: '/path/to/image4.jpg' },
+  { title: 'Venetian Night', date: '2023-09-3', time: '12:00 PM', description: 'Lighted boat parade in the Port Washington, Wi Marina!', image: 'https://cdn.discordapp.com/attachments/1090123749300379740/1134856884726288484/image.png' },
+  {
+    title: 'Clipper Cup', date: '2023-06-12', time: '05:00 PM', description: 'The annual Clipper Cup race is administered jointly by Muskegon Yacht Club in Muskegon, Michigan and Port Washington Yacht Club in Port Washington, Wisconsin. The start is off of the Muskegon, Michigan pierheads on the east side of Lake Michigan with the finish in Port Washington, Wisconsin on the lakes west side for a distance of 66.9 miles.', image: 'https://cdn.discordapp.com/attachments/1090123749300379740/1134853913561022494/Clipper_Cup.jpg'
+  },
 ];
 
 export default function Section2() {

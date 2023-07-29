@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { useEffect, useRef } from 'react';
+import CourseToggle from '../RaceCourseButton';
+
+
+const raceCourseImage1 = 'https://media.discordapp.net/attachments/1090123749300379740/1134866004544061550/PWYC_COURSE_2023-1.jpg?width=794&height=1028';
+const raceCourseImage2 = 'https://media.discordapp.net/attachments/1090123749300379740/1134866005009645609/PWYC_COURSE_2023-2.jpg?width=794&height=1028';
+
 
 const Section1Styled = styled.div`
   background: linear-gradient(45deg, #171615 50%, #2e2d2a 100%);
@@ -238,6 +244,9 @@ export default function Section1() {
       <ServicesBackground>
         <ServicesTitle isIntersecting={isIntersecting} ref={titleRef}>Services</ServicesTitle>
       </ServicesBackground>
+
+
+      <CourseToggle imageSrc1={raceCourseImage1} imageSrc2={raceCourseImage2} />
 
 
 

@@ -7,7 +7,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth/supabase-adapter": "^0.1.2",
     "@coinbase/wallet-sdk": "^3.5.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.0",

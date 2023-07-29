@@ -12,6 +12,7 @@ import ScrollToTop from "react-scroll-to-top";
 import styled from 'styled-components'
 import { React, useRef } from "react";
 import "src/styles/Home.module.scss";
+import MobileButton from '../components/RaceCourseButton';
 
 
 export default function Home() {
@@ -34,6 +35,8 @@ export default function Home() {
         }} />
       <div>
         <SectionHome />
+        <MobileButton imageSrc={raceCourseImage} />
+
         <Services />
         <Events />
         {/**<Porthole />**/}

@@ -66,12 +66,12 @@ const FlyerWrapper = styled.div`
     }
 `;
 const EventFlyer = styled.div`
-    width: 65%; // Changed from 100% to 50%
-    height: 65%; // Changed from 100% to 50%
+    width: 60%; // Adjusted from 65% to 40%
+    height: 60%; // Adjusted from 65% to 40%
   
     @media (max-width: 600px) {
-        width: 100%; // Adjust this as needed
-        height: 100%; // Adjust this as needed
+        width: 70%; // Adjust this as needed
+        height: 70%; // Adjust this as needed
     }
 `;
 
@@ -164,11 +164,7 @@ export default function Section6() {
                               <Description>
                                     <FlyerWrapper>
                                           <EventFlyer>
-                                                <object data={`${flyerFile}#toolbar=0`} type="application/pdf" width="100%" height="100%">
-                                                      <p>Your browser does not support PDFs. Please download the PDF to view it:
-                                                            <a href={`${flyerFile}#toolbar=0`}>Download PDF</a>.
-                                                      </p>
-                                                </object>
+                                                <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1134856884726288484/image.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
                                           </EventFlyer>
                                           <Tooltip title="Download the flyer, fill out and submit to the Club" arrow>
                                                 <DownloadButton href={`${flyerFile}#toolbar=0`} download>Register</DownloadButton>
