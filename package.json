@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.10.2",
     "@mui/material": "^5.10.2",
     "@supabase/supabase-js": "^2.25.0",
+    "@auth/supabase-adapter": "^0.1.2",
     "@usedapp/core": "^1.1.5",
     "@userfront/core": "^0.4.4",
     "@userfront/react": "^0.3.1",
