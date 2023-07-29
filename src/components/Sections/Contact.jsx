@@ -117,7 +117,7 @@ export default function Section3() {
       <HistorySection>
 
         <HistoryText>
-          The Port Washington Yacht Club was founded in 1935 by a group of sailing enthusiasts.
+          The Port Washington Yacht Club was founded by a group of sailing enthusiasts.
           Over the years, we have grown into a community of boaters of all kinds, from sailors to fishermen.
           We're proud of our rich history and we're committed to fostering a love for boating in the Port Washington community.
         </HistoryText>
