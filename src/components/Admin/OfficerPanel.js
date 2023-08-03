@@ -347,21 +347,22 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
                     <Button style={{ backgroundColor: "#add5ab", width: 160, marginBottom: "20px" }} onClick={() => setCreateUserDialogOpen(true)}>Create New User</Button>
                 </div>
 
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
-                <Autocomplete
-                    id="combo-box-demo"
-                    options={users}
-                    getOptionLabel={(option) => option.email ? option.email.toLowerCase() : ''}
-                    style={{ backgroundColor: "#fef5ec", width: 300, marginBottom: "40px" }}
-                    renderInput={(params) => <TextField {...params} label="Email" variant="outlined" />}
-                    onChange={(event, newValue) => {
-                        setEmail(newValue.email);
-                        setUserId(newValue.id); // Store the user ID
-                        setRoles(newValue.roles || []); // Set the roles state to the user's current roles
-                        setMemberNumber(newValue.memberNumber || ''); // Set the member number state to the user's current member number
-                    }}
-                />
-
+                    <Autocomplete
+                        id="combo-box-demo"
+                        options={users}
+                        getOptionLabel={(option) => option.email ? option.email.toLowerCase() : ''}
+                        style={{ backgroundColor: "#fef5ec", width: 300, marginBottom: "40px" }}
+                        renderInput={(params) => <TextField {...params} label="Email" variant="outlined" />}
+                        onChange={(event, newValue) => {
+                            setEmail(newValue.email);
+                            setUserId(newValue.id); // Store the user ID
+                            setRoles(newValue.roles || []); // Set the roles state to the user's current roles
+                            setMemberNumber(newValue.memberNumber || ''); // Set the member number state to the user's current member number
+                        }}
+                    />
+                </div>
                 {officerRoles?.includes('Commodore') && (
                     <>
 
