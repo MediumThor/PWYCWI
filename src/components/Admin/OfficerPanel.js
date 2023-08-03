@@ -393,7 +393,7 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
                         </div>
 
 
-
+                        {/**
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <TextField
                                 variant="outlined"
@@ -413,6 +413,8 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
 
                             <Button onClick={updateMemberNumber} style={{ backgroundColor: "#add5ab", marginBottom: "40px" }}>Update Member Number</Button>
                         </div>
+
+                         */}
                     </>
 
                 )}
