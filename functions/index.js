@@ -35,7 +35,7 @@ async function sendWelcomeEmail(email, displayName) {
         <h2>Ahoy, ${displayName || ''}!</h2>
         <p>We're thrilled to have you on board as the newest member of the Port Washington Yacht Club. We're a friendly, enthusiastic bunch and we can't wait to hit the high seas with you!</p>
         <p>Whether you're an experienced sailor or just starting out, our community is here to support you. You'll find a wide range of activities and events happening at the club - something to suit everyone.</p>
-        <p>So what are you waiting for? Dive in and explore your new sailing home!</p>
+        <p>So what are you waiting for? Dive in and explore your new sailing port!</p>
         <p>If you have any questions or need assistance, just drop us an email. We're here to help.</p>
         <p>Happy sailing!</p>
         <p>The PWYC Crew</p>
