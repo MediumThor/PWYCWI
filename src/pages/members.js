@@ -1,26 +1,22 @@
-import Image from 'next/image'
+import React, { useState, useEffect } from 'react';
+import { auth } from '../../firebase';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Header from "src/components/Header/HeaderMembers";
 import HeaderLinks from 'src/components/Header/HeaderLinksMembers';
-import Services from "src/components/Sections/Services"
-import Events from "src/components/SectionsMembers/Events"
-import Contact from "src/components/SectionsMembers/Contact"
-import Porthole from "src/components/SectionsMembers/Porthole"
-import Weather from '../components/Sections/Weather'
-import SectionHome from "src/components/SectionsMembers/MembersSectionHome"
-import styles from 'src/styles/Home.module.scss'
-import styled from 'styled-components'
-import { React, useRef, useContext, useEffect } from "react";
-import "src/styles/Home.module.scss";
-import { AuthContext } from '../context/AuthContext';
-import { useRouter } from 'next/router';
-
-
-import "../styles/Home.module.scss";
+import Services from "src/components/Sections/Services";
+import Events from "src/components/SectionsMembers/Events";
+import Contact from "src/components/SectionsMembers/Contact";
+import Porthole from "src/components/SectionsMembers/Porthole";
+import Weather from '../components/Sections/Weather';
+import SectionHome from "src/components/SectionsMembers/MembersSectionHome";
+import styles from 'src/styles/Home.module.scss';
+import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { makeStyles } from '@material-ui/core/styles';
 import Cam from '../components/Sections/Cam';
-
+import Cookies from 'js-cookie';  // Add this line
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,21 +51,34 @@ function ScrollToTop() {
 }
 
 export default function Members() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
 
 
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/');
-    }
-  }, [isAuthenticated, router]);
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user || Cookies.get('specialUser') === 'true') {  // Modified this line
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+        router.push('/');
+      }
+    });
+
+    // Clean up the subscription on unmount
+    return () => unsubscribe();
+  }, [router]);
+
+  if (!isAuthenticated) {
+    return null; // or return <LoadingComponent />
+  }
+
+
+
 
   return (
-
-
-    <div >
+    <div>
       <Header
         brand="Port Washington Yacht Club"
         rightLinks={<HeaderLinks />}
@@ -78,7 +87,8 @@ export default function Members() {
         changeColorOnScroll={{
           height: 20,
           color: "dark",
-        }} />
+        }}
+      />
       <div>
         <SectionHome />
         <Services />
@@ -88,12 +98,9 @@ export default function Members() {
         <Cam />
         <Contact />
       </div>
-
     </div>
-
-  )
+  );
 }
-
 
 const TitleWrapper = styled.div`
 margin-top: 350px;
@@ -103,17 +110,10 @@ font-size: 40px;
 &:focus-within {
   color: #22C984;
 }
-@media only screen and  
+@media only screen and (max-width: 768px) { }
+@media only screen and (max-width: 1375px) and (min-width: 769px) { }
+`;
 
-(max-width: 768px) { 
-
-}
-
-@media only screen and (max-width: 1375px) and (min-width: 769px) { 
- 
-
-  }
-`
 
 const BackgroundBox = styled.div`
 margin-top: 400px;

@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from 'react-scroll';
 
 
@@ -38,9 +38,10 @@ import { useRouter } from 'next/router';
 
 import axios from 'axios';
 
-import { AuthContext } from "../../context/AuthContext";
-import { signIn } from 'next-auth/react';
 import SignUp from "../SignUp";
+import Register from "../Users/Register";
+import Login from "../Users/Login";
+
 
 
 const useStyles = makeStyles(styles);
@@ -61,7 +62,18 @@ function HeaderLinks() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const router = useRouter();
-  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+  const [openRegister, setOpenRegister] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+
+  const handleLoginOpen = () => {
+    setOpenLogin(true);
+  };
+
+  const handleLoginClose = () => {
+    setOpenLogin(false);
+  };
+
+
 
 
   const handleSubmit = async (event) => {
@@ -85,25 +97,15 @@ function HeaderLinks() {
     }
   };
 
-  // New function for handling login with NextAuth
-  const handleSubmitNextAuth = async (event) => {
-    event.preventDefault();
 
-    const username = event.target.elements.username.value;
-    const password = event.target.elements.password.value;
-
-    // SignIn function from NextAuth
-    const response = await signIn('credentials', { username, password, callbackUrl: `${window.location.origin}/members` })
-
-    if (response.error) {
-      alert('Invalid username or password');
-    }
-  };
 
   return (
     <div>
 
       <List className={classes.list}>
+
+
+
         <ListItem className={classes.listItem}>
           <SmallButton
             size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
@@ -171,16 +173,33 @@ function HeaderLinks() {
 
         </ListItem>
 
+
+
+
+        {/** 
         <ListItem className={classes.listItem}>
           <SmallButton
             size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
             color="transparent"
             className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
           >
-            <Link onClick={() => setOpen(true)} spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
-              Log in
+            <Link onClick={() => setOpenRegister(true)} spy={false} smooth={true} duration={1000} className={style.headerLinkMember}>
+              Register
             </Link>
           </SmallButton>
+        </ListItem>
+
+*/}
+
+        <ListItem className={classes.listItem}>
+          <Button
+            color="transparent"
+            className={classes.navLink}
+            onClick={handleLoginOpen}
+          >
+            Login
+          </Button>
+          <Login open={openLogin} onClose={handleLoginClose} />
         </ListItem>
 
         <Dialog open={open} onClose={() => setOpen(false)}>
@@ -215,6 +234,8 @@ function HeaderLinks() {
             </DialogActions>
           </form>
         </Dialog>
+        <Register open={openRegister} onClose={() => setOpenRegister(false)} />
+
       </List>
     </div>
 
