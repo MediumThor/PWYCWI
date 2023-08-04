@@ -46,6 +46,8 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
     const [openYears, setOpenYears] = useState({});
     const [openDays, setOpenDays] = useState({});
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const googleViewerUrl = `https://docs.google.com/viewer?url=${selectedFile}&embedded=true`;
+
 
     useEffect(() => {
         const ref = firestore.collection('race-results');
@@ -96,7 +98,7 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
         >
             <CenteredDialogTitle id="scroll-dialog-title">Race Results</CenteredDialogTitle>
             <DialogContent dividers={scroll === 'paper'}>
-                <Box display="flex" height={isMobile ? "100vh" : "60vh"}>
+                <Box display="flex" height={isMobile ? "100vh" : "100vh"}>
                     <SideMenu>
                         <List>
                             {Object.keys(raceResults).map(year => (
@@ -131,10 +133,10 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
                         </List>
                     </SideMenu>
                     <Results>
-                        <iframe src={selectedFile}
+                        <iframe src={googleViewerUrl}
                             width="100%"
                             height="100%"
-                            style={{ border: 'none' }}
+                            style={{ border: 0 }}
                         />
                     </Results>
                 </Box>
