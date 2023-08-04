@@ -74,3 +74,4 @@ checkAdminRole.js
 .next
 functions
 
+functions/index.js
