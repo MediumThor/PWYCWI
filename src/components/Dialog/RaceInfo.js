@@ -132,7 +132,6 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                     <embed
                         src="/assets/SailingInfo/PWYC Registration 2023.pdf"
                         width="100%"
-                        height="100%"
                         type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />

@@ -142,7 +142,6 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
                     <Results>
                         <embed src={selectedFile}
                             width="100%"
-                            height="100%"
                             type="application/pdf"
                         />
                     </Results>
