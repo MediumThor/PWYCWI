@@ -133,10 +133,10 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
                         </List>
                     </SideMenu>
                     <Results>
-                        <iframe src={googleViewerUrl}
+                        <iframe src={selectedFile}
                             width="100%"
                             height="100%"
-                            style={{ border: 0 }}
+                            style={{ border: 'none' }}
                         />
                     </Results>
                 </Box>
