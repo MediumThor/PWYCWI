@@ -91,12 +91,12 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
             fullWidth={true}
-            fullScreen={window.innerWidth <= 600}
+            fullScreen={isMobile}
             maxWidth={"md"}
         >
             <CenteredDialogTitle id="scroll-dialog-title">Race Results</CenteredDialogTitle>
             <DialogContent dividers={scroll === 'paper'}>
-                <Box display="flex" height={window.innerWidth <= 600 ? "100vh" : "60vh"}>
+                <Box display="flex" height={isMobile ? "100vh" : "60vh"}>
                     <SideMenu>
                         <List>
                             {Object.keys(raceResults).map(year => (
