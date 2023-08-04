@@ -46,15 +46,6 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
     const [openYears, setOpenYears] = useState({});
     const [openDays, setOpenDays] = useState({});
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    const [isFullScreen, setIsFullScreen] = useState(false);
-    const [dialogHeight, setDialogHeight] = useState('60vh');
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setIsFullScreen(window.innerWidth <= 600);
-            setDialogHeight(window.innerWidth <= 600 ? '100vh' : '60vh');
-        }
-    }, []);
 
     useEffect(() => {
         const ref = firestore.collection('race-results');
@@ -100,12 +91,12 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
             fullWidth={true}
-            fullScreen={isFullScreen}
+            fullScreen={window.innerWidth <= 600}
             maxWidth={"md"}
         >
             <CenteredDialogTitle id="scroll-dialog-title">Race Results</CenteredDialogTitle>
             <DialogContent dividers={scroll === 'paper'}>
-                <Box display="flex" height={dialogHeight}>
+                <Box display="flex" height={window.innerWidth <= 600 ? "100vh" : "60vh"}>
                     <SideMenu>
                         <List>
                             {Object.keys(raceResults).map(year => (
@@ -140,9 +131,10 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
                         </List>
                     </SideMenu>
                     <Results>
-                        <embed src={selectedFile}
+                        <iframe src={selectedFile}
                             width="100%"
-                            type="application/pdf"
+                            height="100%"
+                            style={{ border: 'none' }}
                         />
                     </Results>
                 </Box>

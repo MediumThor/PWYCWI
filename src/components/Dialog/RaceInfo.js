@@ -103,7 +103,6 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                         src="/assets/SailingInfo/PWYC NOR 2023.pdf"
                         width="100%"
                         height="100%"
-                        type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
                 </TabPanel>
@@ -113,7 +112,6 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                         src="/assets/SailingInfo/PWYC SI 2023.pdf"
                         width="100%"
                         height="100%"
-                        type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
                 </TabPanel>
@@ -122,7 +120,6 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
                     <embed
                         src="/assets/SailingInfo/PWYC COURSE 2023.pdf"
                         width="100%"
-                        height="100%"
                         type="application/pdf"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
