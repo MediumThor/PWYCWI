@@ -342,11 +342,11 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
 
 
 
-
+                {/** 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Button style={{ backgroundColor: "#add5ab", width: 160, marginBottom: "20px" }} onClick={() => setCreateUserDialogOpen(true)}>Create New User</Button>
                 </div>
-
+*/}
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
                     <Autocomplete
