@@ -22,6 +22,21 @@ const SideMenu = styled.div`
   max-width: 300px;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
   overflow: auto;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const MobileFooter = styled.div`
+  display: none;
+
+  @media (max-width: 600px) {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: gray;
+  }
 `;
 
 const RaceResultsDialog = ({ open, onClose, scroll }) => {
@@ -30,6 +45,16 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
     const [raceResults, setRaceResults] = useState({});
     const [openYears, setOpenYears] = useState({});
     const [openDays, setOpenDays] = useState({});
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const [isFullScreen, setIsFullScreen] = useState(false);
+    const [dialogHeight, setDialogHeight] = useState('60vh');
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setIsFullScreen(window.innerWidth <= 600);
+            setDialogHeight(window.innerWidth <= 600 ? '100vh' : '60vh');
+        }
+    }, []);
 
     useEffect(() => {
         const ref = firestore.collection('race-results');
@@ -75,11 +100,12 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
             fullWidth={true}
+            fullScreen={isFullScreen}
             maxWidth={"md"}
         >
             <CenteredDialogTitle id="scroll-dialog-title">Race Results</CenteredDialogTitle>
             <DialogContent dividers={scroll === 'paper'}>
-                <Box display="flex" height="60vh">
+                <Box display="flex" height={dialogHeight}>
                     <SideMenu>
                         <List>
                             {Object.keys(raceResults).map(year => (
@@ -122,6 +148,9 @@ const RaceResultsDialog = ({ open, onClose, scroll }) => {
                     </Results>
                 </Box>
             </DialogContent>
+            <MobileFooter>
+                To see archived results, please visit the desktop site.
+            </MobileFooter>
             <DialogActions>
                 <Button onClick={onClose}>Close</Button>
             </DialogActions>

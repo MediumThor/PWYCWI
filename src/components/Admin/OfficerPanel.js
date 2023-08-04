@@ -363,7 +363,7 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
                         }}
                     />
                 </div>
-                {officerRoles?.includes('Commodore') && (
+                {officerRoles?.includes('') && (
                     <>
 
                         <Autocomplete
