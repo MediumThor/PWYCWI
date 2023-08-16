@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled, { keyframes, css } from 'styled-components';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import { firestore } from '../../../firebase';
+import { Document, Page } from 'react-pdf';
 
 
 
@@ -89,6 +91,7 @@ const ServicesTitle = styled.h1`
 const FacebookFeedWrapper = styled.div`
   display: flex;
   justify-content: center;
+  margin-left: 2%;
   margin-top: 50px;  // Adjust this as needed
   width: 100%;       // Add this line
 
@@ -108,6 +111,7 @@ const Caption = styled.h2`
 
 const Card = styled.div`
   display: flex;
+  flex-direction: column; // Change this to column
   align-items: center;
   background: #000000;
   border-radius: 20px;
@@ -116,19 +120,6 @@ const Card = styled.div`
   margin-right: 15px;
   margin-left: 15px;
 
-  opacity: 0;
-  animation: slideFade 2s forwards;
-
-  @keyframes slideFade {
-    0% {
-      transform: translateX(-50%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -168,6 +159,7 @@ const LeftDiv = styled.div`
 `;
 
 const RightDiv = styled.div`
+margin-top: 20px;
   flex: 1;
   padding: 20px;
   width: 50%;
@@ -184,48 +176,40 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 400px;
+  max-height: 400px;
 `;
 
 const InfoWrapper = styled.div`
-  flex: 2;
+  flex: 1;
   padding: 10px;
 `;
 
 
 
 
-// Your events data
-const events = [
-  { title: 'Venetian Night', date: '2023-09-3', time: '12:00 PM', description: 'Lighted boat parade in the Port Washington, Wi Marina!', image: 'https://cdn.discordapp.com/attachments/1090123749300379740/1134856884726288484/image.png' },
-  {
-    title: 'Clipper Cup', date: '2023-06-12', time: '05:00 PM', description: 'The annual Clipper Cup race is administered jointly by Muskegon Yacht Club in Muskegon, Michigan and Port Washington Yacht Club in Port Washington, Wisconsin. The start is off of the Muskegon, Michigan pierheads on the east side of Lake Michigan with the finish in Port Washington, Wisconsin on the lakes west side for a distance of 66.9 miles.', image: 'https://cdn.discordapp.com/attachments/1090123749300379740/1134853913561022494/Clipper_Cup.jpg'
-  },
-];
-
 export default function Section2() {
 
+
+  const [events, setEvents] = useState([]);
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   const titleRef = useRef(null);
 
   useEffect(() => {
+    const ref = firestore.collection('events');
+    const unsubscribe = ref.onSnapshot(snapshot => {
+      const fetchedEvents = [];
+      snapshot.forEach(doc => {
+        fetchedEvents.push(doc.data());
+      });
+      setEvents(fetchedEvents);
+      setLoading(false);
+    });
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsIntersecting(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
-    }
-
-    return () => {
-      if (titleRef.current instanceof Element) {
-        observer.unobserve(titleRef.current);
-      }
-    };
-  }, []); // empty dependency array to run effect once
+    return () => unsubscribe();
+  }, []);
 
 
 
@@ -239,45 +223,21 @@ export default function Section2() {
     autoplaySpeed: 4000,
   };
 
-  useEffect(() => {
-    // Check if the SDK has been loaded
-    if (document.getElementById('facebook-jssdk')) {
-      return;
-    }
-
-    // Create a script element
-    let script = document.createElement('script');
-    script.id = 'facebook-jssdk';
-
-    // Set the script source
-    script.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&autoLogAppEvents=1';
-
-    // Insert the script into the body
-    document.body.appendChild(script);
-  }, []);
-
-  useEffect(() => {
-    if (window.FB) {
-      const container = document.querySelector('.fb-page');
-      if (container) {
-        window.FB.XFBML.parse(container);
-      }
-    }
-  }, ['.fb-page']);
 
 
+
+  if (loading) {
+    return <div>Loading events...</div>;
+  }
   return (
     <Section2Styled id="section2">
       <main>
         <ServicesBackground>
-          <ServicesTitle isIntersecting={isIntersecting} ref={titleRef}>Events</ServicesTitle>
+          <Caption>Join us for our public events! We welcome everyone to participate and enjoy these special occasions with us.</Caption>
         </ServicesBackground>
-        <Wrapper>
-          <LeftDiv>
-          </LeftDiv>
-          <RightDiv>
-            <Caption>Join us for our public events! We welcome everyone to participate and enjoy these special occasions with us.</Caption>
 
+        <Wrapper>
+          <RightDiv>
             <Slider {...settings}>
               {events.map((event, i) => (
                 <EventCard key={i} event={event} />
@@ -285,27 +245,18 @@ export default function Section2() {
             </Slider>
           </RightDiv>
           <FacebookFeedWrapper>
-            <div
-              className="fb-page"
-              dangerouslySetInnerHTML={{
-                __html: `
-      <div class="fb-page" 
-        data-href="https://www.facebook.com/PWYCWI" 
-        data-tabs="timeline" 
-        data-width="800px" 
-        data-height="500px" 
-        data-small-header="false" 
-        data-adapt-container-width="true" 
-        data-hide-cover="false" 
-        data-show-facepile="true">
-      </div>
-      `,
-              }}
-            />
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPWYCWI&tabs=timeline&width=900&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=832489078225536"
+              width="900"
+              height="800"
+              style={{ border: 'none', overflow: 'hidden' }}
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
           </FacebookFeedWrapper>
-
         </Wrapper>
-
       </main>
     </Section2Styled>
   );
@@ -326,7 +277,3 @@ function EventCard({ event }) {
     </Card>
   );
 }
-
-// Styled components
-
-

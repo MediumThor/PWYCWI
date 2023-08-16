@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from "react";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from 'react-scroll';
 
 
@@ -42,6 +42,8 @@ import SignUp from "../SignUp";
 import Register from "../Users/Register";
 import Login from "../Users/Login";
 
+import { auth } from "../../../firebase";
+
 
 
 const useStyles = makeStyles(styles);
@@ -64,6 +66,28 @@ function HeaderLinks() {
   const router = useRouter();
   const [openRegister, setOpenRegister] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      setIsAuthenticated(false);
+      router.push('/App'); // Redirect to the app page or any other page you want
+    } catch (error) {
+      console.error('Error logging out', error);
+    }
+  };
+
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setIsAuthenticated(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+
 
   const handleLoginOpen = () => {
     setOpenLogin(true);
@@ -104,6 +128,18 @@ function HeaderLinks() {
 
       <List className={classes.list}>
 
+        {isAuthenticated && router.pathname === '/App' && (
+          <ListItem className={classes.listItem}>
+            <SmallButton
+              size="sm"
+              color="transparent"
+            >
+              <Nextlink href="/members" passHref>
+                <a className={style.headerLink1}>Members Section</a>
+              </Nextlink>
+            </SmallButton>
+          </ListItem>
+        )}
 
 
         <ListItem className={classes.listItem}>
@@ -191,16 +227,28 @@ function HeaderLinks() {
 
 */}
 
-        <ListItem className={classes.listItem}>
-          <Button
-            color="transparent"
-            className={classes.navLink}
-            onClick={handleLoginOpen}
-          >
-            Login
-          </Button>
-          <Login open={openLogin} onClose={handleLoginClose} />
-        </ListItem>
+        {isAuthenticated ? (
+          <ListItem className={classes.listItem}>
+            <Button
+              color="transparent"
+              className={classes.navLink}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          </ListItem>
+        ) : (
+          <ListItem className={classes.listItem}>
+            <Button
+              color="transparent"
+              className={classes.navLink}
+              onClick={handleLoginOpen}
+            >
+              Login
+            </Button>
+            <Login open={openLogin} onClose={handleLoginClose} />
+          </ListItem>
+        )}
 
         <Dialog open={open} onClose={() => setOpen(false)}>
           <form onSubmit={handleSubmit}>

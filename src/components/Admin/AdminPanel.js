@@ -3,6 +3,10 @@ import { functions, firestore as db } from '../../../firebase';
 import { Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Button, Grid, Snackbar, MenuItem } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import MuiAlert from '@material-ui/lab/Alert';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@material-ui/core';
+import { storage } from '../../../firebase';
 
 
 
@@ -32,6 +36,95 @@ export default function AdminPanel({ open, onClose }) {
 
 
     const predefinedRoles = ['Member', 'Cruising', 'Spinnaker', 'Commodore', 'Vice Commodore', 'Rear Commodore', 'Race Director', 'Secretary', 'Treasurer', 'Fleet Captain', 'Porthole', 'Bar Manager'];
+
+
+
+    {/** UPDATE EVENTS SECTION */ }
+
+
+    const [events, setEvents] = useState([]);
+    const [editEventDialogOpen, setEditEventDialogOpen] = useState(false);
+    const [eventTitle, setEventTitle] = useState('');
+    const [eventDate, setEventDate] = useState('');
+    const [eventTime, setEventTime] = useState('');
+    const [eventDescription, setEventDescription] = useState('');
+    const [eventImage, setEventImage] = useState('');
+    const [editingEventId, setEditingEventId] = useState(null); // Used to determine if editing an existing event
+    const [eventPdf, setEventPdf] = useState('');
+
+
+    useEffect(() => {
+        const ref = db.collection('events');
+        const unsubscribe = ref.onSnapshot(snapshot => {
+            const fetchedEvents = [];
+            snapshot.forEach(doc => {
+                fetchedEvents.push({ id: doc.id, ...doc.data() });
+            });
+            setEvents(fetchedEvents);
+        });
+
+        return () => unsubscribe(); // Cleanup on unmount
+    }, []);
+
+    // Function to open the edit event dialog with an existing event
+    const handleEditEvent = (event) => {
+        setEditingEventId(event.id);
+        setEventTitle(event.title);
+        setEventDate(event.date);
+        setEventTime(event.time);
+        setEventDescription(event.description);
+        setEventImage(event.image);
+        setEditEventDialogOpen(true);
+    };
+
+    // Function to open the edit event dialog for creating a new event
+    const handleCreateEvent = () => {
+        setEditingEventId(null);
+        setEventTitle('');
+        setEventDate('');
+        setEventTime('');
+        setEventDescription('');
+        setEventImage('');
+        setEditEventDialogOpen(true);
+    };
+
+    // Function to save the event to Firestore (either creating or updating)
+    const saveEvent = () => {
+        const eventData = {
+            title: eventTitle,
+            date: eventDate,
+            time: eventTime,
+            description: eventDescription,
+            image: eventImage,
+            pdf: eventPdf // Include the PDF URL
+        };
+        if (editingEventId) {
+            // Update existing event
+            db.collection('events').doc(editingEventId).update(eventData);
+        } else {
+            // Create new event
+            db.collection('events').add(eventData);
+        }
+        setEditEventDialogOpen(false);
+    };
+
+    // Function to delete an event from Firestore
+    const deleteEvent = (eventId) => {
+        db.collection('events').doc(eventId).delete();
+    };
+
+    const handlePdfUpload = (e) => {
+        const file = e.target.files[0];
+        const storageRef = storage.ref(); // Make sure you import storage from firebase
+        const fileRef = storageRef.child('events/' + file.name);
+        fileRef.put(file).then(() => {
+            fileRef.getDownloadURL().then((url) => {
+                setEventPdf(url); // Save the URL in the state
+            });
+        });
+    };
+
+    {/** ^^UPDATE EVENTS SECTION ^^*/ }
 
 
 
@@ -415,6 +508,57 @@ export default function AdminPanel({ open, onClose }) {
                     </Grid>
                 </Grid>
 
+
+                {/** UPDATE EVENTS  */}
+
+
+
+
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <DialogTitle>Manage Events</DialogTitle>
+                </div>
+                <DialogContent>
+
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <Button onClick={handleCreateEvent} style={{ backgroundColor: "#add5ab", marginBottom: "10px" }}>Add New Event</Button>
+                    </div>
+                    <List>
+                        {events.map((event) => (
+                            <ListItem key={event.id}>
+                                <ListItemText primary={event.title} secondary={event.date} />
+                                <ListItemSecondaryAction>
+                                    <IconButton edge="end" onClick={() => handleEditEvent(event)}>
+                                        <EditIcon />
+                                    </IconButton>
+                                    <IconButton edge="end" onClick={() => deleteEvent(event.id)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
+                            </ListItem>
+                        ))}
+                    </List>
+                </DialogContent>
+
+                {/* Edit Event Dialog */}
+                <Dialog open={editEventDialogOpen} onClose={() => setEditEventDialogOpen(false)}>
+                    <DialogTitle>{editingEventId ? 'Edit Event' : 'Create Event'}</DialogTitle>
+                    <DialogContent>
+                        <TextField label="Title" value={eventTitle} onChange={(e) => setEventTitle(e.target.value)} />
+                        <TextField label="Date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
+                        <TextField label="Time" value={eventTime} onChange={(e) => setEventTime(e.target.value)} />
+                        <TextField label="Description" value={eventDescription} onChange={(e) => setEventDescription(e.target.value)} />
+                        <TextField label="Image URL" value={eventImage} onChange={(e) => setEventImage(e.target.value)} />
+
+                        <input
+                            type="file"
+                            accept="application/pdf" // Accept only PDF files
+                            onChange={handlePdfUpload}
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={saveEvent} color="primary">{editingEventId ? 'Update' : 'Create'}</Button>
+                    </DialogActions>
+                </Dialog>
             </DialogContent>
             <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
                 <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>

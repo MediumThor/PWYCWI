@@ -18,12 +18,15 @@ import SmallButton from "src/components/CustomButtons/SmallButton.js"
 import styles from "src/styles/jss/nextjs-material-kit/components/headerLinksStyle";
 import AdminPanel from "../Admin/AdminPanel";
 import OfficerPanel from "../Admin/OfficerPanel";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 
 const useStyles = makeStyles(styles);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
+
 
 Transition.displayName = "Transition";
 
@@ -42,6 +45,10 @@ function HeaderLinks() {
   const [officerPanelOpen, setOfficerPanelOpen] = useState(false);
   const [userRoles, setUserRoles] = useState([]);
 
+
+  const handleBackClick = () => {
+    router.push('/App'); // Redirect to the home page
+  };
 
 
 
@@ -113,6 +120,12 @@ function HeaderLinks() {
     <div>
 
       <List className={classes.list}>
+
+        <ListItem className={classes.listItem}>
+          <SmallButton size="sm" color="transparent" onClick={handleBackClick}>
+            <ArrowBackIcon />
+          </SmallButton>
+        </ListItem>
 
         <ListItem className={classes.listItem}>
           <SmallButton size="sm"

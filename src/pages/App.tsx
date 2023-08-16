@@ -447,6 +447,7 @@ export default function Home() {
           <ToastContainer />
 
           <SectionHome />
+          <Events />
 
           <RenderOnLargeScreen>
             <ParallaxImage />
@@ -467,7 +468,7 @@ export default function Home() {
           </RenderOnLargeScreen>
 
           <FeaturedEvent />
-          <Events />
+
 
           <RenderOnLargeScreen>
             <ParallaxImage4 />

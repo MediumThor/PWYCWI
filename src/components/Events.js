@@ -1,3 +1,5 @@
+{/** This is an old file and no longer in use.  */ }
+
 import { Component } from 'react';
 import ICAL from 'ical.js';
 
