@@ -12,7 +12,7 @@ const Section1Styled = styled.div`
   background: linear-gradient(45deg, #171615 50%, #2e2d2a 100%);
   padding-top: 0px;
   padding-bottom: 70px;
-  margin-bottom: 0px;
+  margin-bottom: 80px;
   margin-top: -0px
 @media (max-width: 768px) {
 

@@ -25,6 +25,39 @@ import BylawsDialog from '../Dialog/ByLaws';
 import RosterDialog from '../Dialog/Roster';
 import OfficerDialog from '../Dialog/Officers';
 import BoardDialog from '../Dialog/Board';
+import CrewSignup from './Components/CrewSignup';
+
+
+const ButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5em;
+
+  @media (max-width: 500px) {
+    gap: 0.1em;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column; // Change to column to stack rows vertically
+  justify-content: center;
+  gap: 1em;
+
+  @media (max-width: 600px) {
+    top: 80%;
+  }
+
+  @media (max-width: 400px) {
+    gap: 0.2em;
+    top: 65%;
+  }
+`;
 
 
 const Section1Styled = styled.div`
@@ -142,37 +175,7 @@ const FlexContainer = styled.div`
 
 
 
-const ButtonContainer = styled.div`
-  position: absolute;
-  top: 85%;  
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: row; 
-  justify-content: center; 
-  gap: .5em;
 
-  @media (max-width: 600px) {
-    flex-direction: row;
-    justify-content: center;
-    top: 80%;
-  }
-
-    @media (max-width: 500px) {
-    gap: .1em;
-
-    
-  }
-  @media (max-width: 400px) {
-    flex-direction: column;  // make buttons display in a column
-    align-items: center;  // center buttons vertically
-    grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
-    display: grid; // switch to grid display
-    gap: .2em;
-    top: 65%; 
-    
-  }
-`;
 
 const StyledButton = styled.button`
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
@@ -262,6 +265,13 @@ export default function SectionHome() {
   const [officerOpen, setOfficerOpen] = useState(false);
 
   const [boardOpen, setBoardOpen] = useState(false);
+
+
+  const [openCrewSignup, setOpenCrewSignup] = useState(false); // State to control CrewSignup dialog
+
+  const handleCrewSignupOpen = () => setOpenCrewSignup(true); // Function to open CrewSignup dialog
+  const handleCrewSignupClose = () => setOpenCrewSignup(false); // Function to close CrewSignup dialog
+
 
 
   const handleBoardDialogOpen = () => {
@@ -514,26 +524,35 @@ export default function SectionHome() {
             <Title>Port Washington<br />Yacht Club Members <br /> Section</Title>
             <MobileTitle>Members Section</MobileTitle>
             <ButtonContainer>
-              <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
-              <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />
+              <ButtonRow>
 
-              <MembershipDialog open={open} onClose={handleClose} scroll="paper" />
-              <StyledButton onClick={handleOpen} style={{ color: '#87faa8' }}>Member Form</StyledButton>
+                <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
+                <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />
 
-              <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton> {/* New Button */}
-              <RaceInfoDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
+                <MembershipDialog open={open} onClose={handleClose} scroll="paper" />
+                <StyledButton onClick={handleOpen} style={{ color: '#87faa8' }}>Member Form</StyledButton>
 
-              <StyledButton onClick={handleBylawsDialogOpen}>By-laws</StyledButton> {/* New Button */}
-              <BylawsDialog open={bylawsOpen} onClose={handleBylawsclose} scroll="paper" />
+                <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton> {/* New Button */}
+                <RaceInfoDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
 
-              <StyledButton onClick={handleRosterDialogOpen}>Roster</StyledButton> {/* New Button */}
-              <RosterDialog open={rosterOpen} onClose={handleRosterclose} scroll="paper" />
+                <StyledButton onClick={handleBylawsDialogOpen}>By-laws</StyledButton> {/* New Button */}
+                <BylawsDialog open={bylawsOpen} onClose={handleBylawsclose} scroll="paper" />
+              </ButtonRow>
+              <ButtonRow>
 
-              <StyledButton onClick={handleOfficerDialogOpen}>Officers</StyledButton> {/* New Button */}
-              <OfficerDialog open={officerOpen} onClose={handleOfficerclose} scroll="paper" />
+                <StyledButton onClick={handleRosterDialogOpen}>Roster</StyledButton> {/* New Button */}
+                <RosterDialog open={rosterOpen} onClose={handleRosterclose} scroll="paper" />
 
-              <StyledButton onClick={handleBoardDialogOpen}>Board</StyledButton> {/* New Button */}
-              <BoardDialog open={boardOpen} onClose={handleBoardclose} scroll="paper" />
+                <StyledButton onClick={handleOfficerDialogOpen}>Officers</StyledButton> {/* New Button */}
+                <OfficerDialog open={officerOpen} onClose={handleOfficerclose} scroll="paper" />
+
+                <StyledButton onClick={handleBoardDialogOpen}>Board</StyledButton> {/* New Button */}
+                <BoardDialog open={boardOpen} onClose={handleBoardclose} scroll="paper" />
+
+                <StyledButton onClick={handleCrewSignupOpen}>Crew Signup</StyledButton> {/* Button to launch CrewSignup dialog */}
+                <CrewSignup open={openCrewSignup} onClose={handleCrewSignupClose} /> {/* CrewSignup dialog */}
+              </ButtonRow>
+
 
               {/**   <StyledButton onClick={handleLinkDialogOpen} >Useful Links</StyledButton>
           <LinksDialog open={linkOpen} onClose={handleLinkClose} scroll="paper" /> */}

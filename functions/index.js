@@ -225,7 +225,7 @@ exports.addCaptainRole = functions.https.onCall((data, context) => {
         .then((user) => {
             return admin.auth().setCustomUserClaims(user.uid, { ...user.customClaims, captain: true });
         })
-        .then(() => ({ message: `Success! ${data.email} has been made a captain.` }))
+        .then(() => ({ message: `Success! ${data.email} has been made a Captain.` }))
         .catch((err) => err);
 });
 
@@ -242,7 +242,7 @@ exports.removeCaptainRole = functions.https.onCall((data, context) => {
             let { captain, ...otherClaims } = user.customClaims;
             return admin.auth().setCustomUserClaims(user.uid, otherClaims);
         })
-        .then(() => ({ message: `Success! ${data.email} is no longer a captain.` }))
+        .then(() => ({ message: `Success! ${data.email} is no longer a Captain.` }))
         .catch((err) => err);
 });
 

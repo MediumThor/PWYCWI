@@ -17,6 +17,8 @@ import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { makeStyles } from '@material-ui/core/styles';
 import Cam from '../components/Sections/Cam';
 import Cookies from 'js-cookie';  // Add this line
+import CrewCardsSection from '../components/SectionsMembers/CrewCards';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,14 +54,20 @@ function ScrollToTop() {
 
 export default function Members() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCaptain, setIsCaptain] = useState(false); // State to check if user is a Captain
   const router = useRouter();
-
-
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      if (user || Cookies.get('specialUser') === 'true') {  // Modified this line
+      if (user || Cookies.get('specialUser') === 'true') {
         setIsAuthenticated(true);
+
+        // Check for custom claim 'Captain'
+        user.getIdTokenResult().then(idTokenResult => {
+          if (idTokenResult.claims.captain) { // Notice the lowercase 'c'
+            setIsCaptain(true);
+          }
+        });
       } else {
         setIsAuthenticated(false);
         router.push('/');
@@ -73,9 +81,6 @@ export default function Members() {
   if (!isAuthenticated) {
     return null; // or return <LoadingComponent />
   }
-
-
-
 
   return (
     <div>
@@ -91,16 +96,18 @@ export default function Members() {
       />
       <div>
         <SectionHome />
-        <Services />
         <Events />
         <Porthole />
         <Weather />
+        {isCaptain && <CrewCardsSection />} {/* Render CrewCardsSection only if user is a Captain */}
+        <Services />
         <Cam />
         <Contact />
       </div>
     </div>
   );
 }
+
 
 const TitleWrapper = styled.div`
 margin-top: 350px;

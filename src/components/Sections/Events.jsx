@@ -177,7 +177,7 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 400px;
+  max-width: 300px;
   max-height: 400px;
      @media (max-width: 768px) {
    max-height: 300px;

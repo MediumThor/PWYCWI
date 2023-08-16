@@ -5,6 +5,8 @@ import { storage } from '../../../firebase';
 import { Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, TextField, Button, Grid, Snackbar, MenuItem, Select } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import MuiAlert from '@material-ui/lab/Alert';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@material-ui/core';
 
 
 
@@ -36,7 +38,57 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
     const predefinedRoles = ['Member', 'Cruising', 'Spinnaker', 'Commodore', 'Vice Commodore', 'Rear Commodore', 'Race Director', 'Secretary', 'Treasurer', 'Fleet Captain', 'Porthole', 'Bar Manager'];
 
 
+    {/** PORTHOLE SECTION */ }
 
+    const [portholeImages, setPortholeImages] = useState([]);
+    const [uploadPortholeImageDialogOpen, setUploadPortholeImageDialogOpen] = useState(false);
+    const [selectedPortholeFile, setSelectedPortholeFile] = useState(null);
+    const [selectedPortholePageNumber, setSelectedPortholePageNumber] = useState(0); // State to hold the selected page number
+    const [deletePortholeImagesDialogOpen, setDeletePortholeImagesDialogOpen] = useState(false);
+
+
+
+    useEffect(() => {
+        const ref = db.collection('portholeImages').orderBy('sequence'); // Order by the 'sequence' field
+        const unsubscribe = ref.onSnapshot(snapshot => {
+            const fetchedImages = [];
+            snapshot.forEach(doc => {
+                fetchedImages.push({ id: doc.id, url: doc.data().url });
+            });
+            setPortholeImages(fetchedImages);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const uploadPortholeImage = () => {
+        if (selectedPortholeFile && selectedPortholePageNumber > 0) {
+            const filename = `image${selectedPortholePageNumber}.jpg`; // Change the extension as needed
+
+            const storageRef = storage.ref();
+            const fileRef = storageRef.child('porthole/' + filename);
+            fileRef.put(selectedPortholeFile).then(() => {
+                fileRef.getDownloadURL().then((url) => {
+                    // Add the URL and sequence number to the Firestore collection
+                    db.collection('portholeImages').add({ url, sequence: selectedPortholePageNumber });
+                    setUploadPortholeImageDialogOpen(false);
+                });
+            });
+        } else {
+            // You might want to show a message here if no file is selected or page number is not set
+        }
+    };
+
+    const handlePortholeFileChange = (e) => {
+        setSelectedPortholeFile(e.target.files[0]);
+    };
+
+    const deletePortholeImage = (imageId) => {
+        db.collection('portholeImages').doc(imageId).delete();
+    };
+
+
+
+    {/** PORTHOLE SECTION */ }
 
     {/**    RACE RESULTS    */ }
 
@@ -363,6 +415,8 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
                         }}
                     />
                 </div>
+
+
                 {officerRoles?.includes('') && (
                     <>
 
@@ -431,6 +485,76 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
                     <Button style={{ width: '120px', height: '80px', backgroundColor: "#fedcba", marginBottom: "20px" }} variant="contained" onClick={removeUserCaptain}>Remove User Captain</Button>
 
                 </div>
+
+
+                {/** UPDATE PORTHOLE */}
+
+
+                {officerRoles?.includes('Porthole') && (
+                    <div>
+
+
+                        <div>
+                            <div style={{ border: '2px solid' }}>
+
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+
+                                    <DialogTitle>Manage Porthole Images</DialogTitle>
+                                </div>
+
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+                                    <Button onClick={() => setUploadPortholeImageDialogOpen(true)} style={{ backgroundColor: "#add5ab", marginBottom: "40px", marginRight: "40px" }}>Upload Porthole Image</Button>
+                                    <Button onClick={() => setDeletePortholeImagesDialogOpen(true)} style={{ backgroundColor: "#f46e6e", marginBottom: "40px" }}>Delete Porthole Images</Button>
+                                </div>
+                            </div>
+
+
+                            {/* Delete Porthole Images Dialog */}
+                            <Dialog open={deletePortholeImagesDialogOpen} onClose={() => setDeletePortholeImagesDialogOpen(false)}>
+                                <DialogTitle>Delete Porthole Images</DialogTitle>
+                                <List>
+                                    {portholeImages.map((image) => (
+                                        <ListItem key={image.id}>
+                                            <ListItemText primary={image.url} />
+                                            <ListItemSecondaryAction>
+                                                <IconButton edge="end" onClick={() => deletePortholeImage(image.id)}>
+                                                    <DeleteIcon />
+                                                </IconButton>
+                                            </ListItemSecondaryAction>
+                                        </ListItem>
+                                    ))}
+                                </List>
+                            </Dialog>
+
+                        </div>
+                        {/* Upload Porthole Image Dialog */}
+                        <Dialog open={uploadPortholeImageDialogOpen} onClose={() => setUploadPortholeImageDialogOpen(false)}>
+                            <DialogTitle>Upload Porthole Image</DialogTitle>
+                            <DialogContent>
+                                <TextField type="file" onChange={handlePortholeFileChange} />
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px' }}>
+
+
+                                    <TextField
+                                        label="Page Number"
+                                        type="number"
+                                        value={selectedPortholePageNumber}
+                                        onChange={(e) => setSelectedPortholePageNumber(parseInt(e.target.value))}
+                                    />
+                                </div>
+                            </DialogContent>
+
+                            <DialogActions>
+                                <Button onClick={uploadPortholeImage} color="primary">Upload</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
+
+                )}
+
+
+
+                {/** UPDATE PORTHOLE^^^ */}
 
 
 
@@ -594,6 +718,6 @@ export default function OfficerPanel({ open, onClose, roles: officerRoles }) {
 
 
 
-        </Dialog>
+        </Dialog >
     );
 }

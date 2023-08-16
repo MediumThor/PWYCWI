@@ -60,7 +60,7 @@ margin-top: -70px;
 margin-bottom: 30px;
 
   flex: none;
-  width: 90vw;
+  width: 92vw;
   height: 75vh;
   scroll-snap-align: start;
    border-radius: 5px;
@@ -93,7 +93,7 @@ margin-bottom: 30px;
 
 const PageContainer = styled.div`
   flex: none;
-  width: 90vw;
+  width: 92vw;
   height: 74vh;
   margin-top: -2px;
   scroll-snap-align: start;
