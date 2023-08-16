@@ -173,11 +173,17 @@ margin-top: 20px;
 const ImageWrapper = styled.div`
   flex: 1;
   padding: 10px;
+  
 `;
 
 const Image = styled.img`
   max-width: 400px;
   max-height: 400px;
+     @media (max-width: 768px) {
+   max-height: 300px;
+     max-width: 300px;
+
+  }
 `;
 
 const InfoWrapper = styled.div`
