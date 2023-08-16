@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, TextField, Button } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, TextField, Button, Typography } from '@material-ui/core';
 import { firestore as db } from '../../../../firebase';
 
 export default function CrewSignup({ open, onClose }) {
@@ -52,7 +52,12 @@ export default function CrewSignup({ open, onClose }) {
                 <TextField required label="Phone Number" value={phone} onChange={e => setPhone(e.target.value)} fullWidth />
                 <TextField required label="Email" value={email} onChange={e => setEmail(e.target.value)} fullWidth />
                 <TextField required label="Sailing Experience" value={experience} onChange={e => setExperience(e.target.value)} fullWidth />
-                <Button onClick={handleSubmit} color="primary">Submit</Button>
+                <div style={{ marginTop: '20px' }}> {/* Added vertical space */}
+                    <Button onClick={handleSubmit} color="primary">Submit</Button>
+                </div>
+                <Typography variant="body2" style={{ textAlign: 'center', marginTop: '20px' }}> {/* Added disclaimer */}
+                    This form is only to submit interest in becoming a crewmember. A captain will reach out if there is any space in the fleet.
+                </Typography>
             </DialogContent>
         </Dialog>
     );
