@@ -247,7 +247,7 @@ export default function Section2() {
           <FacebookFeedWrapper>
             <iframe
               src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPWYCWI&tabs=timeline&width=900&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=832489078225536"
-              width="900"
+              width="500"
               height="800"
               style={{ border: 'none', overflow: 'hidden' }}
               scrolling="no"
