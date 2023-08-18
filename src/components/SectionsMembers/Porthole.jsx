@@ -37,7 +37,7 @@ const CarouselContainer = styled.div`
   margin: 0 auto; // Center the container
 
   @media screen and (orientation: landscape) and (max-width: 800px) {
-    width: 100%;
+    width: 80%;
     height: auto; // Allow the height to adjust automatically
   }
 

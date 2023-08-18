@@ -50,6 +50,8 @@ const ButtonContainer = styled.div`
   justify-content: center;
   gap: 1em;
 
+  
+
   @media (max-width: 600px) {
     
     flex-direction: row; // Change to row direction on mobile to create two columns
@@ -64,6 +66,11 @@ const ButtonContainer = styled.div`
     gap: 0.2em;
 top: 80%; // Move the buttons up slightly
     }
+
+     @media screen and (orientation: landscape) and (max-width: 800px) {
+        top: 50%; // Move the buttons up slightly
+
+  }
 `;
 
 
