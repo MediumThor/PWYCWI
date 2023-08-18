@@ -57,13 +57,13 @@ const ButtonContainer = styled.div`
   }
 
     @media (max-width: 800px) {
-    top: 50%; // Move the buttons up slightly
+    top: 70%; // Move the buttons up slightly
   }
 
   @media (max-width: 400px) {
     gap: 0.2em;
-    margin-top: -50%; // Adjust this value to move buttons up on smaller screens
-  }
+top: 80%; // Move the buttons up slightly
+    }
 `;
 
 
@@ -544,16 +544,32 @@ export default function SectionHome() {
             <MobileTitle>Members Section</MobileTitle>
             <ButtonContainer>
               <ButtonRow>
-                <StyledButton onClick={handleHistoryDialogOpen}>Club History</StyledButton>
+
+                <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
+                <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />
+
+                <MembershipDialog open={open} onClose={handleClose} scroll="paper" />
                 <StyledButton onClick={handleOpen} style={{ color: '#87faa8' }}>Member Form</StyledButton>
-                <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton>
-                <StyledButton onClick={handleBylawsDialogOpen}>By-laws</StyledButton>
+
+                <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton> {/* New Button */}
+                <RaceInfoDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
+
+                <StyledButton onClick={handleBylawsDialogOpen}>By-laws</StyledButton> {/* New Button */}
+                <BylawsDialog open={bylawsOpen} onClose={handleBylawsclose} scroll="paper" />
               </ButtonRow>
               <ButtonRow>
-                <StyledButton onClick={handleRosterDialogOpen}>Roster</StyledButton>
-                <StyledButton onClick={handleOfficerDialogOpen}>Officers</StyledButton>
-                <StyledButton onClick={handleBoardDialogOpen}>Board</StyledButton>
-                <StyledButton onClick={handleCrewSignupOpen}>Crew Signup</StyledButton>
+
+                <StyledButton onClick={handleRosterDialogOpen}>Roster</StyledButton> {/* New Button */}
+                <RosterDialog open={rosterOpen} onClose={handleRosterclose} scroll="paper" />
+
+                <StyledButton onClick={handleOfficerDialogOpen}>Officers</StyledButton> {/* New Button */}
+                <OfficerDialog open={officerOpen} onClose={handleOfficerclose} scroll="paper" />
+
+                <StyledButton onClick={handleBoardDialogOpen}>Board</StyledButton> {/* New Button */}
+                <BoardDialog open={boardOpen} onClose={handleBoardclose} scroll="paper" />
+
+                <StyledButton onClick={handleCrewSignupOpen}>Crew Signup</StyledButton> {/* Button to launch CrewSignup dialog */}
+                <CrewSignup open={openCrewSignup} onClose={handleCrewSignupClose} /> {/* CrewSignup dialog */}
               </ButtonRow>
             </ButtonContainer>
 
