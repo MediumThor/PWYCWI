@@ -2,6 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { firestore as db } from '../../../../firebase';
+import styled from 'styled-components';
+
+const CardContainer = styled.div`
+  width: 16vw;
+  margin: 8px;
+
+  @media (max-width: 600px) {
+    width: 80%;
+  }
+`;
 
 export default function CrewCards() {
     const [crewMembers, setCrewMembers] = useState([]);
@@ -28,7 +38,7 @@ export default function CrewCards() {
     return (
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
             {crewMembers.map(member => (
-                <div key={member.id} style={{ width: '16vw', margin: '8px' }}> {/* Fixed width of 16% of viewport */}
+                <CardContainer key={member.id}> {/* Use styled component */}
                     <Card style={{ marginBottom: '10px', position: 'relative', width: '100%' }}>
                         <IconButton onClick={() => handleDelete(member.id)} style={{ position: 'absolute', top: 0, right: 0 }}>
                             <CloseIcon />
@@ -41,7 +51,7 @@ export default function CrewCards() {
                             <Typography variant="body2">Experience: {member.experience}</Typography>
                         </CardContent>
                     </Card>
-                </div>
+                </CardContainer>
             ))}
         </div>
     );

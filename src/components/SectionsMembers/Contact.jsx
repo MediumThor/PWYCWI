@@ -15,6 +15,9 @@ const Section3Styled = styled.div`
 
     ;
   }
+    @media screen and (orientation: landscape) and (max-width: 800px) {
+    margin-top: 70px; // Hide title text in mobile landscape mode
+  }
 `;
 
 const HistorySection = styled.div`

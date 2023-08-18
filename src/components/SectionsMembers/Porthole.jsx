@@ -1,37 +1,52 @@
 import React, { useState, useEffect } from 'react';
-
 import styled from 'styled-components';
-import Slideshow from 'src/components/Slideshow.jsx';
-import { firestore as db } from '../../../firebase';
-import { Carousel } from 'react-responsive-carousel'; // You might need to install this package
+import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { firestore as db } from '../../../firebase';
 
 const Section4Styled = styled.div`
   background-color: #000000;
   margin-top: -150px;
-    display: flex;
+  display: flex; // Add display: flex back
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 `;
 
 const Wrapper = styled.div`
-  margin-top: 150px;
-  min-height: 100vh;
+  margin-top: 50px;
+  background-color: #000000;
+  width: 100%; // Ensure that it takes the full width
   display: flex;
-  flex-direction: column;
+  flex-direction: column; // Use column for mobile by default
   justify-content: center;
   align-items: center;
-  position: relative;
+
+  @media (min-width: 1169px) {
+  background-color: #000000;
+    flex-direction: row; // Use row for desktop
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 `;
 
 const CarouselContainer = styled.div`
-  margin-top: 50px;
+  background-color: #000000;
+  width: 900px; // Default width for larger screens
+  height: 600px;
+  margin: 0 auto; // Center the container
 
-  width: 900px; // Adjust width as needed
-  height: 600px; // Adjust height as needed
+  @media screen and (orientation: landscape) and (max-width: 800px) {
+    width: 100%;
+    height: auto; // Allow the height to adjust automatically
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    height: auto;
+  }
 `;
+
 
 const ImageContainer = styled.div`
   display: flex;
@@ -40,11 +55,12 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
+
 const Section4 = () => {
       const [images, setImages] = useState([]);
 
       useEffect(() => {
-            const ref = db.collection('portholeImages').orderBy('sequence'); // Order by the 'sequence' field
+            const ref = db.collection('portholeImages').orderBy('sequence');
             const unsubscribe = ref.onSnapshot(snapshot => {
                   const fetchedImages = [];
                   snapshot.forEach(doc => {
@@ -55,14 +71,11 @@ const Section4 = () => {
             return () => unsubscribe();
       }, []);
 
-
-
       return (
             <Section4Styled id="section4">
-                  <main>
+                  <Wrapper>
                         <CarouselContainer>
-
-                              <Carousel >
+                              <Carousel>
                                     {images.map((image, index) => (
                                           <ImageContainer key={index}>
                                                 <img src={image} alt="" />
@@ -70,14 +83,9 @@ const Section4 = () => {
                                     ))}
                               </Carousel>
                         </CarouselContainer>
-
-                  </main>
-
+                  </Wrapper>
             </Section4Styled>
       );
 };
-
-
-
 
 export default Section4;

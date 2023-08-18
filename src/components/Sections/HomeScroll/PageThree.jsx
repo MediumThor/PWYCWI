@@ -65,6 +65,9 @@ const Title = styled.h1`
     left: 8%;
 
   }
+     @media screen and (orientation: landscape) and (max-width: 800px) {
+    display: none; // Hide title text in mobile landscape mode
+  }
 `;
 
 const Location = styled.h1`
@@ -90,6 +93,9 @@ const Location = styled.h1`
     top: 15%;
     left: 15%;
     font-size: .7em;
+  }
+     @media screen and (orientation: landscape) and (max-width: 800px) {
+    display: none; // Hide title text in mobile landscape mode
   }
 `;
 

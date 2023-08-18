@@ -60,6 +60,9 @@ const Title = styled.h1`
     height: 100px;  // 50% of the original height
     font-size: 1.0em;
   }
+    @media screen and (orientation: landscape) and (max-width: 800px) {
+    display: none; // Hide title text in mobile landscape mode
+  }
 `;
 
 const Location = styled.h1`

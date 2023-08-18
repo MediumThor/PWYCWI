@@ -30,12 +30,13 @@ import CrewSignup from './Components/CrewSignup';
 
 const ButtonRow = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row; // Use row direction to align buttons horizontally
   justify-content: center;
   gap: 0.5em;
 
-  @media (max-width: 500px) {
-    gap: 0.1em;
+  @media (max-width: 600px) {
+    flex-direction: column; // Use column direction to stack buttons vertically on mobile
+    width: 50%; // Set width to 50% on mobile to create two columns
   }
 `;
 
@@ -45,19 +46,28 @@ const ButtonContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: column; // Change to column to stack rows vertically
+  flex-direction: column; // Keep as column to stack rows vertically
   justify-content: center;
   gap: 1em;
 
   @media (max-width: 600px) {
-    top: 80%;
+    
+    flex-direction: row; // Change to row direction on mobile to create two columns
+    margin-top: -50%; // Adjust this value to move buttons up on medium-sized screens
+  }
+
+    @media (max-width: 800px) {
+    top: 50%; // Move the buttons up slightly
   }
 
   @media (max-width: 400px) {
     gap: 0.2em;
-    top: 65%;
+    margin-top: -50%; // Adjust this value to move buttons up on smaller screens
   }
 `;
+
+
+
 
 
 const Section1Styled = styled.div`
@@ -89,11 +99,13 @@ const Title = styled.h1`
     height: 200px;  // 50% of the original height
     top: 5%;
   }
-  @media (max-width: 400px) {
+  @media screen and (orientation: landscape) and (max-width: 800px) {
+    display: none; // Hide title text in mobile landscape mode
+  }
+   @media (max-width: 600px) {
+    height: 200px;  // 50% of the original height
+    top: 45%;
     display: none;
-    height: 100px;  // 50% of the original height
-    top: 5%;
-    font-size: 1.0em;
   }
 `;
 
@@ -110,6 +122,7 @@ const MobileTitle = styled.h1`
     height: 200px;  // 50% of the original height
     top: 5%;
   }
+  
   @media (max-width: 400px) {
     height: 100px;  // 50% of the original height
     top: 5%;
@@ -143,15 +156,19 @@ const Logo = styled.img`
   height: 320px; 
   width: auto;
 
-  @media (max-width: 600px) {
+  @media screen and (orientation: landscape) and (max-width: 800px) {
+    display: none; // Hide logo in mobile landscape mode
+  }
+   @media (max-width: 600px) {
     height: 200px;  // 50% of the original height
     top: 45%;
+    display: none;
   }
-   @media (max-width: 400px) {
-    height: 150px;  // 50% of the original height
-    top: 27%;
-    left: 45%;  
+
+  @media screen and (orientation: landscape) and (max-width: 300px) {
+    display: none; // Hide logo in mobile landscape mode
   }
+
 `;
 
 const ModalTitle = styled.h2`
@@ -178,7 +195,7 @@ const FlexContainer = styled.div`
 
 
 const StyledButton = styled.button`
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
   font-size: 1.4rem;
   border-radius: 5px;
@@ -188,30 +205,32 @@ const StyledButton = styled.button`
   padding: 10px 20px;
   cursor: pointer;
   height: 80px;
-    width: 170px;
-      transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
-
+  width: 170px;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     color: #996515;
     border-color: #87CEFA;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
-      background-color: rgb(0,0,0,0.9);
+    background-color: rgb(0,0,0,0.9);
   }
 
   @media (max-width: 700px) {
     font-size: 1rem; // decrease font size
     padding: 8px 16px; // decrease padding
     margin: 0.5em;
-    height: 70px;
-    width: 120px;
+    height: 60px; // decrease height
+    width: 140px; // decrease width
   }
-   @media (max-width: 640px) {
-    font-size: 1rem; // decrease font size
-    padding: 5px 25px; // decrease padding
-    
+
+  @media (max-width: 500px) {
+    font-size: 0.9rem; // further decrease font size
+    padding: 6px 12px; // further decrease padding
+    height: 50px; // further decrease height
+    width: 120px; // further decrease width
   }
 `;
+
 
 const CloseButton = styled.button`
     // add this line to set a fixed height
@@ -525,38 +544,22 @@ export default function SectionHome() {
             <MobileTitle>Members Section</MobileTitle>
             <ButtonContainer>
               <ButtonRow>
-
-                <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>
-                <HistoryDialog open={historyOpen} onClose={handleHistoryClose} scroll="paper" />
-
-                <MembershipDialog open={open} onClose={handleClose} scroll="paper" />
+                <StyledButton onClick={handleHistoryDialogOpen}>Club History</StyledButton>
                 <StyledButton onClick={handleOpen} style={{ color: '#87faa8' }}>Member Form</StyledButton>
-
-                <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton> {/* New Button */}
-                <RaceInfoDialog open={raceOpen} onClose={handleRaceClose} scroll="paper" />
-
-                <StyledButton onClick={handleBylawsDialogOpen}>By-laws</StyledButton> {/* New Button */}
-                <BylawsDialog open={bylawsOpen} onClose={handleBylawsclose} scroll="paper" />
+                <StyledButton onClick={handleRaceDialogOpen}>Sailing Info</StyledButton>
+                <StyledButton onClick={handleBylawsDialogOpen}>By-laws</StyledButton>
               </ButtonRow>
               <ButtonRow>
-
-                <StyledButton onClick={handleRosterDialogOpen}>Roster</StyledButton> {/* New Button */}
-                <RosterDialog open={rosterOpen} onClose={handleRosterclose} scroll="paper" />
-
-                <StyledButton onClick={handleOfficerDialogOpen}>Officers</StyledButton> {/* New Button */}
-                <OfficerDialog open={officerOpen} onClose={handleOfficerclose} scroll="paper" />
-
-                <StyledButton onClick={handleBoardDialogOpen}>Board</StyledButton> {/* New Button */}
-                <BoardDialog open={boardOpen} onClose={handleBoardclose} scroll="paper" />
-
-                <StyledButton onClick={handleCrewSignupOpen}>Crew Signup</StyledButton> {/* Button to launch CrewSignup dialog */}
-                <CrewSignup open={openCrewSignup} onClose={handleCrewSignupClose} /> {/* CrewSignup dialog */}
+                <StyledButton onClick={handleRosterDialogOpen}>Roster</StyledButton>
+                <StyledButton onClick={handleOfficerDialogOpen}>Officers</StyledButton>
+                <StyledButton onClick={handleBoardDialogOpen}>Board</StyledButton>
+                <StyledButton onClick={handleCrewSignupOpen}>Crew Signup</StyledButton>
               </ButtonRow>
-
-
-              {/**   <StyledButton onClick={handleLinkDialogOpen} >Useful Links</StyledButton>
-          <LinksDialog open={linkOpen} onClose={handleLinkClose} scroll="paper" /> */}
             </ButtonContainer>
+
+
+            {/**   <StyledButton onClick={handleLinkDialogOpen} >Useful Links</StyledButton>
+          <LinksDialog open={linkOpen} onClose={handleLinkClose} scroll="paper" /> */}
 
             <BoardModal isOpen={isBoardModalOpen} onRequestClose={handleBoardClose} />
             <div style={{ height: '100vh' }} />

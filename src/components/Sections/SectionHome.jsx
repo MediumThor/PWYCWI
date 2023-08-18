@@ -140,6 +140,10 @@ const ScrollIndicator = styled.button`
         cursor: pointer;
   }
 
+    @media screen and (orientation: landscape) and (max-width: 800px) {
+    display: none; // Hide title text in mobile landscape mode
+  }
+
 
 `;
 
@@ -215,8 +219,11 @@ gap: .1em;
   @media (max-width: 400px) {
     gap: .01em;
       left: 50%;
-
+top: 60% 
   }
+
+    @media screen and (orientation: landscape) and (max-width: 800px) {
+top: 70%  }
 `;
 
 const StyledButton = styled.button`

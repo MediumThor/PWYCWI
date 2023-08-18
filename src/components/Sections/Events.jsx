@@ -181,7 +181,7 @@ const Image = styled.img`
   max-height: 400px;
      @media (max-width: 768px) {
    max-height: 300px;
-     max-width: 300px;
+     max-width: 200px;
 
   }
 `;
