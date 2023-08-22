@@ -51,6 +51,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { Analytics } from '@vercel/analytics/react';
 
+import PhotoGallery from '../components/Sections/PhotoGallery';
 
 
 
@@ -448,6 +449,7 @@ export default function Home() {
 
           <SectionHome />
           <Events />
+          <PhotoGallery />
 
           <RenderOnLargeScreen>
             <ParallaxImage />

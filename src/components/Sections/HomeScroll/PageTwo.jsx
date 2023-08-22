@@ -18,6 +18,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Button } from '@mui/material';
 import HistoryDialog from '../../Dialog/History';
 import MembershipDialog from '../../Dialog/Membership';
+import { firestore as db } from '../../../../firebase'; // Make sure to import Firestore
+
 
 const Section1Styled = styled.div`
   width: 100%;
@@ -281,6 +283,18 @@ const PageTwo = () => {
   const [scroll, setScroll] = useState('paper');
   const descriptionElementRef = useRef(null);
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [imageURL, setImageURL] = useState(''); // State variable to hold the image URL
+
+
+
+  useEffect(() => {
+    const ref = db.collection('homePageImages').doc('image1'); // Change to the correct document ID
+    ref.get().then(doc => {
+      if (doc.exists) {
+        setImageURL(doc.data().url); // Assuming the URL is stored in the 'url' field
+      }
+    });
+  }, []);
 
 
   const handleHistoryDialogOpen = () => {
@@ -361,9 +375,15 @@ const PageTwo = () => {
         <BackgroundBox>
           <Parallax
             blur={{ min: -15, max: 15 }}
-            strength={200}
-            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115435438077915166/karisma3.jpeg"
+            strength={300}
+            bgImage={imageURL} // Use the imageURL from state
             bgImageAlt="Background"
+            bgImageStyle={{
+              backgroundSize: 'contain', // Make sure the image fits within the container
+              height: '110vh', // Set a specific height (adjust as needed)
+              width: 'auto', // Maintain the aspect ratio
+              left: '60%'
+            }}
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
             <Title>Become a Member<br />of PWYC</Title>

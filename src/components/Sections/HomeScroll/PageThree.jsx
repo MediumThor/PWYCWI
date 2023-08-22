@@ -20,6 +20,8 @@ import MembershipModal from '../../Modals/MembershipModal';
 import OfficersModal from '../../Modals/OfficersModal';
 import BoardModal from '../../Modals/BoardModal';
 import HistoryDialog from '../../Dialog/History';
+import { firestore as db } from '../../../../firebase'; // Make sure to import Firestore
+
 
 const Section1Styled = styled.div`
 
@@ -249,7 +251,18 @@ export default function PageThree() {
   const [isVisible, setIsVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
+  const [imageURL, setImageURL] = useState(''); // State variable to hold the image URL
 
+
+
+  useEffect(() => {
+    const ref = db.collection('homePageImages').doc('image2'); // Change to the correct document ID
+    ref.get().then(doc => {
+      if (doc.exists) {
+        setImageURL(doc.data().url); // Assuming the URL is stored in the 'url' field
+      }
+    });
+  }, []);
 
 
 
@@ -328,10 +341,16 @@ export default function PageThree() {
         <BackgroundBox>
           <Parallax
             blur={{ min: -15, max: 15 }}
-            strength={200}
-            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1118059221922103327/spinn.jpeg"
+            strength={300}
+            bgImage={imageURL} // Use the imageURL from state
             bgImageAlt="Background"
-            bgImageStyle={{ backgroundSize: 'cover' }}
+            bgImageStyle={{
+              backgroundSize: 'contain', // Make sure the image fits within the container
+              height: '120vh', // Set a specific height (adjust as needed)
+              width: 'auto', // Maintain the aspect ratio
+              top: '-20%', // Adjust the top property to move the image up or down
+
+            }}
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 

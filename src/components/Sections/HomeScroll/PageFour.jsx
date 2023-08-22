@@ -17,6 +17,7 @@ import EventsModal from '../../Modals/EventsModal';
 import SailingModal from '../../Modals/SailingModal';
 import RaceResultsModal from '../../Modals/RaceResultsModal';
 import RaceResultsDialog from '../../Dialog/RaceResults';
+import { firestore as db } from '../../../../firebase'; // Make sure to import Firestore
 
 
 const Section1Styled = styled.div`
@@ -241,7 +242,18 @@ export default function PageFour() {
   const [raceOpen, setRaceOpen] = useState(false);
 
   const descriptionElementRef = useRef(null);
+  const [imageURL, setImageURL] = useState(''); // State variable to hold the image URL
 
+
+
+  useEffect(() => {
+    const ref = db.collection('homePageImages').doc('image3'); // Change to the correct document ID
+    ref.get().then(doc => {
+      if (doc.exists) {
+        setImageURL(doc.data().url); // Assuming the URL is stored in the 'url' field
+      }
+    });
+  }, []);
 
 
 
@@ -380,10 +392,14 @@ export default function PageFour() {
         <BackgroundBox>
           <Parallax
             blur={{ min: -15, max: 15 }}
-            strength={200}
-            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1111079683149271110/image.png"
+            strength={300}
+            bgImage={imageURL} // Use the imageURL from state
             bgImageAlt="Background"
-            bgImageStyle={{ backgroundSize: 'cover' }}
+            bgImageStyle={{
+              backgroundSize: 'contain', // Make sure the image fits within the container
+              height: '120vh', // Set a specific height (adjust as needed)
+              width: 'auto' // Maintain the aspect ratio
+            }}
           >
 
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />

@@ -11,7 +11,6 @@ import { Document, Page } from 'react-pdf';
 
 const Section2Styled = styled.div`
   background: linear-gradient( #171615, #2e2d2a);
-
   background: linear-gradient( #CDC2A4, #171615);
     background: linear-gradient( #2e2d2a, #171615);
      box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
@@ -19,6 +18,7 @@ inset 20px 20px 240px rgba(0, 0, 0, 1);
 
   min-height: 850px; // Adjust this value as needed
   justify-content: center;
+  margine-bottom: 120px;
 `;
 
 const Wrapper = styled.div`

@@ -38,6 +38,120 @@ export default function AdminPanel({ open, onClose }) {
     const predefinedRoles = ['Member', 'Cruising', 'Spinnaker', 'Commodore', 'Vice Commodore', 'Rear Commodore', 'Race Director', 'Secretary', 'Treasurer', 'Fleet Captain', 'Porthole', 'Bar Manager'];
 
 
+
+    {/** HOMEPAGE PHOTOS */ }
+    // Rename galleryImages to homePageImages
+    const [homePageImages, setHomePageImages] = useState([]);
+
+    // No need for selectedGalleryPageNumber and selectedGalleryCaption
+    const [uploadHomePageImageDialogOpen, setUploadHomePageImageDialogOpen] = useState(false);
+    const [selectedHomePageFile, setSelectedHomePageFile] = useState(null);
+    const [selectedHomePageIndex, setSelectedHomePageIndex] = useState(0); // New state to track selected home page image index
+    const [deleteHomePageImagesDialogOpen, setDeleteHomePageImagesDialogOpen] = useState(false);
+
+
+    useEffect(() => {
+        const ref = db.collection('homePageImages');
+        const unsubscribe = ref.onSnapshot(snapshot => {
+            const fetchedImages = [];
+            snapshot.forEach(doc => {
+                fetchedImages.push({ id: doc.id, url: doc.data().url });
+            });
+            setHomePageImages(fetchedImages);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    // Upload function renamed and logic adjusted for home page images
+    const uploadHomePageImage = () => {
+        if (selectedHomePageFile && selectedHomePageIndex >= 0 && selectedHomePageIndex < 4) {
+            const filename = `image${selectedHomePageIndex}.jpg`;
+
+            const storageRef = storage.ref();
+            const fileRef = storageRef.child('homePageImages/' + filename);
+            fileRef.put(selectedHomePageFile).then(() => {
+                fileRef.getDownloadURL().then((url) => {
+                    db.collection('homePageImages').doc(`image${selectedHomePageIndex}`).set({ url });
+                    setUploadHomePageImageDialogOpen(false);
+                    setUploadSnackbarMessage(`Home page image ${selectedHomePageIndex + 1} uploaded successfully!`);
+                    setUploadSnackbarOpen(true);
+                });
+            });
+        } else {
+            // You might want to show a message here if no file is selected or index is out of bounds
+        }
+    };
+
+    const handleHomePageFileChange = (e) => {
+        setSelectedHomePageFile(e.target.files[0]);
+    };
+
+    const deleteHomePageImage = (imageId) => {
+        db.collection('homePageImages').doc(imageId).delete();
+    };
+
+    {/** HOMEPAGE PHOTOS */ }
+
+
+
+    {/** GALLERY SECTION */ }
+
+    const [galleryImages, setGalleryImages] = useState([]);
+    const [uploadGalleryImageDialogOpen, setUploadGalleryImageDialogOpen] = useState(false);
+    const [selectedGalleryFile, setSelectedGalleryFile] = useState(null);
+    const [selectedGalleryPageNumber, setSelectedGalleryPageNumber] = useState(0);
+    const [deleteGalleryImagesDialogOpen, setDeleteGalleryImagesDialogOpen] = useState(false);
+    const [selectedGalleryCaption, setSelectedGalleryCaption] = useState(''); // New state for caption
+    const [uploadSnackbarOpen, setUploadSnackbarOpen] = useState(false);
+    const [uploadSnackbarMessage, setUploadSnackbarMessage] = useState('');
+
+    useEffect(() => {
+        const ref = db.collection('galleryImages').orderBy('sequence');
+        const unsubscribe = ref.onSnapshot(snapshot => {
+            const fetchedImages = [];
+            snapshot.forEach(doc => {
+                fetchedImages.push({ id: doc.id, url: doc.data().url, caption: doc.data().caption }); // Include caption
+            });
+            setGalleryImages(fetchedImages);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const uploadGalleryImage = () => {
+        if (selectedGalleryFile && selectedGalleryPageNumber > 0) {
+            const filename = `image${selectedGalleryPageNumber}.jpg`; // Change the extension as needed
+
+            const storageRef = storage.ref();
+            const fileRef = storageRef.child('gallery/' + filename);
+            fileRef.put(selectedGalleryFile).then(() => {
+                fileRef.getDownloadURL().then((url) => {
+                    // Add the URL, sequence number, and caption to the Firestore collection
+                    db.collection('galleryImages').add({ url, sequence: selectedGalleryPageNumber, caption: selectedGalleryCaption });
+                    setUploadGalleryImageDialogOpen(false);
+                    setUploadSnackbarMessage('New gallery image uploaded successfully!');
+                    setUploadSnackbarOpen(true);
+                });
+            });
+        } else {
+            // You might want to show a message here if no file is selected, page number is not set, or caption is missing
+        }
+    };
+
+    const handleGalleryFileChange = (e) => {
+        setSelectedGalleryFile(e.target.files[0]);
+    };
+
+    const deleteGalleryImage = (imageId) => {
+        db.collection('galleryImages').doc(imageId).delete();
+    };
+
+    {/** GALLERY SECTION */ }
+
+
+
+
+
+
     {/** PORTHOLE SECTION */ }
 
     const [portholeImages, setPortholeImages] = useState([]);
@@ -624,6 +738,132 @@ export default function AdminPanel({ open, onClose }) {
 
                 {/** UPDATE PORTHOLE^^^ */}
 
+
+
+                {/** UPDATE HOMEPAGE PHOTOS */}
+                <div>
+                    <div style={{ border: '2px solid' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+                            <DialogTitle>Manage Home Page Images</DialogTitle>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+                            <Button onClick={() => setUploadHomePageImageDialogOpen(true)} style={{ backgroundColor: "#add5ab", marginBottom: "40px", marginRight: "40px" }}>Upload New Home Page Image</Button>
+                            <Button onClick={() => setDeleteHomePageImagesDialogOpen(true)} style={{ backgroundColor: "#f46e6e", marginBottom: "40px" }}>Delete Home Page Photos</Button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <Dialog open={uploadHomePageImageDialogOpen} onClose={() => setUploadHomePageImageDialogOpen(false)}>
+                    <DialogTitle>Upload New Home Page Image</DialogTitle>
+                    <DialogContent>
+                        <TextField type="file" onChange={handleHomePageFileChange} />
+                        <TextField
+                            label="Image Index (0-3)"
+                            type="number"
+                            value={selectedHomePageIndex}
+                            onChange={(e) => setSelectedHomePageIndex(parseInt(e.target.value))}
+                        />
+                    </DialogContent>
+                    <Snackbar
+                        open={uploadSnackbarOpen}
+                        autoHideDuration={6000}
+                        onClose={() => setUploadSnackbarOpen(false)}
+                    >
+                        <Alert onClose={() => setUploadSnackbarOpen(false)} severity="success">
+                            {uploadSnackbarMessage}
+                        </Alert>
+                    </Snackbar>
+                    <DialogActions>
+                        <Button onClick={uploadHomePageImage} color="primary">Upload</Button>
+                    </DialogActions>
+                </Dialog>
+
+                <Dialog open={deleteHomePageImagesDialogOpen} onClose={() => setDeleteHomePageImagesDialogOpen(false)}>
+                    <DialogTitle>Delete Home Page Photos</DialogTitle>
+                    <List>
+                        {homePageImages.map((image) => (
+                            <ListItem key={image.id}>
+                                <ListItemText primary={image.url} />
+                                <ListItemSecondaryAction>
+                                    <IconButton edge="end" onClick={() => deleteHomePageImage(image.id)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Dialog>
+                {/** UPDATE HOMEPAGE PHOTOS */}
+
+
+
+
+
+                {/** UPLOAD GALLERY */}
+
+                <div>
+                    <div style={{ border: '2px solid' }}>
+
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+
+                            <DialogTitle>Manage Gallery Images</DialogTitle>
+                        </div>
+
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+                            <Button onClick={() => setUploadGalleryImageDialogOpen(true)} style={{ backgroundColor: "#add5ab", marginBottom: "40px", marginRight: "40px" }}>Upload New Gallery Image</Button>
+                            <Button onClick={() => setDeleteGalleryImagesDialogOpen(true)} style={{ backgroundColor: "#f46e6e", marginBottom: "40px" }}>Delete New Gallery Images</Button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <Dialog open={uploadGalleryImageDialogOpen} onClose={() => setUploadGalleryImageDialogOpen(false)}>
+                    <DialogTitle>Upload New Gallery Image</DialogTitle>
+                    <DialogContent>
+                        <TextField type="file" onChange={handleGalleryFileChange} />
+                        <TextField
+                            label="Page Number"
+                            type="number"
+                            value={selectedGalleryPageNumber}
+                            onChange={(e) => setSelectedGalleryPageNumber(parseInt(e.target.value))}
+                        />
+                        <TextField
+                            label="Caption"
+                            value={selectedGalleryCaption}
+                            onChange={(e) => setSelectedGalleryCaption(e.target.value)}
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={uploadGalleryImage} color="primary">Upload</Button>
+                    </DialogActions>
+                </Dialog>
+
+                <Dialog open={deleteGalleryImagesDialogOpen} onClose={() => setDeleteGalleryImagesDialogOpen(false)}>
+                    <DialogTitle>Delete Gallery Images</DialogTitle>
+                    <List>
+                        {galleryImages.map((image) => (
+                            <ListItem key={image.id}>
+                                <ListItemText primary={image.url} />
+                                <ListItemSecondaryAction>
+                                    <IconButton edge="end" onClick={() => deleteGalleryImage(image.id)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Dialog>
+                <Snackbar
+                    open={uploadSnackbarOpen}
+                    autoHideDuration={6000}
+                    onClose={() => setUploadSnackbarOpen(false)}
+                >
+                    <Alert onClose={() => setUploadSnackbarOpen(false)} severity="success">
+                        {uploadSnackbarMessage}
+                    </Alert>
+                </Snackbar>
+                {/** UPLOAD GALLERY^^^ */}
 
 
                 {/** UPDATE EVENTS  */}

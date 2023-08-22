@@ -25,6 +25,8 @@ import { Button } from '@mui/material';
 import MembershipDialog from '../../Dialog/Membership';
 import LinksDialog from '../../Dialog/Links';
 import RaceInfoDialog from '../../Dialog/RaceInfo';
+import { firestore as db } from '../../../../firebase'; // Make sure to import Firestore
+
 
 
 
@@ -243,7 +245,18 @@ export default function PageOne() {
   const descriptionElementRef = useRef(null);
   const [linkOpen, setLinkOpen] = useState(false);
   const [raceOpen, setRaceOpen] = useState(false);
+  const [imageURL, setImageURL] = useState(''); // State variable to hold the image URL
 
+
+
+  useEffect(() => {
+    const ref = db.collection('homePageImages').doc('image0'); // Change to the correct document ID
+    ref.get().then(doc => {
+      if (doc.exists) {
+        setImageURL(doc.data().url); // Assuming the URL is stored in the 'url' field
+      }
+    });
+  }, []);
 
   const handleRaceDialogOpen = () => {
     setRaceOpen(true);
@@ -382,14 +395,19 @@ export default function PageOne() {
   return (
     <Section1Styled id="sectionHome">
       <main className={styles.main}>
-        <BackgroundBox>
+        <BackgroundBox >
 
           <Parallax
             blur={{ min: -15, max: 15 }}
             strength={300}
-            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1115461216152850432/GPTempDownload_2.JPG"
+            bgImage={imageURL} // Use the imageURL from state
             bgImageAlt="Background"
-            bgImageStyle={{ backgroundSize: 'cover' }}
+            bgImageStyle={{
+              backgroundSize: 'contain', // Make sure the image fits within the container
+              height: '135vh', // Set a specific height (adjust as needed)
+              width: 'auto', // Maintain the aspect ratio
+              top: '-10%',
+            }}
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
 
@@ -441,7 +459,7 @@ export default function PageOne() {
             */}
 
             {showAlert && (
-              <StyledAlert onClose={handleCloseAlert} severity="info" style={{ top: '45%' }}>
+              <StyledAlert onClose={handleCloseAlert} severity="info" style={{ top: '5%' }}>
                 <AlertTitle>Update!</AlertTitle>
                 <strong>Sheboygan & Harrington NOR's have been posted to Sailing Information (Three tabs to the right)</strong>
               </StyledAlert>
