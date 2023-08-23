@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { Button, Avatar } from '@mui/material';
 import { Link } from 'react-scroll';
 import { useTheme } from '@mui/material/styles';
+import styled from 'styled-components';
+
+
+const TextDiv = styled.div`
+     @media (max-width: 600px) {
+   display: none;
+    }
+`;
 
 
 const images = [
@@ -17,6 +24,8 @@ const images = [
   },
 
 ];
+
+
 
 
 export function LogoLink({ to, onClick, children }) {
@@ -53,15 +62,15 @@ export default function ButtonBases() {
           alt="Start icon"
           src={images[0].url}
           sx={{
-            marginLeft: theme.breakpoints.down(800) ? -3 : -10, // Apply -3 marginLeft at 800px and below
+            marginLeft: theme.breakpoints.down(800) ? 0 : -10, // Apply -3 marginLeft at 800px and below
             width: 66,
             height: 66
           }}
-        />
-
-        <Typography variant="h6" component="div" sx={{ marginLeft: 2, textDecoration: 'none' }}>
-          Port Washington Yacht Club
-        </Typography>
+        />        <TextDiv>
+          <Typography variant="h6" component="div" sx={{ marginLeft: 2, textDecoration: 'none' }}>
+            Port Washington Yacht Club
+          </Typography>
+        </TextDiv>
       </Box>
 
     </Link>

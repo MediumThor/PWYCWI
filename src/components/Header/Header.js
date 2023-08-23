@@ -31,14 +31,15 @@ const useStyles = makeStyles((theme) => ({
     right: '80px', // Adjust this value to move the time to the desired position from the left
     color: '#E8E3D5', // Text color
     fontSize: '18px', // Font size
-
-
+    marginTop: '-12px',
   },
 
 }));
 
 
 const Time = styled.div`
+
+
       @media (max-width: 600px) {
        marginTop: 25px;
     }
@@ -51,7 +52,7 @@ export default function Header(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(null);
 
-
+  {/**
   useEffect(() => {
     const fetchTime = async () => {
       try {
@@ -73,7 +74,7 @@ export default function Header(props) {
   }, []);
 
   const formattedTime = currentTime ? `${String(currentTime.getHours()).padStart(4, '0')}:${String(currentTime.getMinutes()).padStart(2, '0')}:${String(currentTime.getSeconds()).padStart(2, '0')}` : "Loading...";
-
+ */}
 
   React.useEffect(() => {
     if (props.changeColorOnScroll) {
@@ -170,13 +171,19 @@ export default function Header(props) {
           </div>
         </Drawer>
       </Hidden>
+
+      {/** 
+
       <Time>
-        <div className={classes.timeDisplay}>{formattedTime}</div> {/* Apply the custom styling */}
-      </Time>
+        
+        <div className={classes.timeDisplay}>{formattedTime}</div> 
+     
+    </Time>
+   */}
 
 
 
-    </AppBar>
+    </AppBar >
   );
 }
 
