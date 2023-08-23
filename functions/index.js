@@ -264,6 +264,86 @@ exports.removeAllClaims = functions.https.onCall((data, context) => {
 });
 
 
+exports.sendRaceRegistrationEmail = functions.https.onCall(async (data, context) => {
+    // Extract the registration details from the data
+    const {
+        boatName,
+        sailNumber,
+        boatMakeModel,
+        owner,
+        yachtClub,
+        captain,
+        address,
+        phoneNumber,
+        email,
+        lmphrf,
+        category
+    } = data;
+
+    // Define the email content
+    const adminMailOptions = {
+        from: `${APP_NAME} <tech@PWYCWI.com>`,
+        to: 'racedirector@pwycwi.com', // Change to the destination email
+        subject: `New Rendezvous Regatta Race Registration ${owner}, ${boatName}`,
+        html: `
+      <div style="font-family: Arial, sans-serif; text-align: center;">
+    <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1117955817371607110/image.png" alt="Logo" style="width: 100px;">
+        <div>
+        <h2>New Rendezvous Regatta Race Registration</h2>
+        <p>Boat Name: ${boatName}</p>
+        <p>Sail Number: ${sailNumber}</p>
+        <p>Boat Make/Model: ${boatMakeModel}</p>
+        <p>Owner: ${owner}</p>
+        <p>Yacht Club: ${yachtClub}</p>
+        <p>Captain: ${captain}</p>
+        <p>Address: ${address}</p>
+        <p>Phone Number: ${phoneNumber}</p>
+        <p>Email: ${email}</p>
+        <p>LMPHRF: ${lmphrf}</p>
+        <p>Category: ${category}</p>
+      </div>
+
+    <p style="margin-bottom: 60px;">
+     <div style="margin-top: 20px; text-align: center;">
+        <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+    </div>
+</div>
+    `,
+    };
+
+    const registrantMailOptions = {
+        from: `${APP_NAME} Race Registration <tech@PWYCWI.com>`,
+        to: email, // Email of the registrant
+        subject: `Thank You for Registering, ${owner}!`,
+        html: `
+           <div style="font-family: Arial, sans-serif; text-align: center;">
+    <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1117955817371607110/image.png" alt="Logo" style="width: 100px;">
+         <h2>Thank You for Registering, ${owner}!</h2>
+            <p>We have received your registration for the 2023 PWYC Rendezvous Regatta Race.</p>
+            <p>We look forward to seeing you, ${boatName} and your crew at the port!</p>
+            <p>Best regards,</p>
+            <p>The PWYC Crew</p>
+             <p>Please remember to either email your waiver and PHRF certificate to racedirector@pwycwi by 9/1 or bring it with you to the PWYC the morning of 9/2</p>
+
+    <p style="margin-bottom: 60px;">
+     <div style="margin-top: 20px; text-align: center;">
+        <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+    </div>
+</div>
+        `,
+    };
+
+    // Send the email to the race director
+    await mailTransport.sendMail(adminMailOptions);
+    console.log('Race registration email sent to:', adminMailOptions.to);
+
+    // Send the thank-you email to the registrant
+    await mailTransport.sendMail(registrantMailOptions);
+    console.log('Thank-you email sent to registrant:', registrantMailOptions.to);
+
+    return { message: 'Registration and thank-you emails sent successfully!' };
+});
+
 
 
 

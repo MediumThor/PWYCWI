@@ -7,6 +7,10 @@ import Button from '@mui/material/Button';
 import styled from 'styled-components';
 import { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
+import firebase from 'firebase/app';
+import { firestore as db } from '../../../firebase';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 
 
@@ -32,14 +36,53 @@ const CenteredDialogTitle = styled(DialogTitle)`
 `;
 
 const MembershipDialog = ({ open, onClose, scroll }) => {
+    const [uploadSnackbarOpen, setUploadSnackbarOpen] = useState(false);
+    const [uploadSnackbarMessage, setUploadSnackbarMessage] = useState('');
+
     const [openForm, setOpenForm] = useState(false);
+    const [form, setForm] = useState({
+        applicantName: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        phone: '',
+        email: '',
+        spouseName: '',
+        boatName: '',
+        make: '',
+        length: '',
+        occupation: '',
+        interests: '',
+        // ... other fields
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = () => {
+        db.collection('newApplications').add(form)
+            .then((docRef) => {
+                console.log('Document written with ID: ', docRef.id);
+                setUploadSnackbarOpen(true); // Open the Snackbar
+                setUploadSnackbarMessage('Application submitted successfully!'); // Set the message
+                handleClose();
+            })
+            .catch((error) => {
+                console.error('Error adding document: ', error);
+                setUploadSnackbarOpen(true); // Open the Snackbar
+                setUploadSnackbarMessage('An error occurred. Please try again.'); // Set the error message
+            });
+    };
 
     const handleClickOpen = () => {
-        setOpen(true);
+        setOpenForm(true);
     };
 
     const handleClose = () => {
-        setOpen(false);
+        setOpenForm(false);
     };
     return (
         <Dialog
@@ -71,31 +114,62 @@ const MembershipDialog = ({ open, onClose, scroll }) => {
             <DialogActions>
                 <Button onClick={onClose}>Close</Button>
             </DialogActions>
+
+
+
+
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                 Open Membership Form
             </Button>
-            <Dialog open={openForm} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <Dialog open={openForm} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth maxWidth="md">
                 <DialogTitle id="form-dialog-title">Membership Application</DialogTitle>
                 <DialogContent>
                     {/* Applicant Information */}
-                    <TextField margin="dense" label="Applicant Name" fullWidth />
-                    <TextField margin="dense" label="Address" fullWidth />
-                    <TextField margin="dense" label="City" fullWidth />
-                    <TextField margin="dense" label="State" fullWidth />
-                    <TextField margin="dense" label="Zip" fullWidth />
-                    <TextField margin="dense" label="Phone" fullWidth />
-                    <TextField margin="dense" label="Email" fullWidth />
-                    {/* Additional fields here... */}
+                    <TextField onChange={handleChange} name="applicantName" margin="dense" label="Applicant Name" fullWidth />
+                    <TextField onChange={handleChange} name="address" margin="dense" label="Address" fullWidth />
+                    <TextField onChange={handleChange} name="city" margin="dense" label="City" fullWidth />
+                    <TextField onChange={handleChange} name="state" margin="dense" label="State" fullWidth />
+                    <TextField onChange={handleChange} name="zip" margin="dense" label="Zip" fullWidth />
+                    <TextField onChange={handleChange} name="phone" margin="dense" label="Phone" fullWidth />
+                    <TextField onChange={handleChange} name="email" margin="dense" label="Email" fullWidth />
+
+
+                    {/* Family Members Information */}
+                    <TextField onChange={handleChange} name="spouseName" margin="dense" label="Spouse Name" fullWidth />
+                    {/* Additional fields for children's names, etc. */}
+
+                    {/* Boat Information */}
+                    <TextField onChange={handleChange} name="boatName" margin="dense" label="Boat Name" fullWidth />
+                    <TextField onChange={handleChange} name="make" margin="dense" label="Make" fullWidth />
+                    <TextField onChange={handleChange} name="length" margin="dense" label="Length" fullWidth />
+                    {/* Additional fields for boat information */}
+
+                    {/* Additional Information */}
+                    <TextField onChange={handleChange} name="occupation" margin="dense" label="Occupation" fullWidth />
+                    <TextField onChange={handleChange} name="interests" margin="dense" label="Interests" fullWidth />
+
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleSubmit} color="primary">
                         Submit
                     </Button>
                 </DialogActions>
             </Dialog>
+
+            <Snackbar
+                open={uploadSnackbarOpen}
+                autoHideDuration={6000}
+                onClose={() => setUploadSnackbarOpen(false)}
+            >
+                <Alert onClose={() => setUploadSnackbarOpen(false)} severity="success">
+                    {uploadSnackbarMessage}
+                </Alert>
+            </Snackbar>
+
+
         </Dialog>
     );
 };

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 import styles from 'src/styles/Home.module.scss'
 import "src/styles/styles.module.scss";
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Tooltip from '@material-ui/core/Tooltip';
+import RaceRegistrationDialog from '../Dialog/RaceRegistration';
 
 
 const Section2Styled = styled.div`
@@ -110,9 +112,29 @@ const DownloadButton = styled.a`
     border-radius: 5px;
     transition: color 0.3s ease;
     margin-right: 40px;
+    cursor: pointer; // Add this line
 
     &:hover {
         color: lightblue;
+    }
+`;
+
+const RegisterButton = styled.a`
+    display: inline-block;
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 24px;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+    margin-right: 40px;
+    cursor: pointer; // Add this line
+
+    &:hover {
+        color: lightgreen;
     }
 `;
 
@@ -131,36 +153,54 @@ const flyerFile = "/assets/Other/Rendezvous Entry Form 2023.pdf"; // PDF file pa
 const norFile = "/assets/Other/Rendezvous NOR-SI entry 2023.pdf"
 
 export default function FeaturedEvent2() {
+      const [dialogOpen, setDialogOpen] = useState(false);
+
+      const handleOpenDialog = () => {
+            setDialogOpen(true);
+      };
+
+      const handleCloseDialog = () => {
+            setDialogOpen(false);
+      };
       return (
             <Section2Styled id="section6">
                   <main className={styles.main3}>
                         <Wrapper>
                               <CarouselWrapper>
-
-
-
-
                                     <Description>
                                           <FlyerWrapper>
-                                                <Caption>Registration forms will be available the morning of the race at the club and are due by 9:00 am.  </Caption>
-
+                                                <Caption>
+                                                      Registration forms will be available the morning of the race at the club and are due by 9:00 am.
+                                                </Caption>
                                                 <EventFlyer>
                                                       <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1143703455429570651/image.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
                                                 </EventFlyer>
                                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
-
                                                       <Tooltip title="Download the form, fill out and submit to the Club" arrow>
-                                                            <DownloadButton href={`${flyerFile}#toolbar=0`} download>Register</DownloadButton>
+                                                            <DownloadButton href={`${flyerFile}#toolbar=0`} download>
+                                                                  Register
+                                                            </DownloadButton>
                                                       </Tooltip>
                                                       <Tooltip title="Download the NOR" arrow>
-                                                            <DownloadButton href={`${norFile}#toolbar=0`} download>NOR</DownloadButton>
+                                                            <DownloadButton href={`${norFile}#toolbar=0`} download>
+                                                                  NOR
+                                                            </DownloadButton>
                                                       </Tooltip>
+                                                      <Tooltip title="Online Form" arrow>
+                                                            {/* Button to open the Race Registration Dialog */}
+                                                            <RegisterButton color="primary" onClick={handleOpenDialog}>
+                                                                  Online Form
+                                                            </RegisterButton>
+                                                      </Tooltip>
+
                                                 </div>
                                           </FlyerWrapper>
                                     </Description>
                               </CarouselWrapper>
                         </Wrapper>
                   </main>
+                  {/* Race Registration Dialog Component */}
+                  <RaceRegistrationDialog open={dialogOpen} onClose={handleCloseDialog} />
             </Section2Styled>
       );
 }
