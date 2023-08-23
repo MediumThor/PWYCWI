@@ -38,10 +38,12 @@ const Section1Styled = styled.div`
 
 const BackgroundBox = styled.div`
   position: relative;
-  width: 100vw;
+  width: 110vw;
   height: 100%;
   font-size: 40px;
   color: #22C984;
+  background-color: #000000;
+
 
  
 `;
@@ -74,6 +76,10 @@ const Title = styled.h1`
     left: 8%;
 
   }
+    @media screen and (orientation: landscape) and (max-height: 800px) {
+  left: 15%;
+
+    }
     @media screen and (orientation: landscape) and (max-width: 800px) {
     display: none; // Hide title text in mobile landscape mode
   }
@@ -99,6 +105,10 @@ const Location = styled.h1`
     left: 10%;
     font-size: .7em;
   }
+
+    @media screen and (orientation: landscape) and (max-height: 700px) {
+display: none;
+    }
     @media screen and (orientation: landscape) and (max-width: 800px) {
     display: none; // Hide title text in mobile landscape mode
   }
@@ -108,12 +118,14 @@ const Logo = styled.img`
   position: absolute;
   top: 10%;  
   left: 65%;  
-  height: 320px; 
+  height: 40%; 
   width: auto;
 
    @media (max-width: 1000px) {
     display: none;
   }
+
+
 
 
 `;
@@ -404,7 +416,7 @@ export default function PageOne() {
             bgImageAlt="Background"
             bgImageStyle={{
               backgroundSize: 'contain', // Make sure the image fits within the container
-              height: '135vh', // Set a specific height (adjust as needed)
+              height: '140vh', // Set a specific height (adjust as needed)
               width: 'auto', // Maintain the aspect ratio
               top: '-10%',
             }}

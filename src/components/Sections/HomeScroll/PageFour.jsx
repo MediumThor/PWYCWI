@@ -29,10 +29,11 @@ const Section1Styled = styled.div`
 
 const BackgroundBox = styled.div`
   position: relative;
-  width: 100vw;
+  width: 110vw;
   height: 100%;
   font-size: 40px;
   color: #22C984;
+  background-color: #000000;
 
 
 `;
@@ -46,6 +47,12 @@ const Title = styled.h1`
   font-weight: bold;
   color: #E8E3D5;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    }
+      @media (max-width: 940px) {
+       font-size: 1.4em;
+
+
+  }
 
      @media (max-width: 760px) {
     height: 200px;  // 50% of the original height
@@ -64,7 +71,11 @@ const Title = styled.h1`
     height: 200px;  // 50% of the original height
       left: 5%;
 
-  }
+
+    @media screen and (orientation: landscape) and (max-height: 800px) {
+  left: 15%;
+
+    }
   @media (max-width: 400px) {
     display: none;
     height: 100px;  // 50% of the original height
@@ -98,7 +109,7 @@ display: none;
   position: absolute;
   top: 10%;  
   left: 65%;  
-  height: 320px; 
+  height: 40%; 
   width: auto;
   
 
@@ -143,7 +154,7 @@ const ButtonContainer = styled.div`
     @media (max-width: 940px) {
     flex-direction: row;
     justify-content: center;
-    top: 55%;
+    top: 35%;
       left: 50%;
 
   }
@@ -417,7 +428,7 @@ export default function PageFour() {
             bgImageAlt="Background"
             bgImageStyle={{
               backgroundSize: 'contain', // Make sure the image fits within the container
-              height: '120vh', // Set a specific height (adjust as needed)
+              height: '125vh', // Set a specific height (adjust as needed)
               width: 'auto' // Maintain the aspect ratio
             }}
           >

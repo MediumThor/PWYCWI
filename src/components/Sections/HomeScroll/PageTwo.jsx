@@ -28,10 +28,11 @@ const Section1Styled = styled.div`
 
 const BackgroundBox = styled.div`
   position: relative;
-  width: 100vw;
+  width: 110vw;
   height: 100%;
   font-size: 40px;
   color: #22C984;
+  background-color: #000000;
 
 
 
@@ -62,6 +63,10 @@ const Title = styled.h1`
     height: 100px;  // 50% of the original height
     font-size: 1.0em;
   }
+    @media screen and (orientation: landscape) and (max-height: 800px) {
+  left: 15%;
+
+    }
     @media screen and (orientation: landscape) and (max-width: 800px) {
     display: none; // Hide title text in mobile landscape mode
   }
@@ -119,6 +124,11 @@ const Caption = styled.h2`
      display: none;
 
   }
+
+     @media screen and (orientation: landscape) and (max-height: 700px) {
+    top: 18%;  // Adjust as needed
+  left: 55%;
+    }
   @media (max-width: 400px) {
     height: 80px;  // Adjust as needed
     top: 50%;  // Adjust as needed
@@ -139,6 +149,8 @@ display:none;
     height: 200px;  // 50% of the original height
     top: 45%;
   }
+
+  
    @media (max-width: 400px) {
     height: 150px;  // 50% of the original height
     top: 27%;
@@ -382,7 +394,7 @@ const PageTwo = () => {
               backgroundSize: 'contain', // Make sure the image fits within the container
               height: '110vh', // Set a specific height (adjust as needed)
               width: 'auto', // Maintain the aspect ratio
-              left: '60%'
+              left: '55%'
             }}
           >
             <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
