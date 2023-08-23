@@ -52,7 +52,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Analytics } from '@vercel/analytics/react';
 
 import PhotoGallery from '../components/Sections/PhotoGallery';
-
+import FeaturedEvent2 from '../components/Sections/FeaturedEvent2';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -448,6 +448,7 @@ export default function Home() {
           <ToastContainer />
 
           <SectionHome />
+          <FeaturedEvent2 />
           <Events />
           <PhotoGallery />
 

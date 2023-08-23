@@ -461,7 +461,7 @@ export default function PageOne() {
             {showAlert && (
               <StyledAlert onClose={handleCloseAlert} severity="info" style={{ top: '5%' }}>
                 <AlertTitle>Update!</AlertTitle>
-                <strong>Sheboygan & Harrington NOR's have been posted to Sailing Information (Three tabs to the right)</strong>
+                <strong>Rendezvous Race, Sheboygan & Harrington NOR's have been posted to Sailing Information (Three tabs to the right)</strong>
               </StyledAlert>
             )}
             <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />

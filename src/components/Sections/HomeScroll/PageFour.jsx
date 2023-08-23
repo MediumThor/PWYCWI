@@ -182,7 +182,7 @@ left: %;
 const StyledButton = styled.button`
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   border: 2px solid #FAF9F6;
   background-color: rgb(0,0,0,0.7);
@@ -265,6 +265,7 @@ export default function PageFour() {
 
   const SheboyganURL = "/assets/SailingInfo/PWYC to Sheboygan SI's 2023.pdf";
   const HarringtonURL = "/assets/SailingInfo/PWYC to Harrington - Niagara race SI 2023.pdf";
+  const RendezvousURL = "/assets/Other/Rendezvous NOR-SI entry 2023.pdf";
 
   const notify = () => toast(
     <div style={{ color: 'Black', fontSize: '30px' }}>
@@ -283,6 +284,20 @@ export default function PageFour() {
   });
 
 
+
+
+
+
+  const notify2 = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Click <a href="https://www.ussailing.org/competition/rules-officiating/the-racing-rules-of-sailing-2021-2024/#the-rules" target="_blank" rel="noopener noreferrer">here </a>to get the rules App</div>, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
   const notify3 = () => toast(
     <div style={{ color: 'Black', fontSize: '30px' }}>
       Harrington Race&nbsp;
@@ -300,9 +315,14 @@ export default function PageFour() {
   });
 
 
-
-  const notify2 = () => toast(<div style={{ color: 'Black', fontSize: '30px' }}>Click <a href="https://www.ussailing.org/competition/rules-officiating/the-racing-rules-of-sailing-2021-2024/#the-rules" target="_blank" rel="noopener noreferrer">here </a>to get the rules App</div>, {
-    position: "top-right",
+  const notify4 = () => toast(
+    <div style={{ color: 'Black', fontSize: '30px' }}>
+      Rendezvous Race&nbsp;
+      <a href={RendezvousURL} download target="_blank" rel="noopener noreferrer">
+        Download NOR
+      </a>
+    </div>, {
+    position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -411,6 +431,8 @@ export default function PageFour() {
               <StyledButton onClick={notify2}>Rules</StyledButton>
               <StyledButton onClick={notify}>Sheboygan NOR</StyledButton>
               <StyledButton onClick={notify3}>Harrington NOR</StyledButton>
+              <StyledButton onClick={notify4}>Rendezvous NOR</StyledButton>
+
 
 
 

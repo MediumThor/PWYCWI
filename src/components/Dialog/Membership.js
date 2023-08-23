@@ -5,6 +5,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import { useState } from 'react';
+import TextField from '@material-ui/core/TextField';
 
 
 
@@ -30,6 +32,15 @@ const CenteredDialogTitle = styled(DialogTitle)`
 `;
 
 const MembershipDialog = ({ open, onClose, scroll }) => {
+    const [openForm, setOpenForm] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <Dialog
             open={open}
@@ -60,6 +71,31 @@ const MembershipDialog = ({ open, onClose, scroll }) => {
             <DialogActions>
                 <Button onClick={onClose}>Close</Button>
             </DialogActions>
+            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                Open Membership Form
+            </Button>
+            <Dialog open={openForm} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Membership Application</DialogTitle>
+                <DialogContent>
+                    {/* Applicant Information */}
+                    <TextField margin="dense" label="Applicant Name" fullWidth />
+                    <TextField margin="dense" label="Address" fullWidth />
+                    <TextField margin="dense" label="City" fullWidth />
+                    <TextField margin="dense" label="State" fullWidth />
+                    <TextField margin="dense" label="Zip" fullWidth />
+                    <TextField margin="dense" label="Phone" fullWidth />
+                    <TextField margin="dense" label="Email" fullWidth />
+                    {/* Additional fields here... */}
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleClose} color="primary">
+                        Submit
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Dialog>
     );
 };
