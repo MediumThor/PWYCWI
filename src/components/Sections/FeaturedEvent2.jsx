@@ -90,6 +90,14 @@ margin-left: 0%;
     }
 `;
 
+
+const TableWrapper = styled.div`
+  
+    @media (max-width: 800px) {
+        display: none;
+    }
+`;
+
 const StyledCarousel = styled(Carousel)`
     width: 90%; // adjust these values
     height: 50vh; // adjust these values
@@ -117,6 +125,12 @@ const DownloadButton = styled.a`
     &:hover {
         color: lightblue;
     }
+
+      @media (max-width: 600px) {
+           margin-right: 10px;
+               font-size: .5em;
+
+    }
 `;
 
 const RegisterButton = styled.a`
@@ -135,6 +149,12 @@ const RegisterButton = styled.a`
 
     &:hover {
         color: lightgreen;
+    }
+      @media (max-width: 600px) {
+           margin-right: 10px;
+               font-size: .5em;
+
+
     }
 `;
 
@@ -197,7 +217,9 @@ export default function FeaturedEvent2() {
                                           </FlyerWrapper>
                                     </Description>
                               </CarouselWrapper>
-                              <RaceRegistrantsTable />
+                              <TableWrapper>
+                                    <RaceRegistrantsTable />
+                              </TableWrapper>
                         </Wrapper>
                   </main>
                   {/* Race Registration Dialog Component */}

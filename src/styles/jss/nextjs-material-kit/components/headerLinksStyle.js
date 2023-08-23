@@ -12,6 +12,10 @@ const headerLinksStyle = (theme) => ({
     paddingTop: "0",
     paddingBottom: "0",
     color: "inherit",
+    [theme.breakpoints.down(800)]: { // Media query for 800px and below
+      margin: "0px -15px", // Set the left and right margin to -15px
+    },
+
   },
   listItem: {
     float: "left",

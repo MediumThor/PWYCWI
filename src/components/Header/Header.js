@@ -31,10 +31,18 @@ const useStyles = makeStyles((theme) => ({
     right: '80px', // Adjust this value to move the time to the desired position from the left
     color: '#E8E3D5', // Text color
     fontSize: '18px', // Font size
+
+
   },
 
 }));
 
+
+const Time = styled.div`
+      @media (max-width: 600px) {
+       marginTop: 25px;
+    }
+`;
 
 
 
@@ -162,8 +170,9 @@ export default function Header(props) {
           </div>
         </Drawer>
       </Hidden>
-      <div className={classes.timeDisplay}>{formattedTime}</div> {/* Apply the custom styling */}
-
+      <Time>
+        <div className={classes.timeDisplay}>{formattedTime}</div> {/* Apply the custom styling */}
+      </Time>
 
 
 
