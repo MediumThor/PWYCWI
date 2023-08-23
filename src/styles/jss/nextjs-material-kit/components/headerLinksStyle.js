@@ -6,7 +6,7 @@ const headerLinksStyle = (theme) => ({
   list: {
     ...defaultFont,
     fontSize: "14px",
-    margin: "0px -15px",
+    margin: "0px 70px",
     paddingLeft: "0",
     listStyle: "none",
     paddingTop: "0",

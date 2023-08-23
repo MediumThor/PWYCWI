@@ -257,8 +257,8 @@ export default function Section2() {
               height="800"
               style={{ border: 'none', overflow: 'hidden' }}
               scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
+              frameBorder="0"
+              allowFullscreen="true"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
             </iframe>
           </FacebookFeedWrapper>

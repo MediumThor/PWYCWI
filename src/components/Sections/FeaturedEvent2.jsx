@@ -7,7 +7,7 @@ import "src/styles/styles.module.scss";
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Tooltip from '@material-ui/core/Tooltip';
 import RaceRegistrationDialog from '../Dialog/RaceRegistration';
-
+import RaceRegistrantsTable from './components/RaceRegistrationTable';
 
 const Section2Styled = styled.div`
     background-color: #000000;
@@ -170,7 +170,7 @@ export default function FeaturedEvent2() {
                                     <Description>
                                           <FlyerWrapper>
                                                 <Caption>
-                                                      Registration forms will be available the morning of the race at the club and are due by 9:00 am.
+                                                      Registration forms will also be available the morning of the race at the club and are due by 9:00 am.
                                                 </Caption>
                                                 <EventFlyer>
                                                       <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1143703455429570651/image.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
@@ -197,6 +197,7 @@ export default function FeaturedEvent2() {
                                           </FlyerWrapper>
                                     </Description>
                               </CarouselWrapper>
+                              <RaceRegistrantsTable />
                         </Wrapper>
                   </main>
                   {/* Race Registration Dialog Component */}

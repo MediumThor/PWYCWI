@@ -283,7 +283,7 @@ exports.sendRaceRegistrationEmail = functions.https.onCall(async (data, context)
     // Define the email content
     const adminMailOptions = {
         from: `${APP_NAME} <tech@PWYCWI.com>`,
-        to: 'racedirector@pwycwi.com', // Change to the destination email
+        to: 'racedirector@pwycwi.com, tech@pwycwi.com', // Change to the destination email
         subject: `New Rendezvous Regatta Race Registration ${owner}, ${boatName}`,
         html: `
       <div style="font-family: Arial, sans-serif; text-align: center;">

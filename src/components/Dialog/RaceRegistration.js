@@ -117,6 +117,8 @@ const RaceRegistrationDialog = ({ open, onClose, scroll }) => {
     const handleClose = () => {
         setOpenForm(false);
     };
+
+
     return (
         <Dialog
             open={open}
@@ -147,9 +149,12 @@ const RaceRegistrationDialog = ({ open, onClose, scroll }) => {
 
                 If using the online form please either bring the following to the PWYC registration table or email to racedirector@pwycwi.com:
                 <br />
-                <br />1. This entry form with signed “Waiver, <ReleaseFormLink href="/assets/SailingInfo/PWYC Registration 2023.pdf" target="_blank">Release form</ReleaseFormLink>...”
-                <br />2. LMPHRF; attach PHRF certificate or enter rating* _____
+                <br />1. This entry form with signed Waiver and <ReleaseFormLink href="/assets/SailingInfo/PWYC Registration 2023.pdf" target="_blank">Release form</ReleaseFormLink>
+                <br />2. LMPHRF; attach PHRF certificate or enter rating above*
                 <br />3. Entry Fee. . . . . . . . . . NONE
+                <br />
+
+                <br />*A rating may be assigned to boats without a handicap.
             </EntryRequirements>
             <DialogActions>
                 <Button onClick={onClose}>Close</Button>

@@ -45,7 +45,7 @@ export default function ButtonBases() {
       onMouseEnter={(e) => (e.target.style.color = '#eee')}
       onMouseLeave={(e) => (e.target.style.color = '#E8E3D5')}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar alt="Start icon" src={images[0].url} sx={{ marginLeft: -3, width: 66, height: 66 }} />
+        <Avatar alt="Start icon" src={images[0].url} sx={{ marginLeft: -10, width: 66, height: 66 }} />
         <Typography variant="h6" component="div" sx={{ marginLeft: 2, textDecoration: 'none' }}>
           Port Washington Yacht Club
         </Typography>
