@@ -141,7 +141,7 @@ const RegisterButton = styled.a`
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1em;
-    margin-top: 24px;
+    margin-top: 3%;
     border-radius: 5px;
     transition: color 0.3s ease;
     margin-right: 40px;
