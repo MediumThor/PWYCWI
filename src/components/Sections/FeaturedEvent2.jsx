@@ -55,7 +55,7 @@ const FlyerLink = styled.a`
 `;
 const FlyerWrapper = styled.div`
     width: 50vw;
-    height: 100vh;
+    height: 110vh;
     position: relative;
     display: flex;
     flex-direction: column; // Arrange children vertically
@@ -141,7 +141,7 @@ const RegisterButton = styled.a`
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1em;
-    margin-top: 3%;
+    margin-top: 24px;
     border-radius: 5px;
     transition: color 0.3s ease;
     margin-right: 40px;
@@ -193,7 +193,7 @@ export default function FeaturedEvent2() {
                                                       Registration forms will also be available the morning of the race at the club and are due by 9:00 am.
                                                 </Caption>
                                                 <EventFlyer>
-                                                      <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1143703455429570651/image.png" alt="Flyer" style={{ maxWidth: 'auto', height: '100%' }} />
+                                                      <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1143703455429570651/image.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
                                                 </EventFlyer>
                                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
                                                       <Tooltip title="Download the form, fill out and submit to the Club" arrow>
