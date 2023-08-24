@@ -70,6 +70,7 @@ const FlyerWrapper = styled.div`
 const EventFlyer = styled.div`
     width: 50%; // Adjusted from 65% to 40%
     height: 50%; // Adjusted from 65% to 40%
+    margin-bottom: 10%;
   
     @media (max-width: 600px) {
         width: 70%; // Adjust this as needed
@@ -112,7 +113,7 @@ const DownloadButton = styled.a`
     display: inline-block;
     border: 2px solid #fff;
     color: #fff;
-    background: transparent;
+    background: black;
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1em;
@@ -137,7 +138,7 @@ const RegisterButton = styled.a`
     display: inline-block;
     border: 2px solid #fff;
     color: #fff;
-    background: transparent;
+    background: black;
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1em;
@@ -158,6 +159,30 @@ const RegisterButton = styled.a`
     }
 `;
 
+const SIButton = styled.a`
+    display: inline-block;
+    border: 2px solid #fff;
+    color: #fff;
+    background: black;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 3%;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+    margin-right: 40px;
+    cursor: pointer; // Add this line
+
+    &:hover {
+        color: lightgreen;
+    }
+      @media (max-width: 600px) {
+           margin-right: 10px;
+               font-size: .5em;
+
+
+    }
+`;
 const Caption = styled.h2`
   margin-top: 60px;
     font-size: 1em;
@@ -171,6 +196,8 @@ const Caption = styled.h2`
 
 const flyerFile = "/assets/Other/Rendezvous Entry Form 2023.pdf"; // PDF file path
 const norFile = "/assets/Other/Rendezvous NOR-SI entry 2023.pdf"
+const SIFile = "/assets/Other/Rendezvous SI.pdf"
+
 
 export default function FeaturedEvent2() {
       const [dialogOpen, setDialogOpen] = useState(false);
@@ -211,6 +238,12 @@ export default function FeaturedEvent2() {
                                                             <RegisterButton color="primary" onClick={handleOpenDialog}>
                                                                   Online Form
                                                             </RegisterButton>
+                                                      </Tooltip>
+                                                      <Tooltip title="Sailing Instruction" arrow>
+                                                            {/* Button to open the Race Registration Dialog */}
+                                                            <SIButton href={`${SIFile}#toolbar=0`} download>
+                                                                  SI
+                                                            </SIButton>
                                                       </Tooltip>
 
                                                 </div>

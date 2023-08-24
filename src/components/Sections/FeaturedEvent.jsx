@@ -106,7 +106,7 @@ const DownloadButton = styled.a`
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1em;
-    margin-top: 3px;
+    margin-top: -30px;
     border-radius: 5px;
     transition: color 0.3s ease;
 
