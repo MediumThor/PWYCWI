@@ -15,6 +15,8 @@ import { firestore as db } from '../../../firebase';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { functions } from '../../../firebase';
+import Checkbox from '@mui/material/Checkbox';
+
 
 
 const StyledText = styled.p`
@@ -40,6 +42,8 @@ const CenteredDialogTitle = styled(DialogTitle)`
 const EntryRequirements = styled.p`
   margin-top: 16px;
   line-height: 1.5;
+   font-size: 0.5rem;
+
   text-align: center; // Centers the text
 `;
 
@@ -51,6 +55,8 @@ const ReleaseFormLink = styled.a`
 const RaceRegistrationDialog = ({ open, onClose, scroll }) => {
     const [uploadSnackbarOpen, setUploadSnackbarOpen] = useState(false);
     const [uploadSnackbarMessage, setUploadSnackbarMessage] = useState('');
+    const [agreeToTerms, setAgreeToTerms] = useState(false); // New state for checkbox
+
 
     const [openForm, setOpenForm] = useState(false);
     const [form, setForm] = useState({
@@ -126,35 +132,69 @@ const RaceRegistrationDialog = ({ open, onClose, scroll }) => {
             scroll={scroll}
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
+            sx={{
+                '& .MuiPaper-root': {
+                    backgroundColor: 'lightgray', // Set your desired background color
+                },
+            }}
         >
             <CenteredDialogTitle id="scroll-dialog-title">2023 PWYC Rendezvous Regatta Registration </CenteredDialogTitle>
             <DialogContent>
-                <TextField onChange={handleChange} name="boatName" margin="dense" label="Boat Name" fullWidth />
-                <TextField onChange={handleChange} name="sailNumber" margin="dense" label="Sail Number" fullWidth />
-                <TextField onChange={handleChange} name="boatMakeModel" margin="dense" label="Boat Make/Model" fullWidth />
-                <TextField onChange={handleChange} name="owner" margin="dense" label="Owner" fullWidth />
-                <TextField onChange={handleChange} name="yachtClub" margin="dense" label="Yacht Club" fullWidth />
-                <TextField onChange={handleChange} name="captain" margin="dense" label="Captain" fullWidth />
-                <TextField onChange={handleChange} name="address" margin="dense" label="Address" fullWidth />
-                <TextField onChange={handleChange} name="phoneNumber" margin="dense" label="Phone Number" fullWidth />
-                <TextField onChange={handleChange} name="email" margin="dense" label="Email" fullWidth />
-                <TextField onChange={handleChange} name="lmphrf" margin="dense" label="LMPHRF" fullWidth />
+                <TextField onChange={handleChange} name="boatName" margin="dense" label="Boat Name" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="sailNumber" margin="dense" label="Sail Number" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="boatMakeModel" margin="dense" label="Boat Make/Model" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="owner" margin="dense" label="Owner" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="yachtClub" margin="dense" label="Yacht Club" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="captain" margin="dense" label="Captain" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="address" margin="dense" label="Address" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="phoneNumber" margin="dense" label="Phone Number" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="email" margin="dense" label="Email" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
+                <TextField onChange={handleChange} name="lmphrf" margin="dense" label="LMPHRF" fullWidth InputProps={{
+                    style: { fontSize: '0.6rem' } // Adjust the font size as needed
+                }} />
                 <RadioGroup row name="category" value={form.category} onChange={handleChange}>
                     <FormControlLabel value="Spinnaker" control={<Radio />} label="Spinnaker" />
                     <FormControlLabel value="Jib and Main" control={<Radio />} label="Jib and Main" />
                 </RadioGroup>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={agreeToTerms}
+                            onChange={(e) => setAgreeToTerms(e.target.checked)}
+                            required // Make the checkbox mandatory
+                        />
+                    }
+                    label="I acknowledge that I have read and agree to the terms of release and waiver of liability" />
             </DialogContent>
 
             <EntryRequirements>
+                <br />*Waiver and <ReleaseFormLink href="/assets/SailingInfo/PWYC Registration 2023.pdf" target="_blank">Release form</ReleaseFormLink>
 
-                If using the online form please either bring the following to the PWYC registration table or email to racedirector@pwycwi.com:
-                <br />
-                <br />1. This entry form with signed Waiver and <ReleaseFormLink href="/assets/SailingInfo/PWYC Registration 2023.pdf" target="_blank">Release form</ReleaseFormLink>
-                <br />2. LMPHRF; attach PHRF certificate or enter rating above*
-                <br />3. Entry Fee. . . . . . . . . . NONE
+
+                <br />  If using the online form please either bring
+                <br />LMPHRF certificate to the registration table;
+                <br />A rating will be assigned to boats without a handicap.
                 <br />
 
-                <br />*A rating may be assigned to boats without a handicap.
+
             </EntryRequirements>
             <DialogActions>
                 <Button onClick={onClose}>Close</Button>

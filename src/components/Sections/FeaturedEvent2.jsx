@@ -9,6 +9,27 @@ import Tooltip from '@material-ui/core/Tooltip';
 import RaceRegistrationDialog from '../Dialog/RaceRegistration';
 import RaceRegistrantsTable from './components/RaceRegistrationTable';
 
+
+const Title = styled.h1`
+ justify-content: center;
+    display: flex;
+align-items: center;
+margin-top: 10%;
+margin-bottom: -5%;
+ font-size: 2.5rem;
+  font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    transition: opacity 2s ease-in-out;
+
+
+     @media screen and (orientation: landscape) and (max-height: 700px) {
+ margin-bottom: 5%;
+
+    }
+
+
+`;
+
 const Section2Styled = styled.div`
     background-color: #000000;
     margin-top: -5%;
@@ -25,6 +46,8 @@ const Wrapper = styled.div`
     align-items: center;
     position: relative;
     padding: 20px;
+    margin-top: 5%;
+
 
     @media (max-width: 600px) {
         flex-direction: column;
@@ -70,6 +93,7 @@ const FlyerWrapper = styled.div`
 const EventFlyer = styled.div`
     width: 50%; // Adjusted from 65% to 40%
     height: 50%; // Adjusted from 65% to 40%
+    margin-top: 10%;
     margin-bottom: 10%;
   
     @media (max-width: 600px) {
@@ -93,6 +117,7 @@ margin-left: 0%;
 
 
 const TableWrapper = styled.div`
+margin-top: -25%;
   
     @media (max-width: 800px) {
         display: none;
@@ -120,7 +145,6 @@ const DownloadButton = styled.a`
     margin-top: 3%;
     border-radius: 5px;
     transition: color 0.3s ease;
-    margin-right: 40px;
     cursor: pointer; // Add this line
 
     &:hover {
@@ -185,7 +209,7 @@ const SIButton = styled.a`
 `;
 const Caption = styled.h2`
   margin-top: 60px;
-    font-size: 1em;
+    font-size: .5em;
 
   text-align: center;
   color: #E8E3D5;
@@ -211,32 +235,31 @@ export default function FeaturedEvent2() {
       };
       return (
             <Section2Styled id="section6">
+
                   <main className={styles.main3}>
+                        <Title>
+                              2023 Rendezvous Regatta
+                        </Title>
                         <Wrapper>
+
                               <CarouselWrapper>
+
                                     <Description>
                                           <FlyerWrapper>
-                                                <Caption>
-                                                      Registration forms will also be available the morning of the race at the club and are due by 9:00 am.
-                                                </Caption>
-                                                <EventFlyer>
-                                                      <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1143703455429570651/image.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
-                                                </EventFlyer>
+
+
+
                                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
-                                                      <Tooltip title="Download the form, fill out and submit to the Club" arrow>
-                                                            <DownloadButton href={`${flyerFile}#toolbar=0`} download>
-                                                                  Register
-                                                            </DownloadButton>
-                                                      </Tooltip>
+
                                                       <Tooltip title="Download the NOR" arrow>
-                                                            <DownloadButton href={`${norFile}#toolbar=0`} download>
+                                                            <RegisterButton href={`${norFile}#toolbar=0`} download>
                                                                   NOR
-                                                            </DownloadButton>
+                                                            </RegisterButton>
                                                       </Tooltip>
                                                       <Tooltip title="Online Form" arrow>
                                                             {/* Button to open the Race Registration Dialog */}
                                                             <RegisterButton color="primary" onClick={handleOpenDialog}>
-                                                                  Online Form
+                                                                  Register Online
                                                             </RegisterButton>
                                                       </Tooltip>
                                                       <Tooltip title="Sailing Instruction" arrow>
@@ -247,6 +270,17 @@ export default function FeaturedEvent2() {
                                                       </Tooltip>
 
                                                 </div>
+                                                <EventFlyer>
+                                                      <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1143703455429570651/image.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
+                                                </EventFlyer>
+                                                <Tooltip title="Download the form, fill out and submit to the Club" arrow>
+                                                      <DownloadButton href={`${flyerFile}#toolbar=0`} download>
+                                                            Download Registration
+                                                      </DownloadButton>
+                                                </Tooltip>
+                                                <Caption>
+                                                      Registration forms will also be available the morning of the race at the club and are due by 9:00 am.
+                                                </Caption>
                                           </FlyerWrapper>
                                     </Description>
                               </CarouselWrapper>
