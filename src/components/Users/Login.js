@@ -69,7 +69,7 @@ export default function Login({ open, onClose }) {
                 <DialogContent>
                     <Box display="flex" flexDirection="column" mb={5}>
                         <TextField
-                            label="Email (Username)"
+                            label="Email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             style={{ marginBottom: "2em" }}

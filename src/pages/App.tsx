@@ -448,7 +448,7 @@ export default function Home() {
           <ToastContainer />
 
           <SectionHome />
-          <FeaturedEvent2 />
+          {/** <FeaturedEvent2 />*/}
           <Events />
           <PhotoGallery />
 

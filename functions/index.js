@@ -346,5 +346,266 @@ exports.sendRaceRegistrationEmail = functions.https.onCall(async (data, context)
 
 
 
+exports.sendNewApplicationEmail = functions.https.onCall(async (data, context) => {
+    try {
+        // Extract the application details from the data
+        const {
+            date,
+            applicantName,
+            address,
+            city,
+            state,
+            hobbies,
+            phone,
+            email,
+            boatName,
+            typeMake,
+            boatLocation,
+            occupation,
+            employers,
+            interests,
+            ownBoat,
+            crewBoat,
+            sponsor1,
+            sponsor1length,
+            sponsor1how,
+            sponsor2,
+            sponsor2length,
+            sponsor2how,
+            myExpectations,
+            ourExpectations,
+            signature,
+            requirementsChecked
+        } = data;
 
+        const signatureBuffer = Buffer.from(signature.split(',')[1], 'base64');
 
+        // Define the email content for admin
+        const adminMembershipMailOptions = {
+            from: `${APP_NAME} <tech@PWYCWI.com>`,
+            to: 'tech@pwycwi.com', // Change to the destination email
+            subject: `New Membership Application for ${applicantName}`,
+            html: ` <div style="font-family: Arial, sans-serif; text-align: center;">
+    <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1117955817371607110/image.png" alt="Logo" style="width: 100px;">
+    <div>
+        <h2>PWYC APPLICATION FOR MEMBERSHIP</h2>
+        <table style="margin: auto;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Date:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${date}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Name(s) of Applicant:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${applicantName}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Address:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${address}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>City:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${city}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>State:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${state}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Phone number:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${phone}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Email Address:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${email}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Boat Name:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${boatName}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Sail or Power and Make of boat:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${typeMake}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Slip and location of boat:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${boatLocation}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Occupation(s):</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${occupation}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Employer(s):</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${employers}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Hobbies or Special Interests:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${hobbies}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Do you own a boat?:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${ownBoat}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>If you do not own a boat, do you regularly crew on a boat?:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${crewBoat}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <div style="margin-top: 20px; margin-bottom: 20px;">
+                        <strong>CLUB SPONSORS:</strong>
+                    </div>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">
+                    <div style="margin-top: 20px; margin-bottom: 20px;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>1) Print Name of Sponsor one:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${sponsor1}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>How long have you known this sponsor:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${sponsor1length}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Nature of acquaintance this sponsor?:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${sponsor1how}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>2) Print Name of Sponsor two:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${sponsor2}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>How long have you known this sponsor:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${sponsor2length}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Nature of acquaintance this sponsor?:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${sponsor2how}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>What are your expectations from membership in the PWYC?:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${myExpectations}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>What can the PWYC expect from you?:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${ourExpectations}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Volunteerism areas of interest:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${interests ? interests.join(', ') : 'N/A'}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Requirements Checked:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${requirementsChecked ? 'Yes' : 'No'}</td>
+            </tr>
+        </table>
+        <div style="margin-top: 20px;">
+            <strong>Signature:</strong>
+            <br>
+            <img src="cid:signature" alt="Applicant's Signature" width="200">
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+        </div>
+    </div>
+</div> `,
+
+            attachments: [
+                {
+                    filename: 'signature.png',
+                    content: signatureBuffer,
+                    cid: 'signature' // same cid value as in the html img src
+                },
+            ],
+        };
+
+        // Define the email content for registrant
+        const registrantMailOptions = {
+            from: `${APP_NAME} Membership Application <tech@PWYCWI.com>`,
+            to: email, // Email of the applicant
+            subject: `Thank You for Your Membership Application, ${applicantName}!`,
+            html: `
+<div style="font-family: Arial, sans-serif; text-align: center;">
+             <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1117955817371607110/image.png" alt="Logo" style="width: 100px;">
+    <div>
+            <h1>Welcome to ${APP_NAME}!</h1>
+            <p>Dear ${applicantName},</p>
+            <p>Thank you for submitting your membership application to ${APP_NAME}. We are thrilled to have you join our community of boating enthusiasts.</p>
+            <p>Your application is now under review and will be posted on the Club bulletin board for a period of 30 days as per our bylaws. After the review period, our Board of Directors will evaluate your application.</p>
+            <p>We strongly encourage active participation in Club activities and look forward to seeing you around.</p>
+            <p>If you have any questions or need further information, feel free to reply to this email or contact us at <a href="mailto:tech@PWYCWI.com">tech@PWYCWI.com</a>.</p>
+            <p>Best regards,</p>
+            <p>The ${APP_NAME} Team</p>
+            <a href="https://www.your-club-website.com" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+        </div>            `,
+        };
+
+        // Send the email to the admin
+        await mailTransport.sendMail(adminMembershipMailOptions);
+        console.log('Membership application email sent to:', adminMembershipMailOptions.to);
+
+        // Send the thank-you email to the registrant
+        await mailTransport.sendMail(registrantMailOptions);
+        console.log('Thank-you email sent to registrant:', registrantMailOptions.to);
+
+        return { status: 'success', message: 'Registration and thank-you emails sent successfully!' };
+    } catch (error) {
+        console.error('Error sending membership application email:', error);
+        throw new functions.https.HttpsError(
+            'internal',
+            'An error occurred while sending the membership application email.'
+        );
+    }
+});
