@@ -432,24 +432,7 @@ exports.sendNewApplicationEmail = functions.https.onCall(async (data, context) =
                 </td>
                 <td style="text-align: left; text-decoration: underline;">${email}</td>
             </tr>
-            <tr>
-                <td style="text-align: left;">
-                    <strong>Boat Name:</strong>
-                </td>
-                <td style="text-align: left; text-decoration: underline;">${boatName}</td>
-            </tr>
-            <tr>
-                <td style="text-align: left;">
-                    <strong>Sail or Power and Make of boat:</strong>
-                </td>
-                <td style="text-align: left; text-decoration: underline;">${typeMake}</td>
-            </tr>
-            <tr>
-                <td style="text-align: left;">
-                    <strong>Slip and location of boat:</strong>
-                </td>
-                <td style="text-align: left; text-decoration: underline;">${boatLocation}</td>
-            </tr>
+          
             <tr>
                 <td style="text-align: left;">
                     <strong>Occupation(s):</strong>
@@ -479,6 +462,24 @@ exports.sendNewApplicationEmail = functions.https.onCall(async (data, context) =
                     <strong>If you do not own a boat, do you regularly crew on a boat?:</strong>
                 </td>
                 <td style="text-align: left; text-decoration: underline;">${crewBoat}</td>
+            </tr>
+              <tr>
+                <td style="text-align: left;">
+                    <strong>Boat Name:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${boatName}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Sail or Power and Make of boat:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${typeMake}</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Slip and location of boat:</strong>
+                </td>
+                <td style="text-align: left; text-decoration: underline;">${boatLocation}</td>
             </tr>
             <tr>
                 <td style="text-align: left;">
@@ -589,7 +590,8 @@ exports.sendNewApplicationEmail = functions.https.onCall(async (data, context) =
             <p>Best regards,</p>
             <p>The ${APP_NAME} Team</p>
             <a href="https://www.your-club-website.com" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
-        </div>            `,
+        </div>
+         `,
         };
 
         // Send the email to the admin
