@@ -216,7 +216,7 @@ export default function Section1() {
   const images = [
     'https://media.discordapp.net/attachments/1090123749300379740/1108561597561057310/Harbor.jpg?width=1382&height=1036',
     'https://cdn.discordapp.com/attachments/1090123749300379740/1108617807920386109/IMG_3937.jpg',
-    'https://media.discordapp.net/attachments/1090123749300379740/1108561598282481664/Karisma.jpg?width=1382&height=1036'
+    'https://media.discordapp.net/attachments/1090123749300379740/1150968231515926619/image.png?width=1654&height=1028'
   ];
 
   useEffect(() => {
@@ -275,7 +275,7 @@ export default function Section1() {
             <TabDescription expanded={activeTab === 2}>
               <p>The Port Washington Yacht Club organizes an exciting Saturday Buoy racing series that caters to both racing class and cruising class boats. These thrilling races take place on most weekends from June through September.</p>
 
-              <p> Additionally, there are two notable long-distance weekend races. One race involves sailing to and from Sheboygan, while the other race takes participants to and from Milwaukee. These races add an element of fun, and individual awards are presented to deserving participants.</p>
+              <p> Additionally, there are two notable long-distance weekend races. One race involves sailing to and from the Niagra wreck at Harrington beach, while the other race takes participants to and from Sheboygan. These races add an element of fun, and individual awards are presented to deserving participants.</p>
 
               <p> The Port Washington Yacht Club proudly sponsors the renowned Clipper Cup race, which spans across the lake. Additionally, the club hosts the exhilarating 'Double Handed' race, which takes place along the west shore. Both of these races culminate at the Port Washington Harbor,
                 where award parties are held at the club, creating a memorable and celebratory atmosphere.</p>

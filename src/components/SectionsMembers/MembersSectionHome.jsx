@@ -8,7 +8,6 @@ import { ethers, BigNumber } from "ethers"
 import { Mainnet, DAppProvider, useEtherBalance, useEthers, Config, Goerli } from '@usedapp/core'
 import { Link } from 'react-scroll';
 import SmallButton from "src/components/CustomButtons/SmallButton.js";
-import { Events } from '../Events';
 import Modal from 'react-modal'; // import the react-modal package
 import HistoryModal from '../Modals/HistoryModal';
 import MembershipModal from '../Modals/MembershipModal';

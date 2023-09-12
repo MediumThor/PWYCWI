@@ -470,12 +470,12 @@ export default function PageOne() {
             </ButtonContainer>
             */}
 
-            {showAlert && (
+            {/**     {showAlert && (
               <StyledAlert onClose={handleCloseAlert} severity="info" style={{ top: '5%' }}>
                 <AlertTitle>Update!</AlertTitle>
                 <strong>Rendezvous Race, Sheboygan & Harrington NOR's have been posted to Sailing Information (Three tabs to the right)</strong>
               </StyledAlert>
-            )}
+            )}*/}
             <NewsModal isOpen={isNewsModalOpen} onRequestClose={handleNewsClose} />
             <EventsModal isOpen={isEventsModalOpen} onRequestClose={handleEventsClose} />
             <SailingModal isOpen={isSailingModalOpen} onRequestClose={handleSailingClose} />

@@ -36,7 +36,7 @@ padding-bottom: 40px;
 
 const CalendarWrapper = styled.div`
   width: 90vw;
-  max-width: 1400px;
+  max-width: 1100px;
   margin: 0 auto;
   border-radius: 20px; // Added border-radius
   border: 0px solid white;

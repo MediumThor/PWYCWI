@@ -449,7 +449,16 @@ export default function Home() {
 
           <SectionHome />
           {/** <FeaturedEvent2 />*/}
+          {/**
+         <FeaturedEvent /> */}
           <Events />
+
+
+          <RenderOnLargeScreen>
+            <ParallaxImage4 />
+          </RenderOnLargeScreen>
+
+
           <PhotoGallery />
 
           <RenderOnLargeScreen>
@@ -460,9 +469,9 @@ export default function Home() {
             <SectionWithVideo />
           </RenderOnLargeScreen>
 
-          <RenderOnLargeScreen>
+          {/**    <RenderOnLargeScreen>
             <ParallaxImage3 />
-          </RenderOnLargeScreen>
+          </RenderOnLargeScreen>*/}
 
           <Services />
 
@@ -470,12 +479,8 @@ export default function Home() {
             <ParallaxImage2 />
           </RenderOnLargeScreen>
 
-          <FeaturedEvent />
 
 
-          <RenderOnLargeScreen>
-            <ParallaxImage4 />
-          </RenderOnLargeScreen>
 
           <Weather />
           <Cam />

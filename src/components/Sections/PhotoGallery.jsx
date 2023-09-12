@@ -7,7 +7,7 @@ import { firestore as db } from '../../../firebase';
 
 const PhotoGalleryStyled = styled.div`
   background-color: #000000;
-  margin-top: -100px;
+  margin-top: -50px;
   margin-bottom: 200px;
   display: flex; // Add display: flex back
   flex-direction: column;

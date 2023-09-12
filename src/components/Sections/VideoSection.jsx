@@ -54,6 +54,7 @@ const SectionStyled = styled.div`
 
   min-height: 600px;
   justify-content: center;
+  margin-bottom: 100px;
   
      box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
 inset 20px 20px 240px rgba(0, 0, 0, 1);

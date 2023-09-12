@@ -18,7 +18,9 @@ inset 20px 20px 240px rgba(0, 0, 0, 1);
 
   min-height: 850px; // Adjust this value as needed
   justify-content: center;
-  margine-bottom: 120px;
+  margin-bottom: 40px;
+    margin-top: 60px;
+
 `;
 
 const Wrapper = styled.div`
@@ -236,7 +238,7 @@ export default function Section2() {
     return <div>Loading events...</div>;
   }
   return (
-    <Section2Styled id="section2">
+    <Section2Styled id="section6">
       <main>
         <ServicesBackground>
           <Caption>Join us for our public events! We welcome everyone to participate and enjoy these special occasions with us.</Caption>
