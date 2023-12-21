@@ -25,7 +25,7 @@ import RosterDialog from '../Dialog/Roster';
 import OfficerDialog from '../Dialog/Officers';
 import BoardDialog from '../Dialog/Board';
 import CrewSignup from './Components/CrewSignup';
-
+import PrivatePartyDialog from '../Dialog/PrivateParty';
 
 const ButtonRow = styled.div`
   display: flex;
@@ -285,13 +285,11 @@ export default function SectionHome() {
   const [scroll, setScroll] = useState('paper');
   const [bylawsOpen, setBylawsOpen] = useState(false);
   const [rosterOpen, setRosterOpen] = useState(false);
+  const [partyOpen, setPartyOpen] = useState(false);
 
   const [raceOpen, setRaceOpen] = useState(false);
   const [officerOpen, setOfficerOpen] = useState(false);
-
   const [boardOpen, setBoardOpen] = useState(false);
-
-
   const [openCrewSignup, setOpenCrewSignup] = useState(false); // State to control CrewSignup dialog
 
   const handleCrewSignupOpen = () => setOpenCrewSignup(true); // Function to open CrewSignup dialog
@@ -392,12 +390,10 @@ export default function SectionHome() {
 
 
 
-
-
-
   const handleOpen = () => {
     setOpen(true);
   };
+
 
   useEffect(() => {
     if (open) {
@@ -417,7 +413,22 @@ export default function SectionHome() {
     setOpen(false);
   };
 
+  const handlePartyDialogOpen = () => {
+    setPartyOpen(true);
+  };
 
+  useEffect(() => {
+    if (partyOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [partyOpen]);
+
+  const handlePartyclose = () => {
+    setPartyOpen(false);
+  };
 
 
   useEffect(() => {
@@ -576,6 +587,9 @@ export default function SectionHome() {
 
                 <StyledButton onClick={handleCrewSignupOpen}>Crew Signup</StyledButton> {/* Button to launch CrewSignup dialog */}
                 <CrewSignup open={openCrewSignup} onClose={handleCrewSignupClose} /> {/* CrewSignup dialog */}
+
+                <StyledButton onClick={handlePartyDialogOpen}>Private Party Form</StyledButton> {/* New Button */}
+                <PrivatePartyDialog open={partyOpen} onClose={handlePartyclose} scroll="paper" />
               </ButtonRow>
             </ButtonContainer>
 
