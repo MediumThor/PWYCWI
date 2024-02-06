@@ -48,19 +48,19 @@ const OfficerDialog = ({ open, onClose, scroll }) => {
   const officerData = [
     {
       title: 'COMMODORE',
-      name: 'Terry White',
+      name: 'Troy Bretl',
       duties: 'Finances & Roster',
       email: 'commodore@pwycwi.com',
     },
     {
       title: 'VICE COMMODORE',
-      name: 'Troy Bretl',
+      name: 'Joe Eernisse',
       duties: 'House/Maintenance & Fish Day',
       email: 'vicecommodore@pwycwi.com',
     },
     {
       title: 'REAR COMMODORE ',
-      name: 'Brian Kendzor',
+      name: 'Stacey Berg',
       duties: 'Private Parties & Club Social Parties',
       email: 'rearcommodore@pwycwi.com',
     },
