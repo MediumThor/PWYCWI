@@ -19,6 +19,8 @@ import RaceInfoDialog from '../Dialog/RaceInfo';
 import OfficerDialog from '../Dialog/Officers';
 import BoardDialog from '../Dialog/Board';
 import RaceResultsDialog from '../Dialog/RaceResults';
+import RRDialog from '../Dialog/RR';
+
 
 
 
@@ -226,6 +228,73 @@ top: 60%
 top: 70%  }
 `;
 
+
+const ButtonContainer2 = styled.div`
+  position: absolute;
+  top: 70%;  
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  grid-template-columns: repeat(2, 3fr);  // create 2 equal width columns
+  grid-template-rows: repeat(3, 3fr);     // create 2 equal height rows
+  justify-items: center;  // center items horizontally
+  align-items: center;    // center items vertically
+  gap: 1.1em;
+      z-index: +1;  
+
+
+   @media (max-width: 1200px) {
+
+
+  }
+
+    @media (max-width: 1040px) {
+     display: grid;
+  grid-template-rows: repeat(1, 3fr);     // create 2 equal height rows
+  grid-template-columns: repeat(3, 1fr);  // create 2 equal width columns
+
+    top: 25%;
+      left: 50%;
+
+  }
+
+
+    @media (max-width: 940px) {
+     display: grid;
+  grid-template-rows: repeat(1, 3fr);     // create 2 equal height rows
+  grid-template-columns: repeat(3, 1fr);  // create 2 equal width columns
+
+    top: 10%;
+      left: 50%;
+
+  }
+
+  @media (max-width: 700px) {
+    top: 20%;
+          left: 50%;
+gap: .1em;
+
+  }
+
+  @media (max-width: 500px) {
+        top: 60%;
+                    grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
+
+    gap: .1em;
+  }
+
+  @media (max-width: 400px) {
+    gap: .01em;
+                        grid-template-columns: repeat(2, 1fr);  // create 2 equal width columns
+
+      left: 57%;
+top: 82% 
+  }
+
+    @media screen and (orientation: landscape) and (max-width: 800px) {
+top: 70%  }
+`;
+
 const StyledButton = styled.button`
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
   z-index: 2;
@@ -264,6 +333,44 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledButton2 = styled.button`
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  border: 2px solid #FAF9F6;
+  background-color: rgb(0,0,0,0.7);
+  color: #E8E3D5;
+  padding: 10px 10px;
+  cursor: pointer;
+  height: 70px;
+    width: 200px;
+      transition: all 0.3s ease-in-out;  // Add transition for smooth hover effect
+
+
+  &:hover {
+    color: #996515;
+    border-color: #87CEFA;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+      background-color: rgb(0,0,0,0.9);
+  }
+
+  @media (max-width: 700px) {
+    font-size: 1rem; // decrease font size
+    padding: 8px 16px; // decrease padding
+    margin: 0.5em;
+    height: 70px;
+    width: 120px;
+  }
+   @media (max-width: 640px) {
+     height: 60px;
+    width: 100px;
+    font-size: .9rem; // decrease font size
+    padding: 2px 15px; // decrease padding
+    
+  }
+`;
+
 
 
 
@@ -275,6 +382,8 @@ const SectionHome = () => {
   const pages = [<PageOne />, <PageTwo />, <PageThree />, <PageFour />];
 
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [rrOpen, setRROpen] = useState(false);
+
   const descriptionElementRef = useRef(null);
   const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
   const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
@@ -456,6 +565,28 @@ const SectionHome = () => {
     setHistoryOpen(false);
   };
 
+
+
+  const handleRRDialogOpen = () => {
+    setRROpen(true);
+  };
+
+  useEffect(() => {
+    if (rrOpen) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [rrOpen]);
+
+  const handleRRClose = () => {
+    setRROpen(false);
+  };
+
+
+
+
   const handleBoardOpen = () => {
     setIsBoardModalOpen(true);
   };
@@ -527,6 +658,12 @@ const SectionHome = () => {
     <Section1Styled id="sectionHome">
 
       <PageDiv>
+
+        <ButtonContainer2>
+          <StyledButton2 onClick={handleRRDialogOpen} >2024 Rendezvous Race</StyledButton2>
+          <RRDialog open={rrOpen} onClose={handleRRClose} scroll="paper" />
+
+        </ButtonContainer2>
         <ButtonContainer>
 
           <StyledButton onClick={handleHistoryDialogOpen} >Club History</StyledButton>

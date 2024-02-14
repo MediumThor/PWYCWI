@@ -1,0 +1,72 @@
+import React from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
+import styled from 'styled-components';
+
+const StyledText = styled.p`
+  text-align: center;
+  color: black;
+`;
+
+const StyledLink = styled.a`
+  color: #0000EE;
+  text-decoration: underline;
+`;
+
+const StyledTextBody = styled.p`
+  text-align: center;
+  color: black;
+  margin-bottom: 20%;
+`;
+
+const StyledImage = styled.img`
+  height: auto;
+  width: 100%;
+  padding-left: 10px;
+  @media (max-width: 600px) {
+    width: 25%;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+`;
+
+const CenteredDialogTitle = styled(DialogTitle)`
+  text-align: center;
+`;
+
+const HistoryDialog = ({ open, onClose, scroll }) => {
+  return (
+    <Dialog
+      open={open}
+      onClose={onClose}
+      scroll={scroll}
+      aria-labelledby="scroll-dialog-title"
+      aria-describedby="scroll-dialog-description"
+    >
+      <CenteredDialogTitle id="scroll-dialog-title">2024 Rendezvous Race</CenteredDialogTitle>
+      <DialogContent dividers={scroll === 'paper'}>
+        <ImageWrapper>
+          <StyledImage src="https://media.discordapp.net/attachments/1090123749300379740/1207337980533149787/image.png?ex=65df481d&is=65ccd31d&hm=11b448548464ddbff5e47ab3d19477c3713ebd292a1ae4da692c043ebf9d9edc&=&format=webp&quality=lossless&width=1332&height=1028" alt="2024 Rendezvous Race Flyer" />
+        </ImageWrapper>
+        <StyledText>
+          Under Construction, Please check back soon for SI, NOR and More info.
+
+
+        </StyledText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Close</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+export default HistoryDialog;
