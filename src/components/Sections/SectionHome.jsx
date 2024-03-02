@@ -13,7 +13,7 @@ import OfficersModal from '../Modals/OfficersModal';
 
 
 import HistoryDialog from '../Dialog/History';
-import MembershipDialog from '../Dialog/Membership';
+import MembershipDialog from '../Dialog/MembershipOnline';
 import LinksDialog from '../Dialog/Links';
 import RaceInfoDialog from '../Dialog/RaceInfo';
 import OfficerDialog from '../Dialog/Officers';

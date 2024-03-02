@@ -16,7 +16,7 @@ import NewsModal from '../Modals/NewsModal';
 import { useRef } from 'react';
 
 import HistoryDialog from '../Dialog/History';
-import MembershipDialog from '../Dialog/Membership';
+import MembershipDialog from '../Dialog/MembershipOnline';
 import RaceInfoDialog from '../Dialog/RaceInfo';
 import BoardModal from '../Modals/BoardModal';
 import OfficersModal from '../Modals/OfficersModal';
@@ -25,7 +25,7 @@ import RosterDialog from '../Dialog/Roster';
 import OfficerDialog from '../Dialog/Officers';
 import BoardDialog from '../Dialog/Board';
 import CrewSignup from './Components/CrewSignup';
-import PrivatePartyDialog from '../Dialog/PrivateParty';
+import PrivatePartyDialog from '../Dialog/PrivatePartyOnline';
 
 const ButtonRow = styled.div`
   display: flex;
@@ -552,13 +552,14 @@ export default function SectionHome() {
           <Parallax
             blur={{ min: -20, max: 20 }}
             strength={400}
-            bgImage="https://cdn.discordapp.com/attachments/1090123749300379740/1114320042142740601/BackPorch3.jpg"
+            bgImage="https://i.imgur.com/JtKN9hO.jpeg"
             bgImageAlt="Background"
           >
-            <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+            <Logo src="https://i.imgur.com/QmF9MdD.png" alt="Logo" />
 
             <Title>Port Washington<br />Yacht Club Members <br /> Section</Title>
             <MobileTitle>Members Section</MobileTitle>
+
             <ButtonContainer>
               <ButtonRow>
 

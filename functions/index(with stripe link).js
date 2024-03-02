@@ -590,10 +590,10 @@ exports.sendNewApplicationEmail = functions.https.onCall(async (data, context) =
             <p>Thank you for submitting your membership application to ${APP_NAME}. We are thrilled to have you join our community of boating enthusiasts.</p>
             <p>Your application is now under review and will be posted on the Club bulletin board for a period of 30 days as per our bylaws. After the review period, our Board of Directors will evaluate your application.</p>
             <p>We strongly encourage active participation in Club activities and look forward to seeing you around.</p>
-            <p>If you have any questions or need further information, feel free to reply to this email or contact us at <a href="mailto:fleetcaptain@pwycwi.com">fleetcaptain@pwycwi.com</a>.</p>
+            <p>If you have any questions or need further information, feel free to reply to this email or contact us at <a href="mailto:tech@PWYCWI.com">tech@PWYCWI.com</a>.</p>
             <p>Best regards,</p>
             <p>The ${APP_NAME} Team</p>
-            <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+            <a href="https://www.your-club-website.com" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
         </div>
          `,
         };
@@ -681,28 +681,30 @@ exports.sendPrivatePartyEmail = functions.https.onCall(async (data, context) => 
             to: email,
             subject: `Your Private Party Application - ${eventName}`,
             html: `
-            <div style="font-family: Arial, sans-serif; text-align: center;">
-            <img src="https://i.imgur.com/QmF9MdD.png" alt="Logo" style="width: 100px;">
-            <div>
-              <h1>Your Private Party Application</h1>
-              <p>Dear ${memberName},</p>
-              <p>Thank you for submitting your private party application for "${eventName}". We have received your application and will be reviewing it shortly.</p>
-              <p>Please complete your payment by delivering a check for the amount of  </p>
-               
-              
-    
-              <p>$${totalCost / 100} to the club before the next scheduled meeting on the second Friday of each month. </p>
-                        <p>Please note that payment is required for the board to approve your event</p>
-    
-    
-              <p>If you have any questions or need further information, feel free to reply to this email or contact us at <a href="mailto:rearcommodore@pwycwi.com">rearcommodore@pwycwi.com</a>.</p>
-              <p>Best regards,</p>
-              <p>The ${APP_NAME} Team</p>
-              <div style="margin-top: 20px; text-align: center;">
-                <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
-              </div>
-            </div>
+      <div style="font-family: Arial, sans-serif; text-align: center;">
+        <img src="https://i.imgur.com/QmF9MdD.png" alt="Logo" style="width: 100px;">
+        <div>
+          <h1>Your Private Party Application</h1>
+          <p>Dear ${memberName},</p>
+          <p>Thank you for submitting your private party application for "${eventName}". We have received your application and will be reviewing it shortly.</p>
+          <p>Please complete your payment by following this link:</p>
+            <div style="margin-top: 20px; margin-bottom: 20px; text-align: center;">
+            <a href="${paymentLink}" style="background-color: #a5dcbf; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Complete Payment</a>
           </div>
+          
+
+          <p>Or bring a check for $${totalCost / 100} to the club before the next scheduled meeting on the first Friday of each month. </p>
+                    <p>Please note that payment is required for the board to approve your event</p>
+
+
+          <p>If you have any questions or need further information, feel free to reply to this email or contact us at <a href="mailto:fleetcaptain@pwycwi.com">fleetcaptain@pwycwi.com</a>.</p>
+          <p>Best regards,</p>
+          <p>The ${APP_NAME} Team</p>
+          <div style="margin-top: 20px; text-align: center;">
+            <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+          </div>
+        </div>
+      </div>
     `,
         };
 

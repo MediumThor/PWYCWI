@@ -1,0 +1,14 @@
+There was an error deploying functions:
+- Error Failed to update function createUser in region us-central1
+- Error Failed to update function addOfficerRole in region us-central1
+- Error Failed to update function addCaptainRole in region us-central1
+- Error Failed to update function sendPasswordResetEmail in region us-central1
+- Error Failed to update function sendPrivatePartyEmail in region us-central1
+- Error Failed to update function removeAllClaims in region us-central1
+- Error Failed to update function sendNewApplicationEmail in region us-central1
+- Error Failed to update function addAdminRole in region us-central1
+- Error Failed to create function createStripeInvoice in region us-central1
+- Error Failed to update function sendRaceRegistrationEmail in region us-central1
+- Error Failed to update function removeAdminRole in region us-central1
+- Error Failed to update function removeCaptainRole in region us-central1
+- Error Failed to update function removeOfficerRole in region us-central1

@@ -163,7 +163,7 @@ export default function Section1() {
           <Column>
             <ImageWrapper>
               <StyledImageTitle>Social Functions</StyledImageTitle>
-              <Image src='https://cdn.discordapp.com/attachments/1090123749300379740/1108617807920386109/IMG_3937.jpg' alt='Image 2' />
+              <Image src='https://i.imgur.com/Ppp5a9q.jpeg' alt='Image 2' />
             </ImageWrapper>
 
             <Text clamped={isClamped2}>

@@ -17,7 +17,7 @@ const TextDiv = styled.div`
 
 const images = [
   {
-    url: 'https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png',
+    url: 'https://i.imgur.com/QmF9MdD.png',
 
     width: '100%',
 

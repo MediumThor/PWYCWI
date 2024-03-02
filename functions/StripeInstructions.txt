@@ -1,0 +1,13 @@
+
+cd functions
+
+firebase logout
+firebase login
+
+firebase functions:config:set stripe.secret_key="YOUR_SECRET_KEY_HERE"
+
+then
+
+firebase deploy --only functions
+or
+firebase deploy --only functions:functionName

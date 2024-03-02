@@ -433,7 +433,7 @@ export default function PageFour() {
             }}
           >
 
-            <Logo src="https://cdn.discordapp.com/attachments/1090123749300379740/1108611479416098817/PWYC_LOGO2.png" alt="Logo" />
+            <Logo src="https://i.imgur.com/QmF9MdD.png" alt="Logo" />
 
             <Title>PWYC<br />Sailing Information</Title>
             <ButtonContainer>

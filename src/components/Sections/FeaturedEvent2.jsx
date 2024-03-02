@@ -271,7 +271,7 @@ export default function FeaturedEvent2() {
 
                                                 </div>
                                                 <EventFlyer>
-                                                      <img src="https://cdn.discordapp.com/attachments/1090123749300379740/1143703455429570651/image.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
+                                                      <img src="https://i.imgur.com/QmF9MdD.png" alt="Flyer" style={{ maxWidth: '100%', height: 'auto' }} />
                                                 </EventFlyer>
                                                 <Tooltip title="Download the form, fill out and submit to the Club" arrow>
                                                       <DownloadButton href={`${flyerFile}#toolbar=0`} download>

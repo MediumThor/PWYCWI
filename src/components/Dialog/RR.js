@@ -27,7 +27,7 @@ const StyledImage = styled.img`
   width: 100%;
   padding-left: 10px;
   @media (max-width: 600px) {
-    width: 25%;
+    width: 100%;
   }
 `;
 
@@ -54,7 +54,7 @@ const HistoryDialog = ({ open, onClose, scroll }) => {
       <CenteredDialogTitle id="scroll-dialog-title">2024 Rendezvous Race</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>
         <ImageWrapper>
-          <StyledImage src="https://media.discordapp.net/attachments/1090123749300379740/1207337980533149787/image.png?ex=65df481d&is=65ccd31d&hm=11b448548464ddbff5e47ab3d19477c3713ebd292a1ae4da692c043ebf9d9edc&=&format=webp&quality=lossless&width=1332&height=1028" alt="2024 Rendezvous Race Flyer" />
+          <StyledImage src="https://i.imgur.com/MDOkvWY.png" alt="2024 Rendezvous Race Flyer" />
         </ImageWrapper>
         <StyledText>
           Under Construction, Please check back soon for SI, NOR and More info.

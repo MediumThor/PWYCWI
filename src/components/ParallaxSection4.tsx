@@ -38,7 +38,7 @@ const ParallaxImage = () => {
                             width: 2000,
                             position: 'relative',
                             backgroundImage:
-                                "url('https://cdn.discordapp.com/attachments/1090123749300379740/1118416355549515797/litha-bacchi-highresscreenshot00040.jpg')",
+                                "url('https://i.imgur.com/3Zu8FdF.jpeg')",
                         }}
                     >
                         <div

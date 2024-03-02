@@ -187,7 +187,7 @@ const TabDescription = styled.div`
   transition: all 0.9s ease-in-out;
   opacity: ${props => props.expanded ? '0' : '0'}; 
   text-align: left;
-  font-size: ${props => props.expanded ? '1.05rem' : '1.05rem'};
+  font-size: ${props => props.expanded ? '0.95rem' : '1.05rem'};
 
   // Add this block to apply the fade-in animation
   ${props => props.expanded && css`
@@ -214,9 +214,9 @@ export default function Section1() {
 
 
   const images = [
-    'https://media.discordapp.net/attachments/1090123749300379740/1108561597561057310/Harbor.jpg?width=1382&height=1036',
-    'https://cdn.discordapp.com/attachments/1090123749300379740/1108617807920386109/IMG_3937.jpg',
-    'https://media.discordapp.net/attachments/1090123749300379740/1150968231515926619/image.png?width=1654&height=1028'
+    'https://i.imgur.com/0j8dlXj.jpeg',
+    'https://i.imgur.com/Ppp5a9q.jpeg',
+    'https://i.imgur.com/ASxToRS.jpeg'
   ];
 
   useEffect(() => {

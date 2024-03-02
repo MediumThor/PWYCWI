@@ -39,10 +39,17 @@ export default function SectionWithVideo() {
         <SectionStyled id="sectionWithVideo">
 
             <VideoWrapper>
-                <video ref={videoRef} muted loop>
-                    <source src="https://cdn.discordapp.com/attachments/1090123749300379740/1117675999186915358/Sailing1.mp4" type="video/mp4" />
-                    Your browser does not support HTML5 video.
-                </video>
+            <div style={{padding: '42.6% 0 0 0', position: 'relative'}}>
+                    <iframe 
+                        src="https://player.vimeo.com/video/918698315?badge=0&autopause=0&player_id=0&app_id=58479" 
+                        frameBorder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                        style={{position: 'absolute', top: '0', left: '0', width: '100%', height: '100%'}} 
+                        title="Sailing1">
+                    </iframe>
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+           
             </VideoWrapper>
             <QuoteSlider />
         </SectionStyled>

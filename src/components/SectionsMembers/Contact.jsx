@@ -128,7 +128,7 @@ export default function Section3() {
       <Footer>
         <FooterSection>
           <MapLink href="https://www.google.com/maps/place/Port+Washington+Yacht+Club/@43.3918745,-87.8681159,17z/data=!3m1!4b1!4m6!3m5!1s0x8804ea1cbd453539:0x7d30452aaee626c4!8m2!3d43.3918706!4d-87.865541!16s%2Fg%2F1tfpq7zy">
-            <MapImage src="https://cdn.discordapp.com/attachments/1090123749300379740/1108616374680567938/image.png" alt="Map" />
+            <MapImage src="https://i.imgur.com/7Zv7TIo.png" alt="Map" />
           </MapLink>
         </FooterSection>
         <FooterSection>
