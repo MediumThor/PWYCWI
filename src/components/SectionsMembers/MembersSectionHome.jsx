@@ -21,7 +21,7 @@ import RaceInfoDialog from '../Dialog/RaceInfo';
 import BoardModal from '../Modals/BoardModal';
 import OfficersModal from '../Modals/OfficersModal';
 import BylawsDialog from '../Dialog/ByLaws';
-import RosterDialog from '../Dialog/Roster';
+import RosterDialog from '../Dialog/RosterOnline';
 import OfficerDialog from '../Dialog/Officers';
 import BoardDialog from '../Dialog/Board';
 import CrewSignup from './Components/CrewSignup';

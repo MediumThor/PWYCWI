@@ -56,32 +56,48 @@ function HeaderLinks() {
     const fetchUserRoleAndClaims = async () => {
       const authUser = auth.currentUser;
       if (authUser) {
-        const userSnapshot = await firestore.collection('users').doc(authUser.uid).get();
-        const userData = userSnapshot.data();
-        if (userData) {  // Check if userData exists
-          setFirstName(userData.firstName);
-          setLastName(userData.lastName);
-
-          setUserRoles(userData.roles || []);  // Fetch the user's roles
-          const token = await authUser.getIdTokenResult();  // Get the ID token result
-          // Set the user role if it exists in the claims
-          if (token.claims.admin) {
-            setIsAdmin(true);
-            setRole('Admin');
-          } else if (token.claims.officer) {
-            setIsOfficer(true);
-            setRole('Officer');
-          } else {
-            setIsAdmin(false);
-            setIsOfficer(false);
-            setRole('');
+        // First, get the ID token result to check for admin or officer roles
+        const token = await authUser.getIdTokenResult();
+  
+        if (token.claims.admin) {
+          setIsAdmin(true);
+          setRole('Admin');
+          // If the user is an admin, pull user data from the 'users' collection
+          const userSnapshot = await firestore.collection('users').doc(authUser.uid).get();
+          if (userSnapshot.exists) {
+            const userData = userSnapshot.data();
+            setFirstName(userData.firstName);
+            setLastName(userData.lastName);
+            setUserRoles(userData.roles || []);
+          }
+        } else if (token.claims.officer) {
+          setIsOfficer(true);
+          setRole('Officer');
+          // If the user is an officer, pull user data from the 'users' collection (or 'members' if needed)
+          const userSnapshot = await firestore.collection('users').doc(authUser.uid).get();
+          if (userSnapshot.exists) {
+            const userData = userSnapshot.data();
+            setFirstName(userData.firstName);
+            setLastName(userData.lastName);
+            setUserRoles(userData.roles || []);
+          }
+        } else {
+          // For regular users, fetch member data from the 'members' collection using 'authUid'
+          const memberSnapshot = await firestore.collection('members').where('authUid', '==', authUser.uid).limit(1).get();
+          if (!memberSnapshot.empty) {
+            const memberData = memberSnapshot.docs[0].data();
+            setFirstName(memberData.firstName);
+            setLastName(memberData.lastName);
+            setUserRoles(memberData.roles || []);
           }
         }
       }
     };
-
+  
     fetchUserRoleAndClaims();
   }, []);
+  
+  
 
 
 

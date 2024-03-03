@@ -61,22 +61,27 @@ export default function Members() {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user || Cookies.get('specialUser') === 'true') {
         setIsAuthenticated(true);
-
-        // Check for custom claim 'Captain'
-        user.getIdTokenResult().then(idTokenResult => {
-          if (idTokenResult.claims.captain) { // Notice the lowercase 'c'
-            setIsCaptain(true);
-          }
-        });
+  
+        // Check if user is not null before calling getIdTokenResult
+        if (user) {
+          user.getIdTokenResult().then(idTokenResult => {
+            if (idTokenResult.claims.captain) { // Notice the lowercase 'c'
+              setIsCaptain(true);
+            }
+          }).catch(error => {
+            console.error("Error fetching ID token result:", error);
+          });
+        }
       } else {
         setIsAuthenticated(false);
         router.push('/');
       }
     });
-
+  
     // Clean up the subscription on unmount
     return () => unsubscribe();
   }, [router]);
+  
 
   if (!isAuthenticated) {
     return null; // or return <LoadingComponent />

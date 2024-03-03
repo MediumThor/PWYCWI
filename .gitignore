@@ -71,5 +71,7 @@ node_modules/
 pwyc-628af-firebase-adminsdk-zvn6r-e5c1fbf39f.json
 addAdminRole.js
 checkAdminRole.js
+.CreateNewUserNotes.txt
+.firestore.rules.txt
 .next
 

@@ -49,14 +49,13 @@ const BlueRadio = styled(Radio)`
 
 
 const MembershipDialogOnline = ({ open, onClose, scroll }) => {
-
     const [uploadSnackbarOpen, setUploadSnackbarOpen] = useState(false);
     const [uploadSnackbarMessage, setUploadSnackbarMessage] = useState('');
-    const [snackbarSeverity, setSnackbarSeverity] = useState('success'); // Added state for Snackbar severity
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success');
     const [isFormValid, setIsFormValid] = useState(false);
     const [errorSnackbarOpen, setErrorSnackbarOpen] = useState(false);
     const [errorSnackbarMessage, setErrorSnackbarMessage] = useState('');
-    const [crewBoat, setCrewBoat] = useState('');
+    const [submissionComplete, setSubmissionComplete] = useState(false); // New state to track submission completion
 
 
     const [openForm, setOpenForm] = useState(false);
@@ -93,15 +92,26 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
 
 
     const validateForm = () => {
+        // Define all the required fields
+        const requiredFields = ['date', 'applicantName', 'address', 'city', 'state', 'hobbies', 'phone', 'email', 'occupation', 'interests', 'ownBoat', 'crewBoat', 'sponsor1', 'sponsor1length', 'sponsor1how', 'sponsor2', 'sponsor2length', 'sponsor2how', 'requirementsChecked', 'myExpectations', 'ourExpectations'];
+    
+        // If the user owns a boat, add the boat information fields to the required fields list
+        if (form.ownBoat === 'Yes') {
+            requiredFields.push('boatName', 'typeMake', 'boatLocation');
+        }
+    
         // Check if all required fields are filled in
-        const requiredFields = ['date', 'applicantName', 'address', 'city', 'state', 'hobbies', 'phone', 'email', 'boatName', 'typeMake', 'boatLocation', 'occupation', 'employers', 'interests', 'ownBoat', 'crewBoat', 'sponsor1', 'sponsor1length', 'sponsor1how', 'sponsor2', 'sponsor2length', 'sponsor2how', 'requirementsChecked', 'myExpectations', 'ourExpectations'];
         const isValid = requiredFields.every(field => !!form[field]);
-
-        console.log('Form:', form);
-        console.log('IsValid:', isValid);
-
+    
         setIsFormValid(isValid);
     };
+
+    useEffect(() => {
+        if (submissionComplete && !uploadSnackbarOpen && !errorSnackbarOpen) {
+            onClose(); // Close the modal
+            setSubmissionComplete(false); // Reset submission state for next time
+        }
+    }, [submissionComplete, uploadSnackbarOpen, errorSnackbarOpen, onClose]);
 
 
 
@@ -122,7 +132,7 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
             signatureImage = sigCanvas.current.toDataURL();
         }
 
-
+      
 
         // Create a new object with all the form data, including the signature
         const completeForm = { ...form, signature: signatureImage };
@@ -166,7 +176,17 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
 
 
 
+    const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return; // Do not close if the user clicks away
+        }
+        // Reset Snackbar and submission states
+        setUploadSnackbarOpen(false);
+        setErrorSnackbarOpen(false);
+        setSubmissionComplete(false);
 
+        onClose(); // Close the modal
+    };
 
 
 
@@ -209,17 +229,17 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
             <DialogContent>
                 {/* Applicant Information */}
                 <TextField
-  onChange={handleChange}
-  name="date"
-  label="Date"
-  type="date" // Set the type to "date" to enable the date picker
-  value={form.date}
-  fullWidth
-  margin="dense"
-  InputLabelProps={{
-    shrink: true, // This ensures the label doesn't overlap the selected date
-  }}
-/>                <TextField onChange={handleChange} name="applicantName" margin="dense" label="Name(s) of Applicant" fullWidth />
+                        onChange={handleChange}
+                        name="date"
+                        label="Date"
+                        type="date" // Set the type to "date" to enable the date picker
+                        value={form.date}
+                        fullWidth
+                        margin="dense"
+                        InputLabelProps={{
+                            shrink: true, // This ensures the label doesn't overlap the selected date
+                        }}
+                        />                <TextField onChange={handleChange} name="applicantName" margin="dense" label="Name(s) of Applicant" fullWidth />
                 <TextField onChange={handleChange} name="city" margin="dense" label="Home City" fullWidth />
                 <TextField onChange={handleChange} name="state" margin="dense" label="State" fullWidth />
                 <TextField onChange={handleChange} name="occupation" margin="dense" label="Occupation(s)" fullWidth />
@@ -235,15 +255,16 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
                     value={form.ownBoat}
                     onChange={handleChange}
                 >
-                    <FormControlLabel
-                        value="Yes"
-                        control={<BlueRadio />}
-                        label="Yes"
-                    />
+                  
                     <FormControlLabel
                         value="No"
                         control={<BlueRadio />}
                         label="No"
+                    />
+                      <FormControlLabel
+                        value="Yes"
+                        control={<BlueRadio />}
+                        label="Yes"
                     />
                     <FormControlLabel
                         value="Intend to in the near future"
@@ -251,7 +272,17 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
                         label="Intend to in the near future"
                     />
                 </RadioGroup>
-
+                {form.ownBoat === 'Yes' && (
+        <>
+         <br />
+            <Typography variant="body1" color="textPrimary" gutterBottom>
+                Tell us about her:
+            </Typography>
+            <TextField onChange={handleChange} name="boatName" margin="dense" label="Boat Name" fullWidth />
+            <TextField onChange={handleChange} name="typeMake" margin="dense" label="Sail or Power and Make of boat" fullWidth />
+            <TextField onChange={handleChange} name="boatLocation" margin="dense" label="Slip and location of boat" fullWidth />
+        </>
+    )}
                 <br />
                 <br />
 
@@ -284,13 +315,6 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
                 <br />
                 <br />
 
-                <Typography variant="body1" color="textPrimary" gutterBottom>
-                    If you do own a boat, tell us about her:
-                </Typography>
-                {/* Boat Information */}
-                <TextField onChange={handleChange} name="boatName" margin="dense" label="Boat Name" fullWidth />
-                <TextField onChange={handleChange} name="typeMake" margin="dense" label="Sail or Power and Make of boat" fullWidth />
-                <TextField onChange={handleChange} name="boatLocation" margin="dense" label="Slip and location of boat" fullWidth />
                 <br />
                 <br /> <br />
                 <br />
@@ -452,8 +476,7 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
             <Snackbar
                 open={uploadSnackbarOpen}
                 autoHideDuration={6000}
-                onClose={() => setUploadSnackbarOpen(false)}
-                anchorOrigin={{ vertical: 'top', horizontal: 'center' }} // Set Snackbar position
+                onClose={handleSnackbarClose} // Use the new handler here
             >
                 <Alert onClose={() => setUploadSnackbarOpen(false)} severity={snackbarSeverity}>
                     {uploadSnackbarMessage}
@@ -462,9 +485,7 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
             <Snackbar
                 open={errorSnackbarOpen}
                 autoHideDuration={6000}
-                onClose={() => setErrorSnackbarOpen(false)}
-                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            >
+                          >
                 <Alert onClose={() => setErrorSnackbarOpen(false)} severity="error">
                     {errorSnackbarMessage}
                 </Alert>
