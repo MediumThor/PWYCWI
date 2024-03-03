@@ -38,6 +38,7 @@ const roles = [
 ////////               ROLES                   /////////////
 
 
+const pdfFile = "/assets/Other/PWYC Roster 2023 - SJ.6.29.pdf"; // Adjust the path as necessary
 
 
 
@@ -434,7 +435,9 @@ const handleSubmit = async (e) => {
            </Grid>
     </Form>
     </DialogContent>
+    
       <DialogActions>
+        
         <Button onClick={onClose}>Close</Button>
        
       </DialogActions>
@@ -673,8 +676,27 @@ const RosterDialog = ({ open, onClose }) => {
     >
       Remove
     </Button>
+    
+    
   </DialogActions>
+  
+  
 </Dialog>
+<DialogActions>
+  <Button
+    component="a"
+    href={pdfFile}
+    target="_blank"
+    rel="noopener noreferrer"
+    color="primary"
+  >
+    Download Roster PDF
+  </Button>
+  <Button onClick={onClose}>Close</Button>
+
+</DialogActions>
+
+
 <MemberAdditionModal
   open={addMemberModalOpen}
   onClose={handleCloseAddMemberModal}
