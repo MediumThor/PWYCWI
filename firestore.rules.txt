@@ -18,7 +18,19 @@ service cloud.firestore {
       return request.auth.token.officer != null && request.auth.token.officer == true;
     }
 
+
+    // Function to check for Secretary role in custom claims
+      function isSecretary() {
+      return request.auth.token.secretary == true;
+    }
+
+      // Function to check for fleetCaptain role in custom claims
+      function isFleetCaptain() {
+       return request.auth.token.fleetCaptain == true;
+    }
   
+
+
   
   //Private party App
 
@@ -100,14 +112,14 @@ service cloud.firestore {
     }
 
 
-///Roster
-  match /members/{member} {
+    ///Roster
+    match /members/{member} {
       // Allow anyone to read documents in the members collection
       allow read: if true;
 
-      // Allow write access only to authenticated users with an admin role
-      allow write: if request.auth != null && request.auth.token.admin == true;
-    }
+      // Allow write access to authenticated users with an admin, secretary, or fleetCaptain role
+      allow write: if isAdmin() || isSecretary() || isFleetCaptain();
+      }
 
 
 

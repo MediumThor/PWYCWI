@@ -29,10 +29,10 @@ const Section1Styled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  padding-top: 130px;
+  height: 110vh;
+  padding-top: 125px;
   //background-color: #CDC2A4;
-  background: linear-gradient( #2e2d2a, #171615);
+  background: linear-gradient( #97b0bb, #97b0bb);
   //background: linear-gradient( 45deg, #87cefa, #000080);
   //background: linear-gradient( #97b0bb, #97b0bb);
   //background: linear-gradient( #BBAC83, #CDC2A4);

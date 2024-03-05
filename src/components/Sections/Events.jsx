@@ -10,10 +10,12 @@ import { Document, Page } from 'react-pdf';
 
 
 const Section2Styled = styled.div`
+
   background: linear-gradient( #171615, #2e2d2a);
   background: linear-gradient( #CDC2A4, #171615);
-    background: linear-gradient( #2e2d2a, #171615);
-     box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1),
+     box-shadow: inset -20px -20px 240px rgba(0, 0, 0, 1);
+     background: linear-gradient( #2e2d2a, #171615);
+
 inset 20px 20px 240px rgba(0, 0, 0, 1);
 
   min-height: 850px; // Adjust this value as needed
@@ -116,7 +118,7 @@ const Card = styled.div`
   flex-direction: column; // Change this to column
   align-items: center;
   background: #000000;
-  border-radius: 20px;
+  border-radius: 5px;
   border: 2px solid #E8E3D5;
   padding: 20px;
   margin-right: 15px;

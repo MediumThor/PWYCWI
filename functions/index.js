@@ -773,153 +773,179 @@ async function createStripePaymentLink(totalCost, customerEmail) {
     exports.createAuthUserForMember = functions.firestore
     .document('members/{memberId}')
     .onCreate(async (snap, context) => {
-        const newMember = snap.data();
-        const password = `${newMember.lastName}${newMember.memberId}`;
-
-        try {
-            const userRecord = await admin.auth().createUser({
-                email: newMember.email,
-                password: password,
-                displayName: `${newMember.firstName} ${newMember.lastName}`,
-            });
-
-            // Set custom claims for roles based on the membership type or other criteria
-            let customClaims = {};
-            switch (newMember.membershipType) {
-                case 'Officer':
-                    customClaims.officer = true;
-                    break;
-                case 'Commodore':
-                    customClaims.admin = true;
-                    break;
-                case 'Race Director':
-                    customClaims.raceDirector = true;
-                    break;
-                case 'Fleet Captain':
-                    customClaims.fleetCaptain = true;
-                    break;
-                case 'Rear Commodore':
-                    customClaims.rearCommodore = true;
-                    break;
-                case 'Vice Commodore':
-                    customClaims.viceCommodore = true;
-                    break;
-                case 'Secretary':
-                    customClaims.secretary = true;
-                    break;
-                case 'Board Member':
-                    customClaims.boardMember = true;
-                    break;
-                // Add more roles as necessary
-
-
-
-                default:
-                    customClaims = { member: true };
-            }
-
-            await admin.auth().setCustomUserClaims(userRecord.uid, customClaims);
-
-            await admin.firestore().collection('members').doc(context.params.memberId).update({
-                authUid: userRecord.uid,
-            });
-
-            // Check if we should send the welcome email
-            if (newMember.sendEmail) {
-                // Send registration email with login details
-                const mailOptions = {
-                    from: `${APP_NAME} <tech@PWYCWI.com>`,
-                    to: newMember.email,
-                    subject: `Welcome to ${APP_NAME}`,
-                    html: `
-                    <div style="font-family: Arial, sans-serif; text-align: center;">
-                    <img src="https://i.imgur.com/QmF9MdD.png" alt="Logo" style="width: 100px;">
-                    <h2>Welcome, ${newMember.firstName} ${newMember.lastName}!</h2>
-              
-              </p>We've been busy moving users into a more secure and searchable database.</p>
-                    <p>Your registration at ${APP_NAME} is complete.</p>
-        
-              
-                 <p>You will now be able to login with these credentials and access the new roster and participate in all the new features of the website as they roll out if you desire.</p>
-        
-            <p>Here are your login details:</p>
-                    
-                        <li><strong>Email:</strong> ${newMember.email}</li>
-                        <li><strong>Password:</strong> <strong>${password}</strong></li>
-                    
-                    <p>
-        
-                    </p>
-                    <p>Please keep your login details secure and do not share them.</p>
-              <p>Thank you for joining us, and we look forward to having you on our platform!</p>
-            <p>Best Regards,</p>
-              
-            <p>Your PWYC Tech Team</p>
-                    <div style="margin-top: 20px; margin-bottom: 20px;text-align: center;">
-                        <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
-                    </div>
-                </div>
-                    `,
-                };
-
-                await mailTransport.sendMail(mailOptions);
-                console.log('Registration email sent to:', newMember.email);
-            }
-        } catch (error) {
-            console.error('Error creating new user, setting custom claims, or sending email:', error);
-            throw new functions.https.HttpsError('internal', 'Failed to create new authenticated user, set custom claims, or send registration email.');
+      const newMember = snap.data();
+      const password = `${newMember.lastName}${newMember.memberId}`;
+  
+      try {
+        const userRecord = await admin.auth().createUser({
+          email: newMember.email,
+          password: password,
+          displayName: `${newMember.firstName} ${newMember.lastName}`,
+        });
+  
+        let customClaims = {};
+        switch (newMember.membershipType) {
+          case 'Officer':
+            customClaims.officer = true;
+            break;
+          case 'Commodore':
+            customClaims.admin = true;
+            break;
+          case 'Race Director':
+            customClaims.raceDirector = true;
+            break;
+          case 'Fleet Captain':
+            customClaims.fleetCaptain = true;
+            break;
+          case 'Rear Commodore':
+            customClaims.rearCommodore = true;
+            break;
+          case 'Vice Commodore':
+            customClaims.viceCommodore = true;
+            break;
+          case 'Secretary':
+            customClaims.secretary = true;
+            break;
+          case 'Board Member':
+            customClaims.boardMember = true;
+            break;
+          default:
+            customClaims = { member: true };
         }
+  
+        await admin.auth().setCustomUserClaims(userRecord.uid, customClaims);
+  
+        await admin.firestore().collection('members').doc(context.params.memberId).update({
+          authUid: userRecord.uid,
+        });
+  
+        if (newMember.sendEmail) {
+            // Send registration email with login details
+            const mailOptions = {
+                from: `${APP_NAME} <tech@PWYCWI.com>`,
+                to: newMember.email,
+                subject: `Welcome to ${APP_NAME}`,
+                html: `
+                            <div style="font-family: Arial, sans-serif; text-align: center;">
+                <img src="https://i.imgur.com/QmF9MdD.png" alt="Logo" style="width: 100px;">
+                <h2>Welcome, ${newMember.firstName} ${newMember.lastName}!</h2>
+                <p>We've been busy moving users into a more secure and searchable database.</p>
+                <p>Your registration at ${APP_NAME} is complete.</p>
+                <p>You will now be able to login with these credentials and access the new roster and participate in all the new features of the website as they roll out if you desire.</p>
+                <p>Here are your login details:</p>
+                <p><strong>Email:</strong> ${newMember.email}</p>
+                <p><strong>Password:</strong> ${password}</p>
+                <p>Please keep your login details secure and do not share them.</p>
+                <p>Thank you for joining us, and we look forward to having you on our platform!</p>
+                <p>Best Regards,</p>
+                <p>Your PWYC Tech Team</p>
+                <div style="margin-top: 20px; margin-bottom: 20px;text-align: center;">
+                    <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+                </div>
+            </div>
+                `,
+            };
+
+            await mailTransport.sendMail(mailOptions);
+            console.log('Registration email sent to:', newMember.email);
+        }
+      } catch (error) {
+        console.error('Error creating new user, setting custom claims, or sending email:', error);
+        throw new functions.https.HttpsError('internal', 'Failed to create new authenticated user, set custom claims, or send registration email.');
+      }
     });
 
-exports.handleMemberRoleChange = functions.firestore
+
+
+
+
+    exports.handleMemberRoleChange = functions.firestore
     .document('members/{memberId}')
     .onUpdate(async (change, context) => {
-        const beforeData = change.before.data();
-        const afterData = change.after.data();
-
-        if ((beforeData.role !== afterData.role || beforeData.membershipType !== afterData.membershipType || beforeData.isCaptain !== afterData.isCaptain) && afterData.authUid) {
-            try {
-                let customClaims = {};
-                // Handle primary roles
-                switch (afterData.role) {
-                    case 'Officer':
-                        customClaims.officer = true;
-                        break;
-                    case 'Commodore':
-                        customClaims.admin = true;
-                        break;
-                    case 'Race Director':
-                        customClaims.raceDirector = true;
-                        break;
-                    case 'Fleet Captain':
-                        customClaims.fleetCaptain = true;
-                        break;
-                    case 'Rear Commodore':
-                        customClaims.rearCommodore = true;
-                        break;
-                    case 'Vice Commodore':
-                        customClaims.viceCommodore = true;
-                        break;
-                    case 'Secretary':
-                        customClaims.secretary = true;
-                        break;
-                    case 'Board Member':
-                        customClaims.boardMember = true;
-                        break;
-                    // Add more roles as necessary
-                }
-
-                // Handle captain role
-                if (afterData.isCaptain) {
-                    customClaims.captain = true;
-                }
-
-                await admin.auth().setCustomUserClaims(afterData.authUid, customClaims);
-                console.log(`Updated custom claims for user ${afterData.authUid}`);
-            } catch (error) {
-                console.error(`Error updating custom claims for user ${afterData.authUid}:`, error);
-            }
+      const beforeData = change.before.data();
+      const afterData = change.after.data();
+  
+      if (beforeData.role !== afterData.role || beforeData.membershipType !== afterData.membershipType || beforeData.isCaptain !== afterData.isCaptain) {
+        let customClaims = {};
+  
+        switch (afterData.role) {
+          case 'Officer':
+            customClaims.officer = true;
+            break;
+          case 'Commodore':
+            customClaims.admin = true;
+            break;
+          case 'Race Director':
+            customClaims.raceDirector = true;
+            break;
+          case 'Fleet Captain':
+            customClaims.fleetCaptain = true;
+            break;
+          case 'Rear Commodore':
+            customClaims.rearCommodore = true;
+            break;
+          case 'Vice Commodore':
+            customClaims.viceCommodore = true;
+            break;
+          case 'Secretary':
+            customClaims.secretary = true;
+            break;
+          case 'Board Member':
+            customClaims.boardMember = true;
+            break;
         }
+  
+        if (afterData.isCaptain) {
+          customClaims.captain = true;
+        }
+  
+        await admin.auth().setCustomUserClaims(afterData.authUid, customClaims);
+  
+        console.log(`Updated custom claims for user ${afterData.authUid}`);
+      }
+  
+      return null;
+    });
 
-        return null;
+
+    exports.syncRolesToCustomClaims = functions.firestore
+    .document('members/{memberId}')
+    .onWrite(async (change, context) => {
+        const memberData = change.after.exists ? change.after.data() : null;
+
+        if (memberData && memberData.authUid) { // Check if the document has an associated authUid
+            const claims = {};
+
+            // Set custom claims based on roles in the member document
+            switch (memberData.role) {
+                case 'Officer':
+                    claims.officer = true;
+                    break;
+                case 'Commodore':
+                    claims.admin = true; // Assuming 'Commodore' has admin rights
+                    break;
+                case 'Race Director':
+                    claims.raceDirector = true;
+                    break;
+                case 'Fleet Captain':
+                    claims.fleetCaptain = true;
+                    break;
+                case 'Rear Commodore':
+                    claims.rearCommodore = true;
+                    break;
+                case 'Vice Commodore':
+                    claims.viceCommodore = true;
+                    break;
+                case 'Secretary':
+                    claims.secretary = true;
+                    break;
+                case 'Board Member':
+                    claims.boardMember = true;
+                    break;
+                // Add more roles as needed
+            }
+
+            // Update custom claims for the user
+            await admin.auth().setCustomUserClaims(memberData.authUid, claims);
+        }
     });

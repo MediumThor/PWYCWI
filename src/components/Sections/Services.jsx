@@ -9,11 +9,12 @@ const raceCourseImage2 = 'https://media.discordapp.net/attachments/1090123749300
 
 
 const Section1Styled = styled.div`
-  background: linear-gradient(45deg, #171615 50%, #2e2d2a 100%);
-  padding-top: 0px;
+background: linear-gradient( #2e2d2a, #171615);
+padding-top: 0px;
   padding-bottom: 70px;
-  margin-bottom: 80px;
-  margin-top: -0px
+  margin-bottom: 0px;
+  margin-top: 00px
+  
 @media (max-width: 768px) {
 
   margin-bottom: -30px;
@@ -56,7 +57,7 @@ const ServicesBackground = styled.div`
   width: 100%;
   height: 60px;
   padding-top: 160px;
-  margin-top: -90px;
+  margin-top: -20px;
   margin-bottom: -90px;
   background-color: black;
   box-shadow: 10px 20px 20px 2px rgba(0,0,0,0.5);
@@ -74,7 +75,7 @@ const ServicesTitle = styled.h1`
   padding-top: 20px;
   margin-top: -180px;
   padding-bottom: 10px;
-  margin-bottom: -90px;
+  margin-bottom: -0px;
   background-color: Black;
     transform: translateX(-100%);  // Position the text off the screen initially
 
@@ -96,6 +97,7 @@ const MainWrapper = styled.div`
   align-items: center;
   height: 100vh;
   padding: 20px;
+  margin-top: 40px;
 
   @media (max-width: 768px) {
   }

@@ -24,7 +24,7 @@ const StyledTextBody = styled.p`
 
 const StyledImage = styled.img`
   height: auto;
-  width: 100%;
+  width: 80%;
   padding-left: 10px;
   @media (max-width: 600px) {
     width: 100%;
@@ -50,11 +50,12 @@ const HistoryDialog = ({ open, onClose, scroll }) => {
       scroll={scroll}
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
+      maxWidth={"md"} 
     >
       <CenteredDialogTitle id="scroll-dialog-title">2024 Rendezvous Race</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>
         <ImageWrapper>
-          <StyledImage src="https://i.imgur.com/MDOkvWY.png" alt="2024 Rendezvous Race Flyer" />
+          <StyledImage  src="https://i.imgur.com/MDOkvWY.png" alt="2024 Rendezvous Race Flyer" />
         </ImageWrapper>
         <StyledText>
           Under Construction, Please check back soon for SI, NOR and More info.

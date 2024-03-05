@@ -47,6 +47,22 @@ const BlueRadio = styled(Radio)`
   }
 `;
 
+const StyledDialogTitle = styled(DialogTitle)`
+  /* Your existing styles */
+
+  @media (max-width: 700px) { /* Adjust the max-width as per your breakpoint */
+    margin-bottom: -0px; /* Adjust the negative margin as needed */
+  }
+`;
+
+const FormLink = styled(DialogTitle)`
+  /* Your existing styles */
+
+  @media (max-width: 700px) { /* Adjust the max-width as per your breakpoint */
+display:none;  
+}
+`;
+
 
 const MembershipDialogOnline = ({ open, onClose, scroll }) => {
     const [uploadSnackbarOpen, setUploadSnackbarOpen] = useState(false);
@@ -88,7 +104,7 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
     });
 
 
-    const sigCanvas = useRef({});
+    const sigPadRef = useRef({});
 
 
     const validateForm = () => {
@@ -127,11 +143,7 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
 
 
     const handleSubmit = async () => {
-        let signatureImage = '';
-        if (sigCanvas && sigCanvas.current) {
-            signatureImage = sigCanvas.current.toDataURL();
-        }
-
+      
       
 
         // Create a new object with all the form data, including the signature
@@ -143,6 +155,7 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
             setErrorSnackbarMessage('Please fill in all required fields.');
             return;
         }
+        const signatureImage = sigPadRef.current.toDataURL();
 
         try {
             // Write to Firestore
@@ -219,14 +232,15 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
             aria-describedby="scroll-dialog-description"
             fullWidth maxWidth="md"
         >
-            <DialogTitle id="form-dialog-title" >Membership Application</DialogTitle>
-            <Typography variant="body1" style={{ marginTop: -40, marginLeft: 640 }}>
+            <StyledDialogTitle id="form-dialog-title" >Membership Application</StyledDialogTitle>
+            <FormLink variant="body1" style={{ marginTop: -40, marginLeft: 640 }}>
           Click {' '}
           <Link href="/images/PWYC Membership Form.pdf" target="_blank" rel="noopener">
             Here
           </Link>{' '}
-        for a PDF (Offline) form</Typography>
+        for a PDF (Offline) form</FormLink>
             <DialogContent>
+                
                 {/* Applicant Information */}
                 <TextField
                         onChange={handleChange}
@@ -239,7 +253,9 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
                         InputLabelProps={{
                             shrink: true, // This ensures the label doesn't overlap the selected date
                         }}
-                        />                <TextField onChange={handleChange} name="applicantName" margin="dense" label="Name(s) of Applicant" fullWidth />
+                        />            
+                        
+                            <TextField onChange={handleChange} name="applicantName" margin="dense" label="Name(s) of Applicant" fullWidth />
                 <TextField onChange={handleChange} name="city" margin="dense" label="Home City" fullWidth />
                 <TextField onChange={handleChange} name="state" margin="dense" label="State" fullWidth />
                 <TextField onChange={handleChange} name="occupation" margin="dense" label="Occupation(s)" fullWidth />
@@ -449,18 +465,10 @@ const MembershipDialogOnline = ({ open, onClose, scroll }) => {
                     label="I have read and understand the “Requirements for Membership” outlined on the “Become A Member” page of the PWYC Website."
                 />
                 <div style={{ margin: '20px 0' }}>
-                    <Typography variant="body1" color="textPrimary" gutterBottom>
-                        Signature
-                    </Typography>
-                    <ReactSignatureCanvas
-                        ref={sigCanvas}
-                        penColor="black"
-                        canvasProps={{
-                            width: 500,
-                            height: 200,
-                            style: { border: '1px solid black' }
-                        }}
-                    />
+                <Typography variant="h6" gutterBottom>Signature</Typography>
+        <Box border={1} borderColor="grey.500" borderRadius="borderRadius" p={2}>
+          <ReactSignatureCanvas ref={sigPadRef} penColor="black" canvasProps={{ width: 875, height: 198, className: 'sigCanvas' }} />
+        </Box>
                 </div>
 
             </DialogContent>

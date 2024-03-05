@@ -11,6 +11,7 @@ const Section4Styled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 120px;
 `;
 
 const Wrapper = styled.div`
@@ -32,7 +33,7 @@ const Wrapper = styled.div`
 
 const CarouselContainer = styled.div`
   background-color: #000000;
-  width: 900px; // Default width for larger screens
+  width: 1200px; // Default width for larger screens
   height: 600px;
   margin: 0 auto; // Center the container
 

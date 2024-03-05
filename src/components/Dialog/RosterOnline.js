@@ -402,7 +402,14 @@ const handleSubmit = async (e) => {
            
         
           <Grid item xs={12} style={{ textAlign: 'center' }}>
-            <Button type="submit" color="primary">Add/Update Member</Button>
+            <Button type="submit" color="primary"
+            style={{
+              marginTop: '0px',
+              color:  'green'
+            }}
+
+
+            >Add/Update Member</Button>
             <Grid item xs={12}>
         <FormControlLabel
           control={
@@ -449,7 +456,16 @@ const handleSubmit = async (e) => {
 const RosterDialog = ({ open, onClose }) => {
   const [members, setMembers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+
+  ///Premissions
   const [isAdminUser, setIsAdminUser] = useState(false);
+  const [isSecretaryUser, setIsSecretaryUser] = useState(false);
+  const [isFleetCaptainUser, setIsFleetCaptainUser] = useState(false);
+
+
+
+
+
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
@@ -457,6 +473,7 @@ const RosterDialog = ({ open, onClose }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [addMemberModalOpen, setAddMemberModalOpen] = useState(false);
   const [removeConfirmOpen, setRemoveConfirmOpen] = useState(false);
+  
   const [snackbarInfo, setSnackbarInfo] = useState({
     open: false,
     message: '',
@@ -574,11 +591,55 @@ const RosterDialog = ({ open, onClose }) => {
  
 
 
+useEffect(() => {
+  const fetchUserRole = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      const idTokenResult = await user.getIdTokenResult();
+      const isAdmin = !!idTokenResult.claims.admin;
+      const isSecretary = !!idTokenResult.claims.secretary;
+      let isFleetCaptain = false;
+
+      const memberRef = db.collection('members').where('authUid', '==', user.uid);
+      const memberSnapshot = await memberRef.get();
+      if (!memberSnapshot.empty) {
+        const memberData = memberSnapshot.docs[0].data();
+        isFleetCaptain = memberData.role === 'Fleet Captain';
+        // Optionally, update user's first and last name here if needed
+      }
+
+      setIsAdminUser(isAdmin);
+      setIsSecretaryUser(isSecretary);
+      setIsFleetCaptainUser(isFleetCaptain);
+    }
+  };
+
+  fetchUserRole();
+}, []);
+
+
+
+
+useEffect(() => {
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      user.getIdTokenResult().then(idTokenResult => {
+        const isAdmin = !!idTokenResult.claims.admin;
+        const isSecretary = !!idTokenResult.claims.secretary;
+        setIsAdminUser(isAdmin);
+        setIsSecretaryUser(isSecretary);
+      });
+    }
+  });
+}, []);
+
+
+
  return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="lg">
       <CenteredDialogTitle>Member Roster</CenteredDialogTitle>
       <DialogContent>
-        {isAdminUser && (
+{(isAdminUser || isSecretaryUser || isFleetCaptainUser) && (
           <div style={{ textAlign: 'center', marginBottom: '20px' }}>
             <Button color="primary" onClick={handleOpenAddMemberModal}>Add Member</Button>
             <div style={{ textAlign: 'center', marginTop: '20px' }}>
@@ -637,7 +698,7 @@ const RosterDialog = ({ open, onClose }) => {
           <div>{member.email}</div>
           <div>{member.address}</div>
           <div>{member.city}, {member.state} {member.zip}</div> 
-          <div>Membership Type: {member.membershipType === 'life' ? 'Life Member' : 'Regular Member'}</div>
+          <div>{member.membershipType === 'life' ? 'Life Member' : 'Regular Member'}</div>
           {member.hasBoat === 'yes' && <div>Boat Name: {member.boatName}</div>}
           <div>{member.role}</div> {/* Display notes here */}
           <div>{member.notes}</div> {/* Display notes here */}

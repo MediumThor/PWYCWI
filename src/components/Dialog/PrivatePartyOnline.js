@@ -8,6 +8,23 @@ import Alert from '@mui/material/Alert';
 import styled from 'styled-components';
 
 
+const StyledDialogTitle = styled(DialogTitle)`
+  /* Your existing styles */
+
+  @media (max-width: 700px) { /* Adjust the max-width as per your breakpoint */
+    margin-bottom: -120px; /* Adjust the negative margin as needed */
+  }
+`;
+
+
+const FormLink = styled(DialogTitle)`
+  /* Your existing styles */
+
+  @media (max-width: 700px) { /* Adjust the max-width as per your breakpoint */
+display:none;  
+}
+`;
+
 const PrivatePartyForm = ({ open, onClose }) => {
   const [formData, setFormData] = useState({
     eventName: '',
@@ -180,14 +197,14 @@ const PrivatePartyForm = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
-      <DialogTitle>Private Party Application 
-        <Typography variant="body1" style={{ marginTop: -40, marginLeft: 640 }}>
+      <StyledDialogTitle>Private Party Application 
+        <FormLink variant="body1" style={{ marginTop: -40, marginLeft: 640 }}>
           Click {' '}
           <Link href="assets/Other/PWYC Private Party Application.pdf" target="_blank" rel="noopener">
             Here
           </Link>{' '}
-        for a PDF (Offline) form</Typography>
-        </DialogTitle>
+        for a PDF (Offline) form</FormLink>
+        </StyledDialogTitle>
       
       <DialogContent>
         <TextField label="Event Name" name="eventName" value={formData.eventName} onChange={handleChange} fullWidth margin="dense" />

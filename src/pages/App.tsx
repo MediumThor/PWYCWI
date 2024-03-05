@@ -23,6 +23,7 @@ import ParallaxImage from '../components/ParallaxSection1';
 import ParallaxImage2 from '../components/ParallaxSection2';
 import ParallaxImage3 from '../components/ParallaxSection3';
 import ParallaxImage4 from '../components/ParallaxSection4';
+import QuoteSlider from '../components/QuoteSlider';
 
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -465,9 +466,7 @@ export default function Home() {
             <ParallaxImage />
           </RenderOnLargeScreen>
 
-          <RenderOnLargeScreen>
-            <SectionWithVideo />
-          </RenderOnLargeScreen>
+         
 
           {/**    <RenderOnLargeScreen>
             <ParallaxImage3 />
@@ -476,13 +475,16 @@ export default function Home() {
           <Services />
 
           <RenderOnLargeScreen>
-            <ParallaxImage2 />
+            <SectionWithVideo />
           </RenderOnLargeScreen>
+
+       
 
 
 
 
           <Weather />
+          
           <Cam />
           <Contact />
         </div>

@@ -78,8 +78,8 @@ top: 80%; // Move the buttons up slightly
 
 const Section1Styled = styled.div`
   width:100%;
-  margin-top: 30px;
-  background-color: #ffffff;
+  margin-top: -20px;
+  background-color: #000000;
 `;
 
 const BackgroundBox = styled.div`

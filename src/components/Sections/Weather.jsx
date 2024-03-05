@@ -6,6 +6,8 @@ import "src/styles/styles.module.scss";
 
 const Section2Styled = styled.div`
   background: linear-gradient(#2e2d2a, #171615);
+  background: linear-gradient(#2e2d2a, #171615);
+
   padding-top: 100px;
   padding-bottom: 470px;
   display: flex;
