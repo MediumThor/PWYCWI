@@ -9,19 +9,10 @@ export default function BoardModal({ isOpen, onRequestClose }) {
 
     const boardData = [
         {
+            name: 'Terry White',
+        },
+        {
             name: 'Bill Schanen IV',
-        },
-        {
-            name: 'Greta Schanen',
-        },
-        {
-            name: 'Ken Paulson',
-        },
-        {
-            name: 'Bill Prince',
-        },
-        {
-            name: 'Rich Reichelsdorfer',
         },
         {
             name: 'Lynn Brown',
@@ -30,7 +21,16 @@ export default function BoardModal({ isOpen, onRequestClose }) {
             name: 'Dennis Cherny',
         },
         {
-            name: 'Joe Eernisse',
+            name: 'Heather Huggett',
+        },
+        {
+            name: 'Brian Kendzdor',
+        },
+        {
+            name: 'Doug Podzilni',
+        },
+        {
+            name: 'Gary Pritzlaff',
         },
 
         // add more items here...
