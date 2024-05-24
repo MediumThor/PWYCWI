@@ -246,7 +246,7 @@ const CloseButton = styled.button`
 
 
 
-export default function SectionHome() {
+export default function TabletHome() {
 
   const descriptionElementRef = useRef(null);
 
