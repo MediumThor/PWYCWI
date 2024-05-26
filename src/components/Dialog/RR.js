@@ -55,7 +55,7 @@ const HistoryDialog = ({ open, onClose, scroll }) => {
       <CenteredDialogTitle id="scroll-dialog-title">2024 Rendezvous Race</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>
         <ImageWrapper>
-          <StyledImage  src="https://i.imgur.com/MDOkvWY.png" alt="2024 Rendezvous Race Flyer" />
+          <StyledImage  src="https://i.imgur.com/kQYvc4z.png" alt="2024 Rendezvous Race Flyer" />
         </ImageWrapper>
         <StyledText>
           Under Construction, Please check back soon for SI, NOR and More info.

@@ -260,7 +260,7 @@ export default function Section2() {
               width="500"
               height="800"
               style={{ border: 'none', overflow: 'hidden' }}
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+              >
             </iframe>
           </FacebookFeedWrapper>
         </Wrapper>

@@ -97,7 +97,7 @@ const Caption = styled.h2`
   position: absolute;
   max-width: 500px;
   top: 30%;
-  left: 20%;
+  left: 10%;
   font-size: .5em;
   color: #FAF9F6;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
