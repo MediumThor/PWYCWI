@@ -37,7 +37,7 @@ const GalleryWrapper = styled.div`
 
 const GalleryContainer = styled.div`
   background-color: #000000;
-  width: 1200px; // Default width for larger screens
+  width: 90%; // Default width for larger screens
   height: 600px;
   margin: 0 auto; // Center the container
 

@@ -31,8 +31,8 @@ const Section1Styled = styled.div`
   width: 100%;
   height: 110vh;
   padding-top: 125px;
-  //background-color: #CDC2A4;
-  background: linear-gradient( #97b0bb, #97b0bb);
+  background-color: #CDC2A4;
+  //background: linear-gradient( #97b0bb, #97b0bb);
   //background: linear-gradient( 45deg, #87cefa, #000080);
   //background: linear-gradient( #97b0bb, #97b0bb);
   //background: linear-gradient( #BBAC83, #CDC2A4);
@@ -71,7 +71,7 @@ margin-bottom: 30px;
  
  @media (max-width: 940px) {
   margin-top: -120px;
-                  height: 70vh;
+                  height: 71vh;
                }
   
 
@@ -87,7 +87,7 @@ margin-bottom: 30px;
   }
    @media (max-width: 400px) {
     margin-top: -200px;
-  height: 65vh;
+  height: 71vh;
 
   }
   
