@@ -13,6 +13,7 @@ export default function BoardModal({ isOpen, onRequestClose }) {
         },
         {
             name: 'Bill Schanen IV',
+            number: 262-483-3994,
         },
         {
             name: 'Lynn Brown',
@@ -73,6 +74,7 @@ export default function BoardModal({ isOpen, onRequestClose }) {
                         {boardData.map((item, index) => (
                             <InfoItem key={index}>
                                 <a>{item.name}</a>
+                                <a>{item.number}</a>
                             </InfoItem>
                         ))}
                     </BoardGrid>
