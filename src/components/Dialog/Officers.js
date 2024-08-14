@@ -11,6 +11,10 @@ const OfficerInfo = styled.div`
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 `;
 
 const OfficerTitle = styled.h3`
@@ -40,6 +44,13 @@ justify-content: center;
   text-decoration: underline;
 `;
 
+const OfficerImage = styled.img`
+  margin-top: 30px;
+  max-width: 230px;
+  border-radius: 3%;
+  margin-bottom: 10px;
+`;
+
 const CenteredDialogTitle = styled(DialogTitle)`
   text-align: center;
 `;
@@ -51,36 +62,49 @@ const OfficerDialog = ({ open, onClose, scroll }) => {
       name: 'Troy Bretl',
       duties: 'Finances & Roster',
       email: 'commodore@pwycwi.com',
+      image: 'PWYCWI HEADSHOTS/gallery/7.jpg' 
+
     },
     {
       title: 'VICE COMMODORE',
       name: 'Joe Eernisse',
       duties: 'House/Maintenance & Fish Day',
       email: 'vicecommodore@pwycwi.com',
+      image: 'PWYCWI HEADSHOTS/gallery/8.jpg' 
+
     },
     {
       title: 'REAR COMMODORE ',
       name: 'Stacey Berg',
       duties: 'Private Parties & Club Social Parties',
       email: 'rearcommodore@pwycwi.com',
+      image: 'PWYCWI HEADSHOTS/gallery/placeholder.png' 
+
+
     },
     {
       title: 'SECRETARY',
       name: 'Sara Janeshek',
       duties: 'Correspondence & Archives',
       email: 'secretary@pwycwi.com',
+      image: 'PWYCWI HEADSHOTS/gallery/12.jpg' 
+
     },
     {
       title: 'TREASURER',
       name: 'Chuck Motl',
       duties: 'Finances & Roster',
       email: 'treasurer@pwycwi.com',
+      image: 'PWYCWI HEADSHOTS/gallery/9.jpg' 
+
     },
     {
       title: 'FLEET CAPTAIN',
       name: 'Mark Lackovic',
       duties: 'New Membership & Race Events',
       email: 'fleetcaptain@pwycwi.com',
+      image: 'PWYCWI HEADSHOTS/gallery/placeholder.png' 
+
     }
   ];
 
@@ -98,6 +122,7 @@ const OfficerDialog = ({ open, onClose, scroll }) => {
       <DialogContent dividers={scroll === 'paper'}>
         {officerData.map((officer, index) => (
           <OfficerInfo key={index}>
+            <OfficerImage src={`/${officer.image}`} alt={officer.name} />
             <OfficerTitle>{officer.title}</OfficerTitle>
             <OfficerName>{officer.name}</OfficerName>
             <OfficerDuties>Duties: {officer.duties}</OfficerDuties>

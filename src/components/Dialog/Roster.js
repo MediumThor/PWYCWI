@@ -47,7 +47,7 @@ const RosterDialog = ({ open, onClose, scroll }) => {
     setNumPages(numPages);
   }
 
-  const pdfFile = "/assets/Other/PWYC Roster 2023 - SJ.6.29.pdf"; // PDF file path
+  const pdfFile = "/assets/Other/PWYC Roster 2024.pdf"; // PDF file path
 
 
   return (

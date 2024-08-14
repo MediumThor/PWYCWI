@@ -6,20 +6,16 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
 
-const StyledText = styled.p`
-  text-align: center;
-  color: black;
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
 `;
 
-const StyledLink = styled.a`
-  color: #0000EE;
-  text-decoration: underline;
-`;
-
-const StyledTextBody = styled.p`
-  text-align: center;
-  color: black;
-  margin-bottom: 20%;
+const StyledButton = styled.a`
+  text-decoration: none;
 `;
 
 const StyledImage = styled.img`
@@ -55,13 +51,19 @@ const HistoryDialog = ({ open, onClose, scroll }) => {
       <CenteredDialogTitle id="scroll-dialog-title">2024 Rendezvous Race</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>
         <ImageWrapper>
-          <StyledImage  src="https://i.imgur.com/kQYvc4z.png" alt="2024 Rendezvous Race Flyer" />
+          <StyledImage src="https://i.imgur.com/kQYvc4z.png" alt="2024 Rendezvous Race Flyer" />
         </ImageWrapper>
-        <StyledText>
-          Under Construction, Please check back soon for SI, NOR and More info.
-
-
-        </StyledText>
+        <StyledButtonWrapper>
+          <StyledButton href="assets/Other/PWYC Roster 2024.pdf" download>
+            <Button variant="contained" color="primary">Download Entry Form</Button>
+          </StyledButton>
+          <StyledButton href="assets/Other/Rendezvous Liability Waiver.pdf" download>
+            <Button variant="contained" color="primary">Download Liability Waver</Button>
+          </StyledButton>
+          <StyledButton href="assets/Other/Rendezvous NOR-SI entry 2024.pdf" download>
+            <Button variant="contained" color="primary">Download NOR</Button>
+          </StyledButton>
+        </StyledButtonWrapper>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Close</Button>
