@@ -150,7 +150,7 @@ const BoardDialog = ({ open, onClose, scroll }) => {
       title: 'BAR MANAGER',
       name: 'Dina Bell',
       number: '414-861-0668',
-      image: 'PWYCWI HEADSHOTS/gallery/1.jpg' 
+      image: 'PWYCWI HEADSHOTS/gallery/14.jpg' 
     },
 
     {
