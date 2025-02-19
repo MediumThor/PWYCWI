@@ -48,19 +48,19 @@ const HistoryDialog = ({ open, onClose, scroll }) => {
       aria-describedby="scroll-dialog-description"
       maxWidth={"md"} 
     >
-      <CenteredDialogTitle id="scroll-dialog-title">2024 Rendezvous Race</CenteredDialogTitle>
+      <CenteredDialogTitle id="scroll-dialog-title">2025 Rendezvous Race</CenteredDialogTitle>
       <DialogContent dividers={scroll === 'paper'}>
         <ImageWrapper>
-          <StyledImage src="https://i.imgur.com/kQYvc4z.png" alt="2024 Rendezvous Race Flyer" />
+          <StyledImage src="https://i.imgur.com/BzzEC8o.png" alt="2025 Rendezvous Race Flyer" />
         </ImageWrapper>
         <StyledButtonWrapper>
-          <StyledButton href="assets/Other/_Rendezvous Entry Form 2024.pdf" download>
+          <StyledButton href="assets/Other/_Rendezvous Entry Form 2025.pdf" download>
             <Button variant="contained" color="primary">Download Entry Form</Button>
           </StyledButton>
-          <StyledButton href="assets/Other/Rendezvous Liability Waiver.pdf" download>
+          <StyledButton href="assets/Other/Rendezvous Liability Waiver 2025.pdf" download>
             <Button variant="contained" color="primary">Download Liability Waver</Button>
           </StyledButton>
-          <StyledButton href="assets/Other/Port Washington YC Rendezvous NOR 2024.pdf" download>
+          <StyledButton href="assets/Other/PWYC Rendezvous NOR 2025.pdf" download>
             <Button variant="contained" color="primary">Download NOR</Button>
           </StyledButton>
         </StyledButtonWrapper>

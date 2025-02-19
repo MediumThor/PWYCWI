@@ -660,7 +660,7 @@ const SectionHome = () => {
       <PageDiv>
 
         <ButtonContainer2>
-          <StyledButton2 onClick={handleRRDialogOpen} >2024 Rendezvous Race</StyledButton2>
+          <StyledButton2 onClick={handleRRDialogOpen} >2025 Rendezvous Race</StyledButton2>
           <RRDialog open={rrOpen} onClose={handleRRClose} scroll="paper" />
 
         </ButtonContainer2>

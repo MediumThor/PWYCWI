@@ -276,7 +276,7 @@ export default function PageFour() {
 
   const SheboyganURL = "/assets/SailingInfo/PWYC to Sheboygan SI's 2023.pdf";
   const HarringtonURL = "/assets/SailingInfo/PWYC to Harrington - Niagara race SI 2023.pdf";
-  const RendezvousURL = "/assets/Other/Rendezvous NOR-SI entry 2023.pdf";
+  const RendezvousURL = "/assets/Other/PWYC Rendezvous NOR 2025.pdf";
 
   const notify = () => toast(
     <div style={{ color: 'Black', fontSize: '30px' }}>
