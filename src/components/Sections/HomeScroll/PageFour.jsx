@@ -437,9 +437,10 @@ export default function PageFour() {
 
             <Title>PWYC<br />Sailing Information</Title>
             <ButtonContainer>
+            <StyledButton onClick={notify2}>Rules</StyledButton>
               {/**  <StyledButton onClick={handleEventsOpen}>Upcoming Events</StyledButton>*/}
 
-              <StyledButton onClick={notify2}>Rules</StyledButton>
+             {/**  
               <StyledButton onClick={notify}>Sheboygan NOR</StyledButton>
               <StyledButton onClick={notify3}>Harrington NOR</StyledButton>
               <StyledButton onClick={notify4}>Rendezvous NOR</StyledButton>
