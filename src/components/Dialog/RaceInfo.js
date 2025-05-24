@@ -54,7 +54,7 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const tabs = ['NOR', 'SI', 'Course', 'Registration'];
+    const tabs = ['2025 Race Packet'];
 
 
 
@@ -100,40 +100,14 @@ const RaceInfoDialog = ({ open, onClose, scroll }) => {
 
                 <TabPanel value={value} index={0}>
                     <embed
-                        src="/assets/SailingInfo/PWYC NOR 2023.pdf"
+                        src="/assets/Other/PWYC NOR and SI's 2025 Final.pdf"
                         width="100%"
                         height="100%"
                         style={{ minHeight: '60vh' }}  // 60% of the viewport height
                     />
                 </TabPanel>
 
-                <TabPanel value={value} index={1}>
-                    <embed
-                        src="/assets/SailingInfo/PWYC SI 2023.pdf"
-                        width="100%"
-                        height="100%"
-                        style={{ minHeight: '60vh' }}  // 60% of the viewport height
-                    />
-                </TabPanel>
-
-                <TabPanel value={value} index={2}>
-                    <embed
-                        src="/assets/SailingInfo/PWYC COURSE 2023.pdf"
-                        width="100%"
-                        type="application/pdf"
-                        style={{ minHeight: '60vh' }}  // 60% of the viewport height
-                    />
-                </TabPanel>
-
-                <TabPanel value={value} index={3}>
-                    <embed
-                        src="/assets/SailingInfo/PWYC Registration 2023.pdf"
-                        width="100%"
-                        type="application/pdf"
-                        style={{ minHeight: '60vh' }}  // 60% of the viewport height
-                    />
-                </TabPanel>
-
+             
 
 
             </DialogContent>

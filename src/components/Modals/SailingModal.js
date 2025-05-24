@@ -108,10 +108,8 @@ export default function SailingModal({ isOpen, onRequestClose }) {
       <TabBox>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange}>
-            <Tab label="NOR" />
-            <Tab label="SI" />
-            <Tab label="Course" />
-            <Tab label="Registration" />
+            <Tab label="2025 Race Packet" />
+     
 
           </Tabs>
         </Box>
@@ -119,20 +117,9 @@ export default function SailingModal({ isOpen, onRequestClose }) {
 
       <ContentWrapper>
         <TabPanel value={value} index={0}>
-          <embed src="/assets/SailingInfo/PWYC NOR 2023.pdf" width="350%" height="100%" type="application/pdf" />
+          <embed src="/assets/Other/PWYC NOR and SI's 2025 Final.pdf" width="350%" height="100%" type="application/pdf" />
         </TabPanel>
 
-        <TabPanel value={value} index={1}>
-          <embed src="/assets/SailingInfo/PWYC SI 2023.pdf" width="350%" height="100%" type="application/pdf" />
-        </TabPanel>
-
-        <TabPanel value={value} index={2}>
-          <embed src="/assets/SailingInfo/PWYC COURSE 2023.pdf" width="350%" height="100%" type="application/pdf" />
-        </TabPanel>
-
-        <TabPanel value={value} index={3}>
-          <embed src="/assets/SailingInfo/PWYC Registration 2023.pdf" width="350%" height="100%" type="application/pdf" />
-        </TabPanel>
 
       </ContentWrapper>
       <div style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%)' }}>
