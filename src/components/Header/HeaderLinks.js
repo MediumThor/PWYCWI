@@ -148,11 +148,22 @@ function HeaderLinks() {
             color="transparent"
             className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
           >
-            <Link activeClass="active" to="sectionHome" spy={false} smooth={true} duration={1000} className={style.headerLink3}>
-              Home
-            </Link>
+            <Nextlink href="/" passHref>
+              <a className={style.headerLink3}>Home</a>
+            </Nextlink>
           </SmallButton>
+        </ListItem>
 
+        <ListItem className={classes.listItem}>
+          <SmallButton
+            size={isSmallScreen ? "lg" : "sm"}  // larger size on small screens
+            color="transparent"
+            className={isSmallScreen ? classes.smallScreenButton : null}  // custom class for small screens
+          >
+            <Nextlink href="/new-home" passHref>
+              <a className={style.headerLink3}>New Home</a>
+            </Nextlink>
+          </SmallButton>
         </ListItem>
 
 

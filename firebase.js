@@ -4,9 +4,8 @@ import 'firebase/firestore';
 import 'firebase/functions';
 import "firebase/storage";
 
-
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_REACT_APP_API_KEY,
+    apiKey: "AIzaSyBnhn5d2fvP4NuXjG6NLww-j-U_WPHZ4OA",
     authDomain: "pwyc-628af.firebaseapp.com",
     projectId: "pwyc-628af",
     storageBucket: "pwyc-628af.appspot.com",
@@ -14,7 +13,6 @@ const firebaseConfig = {
     appId: "1:82885299164:web:b7ab4bb8110474839add19",
     measurementId: "G-V3R5EK01NC"
 };
-
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);

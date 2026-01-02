@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Grid, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button, TextField, Typography, Box, Link } from '@mui/material';
-import { firestore as db } from '../../../firebase';
+import { firestore as db, auth } from '../../../firebase';
 import ReactSignatureCanvas from 'react-signature-canvas';
 import { functions } from '../../../firebase'; // Import the initialized functions module
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import styled from 'styled-components';
+import Cookies from 'js-cookie';
 
 
 const StyledDialogTitle = styled(DialogTitle)`
@@ -102,6 +103,91 @@ const PrivatePartyForm = ({ open, onClose }) => {
     // Add other form fields as dependencies if they affect the cost
   }, [formData.dateOfEvent, formData.partyTimeEnd, formData.numberOfMembers, formData.numberOfNonMembers, formData.barRequested]);
 
+  // Auto-populate user information when dialog opens
+  useEffect(() => {
+    if (open) {
+      const loadUserData = async () => {
+        try {
+          const authUser = auth.currentUser;
+          const isSpecialUser = Cookies.get('specialUser') === 'true';
+
+          if (authUser) {
+            // User is authenticated via Firebase Auth
+            // Get email from auth user
+            const userEmail = authUser.email;
+            
+            // Try to get member data from Firestore
+            try {
+              const token = await authUser.getIdTokenResult();
+              
+              let memberData = null;
+              if (token.claims.admin) {
+                // Admins are in the 'users' collection
+                const userSnapshot = await db.collection('users').doc(authUser.uid).get();
+                if (userSnapshot.exists) {
+                  const userData = userSnapshot.data();
+                  memberData = {
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    email: userEmail || userData.email,
+                    phone: userData.phone,
+                    address: userData.address,
+                  };
+                }
+              } else {
+                // Regular members are in the 'members' collection
+                const memberSnapshot = await db.collection('members').where('authUid', '==', authUser.uid).limit(1).get();
+                if (!memberSnapshot.empty) {
+                  const memberDoc = memberSnapshot.docs[0].data();
+                  memberData = {
+                    firstName: memberDoc.firstName,
+                    lastName: memberDoc.lastName,
+                    email: userEmail || memberDoc.email,
+                    phone: memberDoc.phone,
+                    address: memberDoc.address,
+                  };
+                }
+              }
+
+              if (memberData) {
+                setFormData(prev => ({
+                  ...prev,
+                  email: memberData.email || '',
+                  memberName: `${memberData.firstName || ''} ${memberData.lastName || ''}`.trim(),
+                  telephone: memberData.phone || prev.telephone,
+                  address: memberData.address || prev.address,
+                }));
+              } else if (userEmail) {
+                // Fallback: just set email if we have it
+                setFormData(prev => ({
+                  ...prev,
+                  email: userEmail,
+                }));
+              }
+            } catch (error) {
+              console.error('Error fetching member data:', error);
+              // Still try to set email if available
+              if (userEmail) {
+                setFormData(prev => ({
+                  ...prev,
+                  email: userEmail,
+                }));
+              }
+            }
+          } else if (isSpecialUser) {
+            // YachtMember special user - they need to enter their email manually
+            // We can't auto-populate without knowing which member they are
+            console.log('Special user (YachtMember) detected - please enter your email address');
+          }
+        } catch (error) {
+          console.error('Error loading user data:', error);
+        }
+      };
+
+      loadUserData();
+    }
+  }, [open]);
+
 
 
 
@@ -134,6 +220,12 @@ const PrivatePartyForm = ({ open, onClose }) => {
     // Check required fields
     isValid = requiredFields.every(field => formData[field] !== undefined && formData[field] !== '');
 
+    // Validate email format - must be a valid email address (not "YachtMember" or other usernames)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.email && !emailRegex.test(formData.email)) {
+      isValid = false;
+    }
+
     // Additional check for bar times if bar is requested
     if (formData.barRequested === 'Yes') {
       isValid = isValid && formData.barTimeStart !== '' && formData.barTimeEnd !== '';
@@ -152,7 +244,13 @@ const PrivatePartyForm = ({ open, onClose }) => {
 
     if (!formIsValid) {
       setErrorSnackbarOpen(true);
-      setErrorSnackbarMessage('Please fill in all required fields.');
+      // Check if email is invalid
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (formData.email && !emailRegex.test(formData.email)) {
+        setErrorSnackbarMessage('Please enter a valid email address. "YachtMember" is a username, not an email address.');
+      } else {
+        setErrorSnackbarMessage('Please fill in all required fields.');
+      }
       return;
     }
 
@@ -224,7 +322,17 @@ const PrivatePartyForm = ({ open, onClose }) => {
         <TextField label="Number of Non-Members" name="numberOfNonMembers" value={formData.numberOfNonMembers} onChange={handleChange} fullWidth margin="dense" />
         <TextField label="Telephone" name="telephone" value={formData.telephone} onChange={handleChange} fullWidth margin="dense" />
         <TextField label="Address" name="address" value={formData.address} onChange={handleChange} fullWidth margin="dense" />
-        <TextField label="Email" name="email" value={formData.email} onChange={handleChange} fullWidth margin="dense" />
+        <TextField 
+          label="Email" 
+          name="email" 
+          type="email"
+          value={formData.email} 
+          onChange={handleChange} 
+          fullWidth 
+          margin="dense"
+          helperText={formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? 'Please enter a valid email address' : ''}
+          error={formData.email !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)}
+        />
         <Typography variant="h6" gutterBottom>Event Timing</Typography>
 
         <Grid container spacing={2} alignItems="center">

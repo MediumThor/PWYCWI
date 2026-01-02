@@ -3,16 +3,10 @@ const admin = require("firebase-admin");
 const stripe = require('stripe')(functions.config().stripe.secret_key);
 const cors = require('cors')({ origin: true });
 
-
 admin.initializeApp();
-
 
 const nodemailer = require('nodemailer');
 const APP_NAME = 'PWYC';
-
-
-
-
 
 // Gmail SMTP server configuration
 const gmailEmail = functions.config().gmail.email;
@@ -649,11 +643,24 @@ exports.sendPrivatePartyEmail = functions.https.onCall(async (data, context) => 
     } = data;
 
     try {
-        const paymentLink = await createStripePaymentLink(totalCost, email);
+        // Check if email is "YachtMember" (special username case)
+        const isYachtMember = email === 'YachtMember' || email === 'yachtmember';
+        let paymentLink = null;
+
+        // Only create Stripe payment link if email is valid
+        if (!isYachtMember) {
+            try {
+                paymentLink = await createStripePaymentLink(totalCost, email);
+            } catch (stripeError) {
+                console.error('Error creating Stripe payment link:', stripeError);
+                // Continue without payment link if Stripe fails
+            }
+        }
 
         const adminMailOptions = {
             from: `${APP_NAME} <tech@PWYCWI.com>`,
             to: 'rearcommodore@pwycwi.com', // Change to the destination email for admin
+            cc: 'tech@pwycwi.com', // CC for testing
             subject: `New Private Party Application - ${eventName}`,
             html: `
             <h1>New Private Party Application</h1>
@@ -661,7 +668,7 @@ exports.sendPrivatePartyEmail = functions.https.onCall(async (data, context) => 
             <p><strong>Member Name:</strong> ${memberName}</p>
             <p><strong>Telephone:</strong> ${telephone}</p>
             <p><strong>Address:</strong> ${address}</p>
-            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Email:</strong> ${email}${isYachtMember ? ' (YachtMember - Special Username)' : ''}</p>
             <p><strong>Date of Event:</strong> ${dateOfEvent}</p>
             <p><strong>Preparation Time:</strong> ${preparationTimeStart} to ${preparationTimeEnd}</p>
             <p><strong>Party Time:</strong> ${partyTimeStart} to ${partyTimeEnd}</p>
@@ -679,43 +686,49 @@ exports.sendPrivatePartyEmail = functions.https.onCall(async (data, context) => 
         `,
         };
 
-        const applicantMailOptions = {
-            from: `${APP_NAME} <tech@PWYCWI.com>`,
-            to: email,
-            subject: `Your Private Party Application - ${eventName}`,
-            html: `
-            <div style="font-family: Arial, sans-serif; text-align: center;">
-            <img src="https://i.imgur.com/QmF9MdD.png" alt="Logo" style="width: 100px;">
-            <div>
-              <h1>Your Private Party Application</h1>
-              <p>Dear ${memberName},</p>
-              <p>Thank you for submitting your private party application for "${eventName}". We have received your application and will be reviewing it shortly.</p>
-              <p>Please complete your payment by delivering a check for the amount of  </p>
-               
-              
-    
-              <p>$${totalCost / 100} to the club before the next scheduled meeting on the second Friday of each month. </p>
-                        <p>Please note that payment is required for the board to approve your event</p>
-    
-    
-              <p>If you have any questions or need further information, feel free to reply to this email or contact us at <a href="mailto:rearcommodore@pwycwi.com">rearcommodore@pwycwi.com</a>.</p>
-              <p>Best regards,</p>
-              <p>The ${APP_NAME} Team</p>
-              <div style="margin-top: 20px; margin-bottom: 20px;text-align: center;">
-              <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
-              </div>
-            </div>
-          </div>
-    `,
-        };
-
+        // Send admin email
         await mailTransport.sendMail(adminMailOptions);
         console.log('Private party application email sent to admin.');
 
-        await mailTransport.sendMail(applicantMailOptions);
-        console.log('Confirmation email sent to applicant.');
+        // Only send applicant email if email is valid (not YachtMember)
+        if (!isYachtMember) {
+            const applicantMailOptions = {
+                from: `${APP_NAME} <tech@PWYCWI.com>`,
+                to: email,
+                subject: `Your Private Party Application - ${eventName}`,
+                html: `
+                <div style="font-family: Arial, sans-serif; text-align: center;">
+                <img src="https://i.imgur.com/QmF9MdD.png" alt="Logo" style="width: 100px;">
+                <div>
+                  <h1>Your Private Party Application</h1>
+                  <p>Dear ${memberName},</p>
+                  <p>Thank you for submitting your private party application for "${eventName}". We have received your application and will be reviewing it shortly.</p>
+                  <p>Please complete your payment by delivering a check for the amount of  </p>
+                   
+                  
+        
+                  <p>$${totalCost / 100} to the club before the next scheduled meeting on the second Friday of each month. </p>
+                            <p>Please note that payment is required for the board to approve your event</p>
+        
+        
+                  <p>If you have any questions or need further information, feel free to reply to this email or contact us at <a href="mailto:rearcommodore@pwycwi.com">rearcommodore@pwycwi.com</a>.</p>
+                  <p>Best regards,</p>
+                  <p>The ${APP_NAME} Team</p>
+                  <div style="margin-top: 20px; margin-bottom: 20px;text-align: center;">
+                  <a href="https://www.pwycwi.com/" style="background-color: #87CEFA; color: black; text-decoration: none; padding: 10px 20px; margin: 10px 0px; cursor: pointer; border-radius: 5px; font-size: 16px;">Visit Our Website</a>
+                  </div>
+                </div>
+              </div>
+        `,
+            };
 
-        return { message: 'Emails sent successfully!' };
+            await mailTransport.sendMail(applicantMailOptions);
+            console.log('Confirmation email sent to applicant.');
+        } else {
+            console.log('Skipped sending applicant email for YachtMember username.');
+        }
+
+        return { message: 'Application submitted successfully!' };
     } catch (error) {
         console.error('Error sending emails:', error);
         throw new functions.https.HttpsError('internal', 'Failed to send emails.', error);
